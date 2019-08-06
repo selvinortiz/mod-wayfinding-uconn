@@ -4,7 +4,7 @@ namespace modules\utility\controllers;
 
 use yii\console\Controller;
 
-class ImportController extends Controller
+class ConsoleGreetController extends Controller
 {
     public $allowAnonymous = true;
 

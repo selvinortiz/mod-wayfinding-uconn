@@ -4,7 +4,7 @@ namespace modules\utility\controllers;
 
 use craft\web\Controller;
 
-class ImportController extends Controller
+class GreetController extends Controller
 {
     public $allowAnonymous = true;
 

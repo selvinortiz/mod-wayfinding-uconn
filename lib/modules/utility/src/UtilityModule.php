@@ -19,8 +19,6 @@ class UtilityModule extends Module
      */
     public function init()
     {
-        parent::init();
-
         Craft::setAlias('@modules/utility', __DIR__);
 
         $this->controllerNamespace = 'modules\utility\controllers';
@@ -29,6 +27,8 @@ class UtilityModule extends Module
         {
             $this->controllerNamespace = 'modules\utility\console\controllers';
         }
+
+        parent::init();
     }
 
     public function log($message, $vars = [], $level = Logger::LEVEL_INFO)

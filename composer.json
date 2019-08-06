@@ -5,7 +5,7 @@
   },
   "autoload": {
     "psr-4": {
-      "modules\\utility\\": "modules/utility/src/"
+      "modules\\utility\\": "lib/modules/utility/src/"
     }
   },
   "repositories": [
