@@ -1,6 +1,5 @@
-# Uncraft
-Craft CMS starter template with a minimalist Webpack config that includes Vue and Tailwind
-
+# ModCore™️
+A Craft CMS starter project with a minimalist Webpack config that includes Vue and Tailwind.
 
 ## Getting Started
 Below is a list of tools, resources, and dependencies that were used when building this project.
@@ -11,34 +10,35 @@ Below is a list of tools, resources, and dependencies that were used when buildi
 - [Tailwind](https://tailwindcss.com/)
 - [Webpack](https://webpack.js.org/)
 
-## Install
+## Requirements
 > You'll need [composer](https://getcomposer.org/) and [npm](https://www.npmjs.com/) to collaborate on this project.
 
-##### Step 1 (clone repository)
+#### 1. Clone repository
 
 ```bash
-git clone git@github.com:selvinortiz/uncraft.git
+git clone git@bitbucket.org:modcreative/wayfinding-core.git
 
-cd uncraft
+cd wayfinding-core
 ```
 
-##### Step 2 (install all dependencies)
+#### 2. Install dependencies
+
 ```bash
 composer i && npm i
 ```
 
-##### Step 3 (configure Craft and your environment)
+##### 3. Configure Craft
 
 ```bash
-# Mac/Linux
-# From project root
-./craft setup
-
-# May need to add executable permission
+# mac/linux only
+# add executable permission
 chmod +x craft
+
+# run setup through Craft CLI
+./craft setup
 ```
 
-##### Step 4 (update package.json scripts)
+#### 4. Update build scripts
 Once you've completed the setup, you should update `package.json > scripts` to match your environment.
 
 Specifically, you should update `{http://yoursiteurl.test}` to your local site URL if you want to use BrowserSync.
@@ -49,4 +49,5 @@ npm run start:sync
 
 ---
 
-_More information coming soon..._
+#### Note
+> This is a _work in progress_, if you spot any typos or feel you can contribute to this project, PRs are welcomed 😎
