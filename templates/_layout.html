@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>{{ [title ?? null, siteName]|filter|join(' | ') }}</title>
+
+        {% block head %}
+            <link rel="stylesheet" href="/css/app.css?v={{ 'now'|date('YmdHis') }}">
+
+            <script>
+                window.csrfTokenName = "{{ craft.app.config.general.csrfTokenName|e('js') }}";
+                window.csrfTokenValue = "{{ craft.app.request.csrfToken|e('js') }}";
+            </script>
+        {% endblock %}
+    </head>
+
+    <body>
+        <div id="app">
+            {% block content %}{% endblock %}
+        </div>
+
+        {% block footer %}
+            <script src="/js/app.js?v={{ 'now'|date('YmdHis') }}"></script>
+        {% endblock %}
+    </body>
+</html>

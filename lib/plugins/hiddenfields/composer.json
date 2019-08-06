@@ -1,0 +1,29 @@
+{
+    "name": "selvinortiz/hiddenfields",
+    "type": "craft-plugin",
+    "version": "1.1.0",
+    "description": "Hide entry fields for non-admins",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Selvin Ortiz",
+            "email": "selvin@selvin.co"
+        }
+    ],
+    "extra": {
+        "name": "Hidden Fields",
+        "handle": "hidden-fields",
+        "developer": "Selvin Ortiz",
+        "developerUrl": "https://selvinortiz.com",
+        "class": "selvinortiz\\hiddenfields\\HiddenFields",
+        "documentationUrl": "https://github.com/selvinortiz/craft-plugin-hidden-fields/blob/master/README.md"
+    },
+    "require": {
+        "craftcms/cms": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "selvinortiz\\hiddenfields\\": "src/"
+        }
+    }
+}
