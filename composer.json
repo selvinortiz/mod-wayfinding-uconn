@@ -1,7 +1,7 @@
 {
   "require": {
     "craftcms/cms": "3.2.9",
-    "verbb/field-manager": "^2.1",
+    "craftcms/redactor": "2.3.3.2",
     "vlucas/phpdotenv": "^2.4.0"
   },
   "autoload": {
