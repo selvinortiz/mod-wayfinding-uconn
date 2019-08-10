@@ -1,9 +1,13 @@
 {% extends "_layout" %}
 
 {% block content %}
-    <div class="h-screen flex items-center justify-center">
-        <div>
-            <img style="width: 512px; height: auto;" src="/img/uncraft.svg" alt="">
-        </div>
+    <div id="app">
+        <nav class="flex">
+            <router-link class="flex-1 p-4 text-blue-700" :to="{ name: 'index' }">Home</router-link>
+            <router-link class="flex-1 p-4 text-blue-700" :to="{ name: 'people' }">People</router-link>
+            <router-link class="flex-1 p-4 text-blue-700" :to="{ name: 'places' }">Places</router-link>
+            <router-link class="flex-1 p-4 text-blue-700" :to="{ name: 'settings' }">Settings</router-link>
+        </nav>
+        <router-view></router-view>
     </div>
 {% endblock %}

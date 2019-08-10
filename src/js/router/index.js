@@ -1,25 +1,15 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import app from './app';
+import places from './places';
+import people from './people';
+
 Vue.use(VueRouter);
 
-import PageOne from '../pages/PageOne.vue'
-import PageTwo from '../pages/PageTwo.vue'
+const routes = app.concat(places, people);
 
-const routes = [
-  {
-    name: 'pageOne',
-    path: '/spa',
-    component: PageOne,
-    exact: true,
-  },
-  {
-    name: 'pageTwo',
-    path: '/spa/page-two',
-    component: PageTwo,
-    exact: true,
-  },
-];
+console.log(routes);
 
 export default new VueRouter({
   routes,
