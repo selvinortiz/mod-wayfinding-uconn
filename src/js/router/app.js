@@ -10,6 +10,6 @@ export default [
     name: 'settings',
     path: '/settings',
     component: () =>
-      import(/* webpackChunkName: 'settings' */ '../pages/Settings.vue')
+      import(/* webpackChunkName: 'app/settings' */ '../pages/Settings.vue')
   }
 ];

@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"settings":"settings"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"app/settings":"app/settings","people":"people","places":"places"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -182,7 +182,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/js/";
 /******/
 /******/ 	// on error function for async loading
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
@@ -4450,7 +4450,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nod
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _pages_Index_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pages/Index.vue */ \"./src/js/pages/Index.vue\");\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  name: 'index',\n  path: '/',\n  component: _pages_Index_vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n}, {\n  name: 'settings',\n  path: '/settings',\n  component: () => __webpack_require__.e(/*! import() | settings */ \"settings\").then(__webpack_require__.bind(null, /*! ../pages/Settings.vue */ \"./src/js/pages/Settings.vue\"))\n}]);\n\n//# sourceURL=webpack:///./src/js/router/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _pages_Index_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pages/Index.vue */ \"./src/js/pages/Index.vue\");\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  name: 'index',\n  path: '/',\n  component: _pages_Index_vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n}, {\n  name: 'settings',\n  path: '/settings',\n  component: () => __webpack_require__.e(/*! import() | app/settings */ \"app/settings\").then(__webpack_require__.bind(null, /*! ../pages/Settings.vue */ \"./src/js/pages/Settings.vue\"))\n}]);\n\n//# sourceURL=webpack:///./src/js/router/app.js?");
 
 /***/ }),
 
@@ -4474,7 +4474,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue_
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  name: 'people',\n  path: '/people',\n  component: () => __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../pages/people/Index.vue */ \"./src/js/pages/people/Index.vue\"))\n}]);\n\n//# sourceURL=webpack:///./src/js/router/people.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  name: 'people',\n  path: '/people',\n  component: () => __webpack_require__.e(/*! import() | people */ \"people\").then(__webpack_require__.bind(null, /*! ../pages/people/Index.vue */ \"./src/js/pages/people/Index.vue\"))\n}]);\n\n//# sourceURL=webpack:///./src/js/router/people.js?");
 
 /***/ }),
 
@@ -4486,7 +4486,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  name: 'places',\n  path: '/places',\n  component: () => __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../pages/places/Index.vue */ \"./src/js/pages/places/Index.vue\"))\n}]);\n\n//# sourceURL=webpack:///./src/js/router/places.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  name: 'places',\n  path: '/places',\n  component: () => __webpack_require__.e(/*! import() | places */ \"places\").then(__webpack_require__.bind(null, /*! ../pages/places/Index.vue */ \"./src/js/pages/places/Index.vue\"))\n}]);\n\n//# sourceURL=webpack:///./src/js/router/places.js?");
 
 /***/ }),
 

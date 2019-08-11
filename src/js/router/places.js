@@ -3,6 +3,6 @@ export default [
     name: 'places',
     path: '/places',
     component: () =>
-      import(/* webpackChunckName: 'places' */ '../pages/places/Index.vue')
+      import(/* webpackChunkName: 'places' */ '../pages/places/Index.vue')
   }
 ];

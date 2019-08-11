@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["settings"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["app/settings"],{
 
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/js/pages/Settings.vue?vue&type=template&id=f19159aa&":
 /*!************************************************************************************************************************************************************************************************!*\
