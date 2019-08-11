@@ -1,3 +1,3 @@
 <template>
-  <h1>People Index</h1>
+  <h1 class="text-xl p-4">People Index</h1>
 </template>

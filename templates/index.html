@@ -1,13 +1,32 @@
 {% extends "_layout" %}
 
 {% block content %}
-    <div id="app">
-        <nav class="flex">
-            <router-link class="flex-1 p-4 text-blue-700" :to="{ name: 'index' }">Home</router-link>
-            <router-link class="flex-1 p-4 text-blue-700" :to="{ name: 'people' }">People</router-link>
-            <router-link class="flex-1 p-4 text-blue-700" :to="{ name: 'places' }">Places</router-link>
-            <router-link class="flex-1 p-4 text-blue-700" :to="{ name: 'settings' }">Settings</router-link>
-        </nav>
-        <router-view></router-view>
+    <div class="h-screen flex flex-col" id="app">
+        <header class="flex items-center justify-between p-4 border-b border-gray-400 bg-gray-200">
+            <div>
+                <h1>ModCore<sup>&trade;</sup>
+                </h1>
+            </div>
+            <div>
+                <p class="text-right">
+                    Saturday, August 10, 2019
+                    <br>
+                    5:00 PM
+                </p>
+            </div>
+        </header>
+
+        <main class="flex-1">
+            <router-view></router-view>
+        </main>
+
+        <footer class="border-t border-gray-400 bg-gray-200">
+            <nav class="flex text-center">
+                <router-link :to="{ name: 'index' }" class="flex-1 m-2 p-4 bg-blue-600 text-white shadow rounded">Home</router-link>
+                <router-link :to="{ name: 'people' }" class="flex-1 m-2 p-4 bg-blue-600 text-white shadow rounded">People</router-link>
+                <router-link :to="{ name: 'places' }" class="flex-1 m-2 p-4 bg-blue-600 text-white shadow rounded">Places</router-link>
+                <router-link :to="{ name: 'settings' }" class="flex-1 m-2 p-4 bg-blue-600 text-white shadow rounded">Settings</router-link>
+            </nav>
+        </footer>
     </div>
 {% endblock %}
