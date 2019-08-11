@@ -20,5 +20,5 @@
  */
 
 return [
-    '<route:.*>' => ['template' => 'index']
+    '<page:[a-zA-Z0-9-]*>' => ['template' => 'index']
 ];
