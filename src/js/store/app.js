@@ -4,14 +4,16 @@ const defaultState = {
     text: '#333',
     header: {
       logo: {},
-      clock: {}
+      clock: {
+        text: '#999'
+      }
     },
     main: {},
     footer: {
       nav: {
         item: {
-          bg: 'blue',
-          text: '#fff',
+          bg: '#fff',
+          text: '#3daefc',
           active: {
             bg: 'transparent',
             text: 'blue'

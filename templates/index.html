@@ -3,13 +3,11 @@
 {% block content %}
     <div class="h-screen flex flex-col" id="app">
         <header class="flex items-center justify-between p-4 border-b border-gray-400 bg-gray-200">
-            <div>
-                <img style="max-height: 120px; width: auto;" src="/img/modcore.png" alt="">
-            </div>
+            <app-logo></app-logo>
             <div>
                 <mod-clock>
                     <template v-slot:display="{ params }">
-                        <h1 class="font-sans font-normal text-right text-xl">
+                        <h1 class="font-sans font-normal text-gray-600 text-right text-xl">
                             <span class="uppercase" v-text="params.monthName"></span>
                             <span v-text="params.day"></span>,
                             <span v-text="params.year"></span>
@@ -21,7 +19,6 @@
                         </h1>
                     </template>
                 </mod-clock>
-
             </div>
         </header>
 
@@ -30,12 +27,7 @@
         </main>
 
         <footer class="border-t border-gray-400 bg-gray-200">
-            <nav class="flex text-center">
-                <router-link :to="{ name: 'index' }" class="flex-1 m-2 p-4 bg-blue-600 text-white shadow rounded">Home</router-link>
-                <router-link :to="{ name: 'people' }" class="flex-1 m-2 p-4 bg-blue-600 text-white shadow rounded">People</router-link>
-                <router-link :to="{ name: 'places' }" class="flex-1 m-2 p-4 bg-blue-600 text-white shadow rounded">Places</router-link>
-                <router-link :to="{ name: 'settings' }" class="flex-1 m-2 p-4 bg-blue-600 text-white shadow rounded">Settings</router-link>
-            </nav>
+            <app-nav></app-nav>
         </footer>
     </div>
 {% endblock %}

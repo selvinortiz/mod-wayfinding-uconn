@@ -8,6 +8,9 @@ import Events from './plugins/Events';
 import ModClock from './components/shared/ModClock.vue';
 import ModKeyboard from './components/shared/ModKeyboard.vue';
 
+import AppNav from './components/partials/AppNav.vue';
+import AppLogo from './components/partials/AppLogo.vue';
+
 import store from './store';
 import router from './router';
 
@@ -19,6 +22,8 @@ new Vue({
   store,
   router,
   components: {
+    AppNav,
+    AppLogo,
     ModClock,
     ModKeyboard
   },
@@ -28,5 +33,10 @@ new Vue({
   },
   created() {
     this.$store.commit('setInitialized', true);
+  },
+  computed: {
+    theme() {
+      return this.$store.state.app.theme;
+    }
   }
 });
