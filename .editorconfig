@@ -12,5 +12,5 @@ trim_trailing_whitespace = false
 [*.{md,php,html,twig}]
 indent_size = 4
 
-[*.{js, json, vue}]
+[*.{js,json,vue}]
 indent_size = 2

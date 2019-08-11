@@ -4,15 +4,24 @@
     <div class="h-screen flex flex-col" id="app">
         <header class="flex items-center justify-between p-4 border-b border-gray-400 bg-gray-200">
             <div>
-                <h1>ModCore<sup>&trade;</sup>
-                </h1>
+                <img style="max-height: 120px; width: auto;" src="/img/modcore.png" alt="">
             </div>
             <div>
-                <p class="text-right">
-                    Saturday, August 10, 2019
-                    <br>
-                    5:00 PM
-                </p>
+                <mod-clock>
+                    <template v-slot:display="{ params }">
+                        <h1 class="font-sans font-normal text-right text-xl">
+                            <span class="uppercase" v-text="params.monthName"></span>
+                            <span v-text="params.day"></span>,
+                            <span v-text="params.year"></span>
+                            <br>
+                            <span v-text="params.hour"></span>
+                            <span class="inline-block font-bold animated infinite fadeOut">:</span>
+                            <span v-text="params.minute"></span>
+                            <span v-text="params.suffix"></span>
+                        </h1>
+                    </template>
+                </mod-clock>
+
             </div>
         </header>
 

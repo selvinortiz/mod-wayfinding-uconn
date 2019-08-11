@@ -4,19 +4,24 @@ import Meta from 'vue-meta';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
+import Events from './plugins/Events';
+import ModClock from './components/shared/ModClock.vue';
+import ModKeyboard from './components/shared/ModKeyboard.vue';
+
 import store from './store';
 import router from './router';
 
-// Add global filters here
-// Vue.filter('name', filter);
-
 Vue.use(Meta);
+Vue.use(Events);
 
 new Vue({
   el: '#app',
   store,
   router,
-  components: {},
+  components: {
+    ModClock,
+    ModKeyboard
+  },
   metaInfo: {
     title: 'App',
     titleTemplate: '%s | ModCore™'
