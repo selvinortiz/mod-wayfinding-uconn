@@ -31,12 +31,39 @@ new Vue({
     title: 'App',
     titleTemplate: '%s | ModCore™'
   },
+  data: {
+    appClasses: ''
+  },
   created() {
     this.$store.commit('setInitialized', true);
   },
   computed: {
     theme() {
       return this.$store.state.app.theme;
+    },
+    styles() {
+      if (this.$route.name !== 'index') return;
+
+      return `background-image: url(/img/welcome-1.jpg); width: 100%; height: 100%;`
+    },
+    classes() {
+      if (this.$route.name !== 'index') {
+        return `bg-white text-gray-900`
+      }
+
+      return `bg-cover bg-center`;
+    },
+    headerClasses() {
+      return ``
+    },
+    headerStyles() {
+      return `background-color: rgba(255, 255, 255, .90);`
+    },
+    footerClasses() {
+      return ``
+    },
+    footerStyles() {
+      return `background-color: rgba(255, 255, 255, .75);`;
     }
   }
 });

@@ -1,8 +1,8 @@
 {% extends "_layout" %}
 
 {% block content %}
-    <div class="h-screen flex flex-col bg-white text-gray-900">
-        <header class="flex items-center justify-between p-4 border-b border-gray-400 bg-gray-200">
+    <div class="h-screen flex flex-col">
+        <header class="flex items-center justify-between p-4 border-b border-gray-400" :style="headerStyles">
             <app-logo></app-logo>
             <div>
                 <mod-clock>
@@ -26,7 +26,7 @@
             <router-view></router-view>
         </main>
 
-        <footer class="border-t border-gray-400 bg-gray-200">
+        <footer class="border-t border-gray-400" :style="footerStyles">
             <app-nav></app-nav>
         </footer>
     </div>
