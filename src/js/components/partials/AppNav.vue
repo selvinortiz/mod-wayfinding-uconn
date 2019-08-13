@@ -1,16 +1,28 @@
 <template>
   <nav class="flex text-center uppercase">
-    <router-link :to="{ name: 'places' }" class="link shadow rounded" :style="styles">
-      <places-icon class="icon" />Places
-    </router-link>
-    <router-link :to="{ name: 'people' }" class="link shadow rounded" :style="styles">
-      <people-icon class="icon" />People
-    </router-link>
-    <router-link :to="{ name: 'search' }" class="link shadow rounded" :style="styles">
-      <search-icon class="icon" />Search
-    </router-link>
-    <router-link :to="{ name: 'settings' }" class="link shadow rounded" :style="styles">
-      <settings-icon class="icon" />Settings
+    <router-link
+      v-for=" (item, i) in theme.footer.nav.links"
+      :key="i+1"
+      class="link shadow rounded"
+      :style="styles"
+      :to="{ name: item.route }"
+    >
+      <span v-if="item.title === 'Wayfinding' ">
+        <places-icon class="icon" />
+        {{item.title}}
+      </span>
+      <span v-if="item.title === 'Directory' ">
+        <people-icon class="icon" />
+        {{item.title}}
+      </span>
+      <span v-if="item.title === 'Bus Tracker' " @click="externalLinkRedirect(item.url)">
+        <search-icon class="icon" />
+        {{item.title}}
+      </span>
+      <span v-if="item.title === 'Search' ">
+        <settings-icon class="icon" />
+        {{item.title}}
+      </span>
     </router-link>
   </nav>
 </template>
@@ -60,6 +72,11 @@ export default {
         `color: ${this.theme.footer.nav.item.text}`,
         `background-color: ${this.theme.footer.nav.item.bg}`
       ].join(";");
+    }
+  },
+  methods: {
+    externalLinkRedirect(url) {
+      window.open(url);
     }
   }
 };
