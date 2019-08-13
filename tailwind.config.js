@@ -1,4 +1,4 @@
-const { colors } = require('tailwindcss/defaultTheme')
+const { colors } = require("tailwindcss/defaultTheme")
 
 module.exports = {
   theme: {
@@ -6,9 +6,14 @@ module.exports = {
       colors: {
         red: {
           ...colors.red,
-          default: '#cod'
+          default: "#cod"
         }
       }
+    },
+    inset: {
+      "0": 0,
+      auto: "auto",
+      "1/4": "25%"
     }
   },
   variants: {},
