@@ -1,27 +1,27 @@
 <template>
-  <nav class="flex text-center uppercase">
+  <nav class="flex text-center uppercase justify-center">
     <router-link
-      v-for=" (item, i) in theme.footer.nav.links"
-      :key="i+1"
       class="link shadow rounded"
+      v-for="link in theme.footer.nav.links"
+      :key="link.id"
       :style="styles"
-      :to="{ name: item.route }"
+      :to="{ name: link.route }"
     >
-      <span v-if="item.title === 'Wayfinding' ">
+      <span v-if="link.id === 'places' ">
         <places-icon class="icon" />
-        {{item.title}}
+        {{ link.title }}
       </span>
-      <span v-if="item.title === 'Directory' ">
+      <span v-if="link.id === 'people' ">
         <people-icon class="icon" />
-        {{item.title}}
+        {{ link.title }}
       </span>
-      <span v-if="item.title === 'Bus Tracker' " @click="externalLinkRedirect(item.url)">
+      <span v-if="link.id === 'busTracker' " @click="externalLinkRedirect(item.url)">
         <search-icon class="icon" />
-        {{item.title}}
+        {{ link.title }}
       </span>
-      <span v-if="item.title === 'Search' ">
+      <span v-if="link.id === 'search' ">
         <settings-icon class="icon" />
-        {{item.title}}
+        {{ link.title }}
       </span>
     </router-link>
   </nav>
@@ -29,9 +29,8 @@
 
 <style scoped>
 .link {
-  flex: 1;
   margin: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   font-size: 1rem;
 }
 .icon {
@@ -41,7 +40,7 @@
 @media screen and (min-width: 720px) {
   .link {
     margin: 1rem;
-    padding: 1rem;
+    padding: 1rem 2rem;
     font-size: 1.25rem;
   }
   .icon {
