@@ -1,31 +1,28 @@
 <?php
 
-namespace modules\utility;
+namespace modules\sys;
 
 use Craft;
-use craft\console\Application as Console;
 use yii\base\Module;
-use yii\log\Logger;
+use modules\sys\services\WebService;
+use craft\console\Application as Console;
 
 /**
- * Class UtilityModule
- *
- * @package modules\utility
+ * @property WebService $web
  */
-class UtilityModule extends Module
+class SysModule extends Module
 {
-    /**
-     * @throws \yii\base\InvalidConfigException
-     */
     public function init()
     {
-        Craft::setAlias('@modules/utility', __DIR__);
+        Craft::setAlias('@modules/sys', dirname(__DIR__, 1));
 
-        $this->controllerNamespace = 'modules\utility\controllers';
+        Craft::$app->set('web', WebService::class);
+
+        $this->controllerNamespace = 'modules\sys\controllers';
 
         if (Craft::$app instanceof Console)
         {
-            $this->controllerNamespace = 'modules\utility\console\controllers';
+            $this->controllerNamespace = 'modules\sys\console\controllers';
         }
 
         parent::init();
@@ -33,12 +30,9 @@ class UtilityModule extends Module
 
     public function log($message, $vars = [], $level = Logger::LEVEL_INFO)
     {
-        if (is_string($message))
-        {
+        if (is_string($message)) {
             $message = Craft::t('site', $message, $vars);
-        }
-        else
-        {
+        } else {
             $message = print_r(compact('message', 'vars'), true);
         }
 
@@ -57,9 +51,15 @@ class UtilityModule extends Module
 }
 
 /**
- * @return Module|UtilityModule
+ * @return SysModule
  */
-function utility()
+function sys()
 {
-    return Craft::$app->getModule('utility');
+    static $module;
+
+    if ($module === null) {
+        $module = Craft::$app->getModule('sys');
+    }
+
+    return $module;
 }

@@ -1,5 +1,6 @@
 <?php
-use modules\utility\UtilityModule;
+
+use modules\sys\SysModule;
 
 /**
  * Yii Application Config
@@ -21,7 +22,7 @@ use modules\utility\UtilityModule;
 
 return [
     'modules' => [
-        'utility' => UtilityModule::class,
+        'sys' => SysModule::class,
     ],
-    'bootstrap' => ['utility'],
+    'bootstrap' => ['sys'],
 ];
