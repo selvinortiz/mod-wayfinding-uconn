@@ -9,8 +9,9 @@ import ModClock from "./components/shared/ModClock.vue"
 import ModKeyboard from "./components/shared/ModKeyboard.vue"
 import ModMap from "./components/shared/ModMap.vue"
 
-import AppNav from "./components/partials/AppNav.vue"
-import AppLogo from "./components/partials/AppLogo.vue"
+import AppLogo from './components/partials/AppLogo.vue';
+import AppNav from './components/partials/AppNav.vue';
+import AppEnd from './components/partials/AppEnd.vue';
 
 import store from "./store"
 import router from "./router"
@@ -23,8 +24,9 @@ new Vue({
   store,
   router,
   components: {
-    AppNav,
     AppLogo,
+    AppNav,
+    AppEnd,
     ModClock,
     ModKeyboard,
     ModMap
