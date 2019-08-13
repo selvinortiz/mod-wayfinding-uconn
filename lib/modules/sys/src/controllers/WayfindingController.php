@@ -3,11 +3,12 @@
 namespace modules\sys\controllers;
 
 use craft\web\Controller;
+use modules\sys\elements\Person;
 use yii\web\HttpException;
 use yii\web\Response;
 use function modules\sys\sys;
 
-class RostersController extends Controller
+class WayfindingController extends Controller
 {
     protected $allowAnonymous = true;
 
@@ -17,6 +18,11 @@ class RostersController extends Controller
      */
     public function actionPlace()
     {
+        $id = sys()->web->param('id');
+
+        $person = Person::findOne($id);
+
+        return sys()->web->asJson('Person', compact('person'));
     }
 
     /**

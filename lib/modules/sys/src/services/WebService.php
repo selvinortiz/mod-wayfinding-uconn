@@ -26,6 +26,7 @@ class WebService extends Component
     public function asJson($message, $data = [])
     {
         $data['success']  = $data['success'] ?? true;
+        $data['message']  = $data['message'] ?? $message;
         $data['received'] = $data['received'] ?? $this->_params;
 
         $response         = Craft::$app->getResponse();

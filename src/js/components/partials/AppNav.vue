@@ -15,7 +15,7 @@
         <people-icon class="icon" />
         {{ link.title }}
       </span>
-      <span v-if="link.id === 'busTracker' " @click="externalLinkRedirect(item.url)">
+      <span v-if="link.id === 'busTracker' " @click="externalLinkRedirect(link.url)">
         <search-icon class="icon" />
         {{ link.title }}
       </span>

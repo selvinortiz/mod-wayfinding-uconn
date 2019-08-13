@@ -20,5 +20,5 @@
  */
 
 return [
-    '<page:[a-zA-Z0-9-]*>' => ['template' => 'index']
+    '<(places|people|search)+>' => ['template' => 'index']
 ];

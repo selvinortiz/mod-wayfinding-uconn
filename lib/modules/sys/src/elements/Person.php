@@ -2,11 +2,11 @@
 namespace modules\sys\elements;
 
 /**
- * Class Room
+ * Class Person
  *
  * @package modules\sys\elements
  */
-class Room extends Element
+class Person extends Element
 {
     const TYPE_HANDLE    = 'people';
     const SECTION_HANDLE = 'people';
@@ -15,7 +15,7 @@ class Room extends Element
     {
         $query = parent::getQuery();
 
-        // $query->with(['peopleSettings:roomSettingsBlock']);
+        // $query->with(['personSettings:roomSettingsBlock']);
 
         return $query;
     }

@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import axios from '../../utils/Axios';
+
 export default {
   metaInfo: {
     title: 'People'
