@@ -1,9 +1,9 @@
 <template>
-  <nav class="flex text-center uppercase">
+  <nav class="flex text-center uppercase justify-center">
     <router-link
       v-for=" (item, i) in theme.footer.nav.links"
       :key="i+1"
-      class="link shadow rounded"
+      class="shadow rounded link"
       :style="styles"
       :to="{ name: item.route }"
     >
@@ -29,11 +29,11 @@
 
 <style scoped>
 .link {
-  flex: 1;
   margin: 0.5rem;
   padding: 0.5rem;
   font-size: 1rem;
 }
+
 .icon {
   display: inline;
   max-height: 1rem;
