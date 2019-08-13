@@ -33,6 +33,7 @@
   padding: 0.5rem 1rem;
   font-size: 1rem;
 }
+
 .icon {
   display: inline;
   max-height: 1rem;
