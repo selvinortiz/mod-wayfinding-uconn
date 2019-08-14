@@ -18,11 +18,6 @@ class WayfindingController extends Controller
      */
     public function actionPlace()
     {
-        $id = sys()->web->param('id');
-
-        $person = Person::findOne($id);
-
-        return sys()->web->asJson('Person', compact('person'));
     }
 
     /**
@@ -39,6 +34,11 @@ class WayfindingController extends Controller
      */
     public function actionPerson()
     {
+        $id = sys()->web->param('id');
+
+        $person = Person::findOne($id)->asArray();
+
+        return sys()->web->asJson('Person', compact('person'));
     }
 
     /**

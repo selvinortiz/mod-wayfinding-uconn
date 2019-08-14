@@ -10,7 +10,7 @@ export default {
     title: "Person"
   },
   created() {
-    axios.post("actions/sys/wayfinding/person", {
+    axios.post("/actions/sys/wayfinding/person", {
       id: this.$route.params.id
     })
     .then(response => {
