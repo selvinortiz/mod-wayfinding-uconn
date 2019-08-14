@@ -7,7 +7,7 @@ import "regenerator-runtime/runtime"
 import Events from "./plugins/Events"
 import ModClock from "./components/shared/ModClock.vue"
 import ModKeyboard from "./components/shared/ModKeyboard.vue"
-import ModMap from "./components/shared/ModMap.vue"
+import ModPageHeader from "./components/shared/ModPageHeader.vue"
 
 import AppLogo from './components/partials/AppLogo.vue';
 import AppNav from './components/partials/AppNav.vue';
@@ -19,6 +19,8 @@ import router from "./router"
 Vue.use(Meta)
 Vue.use(Events)
 
+Vue.component('mod-page-header', ModPageHeader);
+
 new Vue({
   el: "#app",
   store,
@@ -29,7 +31,6 @@ new Vue({
     AppEnd,
     ModClock,
     ModKeyboard,
-    ModMap
   },
   metaInfo: {
     title: "App",

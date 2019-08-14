@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <h1 class="font-thin text-4xl">Person</h1>
+    <mod-page-header>Person</mod-page-header>
     <div class="font-thin text-2xl leading-none">
       <h2>{{ person.personFirstName }} {{ person.personLastName}}</h2>
       <p>{{ person.personEmail }}</p>

@@ -1,11 +1,13 @@
 <template>
-  <h1 class="text-xl p-4">Search</h1>
+  <div class="p-4">
+    <mod-page-header>Search</mod-page-header>
+  </div>
 </template>
 
 <script>
 export default {
   metaInfo: {
-    title: 'Search'
+    title: "Search"
   }
-}
+};
 </script>

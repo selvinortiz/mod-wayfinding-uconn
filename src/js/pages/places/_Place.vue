@@ -1,5 +1,7 @@
 <template>
-  <h1 class="text-xl p-4">Place</h1>
+  <div class="p-4">
+    <mod-page-header>Place</mod-page-header>
+  </div>
 </template>
 
 <script>
