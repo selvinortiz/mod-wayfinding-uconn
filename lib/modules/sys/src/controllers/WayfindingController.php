@@ -3,6 +3,7 @@
 namespace modules\sys\controllers;
 
 use craft\web\Controller;
+use modules\sys\elements\Place;
 use modules\sys\elements\Person;
 use yii\web\HttpException;
 use yii\web\Response;
@@ -18,6 +19,16 @@ class WayfindingController extends Controller
      */
     public function actionPlace()
     {
+        $id = sys()->web->param('id');
+
+        $place = Place::query()->id($id)->one();
+
+        if (!$place)
+        {
+            return sys()->web->asJsonWithError('Did not find a place');
+        }
+
+        return sys()->web->asJson('Found place', compact('place'));
     }
 
     /**
@@ -26,6 +37,14 @@ class WayfindingController extends Controller
      */
     public function actionPlaces()
     {
+        $place = Place::query()->all();
+
+        if (!$place)
+        {
+            return sys()->web->asJsonWithError('Did not find any place');
+        }
+
+        return sys()->web->asJson('Found place', compact('place'));
     }
 
     /**
@@ -36,9 +55,14 @@ class WayfindingController extends Controller
     {
         $id = sys()->web->param('id');
 
-        $person = Person::findOne($id)->asArray();
+        $person = Person::query()->id($id)->one();
 
-        return sys()->web->asJson('Person', compact('person'));
+        if (!$person)
+        {
+            return sys()->web->asJsonWithError('Did not find a person');
+        }
+
+        return sys()->web->asJson('Found person', compact('person'));
     }
 
     /**
@@ -47,5 +71,13 @@ class WayfindingController extends Controller
      */
     public function actionPeople()
     {
+        $people = Person::query()->all();
+
+        if (!$people)
+        {
+            return sys()->web->asJsonWithError('Did not find any people');
+        }
+
+        return sys()->web->asJson('Found people', compact('people'));
     }
 }
