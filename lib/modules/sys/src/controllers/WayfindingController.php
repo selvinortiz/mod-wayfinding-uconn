@@ -37,14 +37,14 @@ class WayfindingController extends Controller
      */
     public function actionPlaces()
     {
-        $place = Place::query()->all();
+        $places = Place::query()->all();
 
-        if (!$place)
+        if (!$places)
         {
             return sys()->web->asJsonWithError('Did not find any place');
         }
 
-        return sys()->web->asJson('Found place', compact('place'));
+        return sys()->web->asJson('Found places', compact('places'));
     }
 
     /**

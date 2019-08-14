@@ -1,11 +1,16 @@
 <template>
-  <div>
-    <h1 class="text-xl p-4">People</h1>
+  <div class="p-4">
+    <h1 class="font-thin text-4xl">People</h1>
     <div v-if="people">
-      <div class="flex flex-col" v-for="person in people" :key="person.id">
-        <span>{{ person.personFirstName }}</span>
-        <span>{{ person.personLastName }}</span>
-        <span>{{ person.personEmail }}</span>
+      <div class="flex py-4 border-t border-gray-200" v-for="person in people" :key="person.id">
+        <p class="flex-1">{{ person.personFirstName }}</p>
+        <p class="flex-1">{{ person.personLastName }}</p>
+        <p class="flex-1">{{ person.personEmail }}</p>
+        <p class="flex-1">
+          <router-link :to="{name: 'people/person', params: {id: person.id}}">
+            {{ person.id }}
+          </router-link>
+        </p>
       </div>
     </div>
   </div>
