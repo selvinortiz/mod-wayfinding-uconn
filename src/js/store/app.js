@@ -12,10 +12,10 @@ const defaultState = {
     footer: {
       nav: {
         links: [
-          { id: 'places', title: 'Wayfinding', route: 'places', icon: 'places.svg' },
-          { id: 'people', title: 'Directory', route: 'people', icon: 'people.svg' },
-          { id: 'busTracker', title: 'Bus Tracker', url: 'https://uconn-test.modolabs.net/myuconn/bus_tracker_transloc/index', icon: 'bus.svg' },
-          { id: 'search', title: 'Search', route: 'search', icon: 'search' }
+          { title: 'Wayfinding', route: 'places', icon: 'places.svg' },
+          { title: 'Directory', route: 'people', icon: 'people.svg' },
+          { title: 'Service', url: 'https://uconn-test.modolabs.net/myuconn/bus_tracker_transloc/index', icon: 'settings.svg' },
+          { title: 'Search', route: 'search', icon: 'search.svg' }
         ],
         item: {
           bg: '#fff',
