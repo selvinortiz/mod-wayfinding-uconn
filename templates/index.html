@@ -23,10 +23,12 @@
         </header>
 
         <main class="flex-1">
-            <router-view></router-view>
+            <transition name="fade" mode="out-in">
+                <router-view></router-view>
+            </transition>
         </main>
 
-        <footer class="border-t border-gray-400" :style="footerStyles">
+        <footer class="flex flex-col justify-center border-t border-gray-400" :style="footerStyles">
             <app-nav></app-nav>
             <app-end></app-end>
         </footer>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex text-center uppercase justify-center">
+  <nav class="flex text-center uppercase justify-center @nav">
     <div v-for="(link, i) in theme.footer.nav.links" :key="i">
       <a v-if="link.url" :href="link.url" class="link shadow rounded" :style="styles">
         <img class="icon" :src="`/svg/icons/${link.icon}`" alt />

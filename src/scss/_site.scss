@@ -1,0 +1,43 @@
+$sm: 640px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1280px;
+$xxl: 1900px;
+
+header {
+  height: 10vh;
+  overflow: hidden;
+}
+
+main {
+  height: 70vh;
+  overflow: auto;
+}
+
+footer {
+  height: 10vh;
+  overflow: hidden;
+
+  .\@end {
+    display: none;
+  }
+}
+
+@media screen and (min-width: $md) {
+  footer {
+    height: 15vh;
+
+    .\@end {
+      display: flex;
+    }
+  }
+}
+
+// Transitions
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}

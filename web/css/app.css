@@ -11473,6 +11473,43 @@ video {
   z-index: auto;
 }
 
+header {
+  height: 10vh;
+  overflow: hidden;
+}
+
+main {
+  height: 70vh;
+  overflow: auto;
+}
+
+footer {
+  height: 10vh;
+  overflow: hidden;
+}
+
+footer .\@end {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  footer {
+    height: 15vh;
+  }
+
+  footer .\@end {
+    display: flex;
+  }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;

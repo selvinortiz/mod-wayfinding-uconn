@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["app/search"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["search"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/js/pages/Search.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************!*\

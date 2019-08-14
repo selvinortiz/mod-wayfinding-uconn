@@ -6,9 +6,9 @@ export default [
       import(/* webpackChunkName: 'places' */ '../pages/places/Index.vue')
   },
   {
-    name: 'places/place',
+    name: 'place',
     path: '/places/:id',
     component: () =>
-      import(/* webpackChunkName: 'places/place' */ '../pages/places/_Place.vue')
+      import(/* webpackChunkName: 'place' */ '../pages/places/_Place.vue')
   }
 ];

@@ -1,12 +1,12 @@
 <template>
-  <div class="p-4">
+  <div v-if="places" class="p-4">
     <h1 class="font-thin text-4xl">Places</h1>
-    <div v-if="places">
-      <div class="flex py-4 border-t border-gray-200" v-for="place in places" :key="place.id">
-        <p class="flex-1">{{ place.title }}</p>
-        <p class="flex-1">
-          <router-link :to="{name: 'places/place', params: {id: place.id}}">{{ place.id }}</router-link>
-        </p>
+    <div class="flex flex-wrap -mx-2 lg:-mx-4">
+      <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 flex my-2 px-2 lg:my-4 lg:px-4" v-for="place in places" :key="place.id">
+        <router-link class="flex-1 p-4 border border-gray-300 bg-gray-100 rounded" :to="{name: 'place', params: {id: place.id}}">
+          <p class="font-thin text-2xl">{{ place.title }}</p>
+          <p class="font-thin text-2xl">#{{ place.id }}</p>
+        </router-link>
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["places/place"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["place"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/js/pages/places/_Place.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************!*\
