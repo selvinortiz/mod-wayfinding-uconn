@@ -11474,7 +11474,7 @@ video {
 }
 
 header {
-  height: 10vh;
+  height: 15vh;
   overflow: hidden;
 }
 
@@ -11484,7 +11484,7 @@ main {
 }
 
 footer {
-  height: 10vh;
+  height: 15vh;
   overflow: hidden;
 }
 
@@ -11493,8 +11493,12 @@ footer .\@end {
 }
 
 @media screen and (min-width: 768px) {
+  main {
+    height: 65;
+  }
+
   footer {
-    height: 15vh;
+    height: 20vh;
   }
 
   footer .\@end {

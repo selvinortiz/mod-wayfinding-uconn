@@ -5,7 +5,7 @@ $xl: 1280px;
 $xxl: 1900px;
 
 header {
-  height: 10vh;
+  height: 15vh;
   overflow: hidden;
 }
 
@@ -15,7 +15,7 @@ main {
 }
 
 footer {
-  height: 10vh;
+  height: 15vh;
   overflow: hidden;
 
   .\@end {
@@ -24,8 +24,11 @@ footer {
 }
 
 @media screen and (min-width: $md) {
+  main {
+    height: 65
+  }
   footer {
-    height: 15vh;
+    height: 20vh;
 
     .\@end {
       display: flex;
