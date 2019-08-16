@@ -8,7 +8,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n//\n//\n//\n//\n//\n//\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  metaInfo: {\n    title: \"Search\"\n  }\n});\n\n//# sourceURL=webpack:///./src/js/pages/Search.vue?./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_shared_ModKeyboard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/shared/ModKeyboard.vue */ \"./src/js/components/shared/ModKeyboard.vue\");\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  metaInfo: {\n    title: \"Search\"\n  },\n  components: {\n    ModKeyboard: _components_shared_ModKeyboard_vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n  },\n  methods: {\n    handleSearch(value) {\n      console.log(value);\n    }\n\n  }\n});\n\n//# sourceURL=webpack:///./src/js/pages/Search.vue?./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
@@ -20,7 +20,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n//\n//\n//\n//\n//\n//\n/* ha
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"render\", function() { return render; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"staticRenderFns\", function() { return staticRenderFns; });\nvar render = function() {\n  var _vm = this\n  var _h = _vm.$createElement\n  var _c = _vm._self._c || _h\n  return _c(\n    \"div\",\n    { staticClass: \"p-4\" },\n    [_c(\"mod-page-header\", [_vm._v(\"Search\")])],\n    1\n  )\n}\nvar staticRenderFns = []\nrender._withStripped = true\n\n\n\n//# sourceURL=webpack:///./src/js/pages/Search.vue?./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"render\", function() { return render; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"staticRenderFns\", function() { return staticRenderFns; });\nvar render = function() {\n  var _vm = this\n  var _h = _vm.$createElement\n  var _c = _vm._self._c || _h\n  return _c(\"div\", { staticClass: \"p-4\" }, [\n    _c(\n      \"div\",\n      { staticClass: \"mx-auto\", staticStyle: { \"max-width\": \"640px\" } },\n      [\n        _c(\"mod-page-header\", [_vm._v(\"Search\")]),\n        _vm._v(\" \"),\n        _c(\"mod-keyboard\", {\n          attrs: {\n            placeholder: \"Type to seach...\",\n            keyboardClass: \"fullKeyboard\"\n          },\n          on: { search: _vm.handleSearch }\n        })\n      ],\n      1\n    )\n  ])\n}\nvar staticRenderFns = []\nrender._withStripped = true\n\n\n\n//# sourceURL=webpack:///./src/js/pages/Search.vue?./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
