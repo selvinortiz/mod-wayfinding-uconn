@@ -14,6 +14,7 @@
       </div>
 
       <mod-keyboard
+        v-if="showKeyboard"
         animatedClass="slideInUp"
         keyboardClass="full-keyboard"
         @change="handleKeyboardChange"
@@ -33,7 +34,8 @@ export default {
   },
   data() {
     return {
-      input: ""
+      input: "",
+      showKeyboard: !('ontouchstart' in document.documentElement),
     };
   },
   components: {
