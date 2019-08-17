@@ -1,26 +1,63 @@
 <template>
   <div class="p-4">
-
     <div class="mx-auto" style="max-width: 640px;">
       <mod-page-header>Search</mod-page-header>
-      <mod-keyboard placeholder="Type to seach..." keyboardClass="fullKeyboard" @search="handleSearch"></mod-keyboard>
+      <div class="flex items-center my-4 border border-gray-200 animated fadeIn">
+        <input
+          class="py-2 px-2 outline-none"
+          placeholder="Type to search..."
+          style="flex: 6;"
+          v-model="input"
+          type="text"
+        />
+        <button class="py-2 border-l border-gray-200 bg-gray-100 outline-none hover:bg-gray-200 focus:bg-gray-300 focus:outline-none" style="flex: 2" @click="search">Search</button>
+      </div>
+
+      <mod-keyboard
+        animatedClass="slideInUp"
+        keyboardClass="full-keyboard"
+        @change="handleKeyboardChange"
+        @click="handleKeyboardClick"
+        :input="input"
+      ></mod-keyboard>
     </div>
   </div>
 </template>
 
 <script>
-import ModKeyboard from '../components/shared/ModKeyboard.vue';
+import ModKeyboard from "../components/shared/ModKeyboard.vue";
 
 export default {
   metaInfo: {
     title: "Search"
   },
+  data() {
+    return {
+      input: ""
+    };
+  },
   components: {
     ModKeyboard
   },
   methods: {
-    handleSearch(value) {
-      console.log(value)
+    search() {
+      console.log(this.input);
+    },
+    handleKeyboardChange(input) {
+      this.input = input
+    },
+    handleKeyboardClick(button) {
+      switch (button) {
+        case "{enter}":
+          this.search();
+          break;
+        case "{clear}":
+          this.input = ""
+          break;
+        default:
+          console.log(button);
+          break;
+      }
     }
   }
 };
