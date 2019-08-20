@@ -16,7 +16,7 @@
       <mod-keyboard
         v-if="showKeyboard"
         animatedClass="slideInUp"
-        keyboardClass="full-keyboard"
+        keyboardClass="keyboard--standard"
         @change="handleKeyboardChange"
         @click="handleKeyboardClick"
         :input="input"
@@ -36,6 +36,12 @@ export default {
     return {
       input: "",
       showKeyboard: !('ontouchstart' in document.documentElement),
+      keyboardLayout: [
+        "{tab} q w e r t y u i o p [ ] \\",
+        "{lock} a s d f g h j k l ; ' {enter}",
+        "{shift} z x c v b n m , . / {shift}",
+        ".com @ {space}"
+      ]
     };
   },
   components: {
