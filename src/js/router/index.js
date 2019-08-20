@@ -9,4 +9,4 @@ Vue.use(VueRouter);
 
 const routes = app.concat(places, people);
 
-export default new VueRouter({ routes });
+export default new VueRouter({ routes, mode: 'history' });
