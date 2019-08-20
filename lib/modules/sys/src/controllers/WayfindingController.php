@@ -2,7 +2,9 @@
 
 namespace modules\sys\controllers;
 
+use Craft;
 use craft\web\Controller;
+use craft\helpers\Template;
 use modules\sys\elements\Place;
 use modules\sys\elements\Person;
 use yii\web\HttpException;
@@ -12,6 +14,30 @@ use function modules\sys\sys;
 class WayfindingController extends Controller
 {
     protected $allowAnonymous = true;
+
+    public function actionIndex()
+    {
+        $pins = [
+            ['x' => 626, 'y' => 296],
+            ['x' => 493, 'y' => 375],
+            ['x' => 72, 'y' => 225],
+            ['x' => 345, 'y' => 459],
+        ];
+
+        $pins = array_map(function($pin) {
+            return Craft::$app->getView()->renderPageTemplate('_pin', $pin);
+        }, $pins);
+
+        return $this->renderTemplate(
+            '_svg',
+            [
+                'width' => 1390,
+                'height' => 835,
+                'base64EncodedImage' => base64_encode(file_get_contents(dirname(__DIR__, 5).'/web/img/map.png')),
+                'content' => Template::raw(implode(PHP_EOL, $pins))
+            ]
+        );
+    }
 
     /**
      * @return Response
