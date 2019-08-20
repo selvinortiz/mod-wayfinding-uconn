@@ -85,6 +85,14 @@ export default {
       type: Array,
       default: () => layoutAfterShift
     },
+    keyboardButtonLabels: {
+      type: Object,
+      default: () => buttonLabels
+    },
+    keyboardButtonTheme: {
+      type: Array,
+      default: () => buttonTheme
+    },
   },
   data() {
     return {
@@ -97,8 +105,8 @@ export default {
         default: this.keyboardLayout,
         shift: this.keyboardLayoutAfterShift
       },
-      display: buttonLabels,
-      buttonTheme,
+      display: this.keyboardButtonLabels,
+      buttonTheme: this.keyboardButtonTheme,
       onChange: this.onChange,
       onKeyPress: this.onKeyPress,
       theme: "simple-keyboard hg-theme-default"
