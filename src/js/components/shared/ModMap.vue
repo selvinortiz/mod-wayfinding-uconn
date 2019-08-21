@@ -64,10 +64,13 @@ export default {
   },
   methods: {
     styleMap() {
+      // Only run this part once at the start
       if (!this.defaultedToCenter && this.$props.markers.length > 0) {
 
-        var smallX = null, bigX = null, smallY = null, bigY = null;
         //console.log(this.$props.markers);
+
+        // Gather the smallest and largest cords for finding the area encompassing all the markers
+        var smallX = null, bigX = null, smallY = null, bigY = null;
         for (var i = 0; i < 2; i++) {
           for (var ii = 0; ii < this.$props.markers.length; ii++) {
             smallX == null || smallX > this.$props.markers[ii].x ? (smallX = this.$props.markers[ii].x) : null;
@@ -76,8 +79,10 @@ export default {
             bigY == null || bigY < this.$props.markers[ii].y ? (bigY = this.$props.markers[ii].y) : null;
           }
         }
-
         //console.log([smallX, bigY, bigX - smallX, bigY - smallY]);
+
+        // Find the differnece between the center of the marker encompassing area and the center of
+        // the imageContainer to then translate the image to shair the same center
         var imageContainer = document.getElementById('imageContainer').getBoundingClientRect();
         this.translateX = (smallX + (bigX - smallX)/2) - (imageContainer.x + imageContainer.width/2);
         this.translateY = (smallY + (bigY - smallY)/2) - (imageContainer.y + imageContainer.height/2);
