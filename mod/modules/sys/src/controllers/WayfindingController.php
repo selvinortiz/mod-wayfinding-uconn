@@ -2,12 +2,12 @@
 
 namespace modules\sys\controllers;
 
+use craft\helpers\UrlHelper;
 use craft\web\Controller;
 use modules\sys\elements\Building;
 use modules\sys\elements\Campus;
 use modules\sys\elements\Place;
 use modules\sys\elements\Person;
-use yii\helpers\Url;
 use yii\web\HttpException;
 use yii\web\Response;
 use function modules\sys\sys;
@@ -28,8 +28,8 @@ class WayfindingController extends Controller
             ['x' => 493, 'y' => 375, 'fill' => 'green'],
         ];
 
-        // return sys()->svg->fromSvg(Url::to('svg/map.svg'), $markers);
-        return sys()->svg->fromImage(Url::to('img/map.png'), $markers);
+        // return sys()->svg->fromSvg(UrlHelper::to('svg/map.svg'), $markers);
+        return sys()->svg->fromImage(UrlHelper::to('img/map.png'), $markers);
     }
 
     public function actionGenerateCampusMap(int $campusId, string $buildingIds)
@@ -77,12 +77,30 @@ class WayfindingController extends Controller
             return sys()->web->asJsonWithError('Did not find a place');
         }
 
-        $place = $place->asArray([
+        $map = $place->parent->campusMap->one() ?? null;
+
+        // $markers = array_map(function($building) use ($map)
+        // {
+        //     // 8 half of the circle marker width/height
+        //     $x = round(($building->placeMarker['xr']/100) * $map->getWidth()) + 32 + 8;  // 32 subtracted at save time
+        //     $y = round(($building->placeMarker['yr']/100) * $map->getHeight()) + 64 + 8; // 64 subtracted at save time
+
+        //     return compact('x', 'y');
+        // }, [$place->parent]);
+
+        // return sys()->web->asSvg(
+        //     sys()->svg->fromImage($map->getUrl(), $markers, $map->getWidth(), $map->getHeight())
+        // );
+
+        $response = $place->asArray([
             'id',
             'title',
         ]);
 
-        return sys()->web->asJson('Place', compact('place'));
+        $response['markers'] = [$place->placeMarker];
+        $response['url'] = UrlHelper::url(sprintf('maps/campus/%s/%s.svg', $place->parent->id, $place->id));
+
+        return sys()->web->asJson('Place', ['place' => $response]);
     }
 
     /**
