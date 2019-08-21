@@ -77,8 +77,6 @@ class WayfindingController extends Controller
             return sys()->web->asJsonWithError('Did not find a place');
         }
 
-        $map = $place->parent->campusMap->one() ?? null;
-
         // $markers = array_map(function($building) use ($map)
         // {
         //     // 8 half of the circle marker width/height
@@ -97,8 +95,12 @@ class WayfindingController extends Controller
             'title',
         ]);
 
-        $response['markers'] = [$place->placeMarker];
-        $response['url'] = UrlHelper::url(sprintf('maps/campus/%s/%s.svg', $place->parent->id, $place->id));
+        $response['maps'] = [
+            [
+                'markers' => [$place->placeMarker],
+                'image' => UrlHelper::url(sprintf('maps/campus/%s/%s.svg', $place->parent->id, $place->id))
+            ]
+        ];
 
         return sys()->web->asJson('Place', ['place' => $response]);
     }
