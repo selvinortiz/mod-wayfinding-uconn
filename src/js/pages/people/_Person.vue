@@ -7,7 +7,7 @@
     </div>
     <div class="font-normal" v-html="person.personDescription"></div>
     
-    <mod-map :id="person.id" :title="person.title"></mod-map>
+    <mod-map :id="person.id" :title="person.title" :images="person.images"></mod-map>
   </div>
 </template>
 
@@ -40,11 +40,8 @@ export default {
         id: this.$route.params.id
       })
       .then(response => {
-        if (!response.data.success) {
-          return console.error(response.data.message);
-        }
-
         this.person = response.data.person;
+        this.person.images = ['/svg/testSVG1.svg', '/svg/testSVG2.svg'];  // Only for testing
       })
       .catch(error => console.error(error));
   }

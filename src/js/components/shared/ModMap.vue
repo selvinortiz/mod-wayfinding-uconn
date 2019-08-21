@@ -4,12 +4,10 @@
     <div id="imageContainer" class="imageContainer" @mousedown="startDrag($event)" @mousemove="dragMap($event)" @mouseup="stopDrag()" @mouseleave="stopDrag()">
 
       <img
-        id="image" class="image"
-        :src="images[0]"
-        :style="{'transform': `scale(${zoom}) translate(${translateX + 'px'}, ${translateY + 'px'})`}"
-        draggable="false"
-        alt="Map"
+        id="image" class="image" :src="images[0]" :style="styleMap()" draggable="false" alt="Map"
       />
+
+      <div class="test" id='test'></div> <!-- For center visualization -->
 
     </div>
 
@@ -40,13 +38,21 @@ export default {
     images: {
       type: Array,
       default: function () {
-        return ['']
+        return []
+      }
+    },
+    markers: {
+      type: Array,
+      default: function () {
+        return []
       }
     }
   },
   data() {
     return {
-      zoom: 2,
+      defaultedToCenter: false,
+
+      zoom: 1,
       zoomFactor: 0.5,
       translateX: 0,
       translateY: 0,
@@ -57,6 +63,32 @@ export default {
     }
   },
   methods: {
+    styleMap() {
+      if (!this.defaultedToCenter && this.$props.markers.length > 0) {
+
+        var smallX = null, bigX = null, smallY = null, bigY = null;
+        //console.log(this.$props.markers);
+        for (var i = 0; i < 2; i++) {
+          for (var ii = 0; ii < this.$props.markers.length; ii++) {
+            smallX == null || smallX > this.$props.markers[ii].x ? (smallX = this.$props.markers[ii].x) : null;
+            bigX == null || bigX < this.$props.markers[ii].x ? (bigX = this.$props.markers[ii].x) : null;
+            smallY == null || smallY > this.$props.markers[ii].y ? (smallY = this.$props.markers[ii].y) : null;
+            bigY == null || bigY < this.$props.markers[ii].y ? (bigY = this.$props.markers[ii].y) : null;
+          }
+        }
+
+        //console.log([smallX, bigY, bigX - smallX, bigY - smallY]);
+        var imageContainer = document.getElementById('imageContainer').getBoundingClientRect();
+        this.translateX = (smallX + (bigX - smallX)/2) - (imageContainer.x + imageContainer.width/2);
+        this.translateY = (smallY + (bigY - smallY)/2) - (imageContainer.y + imageContainer.height/2);
+        this.defaultedToCenter = true;
+        
+        return ('transform: scale('+this.zoom+') translate('+this.translateX+'px, '+this.translateY+'px)');
+      }
+
+      return ('transform: scale('+this.zoom+') translate('+this.translateX+'px, '+this.translateY+'px)');
+    },
+
     zoomMap(direction) {
       this.zoom + this.zoomFactor * direction < 4 && this.zoom + this.zoomFactor * direction >= 1 ? (this.zoom += this.zoomFactor * direction) : null;
       

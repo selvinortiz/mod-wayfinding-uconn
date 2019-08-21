@@ -2,7 +2,7 @@
   <div class="p-4">
     <mod-page-header>Place</mod-page-header>
     
-    <mod-map :id="place.id" :title="place.title" :images="place.images"></mod-map>
+    <mod-map :id="place.id" :title="place.title" :images="place.images" :markers="place.markers"></mod-map>
   </div>
 </template>
 
@@ -28,7 +28,13 @@ export default {
     })
     .then(response => {
       this.place = response.data.place;
-      this.place.images = ['/svg/testSVG1.svg', '/svg/testSVG2.svg'];  // Only for testing
+
+      // Only for testing
+      this.place.images = ['/svg/testSVG1.svg', '/svg/testSVG2.svg'];
+      this.place.markers = [
+            {'x': 526, 'y': 296},
+            {'x': 493, 'y': 375}
+      ];
     })
     .catch(error => console.error(error));
   }
