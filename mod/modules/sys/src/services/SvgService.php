@@ -21,7 +21,7 @@ class SvgService extends Component
      * @return string
      * @throws Exception
      */
-    public function fromImage($image, array $markers = [])
+    public function fromImage($image, array $markers = [], int $width = null, int $height = null)
     {
         try
         {
@@ -36,7 +36,10 @@ class SvgService extends Component
                 );
             }
 
-            list($width, $height) = getimagesize($image);
+            if (!$width || !$height)
+            {
+                list($width, $height) = getimagesize($image);
+            }
 
             return sys()->renderTemplate(
                 '_svg',
