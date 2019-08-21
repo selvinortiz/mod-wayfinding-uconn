@@ -4370,7 +4370,7 @@ eval("exports = module.exports = __webpack_require__(/*! ../../../css-loader/dis
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\nimg[data-v-34a9847b] {\\r\\n  width: auto;\\r\\n  max-height: 64px;\\n}\\n@media screen and (min-width: 720px) {\\nimg[data-v-34a9847b] {\\r\\n    max-height: 90px;\\n}\\n}\\r\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/partials/AppLogo.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
+eval("exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\nimg[data-v-34a9847b] {\\n  width: auto;\\n  max-height: 64px;\\n}\\n@media screen and (min-width: 720px) {\\nimg[data-v-34a9847b] {\\n    max-height: 90px;\\n}\\n}\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/partials/AppLogo.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
@@ -4381,7 +4381,7 @@ eval("exports = module.exports = __webpack_require__(/*! ../../../../node_module
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n.link[data-v-334a2183] {\\r\\n  display: inline-block;\\r\\n  margin: 0.5rem;\\r\\n  padding: 0.5rem 1rem;\\r\\n  font-size: 1rem;\\n}\\n.icon[data-v-334a2183] {\\r\\n  display: inline;\\r\\n  max-height: 1rem;\\n}\\n@media screen and (min-width: 720px) {\\n.link[data-v-334a2183] {\\r\\n    margin: 1rem;\\r\\n    padding: 1rem 2rem;\\r\\n    font-size: 1.25rem;\\n}\\n.icon[data-v-334a2183] {\\r\\n    max-height: 1.25rem;\\n}\\n}\\r\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/partials/AppNav.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
+eval("exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n.link[data-v-334a2183] {\\n  display: inline-block;\\n  margin: 0.5rem;\\n  padding: 0.5rem 1rem;\\n  font-size: 1rem;\\n}\\n.icon[data-v-334a2183] {\\n  display: inline;\\n  max-height: 1rem;\\n}\\n@media screen and (min-width: 720px) {\\n.link[data-v-334a2183] {\\n    margin: 1rem;\\n    padding: 1rem 2rem;\\n    font-size: 1.25rem;\\n}\\n.icon[data-v-334a2183] {\\n    max-height: 1.25rem;\\n}\\n}\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/partials/AppNav.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
@@ -4392,7 +4392,7 @@ eval("exports = module.exports = __webpack_require__(/*! ../../../../node_module
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n.simple-keyboard.hg-theme-default[data-v-3011b06b] {\\r\\n  border-radius: 0;\\r\\n  background-color: #edf2f7;\\n}\\r\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/shared/ModKeyboard.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
+eval("exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n.simple-keyboard.hg-theme-default[data-v-3011b06b] {\\n  border-radius: 0;\\n  background-color: #edf2f7;\\n}\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/shared/ModKeyboard.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
