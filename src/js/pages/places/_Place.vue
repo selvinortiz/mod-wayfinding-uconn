@@ -1,7 +1,8 @@
 <template>
   <div class="p-4">
     <mod-page-header>Place</mod-page-header>
-    <mod-map-container :id="place.id" :title="place.title"></mod-map-container>
+    
+    <mod-map-container :id="place.id" :title="place.title" :images="place.images"></mod-map-container>
   </div>
 </template>
 
@@ -27,6 +28,7 @@ export default {
     })
     .then(response => {
       this.place = response.data.place;
+      this.place.images = ['/img/campus.png', '/img/campus.png'];  // Only for testing
     })
     .catch(error => console.error(error));
   }

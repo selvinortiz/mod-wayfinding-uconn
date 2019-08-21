@@ -1,0 +1,16 @@
+.imageContainer {
+    outline: 1px red solid;
+    position: relative;
+    overflow: hidden;
+}
+.imageContainer .image {
+    outline: 1px red solid;
+    position: relative;
+    width: 100%;
+}
+
+.altImage {
+    outline: 1px red solid;
+    width: 20%;
+    margin-top: 20px;
+}

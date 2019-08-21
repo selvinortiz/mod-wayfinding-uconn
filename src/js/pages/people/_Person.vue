@@ -6,6 +6,7 @@
       <p>{{ person.personEmail }}</p>
     </div>
     <div class="font-normal" v-html="person.personDescription"></div>
+    
     <mod-map-container :id="person.id" :title="person.title"></mod-map-container>
   </div>
 </template>
