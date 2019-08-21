@@ -30,7 +30,10 @@ export default {
       this.place = response.data.place;
 
       // Only for testing
-      this.place.images = ['/svg/testSVG1.svg', '/svg/testSVG2.svg'];
+      this.place.images = [
+        {'url': '/svg/testSVG1.svg', 'width': 1440, 'height': 953},
+        {'url': '/svg/testSVG2.svg', 'width': 1390, 'height': 835}
+      ];
       this.place.markers = [
             {'x': 526, 'y': 296},
             {'x': 493, 'y': 375}

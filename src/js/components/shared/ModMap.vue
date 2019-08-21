@@ -7,7 +7,8 @@
         id="image" class="image" :src="images[0]" :style="styleMap()" draggable="false" alt="Map"
       />
 
-      <div class="test" id='test'></div> <!-- For center visualization -->
+      <div class="test" id='test1'></div> <!-- For center visualization -->
+      <div class="test" id='test2' style='outline: 1px yellow solid;'></div> <!-- For center visualization -->
 
     </div>
 
@@ -67,25 +68,44 @@ export default {
       // Only run this part once at the start
       if (!this.defaultedToCenter && this.$props.markers.length > 0) {
 
-        //console.log(this.$props.markers);
-
         // Gather the smallest and largest cords for finding the area encompassing all the markers
         var smallX = null, bigX = null, smallY = null, bigY = null;
-        for (var i = 0; i < 2; i++) {
-          for (var ii = 0; ii < this.$props.markers.length; ii++) {
-            smallX == null || smallX > this.$props.markers[ii].x ? (smallX = this.$props.markers[ii].x) : null;
-            bigX == null || bigX < this.$props.markers[ii].x ? (bigX = this.$props.markers[ii].x) : null;
-            smallY == null || smallY > this.$props.markers[ii].y ? (smallY = this.$props.markers[ii].y) : null;
-            bigY == null || bigY < this.$props.markers[ii].y ? (bigY = this.$props.markers[ii].y) : null;
-          }
+        
+        for (var ii = 0; ii < this.$props.markers.length; ii++) {
+          smallX == null || smallX > this.$props.markers[ii].x ? (smallX = this.$props.markers[ii].x) : null;
+          bigX == null || bigX < this.$props.markers[ii].x ? (bigX = this.$props.markers[ii].x) : null;
+          smallY == null || smallY > this.$props.markers[ii].y ? (smallY = this.$props.markers[ii].y) : null;
+          bigY == null || bigY < this.$props.markers[ii].y ? (bigY = this.$props.markers[ii].y) : null;
         }
-        //console.log([smallX, bigY, bigX - smallX, bigY - smallY]);
+        
+        console.log([smallX, bigY, bigX - smallX, bigY - smallY]);
 
         // Find the differnece between the center of the marker encompassing area and the center of
         // the imageContainer to then translate the image to shair the same center
         var imageContainer = document.getElementById('imageContainer').getBoundingClientRect();
-        this.translateX = (smallX + (bigX - smallX)/2) - (imageContainer.x + imageContainer.width/2);
-        this.translateY = (smallY + (bigY - smallY)/2) - (imageContainer.y + imageContainer.height/2);
+
+        var imageContainerCenterX = imageContainer.x + imageContainer.width/2;
+        var imageContainerCenterY = imageContainer.y + imageContainer.height/2;
+
+        var markerAreaCenterX = smallX + (bigX - smallX)/2;
+        var markerAreaCenterY = smallY + (bigY - smallY)/2;
+
+        this.translateX = markerAreaCenterX - imageContainerCenterX;
+        this.translateY = markerAreaCenterY - imageContainerCenterY;
+
+        /* Test */
+        //var img = require(this.$props.images[0]);
+        //console.log(img);
+
+        document.getElementById('test1').style.left = imageContainerCenterX - 5 + 'px';
+        document.getElementById('test1').style.top = imageContainerCenterY - 5 + 'px';
+        console.log(document.getElementById('test1').style.left + '   ' + document.getElementById('test1').style.top);
+
+        document.getElementById('test2').style.left = markerAreaCenterX - 5 + 'px';
+        document.getElementById('test2').style.top = markerAreaCenterY - 5 + 'px';
+        console.log(document.getElementById('test2').style.left + '   ' + document.getElementById('test2').style.top);
+        /* Test */
+
         this.defaultedToCenter = true;
         
         return ('transform: scale('+this.zoom+') translate('+this.translateX+'px, '+this.translateY+'px)');
@@ -140,7 +160,8 @@ export default {
         */
         this.translateX += diffX;
         this.translateY += diffY;
-
+        //var image = document.getElementById('image').getBoundingClientRect();
+        //console.log(image.width);
         this.dragX = event.x;
         this.dragY = event.y;
 
