@@ -1,0 +1,69 @@
+<div class="smart-fields marker-coordinates">
+    <input id="{{ name ~ '-input' }}" type="hidden" name="{{ name }}" value='{{ value|json_encode }}'>
+    <div
+        class="image-container"
+        style="position: relative;"
+    >
+        <img
+            id="{{ name ~ '-map' }}"
+            style="width: 100%; height: auto; padding: 0; margin: 0; display: block;"
+            src="{{ image }}"
+            alt=""
+        >
+
+        <span id="{{ name ~ '-marker' }}" style="position: absolute; top: 0; left: 0; display: none;">
+            <img width="64" src="{{ craft.app.assetManager.publishedUrl('@selvinortiz/smartfields/resources', true, 'marker.png') }}" alt="">
+        </span>
+    </div>
+</div>
+
+{% js %}
+    $input = $('{{ "#" ~ id ~ "-input" }}');
+    $map = $('{{ "#" ~ id ~ "-map" }}');
+    $marker = $('{{ "#" ~ id ~ "-marker" }}');
+
+    if ($input.val()) {
+        var value = JSON.parse($input.val());
+
+        setMarkerCoordinates(value.xr, value.yr);
+    }
+
+    $map.on('click', function(e) {
+        var $img = $(this);
+
+        var x = e.pageX - $img.offset().left;
+        var y = e.pageY - $img.offset().top;
+
+        // Subtract half of the rendered marker width
+        x -= 32;
+
+        // Subtract rendered marker height
+        y -= 64;
+
+        // Record image width and height at the time of markign
+        var w = $img.width();
+        var h = $img.height();
+
+        // Make it relative
+        var xr = x / w * 100;
+        var yr = y / h * 100;
+
+        var value = {
+            x: x,
+            xr: xr,
+            y: y,
+            yr: yr,
+            width: w,
+            height: h,
+        };
+
+        $input.val(JSON.stringify(value));
+
+        setMarkerCoordinates(xr, yr);
+    });
+
+    function setMarkerCoordinates(x, y) {
+        $marker.css({top: y + '%', left: x + '%'});
+        $marker.fadeIn();
+    }
+{% endjs %}
