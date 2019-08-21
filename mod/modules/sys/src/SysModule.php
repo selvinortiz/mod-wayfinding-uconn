@@ -36,6 +36,20 @@ class SysModule extends Module
         {
             $this->controllerNamespace = 'modules\sys\console\controllers';
         }
+
+        if (Craft::$app->config->general->devMode)
+        {
+            // Ensure that functions such as:
+            // - file_get_contents
+            // - getimagesize
+            // do not raise SSL warnings
+            stream_context_set_default([
+                'ssl' => [
+                    'verify_peer'      => false,
+                    'verify_peer_name' => false,
+                ]
+            ]);
+        }
     }
 
     /**
