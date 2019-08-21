@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg
     version="1.1"
-    width="{{ width ?? 400 }}"
-    height="{{ height ?? 300 }}"
-    viewBox="0 0 {{ width ?? 400 }} {{ height ?? 300 }}"
+    width="{{ object.width ?? 400 }}"
+    height="{{ object.height ?? 300 }}"
+    viewBox="0 0 {{ object.width ?? 400 }} {{ object.height ?? 300 }}"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns="http://www.w3.org/2000/svg"
 >
@@ -16,13 +16,13 @@
     >
         <image
             id="image"
-            x="{{ x ?? 0 }}"
-            y="{{ x ?? 0 }}"
-            width="{{ width ?? 400}}"
-            height="{{ height ?? 300 }}"
-            xlink:href="data:image/png;base64, {{ base64EncodedImage ?? '' }}"
+            x="{{ object.x ?? 0 }}"
+            y="{{ object.y ?? 0 }}"
+            width="{{ object.width ?? 400}}"
+            height="{{ object.height ?? 300 }}"
+            xlink:href="data:image/png;base64, {{ object.image ?? '' }}"
         ></image>
 
-        {{ content ?? null }}
+        {{ object.content ?? null }}
     </g>
 </svg>
