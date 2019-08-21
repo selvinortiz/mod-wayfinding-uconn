@@ -3,15 +3,64 @@
 namespace modules\sys\controllers;
 
 use craft\web\Controller;
+use modules\sys\elements\Building;
+use modules\sys\elements\Campus;
 use modules\sys\elements\Place;
 use modules\sys\elements\Person;
+use yii\helpers\Url;
 use yii\web\HttpException;
 use yii\web\Response;
 use function modules\sys\sys;
 
+/**
+ * Class WayfindingController
+ *
+ * @package modules\sys\controllers
+ */
 class WayfindingController extends Controller
 {
     protected $allowAnonymous = true;
+
+    public function actionIndex()
+    {
+        $markers = [
+            ['x' => 626, 'y' => 296, 'fill' => 'red'],
+            ['x' => 493, 'y' => 375, 'fill' => 'green'],
+        ];
+
+        // return sys()->svg->fromSvg(Url::to('svg/map.svg'), $markers);
+        return sys()->svg->fromImage(Url::to('img/map.png'), $markers);
+    }
+
+    public function actionGenerateCampusMap(int $campusId, string $buildingIds)
+    {
+        $campus = Campus::query()
+            ->with(['campusMap'])
+            ->id($campusId)
+            ->one();
+
+        if (!$campus || !($map = $campus->campusMap[0] ?? null))
+        {
+            throw new HttpException(404, 'Campus map not found');
+        }
+
+        $buildings = Building::query()
+            ->id($buildingIds)
+            ->all();
+
+        $markers = array_map(function($building) use ($map)
+        {
+            // 8 half of the circle marker width/height
+            $x = round(($building->placeMarker['xr']/100) * $map->getWidth()) + 32 + 8;  // 32 subtracted at save time
+            $y = round(($building->placeMarker['yr']/100) * $map->getHeight()) + 64 + 8; // 64 subtracted at save time
+
+            return compact('x', 'y');
+        }, $buildings);
+
+        return sys()->web->asSvg(
+            sys()->svg->fromImage($map->getUrl(), $markers, $map->getWidth(), $map->getHeight())
+        );
+    }
 
     /**
      * @return Response
@@ -28,7 +77,12 @@ class WayfindingController extends Controller
             return sys()->web->asJsonWithError('Did not find a place');
         }
 
-        return sys()->web->asJson('Found place', compact('place'));
+        $place = $place->asArray([
+            'id',
+            'title',
+        ]);
+
+        return sys()->web->asJson('Place', compact('place'));
     }
 
     /**

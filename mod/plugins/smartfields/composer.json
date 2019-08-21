@@ -1,0 +1,29 @@
+{
+    "name": "selvinortiz/smartfields",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "description": "Highly specialized fields with a small footprint for Wayfinding projects",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Selvin Ortiz",
+            "email": "selvin@selvin.co"
+        }
+    ],
+    "extra": {
+        "name": "Smart Fields",
+        "handle": "smart-fields",
+        "developer": "Selvin Ortiz",
+        "developerUrl": "https://selvinortiz.com",
+        "class": "selvinortiz\\smartfields\\SmartFields",
+        "documentationUrl": "https://github.com/selvinortiz/craft-plugin-smart-fields/blob/master/README.md"
+    },
+    "autoload": {
+        "psr-4": {
+            "selvinortiz\\smartfields\\": "src/"
+        }
+    },
+    "require": {
+        "craftcms/cms": "^3.1"
+    }
+}

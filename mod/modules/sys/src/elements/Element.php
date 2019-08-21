@@ -52,13 +52,13 @@ class Element extends Entry
         return new Query(static::class, $config);
     }
 
-    public function asArray(): array
+    public function asArray(array $attributes = null): array
     {
-        return $this->getAttributes($this->asArrayAttributeNames);
+        return $this->getAttributes($attributes ?? $this->asArrayAttributeNames);
     }
 
-    public function asJson(): string
+    public function asJson(array $attributes = null): string
     {
-        return Json::encode($this->getAttributes($this->asJsonAttributeNames));
+        return Json::encode($this->getAttributes($attributes ?? $this->asJsonAttributeNames));
     }
 }

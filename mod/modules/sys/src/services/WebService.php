@@ -48,4 +48,15 @@ class WebService extends Component
 
         return $response;
     }
+
+    public function asSvg($data)
+    {
+        $response         = Craft::$app->getResponse();
+        $response->format = Response::FORMAT_RAW;
+        $response->data   = $data;
+
+        $response->getHeaders()->add('Content-Type', 'image/svg+xml');
+
+        return $response;
+    }
 }
