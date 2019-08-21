@@ -44,7 +44,7 @@ class MarkerCoordinatesField extends Field
         $image = null;
         $parent = $element->getParent();
 
-        if ($parent && ($map = $parent->floorMap->one()))
+        if ($parent && ($map = $parent->floorMap->one() ?? $parent->campusMap->one()))
         {
             $image = $map->getUrl();
         }
