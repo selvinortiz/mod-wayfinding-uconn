@@ -52,12 +52,12 @@ class MarkerCoordinatesField extends Field
         if ($parent->type->handle == 'campus')
         {
             $map   = $parent->campusMap->one() ?? null;
-            $image = $map->getUrl() ?? null;
+            $image = $map ? $map->getUrl() : null;
         }
         else
         {
             $map   = $parent->floorMap->one() ?? null;
-            $image = $map->getUrl() ?? null;
+            $image = $map ? $map->getUrl() : null;
         }
 
         return empty($image) ? '' : Craft::$app
