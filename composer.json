@@ -6,13 +6,13 @@
   },
   "autoload": {
     "psr-4": {
-      "modules\\sys\\": "lib/modules/sys/src/"
+      "modules\\sys\\": "mod/modules/sys/src/"
     }
   },
   "repositories": [
     {
       "type": "path",
-      "url": "./lib/plugins/hiddenfields"
+      "url": "./mod/plugins/hiddenfields"
     }
   ],
   "config": {
