@@ -21,7 +21,7 @@ class MarkerCoordinatesField extends Field
     {
         if ($value === null)
         {
-            return ['x' => 0, 'xr' =>  0.0, 'y' => 0, 'yr' => 0.0, 'width' => 0, 'height' => 0];
+            return ['x' => 0, 'xr' => 0.0, 'y' => 0, 'yr' => 0.0, 'width' => 0, 'height' => 0];
         }
 
         return Json::decode($value);
@@ -51,22 +51,24 @@ class MarkerCoordinatesField extends Field
 
         if ($parent->type->handle == 'campus')
         {
-            $image = $parent->campusMap->one()->getUrl() ?? null;
+            $map   = $parent->campusMap->one() ?? null;
+            $image = $map->getUrl() ?? null;
         }
         else
         {
-            $image = $parent->floorMap->one()->getUrl() ?? null;
+            $map   = $parent->floorMap->one() ?? null;
+            $image = $map->getUrl() ?? null;
         }
 
         return empty($image) ? '' : Craft::$app
             ->getView()
             ->renderTemplate('smart-fields/_fields/marker-coordinates',
-            [
-                'id'    => Craft::$app->getView()->namespaceInputId($this->handle),
-                'name'  => $this->handle,
-                'value' => $value,
-                'field' => $this,
-                'image' => $image,
-            ]);
+                [
+                    'id'    => Craft::$app->getView()->namespaceInputId($this->handle),
+                    'name'  => $this->handle,
+                    'value' => $value,
+                    'field' => $this,
+                    'image' => $image,
+                ]);
     }
 }
