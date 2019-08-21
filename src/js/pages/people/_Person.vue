@@ -6,11 +6,14 @@
       <p>{{ person.personEmail }}</p>
     </div>
     <div class="font-normal" v-html="person.personDescription"></div>
+    
+    <mod-map :id="person.id" :title="person.title"></mod-map>
   </div>
 </template>
 
 <script>
 import axios from "../../utils/Axios";
+import ModMap from '../../components/shared/ModMap.vue'
 
 export default {
   metaInfo() {
@@ -22,6 +25,9 @@ export default {
     return {
       person: {}
     };
+  },
+  components: {
+    ModMap
   },
   computed: {
     title() {
