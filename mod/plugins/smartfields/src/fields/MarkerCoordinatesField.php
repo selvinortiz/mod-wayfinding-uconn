@@ -3,6 +3,7 @@ namespace selvinortiz\smartfields\fields;
 
 use Craft;
 use craft\base\Field;
+use craft\elements\Entry;
 use craft\helpers\Json;
 use craft\base\ElementInterface;
 
@@ -42,11 +43,19 @@ class MarkerCoordinatesField extends Field
     public function getInputHtml($value, ElementInterface $element = null): string
     {
         $image = null;
+
+        /**
+         * @var Entry $parent
+         */
         $parent = $element->getParent();
 
-        if ($parent && ($map = $parent->floorMap->one() ?? $parent->campusMap->one()))
+        if ($parent->type->handle == 'campus')
         {
-            $image = $map->getUrl();
+            $image = $parent->campusMap->one()->getUrl() ?? null;
+        }
+        else
+        {
+            $image = $parent->floorMap->one()->getUrl() ?? null;
         }
 
         return empty($image) ? '' : Craft::$app
