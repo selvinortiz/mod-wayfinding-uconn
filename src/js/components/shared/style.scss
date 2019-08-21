@@ -1,7 +1,9 @@
 .imageContainer {
     outline: 1px red solid;
-    position: relative;
+    display: flex;
+    align-items: center;
     overflow: hidden;
+    max-height: 50vh;
 }
 .imageContainer .image {
     outline: 1px red solid;
@@ -11,6 +13,7 @@
 
 .altImage {
     outline: 1px red solid;
+    display: inline-block;
     width: 20%;
     margin-top: 20px;
 }

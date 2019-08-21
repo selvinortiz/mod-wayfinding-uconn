@@ -2,20 +2,20 @@
   <div class="p-4">
     <mod-page-header>Place</mod-page-header>
     
-    <mod-map-container :id="place.id" :title="place.title" :images="place.images"></mod-map-container>
+    <mod-map :id="place.id" :title="place.title" :images="place.images"></mod-map>
   </div>
 </template>
 
 <script>
 import axios from "../../utils/Axios";
-import ModMapContainer from '../../components/shared/ModMapContainer.vue'
+import ModMap from '../../components/shared/ModMap.vue'
 
 export default {
   metaInfo: {
     title: "Place"
   },
   components: {
-    ModMapContainer
+    ModMap
   },
   data() {
     return {
@@ -28,7 +28,7 @@ export default {
     })
     .then(response => {
       this.place = response.data.place;
-      this.place.images = ['/img/campus.png', '/img/campus.png'];  // Only for testing
+      this.place.images = ['/svg/testSVG1.svg', '/svg/testSVG2.svg'];  // Only for testing
     })
     .catch(error => console.error(error));
   }

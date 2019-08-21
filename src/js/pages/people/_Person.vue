@@ -7,13 +7,13 @@
     </div>
     <div class="font-normal" v-html="person.personDescription"></div>
     
-    <mod-map-container :id="person.id" :title="person.title"></mod-map-container>
+    <mod-map :id="person.id" :title="person.title"></mod-map>
   </div>
 </template>
 
 <script>
 import axios from "../../utils/Axios";
-import ModMapContainer from '../../components/shared/ModMapContainer.vue'
+import ModMap from '../../components/shared/ModMap.vue'
 
 export default {
   metaInfo() {
@@ -27,7 +27,7 @@ export default {
     };
   },
   components: {
-    ModMapContainer
+    ModMap
   },
   computed: {
     title() {
