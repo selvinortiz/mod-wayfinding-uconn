@@ -1,10 +1,8 @@
 <template>
-  <div>
-    
+  <div v-if="load">
     <div id="imageContainer" class="imageContainer" @mousedown="startDrag($event)" @mousemove="dragMap($event)" @mouseup="stopDrag()" @mouseleave="stopDrag()">
-
       <img
-        id="image" class="image" :src="maps[0].image" :style="styleMap()" draggable="false" alt="Map"
+        id="image" class="image" :src="maps[0].image" @load="styleMap()" draggable="false" alt="Map"
       />
 
       <div class="test" id='test1'></div> <!-- For center visualization -->
@@ -59,7 +57,6 @@ export default {
       type: Boolean,
       default: false
     }
-
   },
   data() {
     return {
@@ -83,10 +80,10 @@ export default {
         // Gather the smallest and largest cords for
         // finding the area encompassing all the markers
         var smallX = null, bigX = null, smallY = null, bigY = null;
-        
+
         for (var ii = 0; ii < this.$props.maps[0].markers.length; ii++) {
           var marker = this.$props.maps[0].markers[ii];
-          
+
           smallX == null || smallX > marker.xr ? (smallX = marker.xr) : null;
           bigX == null || bigX < marker.xr ? (bigX = marker.xr) : null;
           smallY == null || smallY > marker.yr ? (smallY = marker.yr) : null;
@@ -129,13 +126,13 @@ export default {
         this.defaultedToCenter = true;
         return ('transform: scale('+this.zoom+') translate('+this.translateX+'px, '+this.translateY+'px)');
       }
-      
+
       return ('transform: scale('+this.zoom+') translate('+this.translateX+'px, '+this.translateY+'px)');
     },
 
     zoomMap(direction) {
       this.zoom + this.zoomFactor * direction < 4 && this.zoom + this.zoomFactor * direction >= 1 ? (this.zoom += this.zoomFactor * direction) : null;
-      
+
       /*
       if (direction == -1) {
         var imageContainer = document.getElementById('imageContainer').getBoundingClientRect();
@@ -160,7 +157,7 @@ export default {
     },
     dragMap(event) {
       if (this.drag) {
-        
+
         var diffX = event.x - this.dragX;
         var diffY = event.y - this.dragY;
         /*
