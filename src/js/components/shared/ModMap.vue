@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <div
       id="imageContainer"
       class="imageContainer"
@@ -12,16 +13,13 @@
         v-if="place.loaded"
         id="image"
         class="image"
+        :style="{'transform': `scale(${zoom}) translate(${translateX + 'px'}, ${translateY + 'px'})`}"
         :src="selectedImage"
-        @load="styleMap()"
+        @load="centerMap()"
         draggable="false"
         alt="Map"
       />
 
-      <div class="test" id="test1"></div>
-      <!-- For center visualization -->
-      <div class="test" id="test2" style="outline: 1px yellow solid;"></div>
-      <!-- For center visualization -->
     </div>
 
     <button @click="zoomMap(1)">Zoom In</button>
@@ -53,6 +51,9 @@ export default {
         title: '',
         maps: [
           {
+            image: ''
+          },
+          {
             markers: [
               { width: 0, height: 0, x: 0, xr: 0, y: 0,yr: 0 }
             ]
@@ -82,15 +83,13 @@ export default {
     }
   },
   methods: {
-    styleMap() {
+    centerMap() {
       // Only run this part once at the start
-      if (!this.defaultedToCenter && this.place.loaded) {
+      if (!this.defaultedToCenter) {
+
         // Gather the smallest and largest cords for
         // finding the area encompassing all the markers
-        var smallX = null,
-          bigX = null,
-          smallY = null,
-          bigY = null;
+        var smallX = null, bigX = null, smallY = null, bigY = null;
 
         for (var ii = 0; ii < this.place.maps[0].markers.length; ii++) {
           var marker = this.place.maps[0].markers[ii];
@@ -103,12 +102,12 @@ export default {
 
         // Use the relational amounts to convert to the cords for the new sized image
         var image = document.getElementById("image").getBoundingClientRect();
+        //console.log(image);
 
         smallX = (smallX / 100) * image.width;
         bigX = (bigX / 100) * image.width;
-        smallY = (smallY / 100) * image.height; //Image height is not right
-        bigY = (bigY / 100) * image.height; //Image height is not right
-        console.log(image);
+        smallY = (smallY / 100) * image.height;
+        bigY = (bigY / 100) * image.height;
         //console.log([smallX, bigY, bigX - smallX, bigY - smallY]);
 
         // Correct for the default xy of the image on page
@@ -131,46 +130,20 @@ export default {
         var markerAreaCenterX = smallX + (bigX - smallX) / 2;
         var markerAreaCenterY = smallY + (bigY - smallY) / 2;
 
-        console.log(imageContainerCenterX + "  " + imageContainerCenterY);
-        console.log(markerAreaCenterX + "  " + markerAreaCenterY);
-        console.log(
-          markerAreaCenterX -
-            imageContainerCenterX +
-            "  " +
-            (markerAreaCenterY - imageContainerCenterY)
-        );
-        //this.translateX = markerAreaCenterX - imageContainerCenterX;
-        //this.translateY = markerAreaCenterY - imageContainerCenterY;
+        //console.log(imageContainerCenterX + "  " + imageContainerCenterY);
+        //console.log(markerAreaCenterX + "  " + markerAreaCenterY);
+        //console.log(markerAreaCenterX - imageContainerCenterX + "  " + (markerAreaCenterY - imageContainerCenterY));
 
-        this.defaultedToCenter = true;
-        return (
-          "transform: scale(" +
-          this.zoom +
-          ") translate(" +
-          this.translateX +
-          "px, " +
-          this.translateY +
-          "px)"
-        );
+        this.translateX = -(markerAreaCenterX - imageContainerCenterX);
+        this.translateY = -(markerAreaCenterY - imageContainerCenterY);
       }
-
-      return (
-        "transform: scale(" +
-        this.zoom +
-        ") translate(" +
-        this.translateX +
-        "px, " +
-        this.translateY +
-        "px)"
-      );
     },
 
     zoomMap(direction) {
       this.zoom + this.zoomFactor * direction < 4 &&
-      this.zoom + this.zoomFactor * direction >= 1
-        ? (this.zoom += this.zoomFactor * direction)
-        : null;
+      this.zoom + this.zoomFactor * direction >= 1 ? (this.zoom += this.zoomFactor * direction) : null;
 
+      // Direct the map back into covering the view port when zooming out near a boundary
       /*
       if (direction == -1) {
         var imageContainer = document.getElementById('imageContainer').getBoundingClientRect();
@@ -197,6 +170,8 @@ export default {
       if (this.drag) {
         var diffX = event.x - this.dragX;
         var diffY = event.y - this.dragY;
+
+        // Limit the movement of the map to the bounds of the map
         /*
         var imageContainer = document.getElementById('imageContainer').getBoundingClientRect();
         var image = document.getElementById('image').getBoundingClientRect();
@@ -213,8 +188,7 @@ export default {
         */
         this.translateX += diffX;
         this.translateY += diffY;
-        //var image = document.getElementById('image').getBoundingClientRect();
-        //console.log(image.width);
+        
         this.dragX = event.x;
         this.dragY = event.y;
       }
