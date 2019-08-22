@@ -2,7 +2,7 @@
   <div class="p-4">
     <mod-page-header>Place</mod-page-header>
     
-    <mod-map :id="place.id" :title="place.title" :images="place.images" :markers="place.markers"></mod-map>
+    <mod-map :id="place.id" :title="place.title" :maps="place.maps" :load='place.load'></mod-map>
   </div>
 </template>
 
@@ -28,16 +28,7 @@ export default {
     })
     .then(response => {
       this.place = response.data.place;
-
-      // Only for testing
-      this.place.images = [
-        {'url': '/svg/testSVG1.svg', 'width': 1440, 'height': 953},
-        {'url': '/svg/testSVG2.svg', 'width': 1390, 'height': 835}
-      ];
-      this.place.markers = [
-            {'x': 526, 'y': 296},
-            {'x': 493, 'y': 375}
-      ];
+      this.place.load = true;
     })
     .catch(error => console.error(error));
   }
