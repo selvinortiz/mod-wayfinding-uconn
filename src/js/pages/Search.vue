@@ -1,14 +1,28 @@
 <template>
   <div class="p-4">
     <div class="mx-auto" style="max-width: 640px;">
+      <div v-if="searchResults.length">
+      <mod-page-header>Results</mod-page-header>
+        <div v-for="result in searchResults" :key="result.id">
+          <h2 class="text-xl">{{ result.title }}</h2>
+        </div>
+        <hr>
+      </div>
       <mod-page-header>Search</mod-page-header>
       <div class="flex items-center my-4 border border-gray-200 animated fadeIn">
+        <select v-model="context" class="bg-transparent outline-none focus:outline-none">
+          <option value="">All</option>
+          <option value="people">People</option>
+          <option value="places">Places</option>
+          <option value="building">Buildings</option>
+        </select>
         <input
+          type="text"
           class="py-2 px-2 outline-none"
           placeholder="Type to search..."
           style="flex: 6;"
           v-model="input"
-          type="text"
+          @keydown.enter="search"
         />
         <button
           class="py-2 border-l border-gray-200 bg-gray-100 outline-none hover:bg-gray-200 focus:bg-gray-300 focus:outline-none"
@@ -30,12 +44,13 @@
 </template>
 
 <style>
-  .simple-keyboard.keyboard--numeric .keyboard-button-tab {
-    background-color: yellow;
-  }
+.simple-keyboard.keyboard--numeric .keyboard-button-tab {
+  background-color: yellow;
+}
 </style>
 
 <script>
+import axios from "../utils/Axios";
 import ModKeyboard from "../components/shared/ModKeyboard.vue";
 
 export default {
@@ -45,6 +60,10 @@ export default {
   data() {
     return {
       input: "",
+      context: "",
+      searching: false,
+      searchResults: [],
+      searchErrorMessage: '',
       showKeyboard: !("ontouchstart" in document.documentElement),
       keyboardLayout: ["1 2 3", "4 5 6", "7 8 9", "0 {tab}"],
       keyboardButtonLabels: {
@@ -63,7 +82,22 @@ export default {
   },
   methods: {
     search() {
-      console.log(this.input);
+      this.searching = true;
+
+      axios.post("/actions/sys/search", {
+        searchQuery: this.input,
+        searchContext: this.context
+      })
+      .then(response => {
+        if (response.data.success) {
+          this.searchResults = response.data.results;
+        } else {
+          this.searchErrorMessage = response.data.message;
+        }
+
+        this.searching = false;
+      })
+      .catch(error => console.error(error));
     },
     handleKeyboardChange(input) {
       console.log("Input changed", input);

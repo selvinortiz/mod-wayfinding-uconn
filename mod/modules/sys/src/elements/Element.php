@@ -10,7 +10,7 @@ use modules\sys\elements\db\Query;
 class Element extends Entry
 {
     const TYPE_HANDLE    = null;
-    const SECTION_HANDLE = 'places';
+    const SECTION_HANDLE = null;
 
     /**
      * A list of attribute names to be included when converting object asArray()

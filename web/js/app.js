@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"search":"search","vendors~people~person~place~places":"vendors~people~person~place~places","people":"people","person~place":"person~place","person":"person","place":"place","places":"places"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"vendors~people~person~place~places~search":"vendors~people~person~place~places~search","people":"people","person~place":"person~place","person":"person","place":"place","places":"places","search":"search"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -4969,7 +4969,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue_
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _pages_Index_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pages/Index.vue */ \"./src/js/pages/Index.vue\");\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  name: 'index',\n  path: '/',\n  component: _pages_Index_vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n}, {\n  name: 'search',\n  path: '/search',\n  component: () => __webpack_require__.e(/*! import() | search */ \"search\").then(__webpack_require__.bind(null, /*! ../pages/Search.vue */ \"./src/js/pages/Search.vue\"))\n}]);\n\n//# sourceURL=webpack:///./src/js/router/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _pages_Index_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pages/Index.vue */ \"./src/js/pages/Index.vue\");\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  name: 'index',\n  path: '/',\n  component: _pages_Index_vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n}, {\n  name: 'search',\n  path: '/search',\n  component: () => Promise.all(/*! import() | search */[__webpack_require__.e(\"vendors~people~person~place~places~search\"), __webpack_require__.e(\"search\")]).then(__webpack_require__.bind(null, /*! ../pages/Search.vue */ \"./src/js/pages/Search.vue\"))\n}]);\n\n//# sourceURL=webpack:///./src/js/router/app.js?");
 
 /***/ }),
 
@@ -4993,7 +4993,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue_
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  name: 'people',\n  path: '/people',\n  component: () => Promise.all(/*! import() | people */[__webpack_require__.e(\"vendors~people~person~place~places\"), __webpack_require__.e(\"people\")]).then(__webpack_require__.bind(null, /*! ../pages/people/Index.vue */ \"./src/js/pages/people/Index.vue\"))\n}, {\n  name: 'person',\n  path: '/people/:id',\n  component: () => Promise.all(/*! import() | person */[__webpack_require__.e(\"vendors~people~person~place~places\"), __webpack_require__.e(\"person~place\"), __webpack_require__.e(\"person\")]).then(__webpack_require__.bind(null, /*! ../pages/people/_Person.vue */ \"./src/js/pages/people/_Person.vue\"))\n}]);\n\n//# sourceURL=webpack:///./src/js/router/people.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  name: 'people',\n  path: '/people',\n  component: () => Promise.all(/*! import() | people */[__webpack_require__.e(\"vendors~people~person~place~places~search\"), __webpack_require__.e(\"people\")]).then(__webpack_require__.bind(null, /*! ../pages/people/Index.vue */ \"./src/js/pages/people/Index.vue\"))\n}, {\n  name: 'person',\n  path: '/people/:id',\n  component: () => Promise.all(/*! import() | person */[__webpack_require__.e(\"vendors~people~person~place~places~search\"), __webpack_require__.e(\"person~place\"), __webpack_require__.e(\"person\")]).then(__webpack_require__.bind(null, /*! ../pages/people/_Person.vue */ \"./src/js/pages/people/_Person.vue\"))\n}]);\n\n//# sourceURL=webpack:///./src/js/router/people.js?");
 
 /***/ }),
 
@@ -5005,7 +5005,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  name: 'places',\n  path: '/places',\n  component: () => Promise.all(/*! import() | places */[__webpack_require__.e(\"vendors~people~person~place~places\"), __webpack_require__.e(\"places\")]).then(__webpack_require__.bind(null, /*! ../pages/places/Index.vue */ \"./src/js/pages/places/Index.vue\"))\n}, {\n  name: 'place',\n  path: '/places/:id',\n  component: () => Promise.all(/*! import() | place */[__webpack_require__.e(\"vendors~people~person~place~places\"), __webpack_require__.e(\"person~place\"), __webpack_require__.e(\"place\")]).then(__webpack_require__.bind(null, /*! ../pages/places/_Place.vue */ \"./src/js/pages/places/_Place.vue\"))\n}]);\n\n//# sourceURL=webpack:///./src/js/router/places.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  name: 'places',\n  path: '/places',\n  component: () => Promise.all(/*! import() | places */[__webpack_require__.e(\"vendors~people~person~place~places~search\"), __webpack_require__.e(\"places\")]).then(__webpack_require__.bind(null, /*! ../pages/places/Index.vue */ \"./src/js/pages/places/Index.vue\"))\n}, {\n  name: 'place',\n  path: '/places/:id',\n  component: () => Promise.all(/*! import() | place */[__webpack_require__.e(\"vendors~people~person~place~places~search\"), __webpack_require__.e(\"person~place\"), __webpack_require__.e(\"place\")]).then(__webpack_require__.bind(null, /*! ../pages/places/_Place.vue */ \"./src/js/pages/places/_Place.vue\"))\n}]);\n\n//# sourceURL=webpack:///./src/js/router/places.js?");
 
 /***/ }),
 
