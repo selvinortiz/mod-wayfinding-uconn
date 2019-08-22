@@ -1,1 +1,7 @@
-<circle cx="{{ object.x }}" cy="{{ object.y }}" fill="{{ object.fill ?? '#0D56D8' }}" id="{{ object.id ?? 'pin' }}" r="16"></circle>
+<g class="marker__group">
+    <circle cx="{{ object.x }}" cy="{{ object.y }}" fill="none" r="16" stroke="{{ object.fill ?? 'red' }}" stroke-width="2">
+        <animate attributeName="r" from="12" to="32" dur="1.5s" begin="0s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" from="1" to="0" dur="1.5s" begin="0s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="{{ object.x }}" cy="{{ object.y }}" fill="{{ object.fill ?? 'red' }}" r="16" stroke="rgba(255,255,255, .5)" stroke-width="2"/>
+</g>
