@@ -1,8 +1,8 @@
 <template>
   <div class="p-4">
     <mod-page-header>Place</mod-page-header>
-    
-    <mod-map :id="place.id" :title="place.title" :maps="place.maps" :load='place.load'></mod-map>
+
+    <mod-map :place="place"></mod-map>
   </div>
 </template>
 
@@ -27,8 +27,10 @@ export default {
       id: this.$route.params.id
     })
     .then(response => {
-      this.place = response.data.place;
-      this.place.load = true;
+      this.place = {
+        ...response.data.place,
+        loaded: true
+      };
     })
     .catch(error => console.error(error));
   }
