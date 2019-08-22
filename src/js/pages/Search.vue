@@ -1,17 +1,27 @@
 <template>
   <div class="p-4">
     <div class="mx-auto" style="max-width: 640px;">
-      <div v-if="searchResults.length">
-      <mod-page-header>Results</mod-page-header>
-        <div v-for="result in searchResults" :key="result.id">
-          <h2 class="text-xl">{{ result.title }}</h2>
+      <div v-if="results.length" class="animated slideInDown">
+        <mod-page-header>Results</mod-page-header>
+        <div class="flex flex-wrap -mx-2 lg:-mx-4">
+          <div
+            class="w-full lg:w-1/2 xl:w-1/3 flex my-2 px-2 lg:my-4 lg:px-4"
+            v-for="result in results"
+            :key="result.id"
+          >
+            <router-link
+              class="flex-1 p-4 border border-gray-300 bg-gray-100 rounded"
+              :to="{name: 'person', params: {id: result.id}}"
+            >
+              <p class="font-thin text-xl">{{ result.title }}</p>
+            </router-link>
+          </div>
         </div>
-        <hr>
       </div>
       <mod-page-header>Search</mod-page-header>
       <div class="flex items-center my-4 border border-gray-200 animated fadeIn">
         <select v-model="context" class="bg-transparent outline-none focus:outline-none">
-          <option value="">All</option>
+          <option value>All</option>
           <option value="people">People</option>
           <option value="places">Places</option>
           <option value="building">Buildings</option>
@@ -62,8 +72,8 @@ export default {
       input: "",
       context: "",
       searching: false,
-      searchResults: [],
-      searchErrorMessage: '',
+      results: [],
+      searchErrorMessage: "",
       showKeyboard: !("ontouchstart" in document.documentElement),
       keyboardLayout: ["1 2 3", "4 5 6", "7 8 9", "0 {tab}"],
       keyboardButtonLabels: {
@@ -84,20 +94,21 @@ export default {
     search() {
       this.searching = true;
 
-      axios.post("/actions/sys/search", {
-        searchQuery: this.input,
-        searchContext: this.context
-      })
-      .then(response => {
-        if (response.data.success) {
-          this.searchResults = response.data.results;
-        } else {
-          this.searchErrorMessage = response.data.message;
-        }
+      axios
+        .post("/actions/sys/search", {
+          searchQuery: this.input,
+          searchContext: this.context
+        })
+        .then(response => {
+          if (response.data.success) {
+            this.results = response.data.results;
+          } else {
+            this.searchErrorMessage = response.data.message;
+          }
 
-        this.searching = false;
-      })
-      .catch(error => console.error(error));
+          this.searching = false;
+        })
+        .catch(error => console.error(error));
     },
     handleKeyboardChange(input) {
       console.log("Input changed", input);
