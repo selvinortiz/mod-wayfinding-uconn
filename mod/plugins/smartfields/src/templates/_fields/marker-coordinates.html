@@ -6,22 +6,24 @@
     >
         <img
             id="{{ name ~ '-map' }}"
-            style="width: 100%; height: auto; padding: 0; margin: 0; display: block;"
+            style="width: 100%; height: auto; padding: 0; margin: 0; display: block; outline: 1px red solid;"
             src="{{ image }}"
             alt=""
         >
 
-        <span id="{{ name ~ '-marker' }}" style="position: absolute; top: 0; left: 0; display: none;">
-            <img width="64" src="{{ craft.app.assetManager.publishedUrl('@selvinortiz/smartfields/resources', true, 'marker.png') }}" alt="">
+        <span id="{{ name ~ '-marker' }}" style="position: absolute; top: 0; left: 0; display: none; width: 4%">
+            <img src="{{ craft.app.assetManager.publishedUrl('@selvinortiz/smartfields/resources', true, 'marker.png') }}" alt=""
+            style="width: 100%">
         </span>
     </div>
 </div>
 
-{% js %}
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
     $input = $('{{ "#" ~ id ~ "-input" }}');
     $map = $('{{ "#" ~ id ~ "-map" }}');
     $marker = $('{{ "#" ~ id ~ "-marker" }}');
-
+    
     if ($input.val()) {
         var value = JSON.parse($input.val());
 
@@ -30,16 +32,16 @@
 
     $map.on('click', function(e) {
         var $img = $(this);
-
+        
         var x = e.pageX - $img.offset().left;
         var y = e.pageY - $img.offset().top;
-
+        
         // Subtract half of the rendered marker width
-        x -= 32;
+        x -= $marker.width() / 2;
 
         // Subtract rendered marker height
-        y -= 64;
-
+        y -= $marker.height();
+        
         // Record image width and height at the time of markign
         var w = $img.width();
         var h = $img.height();
@@ -66,4 +68,4 @@
         $marker.css({top: y + '%', left: x + '%'});
         $marker.fadeIn();
     }
-{% endjs %}
+</script>
