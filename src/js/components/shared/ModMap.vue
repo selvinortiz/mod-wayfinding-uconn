@@ -14,7 +14,7 @@
         id="image"
         class="image"
         :style="{'transform': `scale(${zoom}) translate(${translateX + 'px'}, ${translateY + 'px'})`}"
-        :src="selectedImage"
+        :src="getSelectedMap().image"
         @load="centerMap()"
         draggable="false"
         alt="Map"
@@ -27,9 +27,10 @@
 
     <div v-if="place.loaded">
       <img
-        class="altImage"
+        @click="() => selectedMap = map"
         v-for="(map, index) in place.maps"
         :key="index"
+        class="altImage"
         :src="map.image"
         draggable="false"
       />
@@ -75,12 +76,9 @@ export default {
       drag: false,
       dragX: null,
       dragY: null,
+
+      selectedMap: null
     };
-  },
-  computed: {
-    selectedImage() {
-      return this.place.maps[0].image;
-    }
   },
   methods: {
     centerMap() {
@@ -91,8 +89,8 @@ export default {
         // finding the area encompassing all the markers
         var smallX = null, bigX = null, smallY = null, bigY = null;
 
-        for (var ii = 0; ii < this.place.maps[0].markers.length; ii++) {
-          var marker = this.place.maps[0].markers[ii];
+        for (var ii = 0; ii < this.selectedMap.markers.length; ii++) {
+          var marker = this.selectedMap.markers[ii];
 
           smallX == null || smallX > marker.xr ? (smallX = marker.xr) : null;
           bigX == null || bigX < marker.xr ? (bigX = marker.xr) : null;
@@ -118,9 +116,7 @@ export default {
 
         // Find the difference between the center of the marker encompassing area and the
         // center of the imageContainer to then translate the image to shair the same center
-        var imageContainer = document
-          .getElementById("imageContainer")
-          .getBoundingClientRect();
+        var imageContainer = document.getElementById("imageContainer").getBoundingClientRect();
         //console.log(imageContainer);
 
         var imageContainerCenterX = imageContainer.x + imageContainer.width / 2;
@@ -137,6 +133,12 @@ export default {
         this.translateX = -(markerAreaCenterX - imageContainerCenterX);
         this.translateY = -(markerAreaCenterY - imageContainerCenterY);
       }
+    },
+
+    getSelectedMap() {
+      if (this.selectedMap == null)
+        this.selectedMap = this.place.maps[0];
+      return this.selectedMap;
     },
 
     zoomMap(direction) {
