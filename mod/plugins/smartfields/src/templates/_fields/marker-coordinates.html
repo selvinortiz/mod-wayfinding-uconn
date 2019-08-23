@@ -18,8 +18,7 @@
     </div>
 </div>
 
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script>
+{% js %}
     $input = $('{{ "#" ~ id ~ "-input" }}');
     $map = $('{{ "#" ~ id ~ "-map" }}');
     $marker = $('{{ "#" ~ id ~ "-marker" }}');
@@ -68,4 +67,4 @@
         $marker.css({top: y + '%', left: x + '%'});
         $marker.fadeIn();
     }
-</script>
+{% endjs %}
