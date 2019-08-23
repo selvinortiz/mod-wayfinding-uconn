@@ -11492,18 +11492,10 @@ footer .\@end {
   display: none;
 }
 
-@media screen and (min-width: 768px) {
-  main {
-    height: 65;
-  }
-
-  footer {
-    height: 20vh;
-  }
-
-  footer .\@end {
-    display: flex;
-  }
+.\@page {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 1fr auto 1fr;
 }
 
 .fade-enter-active, .fade-leave-active {

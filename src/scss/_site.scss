@@ -23,17 +23,10 @@ footer {
   }
 }
 
-@media screen and (min-width: $md) {
-  main {
-    height: 65
-  }
-  footer {
-    height: 20vh;
-
-    .\@end {
-      display: flex;
-    }
-  }
+.\@page {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 1fr auto 1fr;
 }
 
 // Transitions

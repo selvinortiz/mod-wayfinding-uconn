@@ -1,8 +1,8 @@
 {% extends "_layout" %}
 
 {% block content %}
-    <div class="h-screen flex flex-col">
-        <header class="flex items-center justify-between px-4 border-b border-gray-400" :style="headerStyles">
+    <div class="@page">
+        <header class="@page__header flex items-center justify-between px-4 border-b border-gray-400" :style="headerStyles">
             <app-logo></app-logo>
             <div>
                 <mod-clock>
@@ -22,13 +22,13 @@
             </div>
         </header>
 
-        <main class="flex-1">
+        <main class="@page__content">
             <transition name="fade" mode="out-in">
                 <router-view></router-view>
             </transition>
         </main>
 
-        <footer class="flex flex-col justify-center border-t border-gray-400" :style="footerStyles">
+        <footer class="@page__footer flex flex-col justify-between border-t border-gray-400" :style="footerStyles">
             <app-nav></app-nav>
             <app-end></app-end>
         </footer>
