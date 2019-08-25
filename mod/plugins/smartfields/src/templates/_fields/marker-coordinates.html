@@ -20,6 +20,7 @@
     </div>
 </div>
 
+{#
 <style>
     .noselect {
         -webkit-touch-callout: none; /* iOS Safari */
@@ -31,26 +32,28 @@
                                         supported by Chrome and Opera */
     }
 </style>
+#}
 
-<script>src="http://code.jquery.com/jquery-latest.min.js"</script>
-<script>
-//{% js %}
+{% js %}
     $input = $('{{ "#" ~ id ~ "-input" }}');
     $map = $('{{ "#" ~ id ~ "-map" }}');
     $marker = $('{{ "#" ~ id ~ "-marker" }}');
 
+    /*
     var markerIsSelected = false;
     var originalMarkerX = null, originalMarkerY = null;
-    
+    */
+
     if ($input.val()) {
         var value = JSON.parse($input.val());
 
         setMarkerCoordinates(value.xr, value.yr);
     }
 
+    /*
     $marker.on('mousedown', function(e) {
         markerIsSelected = true;
-        
+
         originalMarkerX = $marker.css('left').replace('px', '');
         originalMarkerY = $marker.css('top').replace('px', '');
     });
@@ -68,7 +71,7 @@
     function moveMarker(pageX, pageY) {
         var x = pageX - $map.offset().left;
         var y = pageY - $map.offset().top;
-        
+
         // Subtract half of the rendered marker width
         x -= $marker.width() / 2;
 
@@ -101,7 +104,7 @@
         if (markerIsSelected)
             markerIsSelected = false;
     });
-    
+
     $map.on('mouseleave', function(e) {
         // Needs to know if the mouse has left the map or if it is just in front of the marker
 
@@ -122,21 +125,20 @@
             setMarkerCoordinates(xr, yr);
         }
     });
-    
-    
-    /*
+    */
+
     $map.on('click', function(e) {
         var $img = $(this);
-        
+
         var x = e.pageX - $img.offset().left;
         var y = e.pageY - $img.offset().top;
-        
+
         // Subtract half of the rendered marker width
         x -= $marker.width() / 2;
 
         // Subtract rendered marker height
         y -= $marker.height();
-        
+
         // Record image width and height at the time of marking
         var w = $img.width();
         var h = $img.height();
@@ -158,10 +160,9 @@
 
         setMarkerCoordinates(xr, yr);
     });
-    */
+
     function setMarkerCoordinates(x, y) {
         $marker.css({top: y + '%', left: x + '%'});
         $marker.fadeIn();
     }
-//{% endjs %}
-</script>
+{% endjs %}
