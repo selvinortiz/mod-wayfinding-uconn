@@ -1,8 +1,6 @@
 <template>
   <div class="p-4">
     <!--mod-page-header>Person</mod-page-header-->
-
-    <div class="font-normal" v-html="person.personDescription"></div>
     
     <div class="flex flex-wrap">
 
@@ -58,8 +56,11 @@
             <div>Address Line 2</div>
             <br/>
 
-            <div class="font-bold">Phone Number</div>
-            <div class="font-bold">{{person.email}}</div>
+            <div class="font-bold">{{person.personPhone}}</div>
+            <div class="font-bold">{{person.personEmail}}</div>
+            <br/>
+
+            <div>{{person.personDescription}}</div>
 
           </div>
 
@@ -109,6 +110,7 @@ export default {
       })
       .then(response => {
         this.person = response.data.person;
+        console.log(this.person);
       })
       .catch(error => console.error(error));
   }

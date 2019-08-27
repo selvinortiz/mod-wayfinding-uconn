@@ -31,20 +31,23 @@
 
         <div class="flex flex-wrap w-4/5">
 
-          <div class="w-full">{{place.title}}</div>
+          <div class="w-full font-black">{{place.title}}</div>
 
           <!--Half-->
           <div class="w-1/2">
 
             <img class="w-4/5" src="http://placehold.it/500"/>
+            <br/>
 
-            <div>Phone Number</div>
+            <div class="font-bold">Phone Number</div>
+            <br/>
 
-            <div>Address Line 1</div>
-            <div>Address Line 2</div>
+            <div class="font-bold">Address Line 1</div>
+            <div class="font-bold">Address Line 2</div>
+            <br/>
 
-            <div>Ultricies porttitor phasellus elementum pellentesque mi ultrices sagittis ut. 
-              Ullamcorper eget posuere aptent suscipit nam feugiat in.
+            <div>
+              Place Description
             </div>
 
           </div>
@@ -92,7 +95,6 @@ export default {
         ...response.data.place,
         loaded: true
       };
-      console.log(this.place);
     })
     .catch(error => console.error(error));
   }
