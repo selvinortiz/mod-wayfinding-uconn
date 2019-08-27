@@ -38,27 +38,22 @@
           <!--Half-->
           <div class="w-3/5">
 
-            <div class="font-black">{{ person.personFirstName }} {{ person.personLastName}}</div>
-            <br/>
+            <div class="font-black mb-4">{{ person.personFirstName }} {{ person.personLastName}}</div>
 
             <div class="font-bold">Title 1</div>
             <div>Department</div>
             <div class="font-bold">Title 2</div>
-            <div>Department</div>
-            <br/>
+            <div class="mb-4">Department</div>
 
             <div class="font-bold">Building Name</div>
             <div>Suite #</div>
-            <div>Floor #</div>
-            <br/>
+            <div class="mb-4">Floor #</div>
 
             <div>Address Line 1</div>
-            <div>Address Line 2</div>
-            <br/>
+            <div class="mb-4">Address Line 2</div>
 
             <div class="font-bold">{{person.personPhone}}</div>
-            <div class="font-bold">{{person.personEmail}}</div>
-            <br/>
+            <div class="font-bold mb-4">{{person.personEmail}}</div>
 
             <div>{{person.personDescription}}</div>
 
