@@ -5,7 +5,7 @@
 
     <div class="w-full flex flex-wrap justify-center lg:hidden">
         <div class="lg:w-11/12 w-full mb-4">
-          <div :class="'text-3xl text-'+primaryColor+' font-300 -mb-2'">WAYFINDING</div>
+          <div :class="'text-3xl text-'+primaryColor+' font-300'">WAYFINDING</div>
           <div :class="'text-1xl text-'+primaryColor">
             {{ 'Breadcrumb nav 1' }}
             >
@@ -45,9 +45,9 @@
       <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-1 md:w-full md:order-2">
 
         <!--Weird height issues-->
-        <div class="w-full flex-wrap justify-center hidden lg:flex">
+        <div class="w-full justify-center hidden lg:flex">
             <div class="lg:w-11/12 w-full mb-4">
-              <div :class="'text-3xl text-'+primaryColor+' font-300 -mb-2'">WAYFINDING</div>
+              <div :class="'text-3xl text-'+primaryColor+' font-300'">WAYFINDING</div>
               <div :class="'text-1xl text-'+primaryColor">
                 {{ 'Breadcrumb nav 1' }}
                 >
@@ -65,15 +65,12 @@
           <!--Half-->
           <div class="w-1/2">
 
-            <img class="w-4/5" src="http://placehold.it/500"/>
-            <br/>
+            <img class="w-4/5 mb-4" src="http://placehold.it/500"/>
 
-            <div :class="'font-bold text-'+primaryColor">Phone Number</div>
-            <br/>
+            <div :class="'font-bold mb-4 text-'+primaryColor">Phone Number</div>
 
             <div :class="'font-bold text-'+primaryColor">Address Line 1</div>
-            <div :class="'font-bold text-'+primaryColor">Address Line 2</div>
-            <br/>
+            <div :class="'font-bold mb-4 text-'+primaryColor">Address Line 2</div>
 
             <div :class="'text-'+primaryColor">
               Place Description
