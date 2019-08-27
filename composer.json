@@ -8,7 +8,8 @@
   },
   "autoload": {
     "psr-4": {
-      "modules\\sys\\": "mod/modules/sys/src/"
+      "modules\\sys\\": "mod/modules/sys/src/",
+      "modules\\feeds\\": "mod/modules/feeds/src/"
     }
   },
   "repositories": [
