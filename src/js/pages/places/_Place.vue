@@ -58,7 +58,7 @@
 
         <div class="flex flex-wrap w-11/12">
 
-          <div :class="'w-full text-2x1 font-black text-'+primaryColor">
+          <div :class="'w-full text-2xl font-black text-'+primaryColor">
             {{place.title}}
           </div>
 
@@ -81,8 +81,7 @@
           <!--Half-->
           <div class="w-1/2 text-center">
 
-            <div class="w-full flex items-center h-12 px-6
-                        border border-gray-300 bg-gray-100">
+            <div :class="'w-full flex items-center h-12 px-6 border-2 border-'+primaryColor">
               Choose Destination
             </div>
 

@@ -60,7 +60,7 @@
           <!--Half-->
           <div :class="'w-3/5 text-'+primaryColor">
 
-            <div :class="'font-black mb-4 text-'+primaryColor">{{ person.personFirstName }} {{ person.personLastName}}</div>
+            <div :class="'font-black mb-4 text-2xl text-'+primaryColor">{{ person.personFirstName }} {{ person.personLastName}}</div>
 
             <div class="font-bold">Title 1</div>
             <div>Department</div>
