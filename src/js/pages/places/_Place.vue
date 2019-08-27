@@ -6,10 +6,22 @@
     <div class="flex flex-wrap">
 
       <!--Half page-->
-      <div class="flex justify-center lg:w-1/2 lg:order-2 md:w-full md:order-1">
+      <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-2 md:w-full md:order-1">
 
         <div class="flex w-4/5">
           <mod-map :place="place"></mod-map>
+        </div>
+
+        <div class="flex w-full lg:justify-end md:justify-center sm:justify-center">
+
+          <div class="flex w-1/4 h-6 border border-gray-300 bg-gray-100 justify-center">
+            Campus Map
+          </div>
+
+          <div class="flex w-1/4 h-6 border border-gray-300 bg-gray-100 justify-center">
+            Building Map
+          </div>
+
         </div>
 
       </div>
@@ -19,7 +31,7 @@
 
         <div class="flex flex-wrap w-4/5">
 
-          <div class="w-full">Building Name</div>
+          <div class="w-full">{{place.title}}</div>
 
           <!--Half-->
           <div class="w-1/2">
@@ -29,8 +41,6 @@
             <div>Phone Number</div>
 
             <div>Address Line 1</div>
-            <div>Address Line 2</div>
-
             <div>Address Line 2</div>
 
             <div>Ultricies porttitor phasellus elementum pellentesque mi ultrices sagittis ut. 
@@ -82,6 +92,7 @@ export default {
         ...response.data.place,
         loaded: true
       };
+      console.log(this.place);
     })
     .catch(error => console.error(error));
   }
