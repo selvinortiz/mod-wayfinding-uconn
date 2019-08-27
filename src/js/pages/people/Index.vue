@@ -76,7 +76,6 @@ export default {
         }
 
         this.people = response.data.people;
-        console.log(this.people);
       })
       .catch(error => console.error(error));
   }

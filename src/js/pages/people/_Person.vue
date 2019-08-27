@@ -105,7 +105,6 @@ export default {
       })
       .then(response => {
         this.person = response.data.person;
-        console.log(this.person);
       })
       .catch(error => console.error(error));
   }
