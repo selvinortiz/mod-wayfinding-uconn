@@ -10,9 +10,7 @@
       <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-2 md:w-full md:order-1">
 
         <div class="flex w-4/5">
-          <!--mod-map :place="person"></mod-map-->
-          <!--Map Placeholder-->
-          <img class="w-4/5" src="http://placehold.it/1000"/>
+          <mod-map :place="person"></mod-map>
         </div>
 
         <div class="flex w-full lg:justify-end md:justify-center sm:justify-center">
