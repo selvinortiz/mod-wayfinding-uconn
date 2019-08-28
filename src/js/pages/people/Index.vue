@@ -66,6 +66,7 @@
 
       <select class="flex w-1/2 h-12 mt-1 ml-2 px-6 border-2 border-blue-800">
         <option class="hidden" value="" disabled selected>Filter by Department</option>
+        <option v-for="department in departments" :key="department.id" :value="department.title">{{department.title}}</option>
       </select>
       
     </div>
@@ -82,7 +83,9 @@ export default {
   },
   data() {
     return {
-      people: []
+      people: [],
+
+      departments: []
     };
   },
   methods: {
@@ -104,6 +107,19 @@ export default {
         }
 
         this.people = response.data.people;
+        //console.log(this.people);
+      })
+      .catch(error => console.error(error));
+
+    axios
+      .post("/actions/sys/wayfinding/departments")
+      .then(response => {
+        if (!response.data.success) {
+          return console.log(response.data.message);
+        }
+
+        this.departments = response.data.departments;
+        //console.log(this.departments);
       })
       .catch(error => console.error(error));
   }
