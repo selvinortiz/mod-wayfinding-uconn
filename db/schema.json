@@ -573,10 +573,10 @@
       "titleFormat": "Campus - {campusName}",
       "fieldLayout": {
         "Campus": [
-          "campusPhoto",
           "campusName",
           "campusDescription",
-          "campusMap"
+          "campusMap",
+          "campusPhoto"
         ],
         "System": [
           "campusKey"

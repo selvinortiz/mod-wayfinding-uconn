@@ -1,7 +1,7 @@
 #
 # SQL Export
 # Created by Querious (201067)
-# Created: August 27, 2019 at 10:40:06 PM CDT
+# Created: August 27, 2019 at 11:11:30 PM CDT
 # Encoding: Unicode (UTF-8)
 #
 
@@ -306,7 +306,7 @@ CREATE TABLE `mod_elementindexsettings` (
   `uid` char(36) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `mod_elementindexsettings_type_unq_idx` (`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `mod_elements` (
@@ -1213,6 +1213,8 @@ UNLOCK TABLES;
 
 LOCK TABLES `mod_elementindexsettings` WRITE;
 ALTER TABLE `mod_elementindexsettings` DISABLE KEYS;
+REPLACE INTO `mod_elementindexsettings` (`id`, `type`, `settings`, `dateCreated`, `dateUpdated`, `uid`) VALUES 
+	(1,'craft\\elements\\Entry','{"sources":{"section:2c0c1a7e-f890-4904-a132-cd347cc17da7":{"tableAttributes":{"1":"field:7","2":"field:2","3":"field:14","4":"field:15","5":"field:28","6":"field:31"}},"section:b796c1d1-b641-44ea-8128-02bc18f65fcc":{"tableAttributes":{"1":"field:22","2":"field:23","3":"field:24"}}}}','2019-08-28 04:10:45','2019-08-28 04:10:45','2290d65f-a11f-448e-8cd7-35cacfd4588e');
 ALTER TABLE `mod_elementindexsettings` ENABLE KEYS;
 UNLOCK TABLES;
 
@@ -1678,7 +1680,7 @@ UNLOCK TABLES;
 LOCK TABLES `mod_sessions` WRITE;
 ALTER TABLE `mod_sessions` DISABLE KEYS;
 REPLACE INTO `mod_sessions` (`id`, `userId`, `token`, `dateCreated`, `dateUpdated`, `uid`) VALUES 
-	(1,1,'1qcB7pcR_m-XMTEVG-z7EMJDXw-q0ZL4VVZKLKsqKJZIXZ9nbc3vq_1aRqpUv82OnMRkwaydP8Ya6JJF6wNy1ptQOQKnIZMSjBMw','2019-08-28 02:32:04','2019-08-28 03:14:20','f3fc412e-e578-46d7-9817-5f635f1046a8');
+	(1,1,'1qcB7pcR_m-XMTEVG-z7EMJDXw-q0ZL4VVZKLKsqKJZIXZ9nbc3vq_1aRqpUv82OnMRkwaydP8Ya6JJF6wNy1ptQOQKnIZMSjBMw','2019-08-28 02:32:04','2019-08-28 04:11:02','f3fc412e-e578-46d7-9817-5f635f1046a8');
 ALTER TABLE `mod_sessions` ENABLE KEYS;
 UNLOCK TABLES;
 
