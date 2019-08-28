@@ -436,6 +436,23 @@
       "validateRelatedElements": ""
     },
     {
+      "required": true,
+      "name": "Person Related Departments",
+      "handle": "personRelatedDepartments",
+      "instructions": "",
+      "type": "craft\\fields\\Categories",
+      "typesettings": {
+        "allowLimit": false,
+        "allowMultipleSources": false,
+        "branchLimit": "1",
+        "sources": "*",
+        "source": "group:departments",
+        "selectionLabel": "Add department",
+        "localizeRelations": false,
+        "validateRelatedElements": ""
+      }
+    },
+    {
       "group": "Person",
       "name": "Person Roles",
       "handle": "personRoles",
@@ -554,8 +571,10 @@
           "personDescription",
           "personRoles"
         ],
-        "Related": [
-          "personRelatedPlace"
+        "System": [
+          "personKey",
+          "personRelatedPlace",
+          "personRelatedDepartments"
         ]
       },
       "requiredFields": [
