@@ -13,7 +13,7 @@ class Person extends Element
     const SECTION_HANDLE = 'people';
 
     public $typeId    = 3;
-    public $sectionId = 2;
+    public $sectionId = 1;
 
     public static function getQuery()
     {

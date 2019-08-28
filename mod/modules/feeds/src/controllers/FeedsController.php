@@ -4,7 +4,8 @@ namespace modules\feeds\controllers;
 
 use Craft;
 use craft\web\Controller;
-use modules\feeds\queue\Feed;
+use modules\feeds\queue\PlaceFeed;
+use modules\feeds\queue\PeopleFeed;
 
 class FeedsController extends Controller
 {
@@ -15,10 +16,28 @@ class FeedsController extends Controller
         $config = Craft::$app->config->getConfigFromFile('feeds');
 
         // Enqueue feed job
-        Craft::$app->queue->push(new Feed(
+        Craft::$app->queue->push(new PlaceFeed(
             [
                 'id'     => 'places',
                 'config' => $config['places']
+            ]
+        ));
+
+        // Run the garbage collector
+        Craft::$app->gc->run(true);
+
+        return $this->asJson('Feed queued up👍');
+    }
+
+    public function actionPeople()
+    {
+        $config = Craft::$app->config->getConfigFromFile('feeds');
+
+        // Enqueue feed job
+        Craft::$app->queue->push(new PeopleFeed(
+            [
+                'id'     => 'people',
+                'config' => $config['people']
             ]
         ));
 
