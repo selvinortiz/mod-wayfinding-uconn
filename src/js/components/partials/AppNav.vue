@@ -5,6 +5,7 @@
         <!--img class="icon" :src="`/svg/icons/${link.icon}`" alt /-->
         <span>{{ link.title }}</span>
       </a>
+
       <router-link
         v-if="link.route"
         :to="{name: link.route}"
@@ -14,12 +15,32 @@
         <!--img class="icon" :src="`/svg/icons/${link.icon}`" alt /-->
         <span>{{ link.title }}</span>
       </router-link>
+
+      <a v-if="link.component == 'search'" href="JavaScript:void(0);" @click="() => searchIsOpen = true" class="mx-2 px-4" :style="styles">
+        <!--img class="icon" :src="`/svg/icons/${link.icon}`" alt /-->
+        <span>{{ link.title }}</span>
+      </a>
+    </div>
+
+    <div v-if="searchIsOpen" class="fixed top-0 w-full h-full" style="outline: 1px red solid">
+      <div class="fixed top-0 w-full h-full bg-gray-200 opacity-50"></div>
+      <search ref='search'></search>
     </div>
   </nav>
 </template>
 
 <script>
+import search from "../../pages/Search.vue";
+
 export default {
+  components: {
+    search
+  },
+  data() {
+    return {
+      searchIsOpen: false
+    }
+  },
   computed: {
     theme() {
       return this.$store.state.app.theme;

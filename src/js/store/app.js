@@ -15,7 +15,7 @@ const defaultState = {
           { title: 'Places', route: 'places', icon: 'places.svg' },
           { title: 'People', route: 'people', icon: 'people.svg' },
           { title: 'Service', url: 'https://uconn-test.modolabs.net/myuconn/bus_tracker_transloc/index', icon: 'settings.svg' },
-          { title: 'Search', route: 'search', icon: 'search.svg' }
+          { title: 'Search', component: 'search', icon: 'search.svg' }
         ],
         item: {
           bg: '#fff',

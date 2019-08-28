@@ -122,6 +122,12 @@ export default {
         case "{clear}":
           this.input = "";
           break;
+
+        // Added for parent interaction
+        case "{cancel}":
+          this.$parent.searchIsOpen = false;
+          break;
+          
         default:
           console.log(button);
           break;

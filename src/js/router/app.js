@@ -6,10 +6,10 @@ export default [
     path: '/',
     component: Index
   },
-  {
-    name: 'search',
-    path: '/search',
-    component: () =>
-      import(/* webpackChunkName: 'search' */ '../pages/Search.vue')
-  }
+  //{
+  //  name: 'search',
+  //  path: '/search',
+  //  component: () =>
+  //    import(/* webpackChunkName: 'search' */ '../pages/Search.vue')
+  //}
 ];
