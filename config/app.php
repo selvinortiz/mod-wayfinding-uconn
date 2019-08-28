@@ -1,5 +1,6 @@
 <?php
 
+use modules\feeds\FeedsModule;
 use modules\sys\SysModule;
 
 /**
@@ -22,7 +23,8 @@ use modules\sys\SysModule;
 
 return [
     'modules' => [
-        'sys' => SysModule::class,
+        'sys'   => SysModule::class,
+        'feeds' => FeedsModule::class,
     ],
-    'bootstrap' => ['sys'],
+    'bootstrap' => ['sys', 'feeds'],
 ];
