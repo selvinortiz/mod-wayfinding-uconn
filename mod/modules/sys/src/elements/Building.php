@@ -16,7 +16,7 @@ class Building extends Element
     const TYPE_HANDLE    = 'building';
     const SECTION_HANDLE = 'places';
 
-    public $typeId    = 3;
+    public $typeId    = 5;
     public $sectionId = 2;
 
     public static function getQuery()

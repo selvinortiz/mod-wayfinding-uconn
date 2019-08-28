@@ -61,20 +61,6 @@ class Feed extends BaseJob
 
         // feeds()->info('Ready to import {total} items 🚀', compact('total'));
 
-        /*
-        <campus>Storrs</campus>
-        <building-city>Storrs</building-city>
-        <building-name>Information Technology Services</building-name>
-        <building-postal-zip>06269</building-postal-zip>
-        <building-state>CT</building-state>
-        <building-street-address>25 Gampel Service Dr</building-street-address>
-        <destination-name>Office 101A</destination-name>
-        <display-on-directory>FALSE</display-on-directory>
-        <floor>1</floor>
-        <room-number>101A</room-number>
-        <room-uid>TAB-1-1101A</room-uid>
-        */
-
         foreach ($root as $element)
         {
             $step++;
@@ -94,18 +80,18 @@ class Feed extends BaseJob
             }
 
             // BUILDING
+            $buildingName = $this->str($element, 'building-name');
+
             $building = Building::query()
-                ->buildingName($this->str($element, 'building-name'))
+                ->buildingName($buildingName)
                 ->one();
 
             if (!$building)
             {
-                $name = $this->str($element, 'building');
-
                 $building = new Building([
                     'newParentId'     => $campus->id,
-                    'buildingKey'     => sprintf('c%sb%s', $campus->id, ElementHelper::createSlug($name)),
-                    'buildingName'    => $name,
+                    'buildingKey'     => sprintf('c%sb%s', $campus->id, ElementHelper::createSlug($buildingName)),
+                    'buildingName'    => $buildingName,
                     'buildingAddress' => $this->str($element, 'building-street-address'),
                     'buildingCity'    => $this->str($element, 'building-city'),
                     'buildingState'   => $this->str($element, 'building-state'),
@@ -173,7 +159,7 @@ class Feed extends BaseJob
             $this->setProgress($queue, $step / $total);
         }
 
-        feeds()->info('Done importing {total} {id} 👍', compact('total', 'id'));
+        // feeds()->info('Done importing {total} {id} 👍', compact('total', 'id'));
 
         return true;
     }
