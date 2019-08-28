@@ -33,8 +33,7 @@ new Vue({
     ModKeyboard,
   },
   metaInfo: {
-    title: "App",
-    titleTemplate: "%s | ModCore™"
+    title: "UCONN Wayfinding",
   },
   data: {
     appClasses: ""
