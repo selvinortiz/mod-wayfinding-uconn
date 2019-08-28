@@ -5,6 +5,7 @@ namespace modules\feeds\queue;
 use Craft;
 use craft\elements\Entry;
 use craft\helpers\App;
+use craft\helpers\ElementHelper;
 use craft\queue\BaseJob;
 use Throwable;
 use modules\sys\elements\Building;
@@ -86,7 +87,7 @@ class Feed extends BaseJob
             if (!$campus)
             {
                 $campus = new Campus([
-                    'campusName' => $this->str($element, 'campus'),
+                    'campusName'  => $this->str($element, 'campus'),
                 ]);
 
                 $elements->saveElement($campus);
@@ -99,9 +100,16 @@ class Feed extends BaseJob
 
             if (!$building)
             {
+                $name = $this->str($element, 'building');
+
                 $building = new Building([
-                    'parentId'     => $campus->id,
-                    'buildingName' => $this->str($element, 'building'),
+                    'newParentId'     => $campus->id,
+                    'buildingKey'     => sprintf('c%sb%s', $campus->id, ElementHelper::createSlug($name)),
+                    'buildingName'    => $name,
+                    'buildingAddress' => $this->str($element, 'building-street-address'),
+                    'buildingCity'    => $this->str($element, 'building-city'),
+                    'buildingState'   => $this->str($element, 'building-state'),
+                    'buildingZipcode' => $this->str($element, 'building-postal-zip')
                 ]);
 
                 $elements->saveElement($building);
@@ -116,17 +124,17 @@ class Feed extends BaseJob
                 continue;
             }
 
-            $floorId = sprintf('uid%s%s%s', $campus->id, $building->id, $this->str($element, 'floor'));
+            $floorKey = sprintf('c%sb%sf%s', $campus->id, $building->id, $floorFromXml);
 
             $floor = Floor::query()
-                ->floorId(sprintf('c%sb%sf%s', $campus->id, $building->id, $floorFromXml))
+                ->floorKey($floorKey)
                 ->one();
 
             if (!$floor)
             {
                 $floor = new Floor([
-                    'parentId'    => $building->id,
-                    'floorId'     => $floorId,
+                    'newParentId' => $building->id,
+                    'floorKey'     => $floorKey,
                     'floorNumber' => $floorFromXml,
                 ]);
 
@@ -142,21 +150,21 @@ class Feed extends BaseJob
                 continue;
             }
 
-            $roomId = sprintf('c%sb%sf%sr%s', $campus->id, $building->id, $floor->id, $roomFromXml);
+            $roomKey = sprintf('c%sb%sf%sr%s', $campus->id, $building->id, $floor->id, $roomFromXml);
 
             // Give the feed a chance to define the room id
-            $roomId = $this->str($element, 'room-uid', $roomId);
+            $roomKey = $this->str($element, 'room-uid', $roomKey);
 
             $room = Room::query()
-                ->roomId(sprintf('c%sb%sf%s', $campus->id, $building->id, $roomFromXml))
+                ->roomKey($roomKey)
                 ->one();
 
             if (!$room)
             {
                 $room = new Room([
-                    'parentId'    => $floor->id,
-                    'roomId'     => $roomId,
-                    'roomNumber' => $roomFromXml,
+                    'newParentId' => $floor->id,
+                    'roomKey'     => $roomKey,
+                    'roomNumber'  => $roomFromXml,
                 ]);
 
                 $elements->saveElement($room);
