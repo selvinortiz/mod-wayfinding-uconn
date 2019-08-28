@@ -64,10 +64,6 @@
   </div>
 </template>
 
-<style>
-@import "./style.scss";
-</style>
-
 <script>
 export default {
   props: {

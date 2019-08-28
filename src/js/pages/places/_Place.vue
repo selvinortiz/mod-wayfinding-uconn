@@ -65,9 +65,9 @@
           <!--Half-->
           <div class="w-1/2 text-center">
 
-            <div :class="'w-full flex items-center h-12 px-6 border-2 border-'+primaryColor">
-              Choose Destination
-            </div>
+            <select :class="'w-full flex items-center h-12 px-6 border-2 border-'+primaryColor">
+              <option class="hidden" value="" disabled selected>Choose Destination</option>
+            </select>
 
             <div :class="'text-'+primaryColor">
               Don't see what you're looking for? <u>Switch to SEARCH</u>
