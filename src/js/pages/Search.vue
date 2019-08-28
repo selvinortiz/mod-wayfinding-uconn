@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <div class="mx-auto max-h-screen" style="display: grid; grid-template-rows: 1fr 1fr; max-width: 720px; outline: 1px red solid">
+    <div class="mx-auto max-h-screen" style="display: grid; grid-template-rows: 1fr 1fr; max-width: 50%;">
       <section>
         <div v-if="results.length" class="animated slideInDown overflow-y-scroll overflow-x-hidden" style="max-height: 40vh">
           <mod-page-header>Results</mod-page-header>
@@ -21,7 +21,7 @@
         </div>
       </section>
 
-      <section style="height: 330px; outline: 1px blue solid">
+      <section style="height: 330px;">
         <mod-page-header>Search</mod-page-header>
         <div class="flex items-center my-4 border border-gray-200 animated fadeIn">
           <select v-model="context" class="bg-transparent outline-none focus:outline-none">
