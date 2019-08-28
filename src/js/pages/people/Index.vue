@@ -1,6 +1,6 @@
 <template>
   <div v-if="people" class="flex flex-wrap">
-    <div class="w-full p-4 overflow-scroll" style="height: 60vh">
+    <div class="w-full p-4 overflow-y-scroll overflow-x-hidden" style="height: 60vh">
       <!--mod-page-header>People</mod-page-header-->
 
       <div class="mb-1 text-3xl text-blue-800 font-300">DIRECTORY</div>
