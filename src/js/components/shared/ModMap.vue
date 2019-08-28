@@ -3,38 +3,64 @@
 
     <div
       id="imageContainer"
-      class="imageContainer"
+      class="overflow-hidden relative mb-4"
+      style="height: 50vh; outline: 1px gray solid"
       @mousedown="startDrag($event)"
       @mousemove="dragMap($event)"
       @mouseup="stopDrag()"
       @mouseleave="stopDrag()"
     >
+    <!---->
       <img
         v-if="place.loaded"
         id="image"
-        class="image"
+        class="w-full"
         :style="{'transform': `scale(${zoom}) translate(${translateX + 'px'}, ${translateY + 'px'})`}"
         :src="getSelectedMap().image"
         @load="centerMap()"
         draggable="false"
-        alt="Map"
       />
+      <!--map.image-->
+      <div v-if="place.loaded" class="w-1/6 absolute bottom-0 right-0" style="outline: 1px red solid">
+        <img
+          @click="() => selectedMap = map"
+          v-for="(map, index) in place.maps"
+          :key="index"
+          class="w-full"
+          :src="map.image"
+          draggable="false"
+        />
+      </div>
 
     </div>
 
-    <button @click="zoomMap(1)">Zoom In</button>
-    <button @click="zoomMap(-1)">Zoom Out</button>
+    <div class="flex w-full justify-start">
 
-    <div v-if="place.loaded">
-      <img
-        @click="() => selectedMap = map"
-        v-for="(map, index) in place.maps"
-        :key="index"
-        class="altImage"
-        :src="map.image"
-        draggable="false"
-      />
+
+        <button :class="'flex w-1/4 justify-center mr-4 bg-transparent '+
+                        'font-semibold hover:text-white py-2 px-4 border hover:border-transparent '+
+                        'hover:bg-'+primaryColor+' text-'+primaryColor+' border-'+primaryColor">
+          Campus Map
+        </button>
+
+        <button :class="'flex w-1/4 justify-center bg-transparent '+
+                        'font-semibold hover:text-white py-2 px-4 border hover:border-transparent '+
+                        'hover:bg-'+primaryColor+' text-'+primaryColor+' border-'+primaryColor">
+          Building Map
+        </button>
+
+        <div class="flex w-1/2 justify-end">
+          <button class="w-10 mr-2" @click="zoomMap(1)">
+            <img src="http://placehold.it/500"/>
+          </button>
+          <button class="w-10" @click="zoomMap(-1)">
+            <img src="http://placehold.it/500"/>
+          </button>
+        </div>
+
+
     </div>
+
   </div>
 </template>
 
@@ -62,6 +88,11 @@ export default {
         ],
         loaded: false
       })
+    },
+
+    primaryColor: {
+      type: String,
+      default: null
     }
   },
   data() {

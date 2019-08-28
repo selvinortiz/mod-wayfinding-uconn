@@ -19,23 +19,7 @@
       <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-2 md:w-full md:order-1">
 
         <div class="flex w-full">
-          <mod-map :place="person"></mod-map>
-        </div>
-
-        <div class="flex w-full justify-center lg:justify-end xl:justify-end">
-
-          <button :class="'flex w-1/4 justify-center m-4 bg-transparent '+
-                          'font-semibold hover:text-white py-2 px-4 border hover:border-transparent '+
-                          'hover:bg-'+primaryColor+' text-'+primaryColor+' border-'+primaryColor">
-            Campus Map
-          </button>
-
-          <button :class="'flex w-1/4 justify-center m-4 bg-transparent '+
-                          'font-semibold hover:text-white py-2 px-4 border hover:border-transparent '+
-                          'hover:bg-'+primaryColor+' text-'+primaryColor+' border-'+primaryColor">
-            Building Map
-          </button>
-
+          <mod-map :place="person" :primaryColor="primaryColor"></mod-map>
         </div>
 
       </div>

@@ -38,7 +38,7 @@ export default {
   },
   data() {
     return {
-      searchIsOpen: true
+      searchIsOpen: false
     }
   },
   computed: {
