@@ -13,6 +13,8 @@ Below is a list of tools, resources, and dependencies that were used when buildi
 ## Requirements
 > You'll need [composer](https://getcomposer.org/) and [npm](https://www.npmjs.com/) to collaborate on this project.
 
+### Install
+
 #### 1. Clone repository
 
 ```bash
@@ -46,6 +48,23 @@ Specifically, you should update `{http://yoursiteurl.test}` to your local site U
 ```bash
 npm run start:sync
 ```
+
+---
+
+### Schema
+All project derived from ModCore would need to run a few additional steps to setup the schema correctly.
+
+#### 1. Install required plugins already available as composer dependencies
+
+```bash
+./craft install/plugin smart-fields
+./craft install/plugin hidden-fields
+./craft install/plugin redactor
+./craft install/plugin architect
+```
+
+#### 2. Rebuild schema using `/db/schema.json`
+Head over to the CP (`/admin`) and click on *Architect* link on the sidebar. Paste the content from `schema.json` into the import text box and run
 
 ---
 
