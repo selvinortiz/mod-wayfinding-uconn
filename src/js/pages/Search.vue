@@ -104,7 +104,6 @@ export default {
           } else {
             this.searchErrorMessage = response.data.message;
           }
-
           this.searching = false;
         })
         .catch(error => console.error(error));
@@ -127,7 +126,7 @@ export default {
         case "{cancel}":
           this.$parent.searchIsOpen = false;
           break;
-          
+
         default:
           console.log(button);
           break;
