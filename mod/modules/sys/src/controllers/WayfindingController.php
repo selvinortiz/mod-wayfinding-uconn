@@ -111,7 +111,7 @@ class WayfindingController extends Controller
      */
     public function actionPlaces()
     {
-        $places = Place::query()->all();
+        $places = Place::query()->limit(100)->all();
 
         if (!$places)
         {
@@ -145,7 +145,7 @@ class WayfindingController extends Controller
      */
     public function actionPeople()
     {
-        $people = Person::query()->all();
+        $people = Person::query()->limit(100)->all();
 
         if (!$people)
         {
