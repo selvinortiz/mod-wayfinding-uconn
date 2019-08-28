@@ -49,15 +49,18 @@ class MarkerCoordinatesField extends Field
          */
         $parent = $element->getParent();
 
-        if ($parent->type->handle == 'campus')
+        if ($parent)
         {
-            $map   = $parent->campusMap->one() ?? null;
-            $image = $map ? $map->getUrl() : null;
-        }
-        else
-        {
-            $map   = $parent->floorMap->one() ?? null;
-            $image = $map ? $map->getUrl() : null;
+            if ($parent->type->handle == 'campus')
+            {
+                $map   = $parent->campusMap->one() ?? null;
+                $image = $map ? $map->getUrl() : null;
+            }
+            else
+            {
+                $map   = $parent->floorMap->one() ?? null;
+                $image = $map ? $map->getUrl() : null;
+            }
         }
 
         return empty($image) ? '' : Craft::$app
