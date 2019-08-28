@@ -1,14 +1,16 @@
 {
   "require": {
-    "craftcms/cms": "3.2.10",
-    "craftcms/feed-me": "^4.1",
+    "craftcms/cms": "3.3.0.1",
     "craftcms/redactor": "2.3.3.2",
+    "pennebaker/craft-architect": "^2.3",
+    "selvinortiz/hiddenfields": "^1.1",
     "selvinortiz/smartfields": "^1.0",
     "vlucas/phpdotenv": "^2.4.0"
   },
   "autoload": {
     "psr-4": {
-      "modules\\sys\\": "mod/modules/sys/src/"
+      "modules\\sys\\": "mod/modules/sys/src/",
+      "modules\\feeds\\": "mod/modules/feeds/src/"
     }
   },
   "repositories": [

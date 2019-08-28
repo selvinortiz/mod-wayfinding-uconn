@@ -10,4 +10,7 @@ class Floor extends Element
 {
     const TYPE_HANDLE    = 'floor';
     const SECTION_HANDLE = 'places';
+
+    public $typeId    = 6;
+    public $sectionId = 2;
 }
