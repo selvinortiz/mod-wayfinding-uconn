@@ -4,6 +4,7 @@ namespace modules\sys\controllers;
 
 use craft\helpers\UrlHelper;
 use craft\web\Controller;
+use craft\elements\Category;
 use modules\sys\elements\Building;
 use modules\sys\elements\Campus;
 use modules\sys\elements\Place;
@@ -153,5 +154,21 @@ class WayfindingController extends Controller
         }
 
         return sys()->web->asJson('Found people', compact('people'));
+    }
+
+    /**
+     * @return Response
+     * @throws HttpException
+     */
+    public function actionDepartments()
+    {
+        $departments = Category::find()->groupId(1)->limit(100)->all();
+
+        if (!$departments)
+        {
+            return sys()->web->asJsonWithError('Did not find any departments');
+        }
+
+        return sys()->web->asJson('Found departments', compact('departments'));
     }
 }
