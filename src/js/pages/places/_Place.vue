@@ -23,7 +23,7 @@
           <mod-map :place="place"></mod-map>
         </div>
 
-        <div class="flex w-full lg:justify-end md:justify-center sm:justify-center">
+        <div class="flex w-full justify-center lg:justify-end xl:justify-end">
 
           <button :class="'flex w-1/4 justify-center m-4 bg-transparent '+
                           'font-semibold hover:text-white py-2 px-4 border hover:border-transparent '+
