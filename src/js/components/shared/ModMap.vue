@@ -21,7 +21,7 @@
         draggable="false"
       />
       <!--map.image-->
-      <div v-if="place.loaded" class="w-1/6 absolute bottom-0 right-0" style="outline: 1px red solid">
+      <div v-if="place.loaded" class="w-1/6 absolute bottom-0 right-0">
         <img
           @click="() => selectedMap = map"
           v-for="(map, index) in place.maps"

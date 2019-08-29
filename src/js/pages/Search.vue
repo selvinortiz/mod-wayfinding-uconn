@@ -1,8 +1,8 @@
 <template>
   <div class="p-4">
-    <div class="mx-auto max-h-screen" style="display: grid; grid-template-rows: 1fr 1fr; max-width: 50%;">
+    <div class="mx-auto" style="display: grid; grid-template-rows: 1fr 1fr; max-width: 50%; height: 100vh">
       <section>
-        <div v-if="results.length" class="animated slideInDown overflow-y-scroll overflow-x-hidden" style="max-height: 40vh">
+        <div v-if="results.length" class="animated slideInDown overflow-y-scroll overflow-x-hidden" style="max-height: 50vh">
           <mod-page-header>Results</mod-page-header>
           <div class="flex flex-wrap -mx-2 lg:-mx-4">
             <div

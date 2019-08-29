@@ -36,6 +36,7 @@ export default {
         }
 
         this.places = response.data.places;
+        //console.log(this.places);
       })
       .catch(error => console.error(error));
   }
