@@ -9,7 +9,9 @@
               class="w-full lg:w-1/2 xl:w-1/3 flex my-2 px-2 lg:my-4 lg:px-4"
               v-for="result in results"
               :key="result.id"
+              @click="() => $store.state.app.searchIsOpen = false"
             >
+              <!-- Router link path is off -->
               <router-link
                 class="flex-1 p-4 border border-gray-300 bg-gray-100 rounded"
                 :to="{name: 'person', params: {id: result.id}}"
@@ -101,6 +103,7 @@ export default {
         .then(response => {
           if (response.data.success) {
             this.results = response.data.results;
+            console.log(this.results);
           } else {
             this.searchErrorMessage = response.data.message;
           }
@@ -124,7 +127,7 @@ export default {
 
         // Added for parent interaction
         case "{cancel}":
-          this.$parent.searchIsOpen = false;
+          this.$store.state.app.searchIsOpen = false;
           break;
 
         default:

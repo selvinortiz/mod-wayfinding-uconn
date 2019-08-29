@@ -3,21 +3,13 @@
     
     <!--mod-page-header>Place</mod-page-header-->
 
-    <div class="w-full flex flex-wrap justify-center lg:hidden">
-        <div class="lg:w-11/12 w-full mb-4">
-          <div :class="'text-3xl text-'+primaryColor+' font-300'">WAYFINDING</div>
-          <div :class="'text-1xl text-'+primaryColor">
-            {{ 'Breadcrumb nav 1' }}
-            >
-            {{ 'Breadcrumb nav 2' }}
-          </div>
-        </div>
-    </div>
+    <place-header classes="flex lg:hidden" :primaryColor="primaryColor"></place-header>
 
-    <div class="flex flex-wrap">
+
+    <div class="flex flex-wrap justify-center">
 
       <!--Half page-->
-      <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-2 md:w-full md:order-1">
+      <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-2 md:w-11/12 md:mb-6 md:order-1">
 
         <div class="w-full">
           <mod-map :place="place" :primaryColor="primaryColor"></mod-map>
@@ -28,55 +20,8 @@
       <!--Half page-->
       <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-1 md:w-full md:order-2">
 
-        <!--Weird height issues-->
-        <div class="w-full justify-center hidden lg:flex">
-            <div class="lg:w-11/12 w-full mb-4">
-              <div :class="'text-3xl text-'+primaryColor+' font-300'">WAYFINDING</div>
-              <div :class="'text-1xl text-'+primaryColor">
-                {{ 'Breadcrumb nav 1' }}
-                >
-                {{ 'Breadcrumb nav 2' }}
-              </div>
-            </div>
-        </div>
+        <place-info :place="place" :primaryColor="primaryColor"></place-info>
 
-        <div class="flex flex-wrap w-11/12">
-
-          <div :class="'w-full mb-4 text-2xl font-black text-'+primaryColor">
-            {{place.title}}
-          </div>
-
-          <!--Half-->
-          <div class="w-1/2">
-
-            <img class="w-4/5 mb-4" src="http://placehold.it/500"/>
-
-            <div :class="'font-bold mb-4 text-'+primaryColor">Phone Number</div>
-
-            <div :class="'font-bold text-'+primaryColor">Address Line 1</div>
-            <div :class="'font-bold mb-4 text-'+primaryColor">Address Line 2</div>
-
-            <div :class="'text-'+primaryColor">
-              Place Description
-            </div>
-
-          </div>
-
-          <!--Half-->
-          <div class="w-1/2 text-center">
-
-            <select :class="'w-full flex items-center h-12 px-6 border-2 border-'+primaryColor">
-              <option class="hidden" value="" disabled selected>Choose Destination</option>
-            </select>
-
-            <div :class="'text-'+primaryColor">
-              Don't see what you're looking for? <u>Switch to SEARCH</u>
-            </div>
-
-          </div>
-
-        </div>
-        
       </div>
 
     </div>
@@ -87,13 +32,17 @@
 <script>
 import axios from "../../utils/Axios";
 import ModMap from '../../components/shared/ModMap.vue'
+import PlaceHeader from '../../components/shared/PlaceHeader.vue'
+import PlaceInfo from '../../components/shared/PlaceInfo.vue'
 
 export default {
   metaInfo: {
     title: "Place"
   },
   components: {
-    ModMap
+    ModMap,
+    PlaceHeader,
+    PlaceInfo
   },
   data() {
     return {
@@ -104,14 +53,14 @@ export default {
   },
   created() {
     axios.post("/actions/sys/wayfinding/place", {
-      id: this.$route.params.id
+      id: 375//this.$route.params.id
     })
     .then(response => {
       this.place = {
         ...response.data.place,
         loaded: true
       };
-      //console.log(this.place);
+      console.log(this.place);
     })
     .catch(error => console.error(error));
   }

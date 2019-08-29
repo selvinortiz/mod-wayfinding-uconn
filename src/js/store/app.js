@@ -32,7 +32,9 @@ const defaultState = {
       }
     }
   },
-  initialized: false
+  initialized: false,
+
+  searchIsOpen: false
 };
 
 export default {
