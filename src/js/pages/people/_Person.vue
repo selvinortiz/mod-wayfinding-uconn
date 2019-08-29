@@ -1,80 +1,25 @@
 <template>
-  <div class="p-4">
+  <div class="p-8">
+
     <!--mod-page-header>Person</mod-page-header-->
 
-    <div class="w-full flex flex-wrap justify-center lg:hidden">
-        <div class="lg:w-11/12 w-full mb-4">
-          <div :class="'text-3xl text-'+primaryColor+' font-300'">DIRECTORY</div>
-          <div :class="'text-1xl text-'+primaryColor">
-            {{ 'Breadcrumb nav 1' }}
-            >
-            {{ 'Breadcrumb nav 2' }}
-          </div>
-        </div>
-    </div>
+    <people-place-header heading="DIRECTORY" classes="flex lg:hidden" :primaryColor="primaryColor"></people-place-header>
+
     
-    <div class="flex flex-wrap">
+    <div class="flex flex-wrap justify-center">
 
-      <!--Half page-->
-      <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-2 md:w-full md:order-1">
+      <div class="flex flex-wrap justify-center 
+      lg:w-1/2 lg:order-2 md:w-full md:mb-6 md:order-1">
 
-        <div class="flex w-full">
-          <mod-map :place="person" :primaryColor="primaryColor"></mod-map>
-        </div>
+        <mod-map :place="person" :primaryColor="primaryColor"></mod-map>
 
       </div>
 
-      <!--Half page-->
-      <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-1 md:w-full md:order-2">
+      
+      <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-1 md:w-full md:order-2 m-x-0"
+      style="outline: 1px red solid">
 
-        <!--Weird height issues-->
-        <div class="w-full justify-center hidden lg:flex">
-            <div class="lg:w-11/12 w-full mb-4">
-              <div :class="'text-3xl text-'+primaryColor+' font-300'">DIRECTORY</div>
-              <div :class="'text-1xl text-'+primaryColor">
-                {{ 'Breadcrumb nav 1' }}
-                >
-                {{ 'Breadcrumb nav 2' }}
-              </div>
-            </div>
-        </div>
-
-        <div class="flex flex-wrap w-11/12">
-
-          <!--Half-->
-          <div :class="'w-3/5 text-'+primaryColor">
-
-            <div :class="'font-black mb-4 text-2xl text-'+primaryColor">{{ person.personFirstName }} {{ person.personLastName}}</div>
-
-            <div class="font-bold">Title 1</div>
-            <div>Department</div>
-            <div class="font-bold">Title 2</div>
-            <div class="mb-4">Department</div>
-
-            <div class="font-bold">Building Name</div>
-            <div>Suite #</div>
-            <div class="mb-4">Floor #</div>
-
-            <div>Address Line 1</div>
-            <div class="mb-4">Address Line 2</div>
-
-            <div class="font-bold">{{person.personPhone}}</div>
-            <div class="font-bold mb-4">{{person.personEmail}}</div>
-
-            <div>{{person.personDescription}}</div>
-
-          </div>
-
-          <!--Half-->
-          <div class="w-2/5 text-center">
-
-            <img class="w-3/5 mb-6" style="max-width: 300px" src="http://placehold.it/500"/>
-
-            <div :class="'w-3/5 w-auto text-'+primaryColor+' border border-'+primaryColor">Send to Phone</div>
-
-          </div>
-
-        </div>
+        <person-info :person="person" :primaryColor="primaryColor"></person-info>
           
       </div>
 
@@ -85,7 +30,9 @@
 
 <script>
 import axios from "../../utils/Axios";
+import PeoplePlaceHeader from '../../components/shared/PeoplePlaceHeader.vue'
 import ModMap from '../../components/shared/ModMap.vue'
+import PersonInfo from '../../components/shared/PersonInfo.vue'
 
 export default {
   metaInfo() {
@@ -93,15 +40,17 @@ export default {
       title: this.title,
     }
   },
+  components: {
+    PeoplePlaceHeader,
+    ModMap,
+    PersonInfo
+  },
   data() {
     return {
       person: {},
 
       primaryColor: 'blue-800'
     };
-  },
-  components: {
-    ModMap
   },
   computed: {
     title() {
@@ -115,7 +64,7 @@ export default {
       })
       .then(response => {
         this.person = response.data.person;
-        console.log(this.person);
+        //console.log(this.person);
       })
       .catch(error => console.error(error));
   }

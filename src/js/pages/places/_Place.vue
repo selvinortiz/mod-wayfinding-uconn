@@ -1,24 +1,23 @@
 <template>
-  <div class="p-4">
+  <div class="p-8">
     
     <!--mod-page-header>Place</mod-page-header-->
 
-    <place-header classes="flex lg:hidden" :primaryColor="primaryColor"></place-header>
+    <people-place-header heading="WAYFINDING" classes="flex lg:hidden" :primaryColor="primaryColor"></people-place-header>
 
 
     <div class="flex flex-wrap justify-center">
 
-      <!--Half page-->
-      <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-2 md:w-11/12 md:mb-6 md:order-1">
+      <div class="flex flex-wrap justify-center 
+      lg:w-1/2 lg:order-2 md:w-full md:mb-6 md:order-1">
 
-        <div class="w-full">
-          <mod-map :place="place" :primaryColor="primaryColor"></mod-map>
-        </div>
+        <mod-map :place="place" :primaryColor="primaryColor"></mod-map>
 
       </div>
 
-      <!--Half page-->
-      <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-1 md:w-full md:order-2">
+      
+      <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-1 md:w-full md:order-2"
+      style="outline: 1px red solid">
 
         <place-info :place="place" :primaryColor="primaryColor"></place-info>
 
@@ -31,8 +30,8 @@
 
 <script>
 import axios from "../../utils/Axios";
+import PeoplePlaceHeader from '../../components/shared/PeoplePlaceHeader.vue'
 import ModMap from '../../components/shared/ModMap.vue'
-import PlaceHeader from '../../components/shared/PlaceHeader.vue'
 import PlaceInfo from '../../components/shared/PlaceInfo.vue'
 
 export default {
@@ -40,8 +39,8 @@ export default {
     title: "Place"
   },
   components: {
+    PeoplePlaceHeader,
     ModMap,
-    PlaceHeader,
     PlaceInfo
   },
   data() {
