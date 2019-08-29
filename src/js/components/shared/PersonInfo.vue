@@ -3,8 +3,7 @@
 
 		<people-place-header heading="DIRECTORY" classes="hidden lg:flex" :primaryColor="primaryColor"></people-place-header>
 
-
-		<div class="w-full flex flex-wrap justify-center p-4" style="outline: 1px red solid">
+		<div class="w-full flex flex-wrap justify-center p-4">
 
 			<!-- 3/5 -->
 			<div :class="'w-3/5 text-'+primaryColor">
@@ -34,7 +33,6 @@
 			<div class="w-2/5">
 
 				<img class="w-3/5 mb-6" style="max-width: 300px" src="http://placehold.it/500"/>
-
 				<div :class="'w-3/5 text-center text-'+primaryColor+' border border-'+primaryColor">Send to Phone</div>
 
 			</div>

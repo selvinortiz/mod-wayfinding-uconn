@@ -5,7 +5,6 @@
 
     <people-place-header heading="WAYFINDING" classes="flex lg:hidden" :primaryColor="primaryColor"></people-place-header>
 
-
     <div class="flex flex-wrap justify-center">
 
       <div class="flex flex-wrap justify-center 
@@ -14,10 +13,8 @@
         <mod-map :place="place" :primaryColor="primaryColor"></mod-map>
 
       </div>
-
       
-      <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-1 md:w-full md:order-2"
-      style="outline: 1px red solid">
+      <div class="lg:w-1/2 lg:order-1 md:w-full md:order-2">
 
         <place-info :place="place" :primaryColor="primaryColor"></place-info>
 

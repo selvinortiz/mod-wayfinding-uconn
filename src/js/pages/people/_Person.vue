@@ -5,7 +5,6 @@
 
     <people-place-header heading="DIRECTORY" classes="flex lg:hidden" :primaryColor="primaryColor"></people-place-header>
 
-    
     <div class="flex flex-wrap justify-center">
 
       <div class="flex flex-wrap justify-center 
@@ -14,10 +13,8 @@
         <mod-map :place="person" :primaryColor="primaryColor"></mod-map>
 
       </div>
-
       
-      <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-1 md:w-full md:order-2 m-x-0"
-      style="outline: 1px red solid">
+      <div class="lg:w-1/2 lg:order-1 md:w-full md:order-2">
 
         <person-info :person="person" :primaryColor="primaryColor"></person-info>
           

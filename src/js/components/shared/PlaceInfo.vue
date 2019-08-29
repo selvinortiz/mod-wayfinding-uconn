@@ -3,8 +3,7 @@
 
 		<people-place-header heading="WAYFINDING" classes="hidden lg:flex" :primaryColor="primaryColor"></people-place-header>
 
-
-		<div class="w-full flex flex-wrap justify-center p-4" style="outline: 1px red solid">
+		<div class="w-full flex flex-wrap justify-center p-4">
 
 			<div :class="'w-full mb-4 text-2xl font-black text-'+primaryColor">
 				{{place.title}}

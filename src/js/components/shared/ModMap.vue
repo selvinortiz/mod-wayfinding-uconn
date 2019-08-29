@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="w-full md:px-4">
 
     <div
       id="imageContainer"
