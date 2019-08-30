@@ -14,7 +14,7 @@
               <!-- Router link path is off -->
               <router-link
                 class="flex-1 p-4 border border-gray-300 bg-gray-100 rounded"
-                :to="{name: 'person', params: {id: result.id}}"
+                :to="{name: result.type, params: {id: result.id}}"
               >
                 <p class="font-thin text-xl">{{ result.title }}</p>
               </router-link>

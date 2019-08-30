@@ -50,7 +50,7 @@ export default {
   },
   created() {
     axios.post("/actions/sys/wayfinding/place", {
-      id: 375//this.$route.params.id
+      id: this.$route.params.id
     })
     .then(response => {
       this.place = {
