@@ -29,11 +29,6 @@ class Place extends Element
     {
         $type = $this->type->handle;
 
-        if (in_array($type, ['campus', 'floor']))
-        {
-            return null;
-        }
-
         $url = sprintf('maps/%s/%s/%s.svg', $type, $this->parent->id, $this->id);
 
         return UrlHelper::url($url);
