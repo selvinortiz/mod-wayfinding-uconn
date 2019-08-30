@@ -25,17 +25,6 @@ class WayfindingController extends Controller
 {
     protected $allowAnonymous = true;
 
-    public function actionIndex()
-    {
-        $markers = [
-            ['x' => 626, 'y' => 296, 'fill' => 'red'],
-            ['x' => 493, 'y' => 375, 'fill' => 'green'],
-        ];
-
-        // return sys()->svg->fromSvg(UrlHelper::to('svg/map.svg'), $markers);
-        return sys()->svg->fromImage(UrlHelper::to('img/map.png'), $markers);
-    }
-
     public function actionGenerateCampusMap(int $campusId, string $buildingIds)
     {
         $campus = Campus::query()
@@ -84,40 +73,12 @@ class WayfindingController extends Controller
      */
     public function actionPlace()
     {
-        $id = sys()->web->param('id');
-
+        $id    = sys()->web->param('id');
         $place = Place::query()->id($id)->one();
 
         if (!$place)
         {
             return sys()->web->asJsonWithError('Did not find a place');
-        }
-
-        // $markers = array_map(function($building) use ($map)
-        // {
-        //     // 8 half of the circle marker width/height
-        //     $x = round(($building->placeMarker['x']/100) * $map->getWidth()) + 32 + 8;  // 32 subtracted at save time
-        //     $y = round(($building->placeMarker['y']/100) * $map->getHeight()) + 64 + 8; // 64 subtracted at save time
-
-        //     return compact('x', 'y');
-        // }, [$place->parent]);
-
-        // return sys()->web->asSvg(
-        //     sys()->svg->fromImage($map->getUrl(), $markers, $map->getWidth(), $map->getHeight())
-        // );
-
-        switch($place->type->handle) // person|campus|building|floor|room
-        {
-            case 'room':
-                $mapImage = UrlHelper::url(sprintf('maps/floor/%s/%s.svg', $place->parent->id, $place->id));
-            break;
-            case 'building':
-                $mapImage = UrlHelper::url(sprintf('maps/campus/%s/%s.svg', $place->parent->id, $place->id));
-            break;
-
-            default:
-             $mapImage = null;
-             break;
         }
 
         $response = $place->asArray([
@@ -128,11 +89,14 @@ class WayfindingController extends Controller
         $response['maps'] = [
             [
                 'markers' => [$place->placeMarker],
-                'image' => $mapImage
+                'image'   => $place->mapUrl()
             ]
         ];
 
-        return sys()->web->asJson('Place', ['place' => $response]);
+        return sys()->web->asJson(
+            'Place',
+            ['place' => array_merge($response, $place->fields())]
+        );
     }
 
     /**
