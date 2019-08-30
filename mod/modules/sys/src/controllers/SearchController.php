@@ -59,6 +59,7 @@ class SearchController extends Controller
         return array_map(
             function($element) {
                 return [
+                    'id'    => $element->id,
                     'title' => $element->title,
                     'info'  => $this->getInfoByType($element),
                     'type'  => $element->type->handle,
