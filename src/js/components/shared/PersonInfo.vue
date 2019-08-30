@@ -1,7 +1,7 @@
 <template>
 	<div>
 
-		<people-place-header heading="DIRECTORY" classes="hidden lg:flex" :primaryColor="primaryColor"></people-place-header>
+		<people-place-header heading="DIRECTORY" classes="hidden lg:flex"></people-place-header>
 
 		<div class="w-full flex flex-wrap justify-center p-4">
 
@@ -47,7 +47,7 @@ import PeoplePlaceHeader from '../../components/shared/PeoplePlaceHeader.vue'
 
 export default {
 	components: {
-			PeoplePlaceHeader
+		PeoplePlaceHeader
 	},
 	props: {
 		person: {
@@ -61,11 +61,11 @@ export default {
 				personDescription: ''
 			})
 		},
-
-    primaryColor: {
-      type: String,
-      default: null
-    }
+  },
+  data() {
+	return {
+		primaryColor: this.$store.state.app.theme.main.directory.text
+	}	
   }
 }
 </script>

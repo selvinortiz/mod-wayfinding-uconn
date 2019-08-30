@@ -3,20 +3,20 @@
 
     <!--mod-page-header>Person</mod-page-header-->
 
-    <people-place-header heading="DIRECTORY" classes="flex lg:hidden" :primaryColor="primaryColor"></people-place-header>
+    <people-place-header heading="DIRECTORY" classes="flex lg:hidden"></people-place-header>
 
     <div class="flex flex-wrap justify-center">
 
       <div class="flex flex-wrap justify-center 
       lg:w-1/2 lg:order-2 md:w-full md:mb-6 md:order-1">
 
-        <mod-map :place="person" :primaryColor="primaryColor"></mod-map>
+        <mod-map :place="person"></mod-map>
 
       </div>
       
       <div class="lg:w-1/2 lg:order-1 md:w-full md:order-2">
 
-        <person-info :person="person" :primaryColor="primaryColor"></person-info>
+        <person-info :person="person"></person-info>
           
       </div>
 
@@ -46,7 +46,8 @@ export default {
     return {
       person: {},
 
-      primaryColor: 'blue-800'
+      // Not Used
+      //primaryColor: this.$store.state.app.theme.main.directory.text
     };
   },
   computed: {

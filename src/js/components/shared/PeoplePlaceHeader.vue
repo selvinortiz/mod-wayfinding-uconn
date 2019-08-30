@@ -20,11 +20,11 @@ export default {
     classes: {
       type: String,
       default: null
-    },
-
-    primaryColor: {
-      type: String,
-      default: null
+    }
+  },
+  data() {
+    return {
+      primaryColor: this.$store.state.app.theme.main.peoplePlaceHeader.text
     }
   }
 }

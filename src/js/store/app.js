@@ -8,7 +8,20 @@ const defaultState = {
         text: '#999'
       }
     },
-    main: {},
+    main: {
+      peoplePlaceHeader: {
+        text: 'blue-800'
+      },
+      wayfinding: {
+        text: 'blue-800'
+      },
+      directory: {
+        text: 'blue-800'
+      },
+      modMap: {
+        text: 'blue-800'
+      }
+    },
     footer: {
       nav: {
         links: [

@@ -84,11 +84,6 @@ export default {
         ],
         loaded: false
       })
-    },
-
-    primaryColor: {
-      type: String,
-      default: null
     }
   },
   data() {
@@ -104,14 +99,16 @@ export default {
       dragX: null,
       dragY: null,
 
-      selectedMap: null
+      selectedMap: null,
+
+      primaryColor: this.$store.state.app.theme.main.modMap.text
     };
   },
   methods: {
     centerMap() {
       // Only run this part once at the start
       if (!this.defaultedToCenter) {
-
+        console.log(this.primaryColor);
         // Gather the smallest and largest cords for
         // finding the area encompassing all the markers
         var smallX = null, bigX = null, smallY = null, bigY = null;

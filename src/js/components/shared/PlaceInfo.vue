@@ -1,7 +1,7 @@
 <template>
 	<div>
 
-		<people-place-header heading="WAYFINDING" classes="hidden lg:flex" :primaryColor="primaryColor"></people-place-header>
+		<people-place-header heading="WAYFINDING" classes="hidden lg:flex"></people-place-header>
 
 		<div class="w-full flex flex-wrap justify-center p-4">
 
@@ -57,22 +57,22 @@ export default {
 				title: '',
 				maps: [
 				{
-						image: ''
+					image: ''
 				},
 				{
-						markers: [
-						{ width: 0, height: 0, x: 0, xr: 0, y: 0,yr: 0 }
-						]
+					markers: [
+					{ width: 0, height: 0, x: 0, xr: 0, y: 0,yr: 0 }
+					]
 				}
 				],
 				loaded: false
 			})
-		},
-
-    primaryColor: {
-      type: String,
-      default: null
-    }
+		}
+  },
+  data() {
+	return {
+		primaryColor: this.$store.state.app.theme.main.wayfinding.text
+	}
   }
 }
 </script>

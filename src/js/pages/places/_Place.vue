@@ -3,20 +3,20 @@
     
     <!--mod-page-header>Place</mod-page-header-->
 
-    <people-place-header heading="WAYFINDING" classes="flex lg:hidden" :primaryColor="primaryColor"></people-place-header>
+    <people-place-header heading="WAYFINDING" classes="flex lg:hidden"></people-place-header>
 
     <div class="flex flex-wrap justify-center">
 
       <div class="flex flex-wrap justify-center 
       lg:w-1/2 lg:order-2 md:w-full md:mb-6 md:order-1">
 
-        <mod-map :place="place" :primaryColor="primaryColor"></mod-map>
+        <mod-map :place="place"></mod-map>
 
       </div>
       
       <div class="lg:w-1/2 lg:order-1 md:w-full md:order-2">
 
-        <place-info :place="place" :primaryColor="primaryColor"></place-info>
+        <place-info :place="place"></place-info>
 
       </div>
 
@@ -44,7 +44,8 @@ export default {
     return {
       place: {},
 
-      primaryColor: 'blue-800'
+      // Not Used
+      //primaryColor: this.$store.state.app.theme.main.wayfinding.text
     }
   },
   created() {
