@@ -1,4 +1,5 @@
 const defaultState = {
+  isMobile: false,
   theme: {
     bg: '#fff',
     text: '#333',
@@ -52,14 +53,15 @@ const defaultState = {
 
 export default {
   state: { ...defaultState },
-  actions: {
-    INIT: context => {
-      context.commit('setInitialized', true);
-    }
-  },
+  // actions: {
+  //   INIT: context => {
+  //     context.commit('setInitialized', true);
+  //   }
+  // },
   mutations: {
-    setInitialized: (state, initialized = true) => {
-      state.initialized = initialized;
+    setInitialized: (state, { isMobile }) => {
+      state.isMobile = isMobile;
+      state.initialized = true;
     }
   }
 };

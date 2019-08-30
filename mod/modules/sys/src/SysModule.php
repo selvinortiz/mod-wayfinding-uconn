@@ -3,12 +3,11 @@
 namespace modules\sys;
 
 use Craft;
-use craft\events\RegisterTemplateRootsEvent;
-use craft\web\View;
+use craft\web\twig\variables\CraftVariable;
 use modules\sys\services\SvgService;
-use yii\base\Event;
 use yii\base\Exception;
 use yii\base\Module;
+use yii\base\Event;
 use modules\sys\services\WebService;
 use craft\console\Application as Console;
 
@@ -50,6 +49,19 @@ class SysModule extends Module
                 ]
             ]);
         }
+
+        Event::on(
+            CraftVariable::class,
+            CraftVariable::EVENT_INIT,
+            function(Event $e)
+            {
+                /** @var CraftVariable $variable */
+                $variable = $e->sender;
+
+                // Attach a service:
+                $variable->set('sys', SysTemplateComponent::class);
+            }
+        );
     }
 
     /**
