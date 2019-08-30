@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["person~place"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["campus~person~place~room"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/js/components/shared/ModMap.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************!*\

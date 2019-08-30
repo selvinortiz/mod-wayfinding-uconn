@@ -7,7 +7,7 @@
           <p class="font-thin text-2xl">{{ place.title }}</p>
           <router-link
             class="block text-xg text-blue-600"
-            :to="{name: 'place', params: {id: place.id}}"
+            :to="{ name: typeString(place.typeId), params: {id: place.id} }"
           >#{{ place.id }}</router-link>
         </router-link>
       </div>
@@ -17,6 +17,13 @@
 
 <script>
 import axios from "../../utils/Axios";
+
+const types = {
+  "4": "campus",
+  "5": "building",
+  "6": "floor",
+  "7": "room"
+}
 
 export default {
   metaInfo: {
@@ -39,6 +46,11 @@ export default {
         console.log(response.data);
       })
       .catch(error => console.error(error));
+  },
+  methods: {
+    typeString(typeId) {
+      return types[typeId];
+    }
   }
 };
 </script>

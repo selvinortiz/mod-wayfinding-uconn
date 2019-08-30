@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"people":"people","person~place":"person~place","person":"person","place":"place","places":"places"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"building~campus~floor~person~place~room":"building~campus~floor~person~place~room","building":"building","campus":"campus","floor":"floor","person":"person","place":"place","room":"room","people":"people","places":"places"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -4692,7 +4692,7 @@ eval("exports = module.exports = __webpack_require__(/*! ../../../css-loader/dis
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\nimg[data-v-34a9847b] {\\r\\n  width: auto;\\r\\n  max-height: 64px;\\n}\\n@media screen and (min-width: 720px) {\\nimg[data-v-34a9847b] {\\r\\n    max-height: 90px;\\n}\\n}\\r\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/partials/AppLogo.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
+eval("exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\nimg[data-v-34a9847b] {\\n  width: auto;\\n  max-height: 64px;\\n}\\n@media screen and (min-width: 720px) {\\nimg[data-v-34a9847b] {\\n    max-height: 90px;\\n}\\n}\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/partials/AppLogo.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
@@ -4703,7 +4703,7 @@ eval("exports = module.exports = __webpack_require__(/*! ../../../../node_module
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n.simple-keyboard.hg-theme-default[data-v-3011b06b] {\\r\\n  border-radius: 0;\\r\\n  background-color: #edf2f7;\\n}\\r\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/shared/ModKeyboard.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
+eval("exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n.simple-keyboard.hg-theme-default[data-v-3011b06b] {\\n  border-radius: 0;\\n  background-color: #edf2f7;\\n}\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/shared/ModKeyboard.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
@@ -5329,7 +5329,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue_
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  name: 'people',\n  path: '/people',\n  component: () => __webpack_require__.e(/*! import() | people */ \"people\").then(__webpack_require__.bind(null, /*! ../pages/people/Index.vue */ \"./src/js/pages/people/Index.vue\"))\n}, {\n  name: 'person',\n  path: '/people/:id',\n  component: () => Promise.all(/*! import() | person */[__webpack_require__.e(\"person~place\"), __webpack_require__.e(\"person\")]).then(__webpack_require__.bind(null, /*! ../pages/people/_Person.vue */ \"./src/js/pages/people/_Person.vue\"))\n}]);\n\n//# sourceURL=webpack:///./src/js/router/people.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  name: 'people',\n  path: '/people',\n  component: () => __webpack_require__.e(/*! import() | people */ \"people\").then(__webpack_require__.bind(null, /*! ../pages/people/Index.vue */ \"./src/js/pages/people/Index.vue\"))\n}, {\n  name: 'person',\n  path: '/people/:id',\n  component: () => Promise.all(/*! import() | person */[__webpack_require__.e(\"building~campus~floor~person~place~room\"), __webpack_require__.e(\"person\")]).then(__webpack_require__.bind(null, /*! ../pages/people/_Person.vue */ \"./src/js/pages/people/_Person.vue\"))\n}]);\n\n//# sourceURL=webpack:///./src/js/router/people.js?");
 
 /***/ }),
 
@@ -5341,7 +5341,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  name: 'places',\n  path: '/places',\n  component: () => __webpack_require__.e(/*! import() | places */ \"places\").then(__webpack_require__.bind(null, /*! ../pages/places/Index.vue */ \"./src/js/pages/places/Index.vue\"))\n}, {\n  name: 'place',\n  path: '/places/:id',\n  component: () => Promise.all(/*! import() | place */[__webpack_require__.e(\"person~place\"), __webpack_require__.e(\"place\")]).then(__webpack_require__.bind(null, /*! ../pages/places/_Place.vue */ \"./src/js/pages/places/_Place.vue\"))\n}]);\n\n//# sourceURL=webpack:///./src/js/router/places.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ([{\n  name: 'places',\n  path: '/places',\n  component: () => __webpack_require__.e(/*! import() | places */ \"places\").then(__webpack_require__.bind(null, /*! ../pages/places/Index.vue */ \"./src/js/pages/places/Index.vue\"))\n}, {\n  name: 'place',\n  path: '/places/:id',\n  component: () => Promise.all(/*! import() | place */[__webpack_require__.e(\"building~campus~floor~person~place~room\"), __webpack_require__.e(\"place\")]).then(__webpack_require__.bind(null, /*! ../pages/places/_Place.vue */ \"./src/js/pages/places/_Place.vue\"))\n}, {\n  name: 'campus',\n  path: '/places/campus/:id',\n  component: () => Promise.all(/*! import() | campus */[__webpack_require__.e(\"building~campus~floor~person~place~room\"), __webpack_require__.e(\"campus\")]).then(__webpack_require__.bind(null, /*! ../pages/places/_Campus.vue */ \"./src/js/pages/places/_Campus.vue\"))\n}, {\n  name: 'building',\n  path: '/places/building/:id',\n  component: () => Promise.all(/*! import() | building */[__webpack_require__.e(\"building~campus~floor~person~place~room\"), __webpack_require__.e(\"building\")]).then(__webpack_require__.bind(null, /*! ../pages/places/_Building.vue */ \"./src/js/pages/places/_Building.vue\"))\n}, {\n  name: 'floor',\n  path: '/places/floor/:id',\n  component: () => Promise.all(/*! import() | floor */[__webpack_require__.e(\"building~campus~floor~person~place~room\"), __webpack_require__.e(\"floor\")]).then(__webpack_require__.bind(null, /*! ../pages/places/_Floor.vue */ \"./src/js/pages/places/_Floor.vue\"))\n}, {\n  name: 'room',\n  path: '/places/room/:id',\n  component: () => Promise.all(/*! import() | room */[__webpack_require__.e(\"building~campus~floor~person~place~room\"), __webpack_require__.e(\"room\")]).then(__webpack_require__.bind(null, /*! ../pages/places/_Room.vue */ \"./src/js/pages/places/_Room.vue\"))\n}]);\n\n//# sourceURL=webpack:///./src/js/router/places.js?");
 
 /***/ }),
 
