@@ -20,8 +20,7 @@
  */
 
 return [
-    'maps/floor/<floorId:\d+>/<roomIds:[0-9,]+>' => 'sys/wayfinding/generate-floor-map',
-    'maps/campus/<campusId:\d+>/<buildingIds:[0-9,]+>' => 'sys/wayfinding/generate-campus-map',
-    'maps/campus/<campusId:\d+>/<buildingIds:[0-9,]+>.svg' => 'sys/wayfinding/generate-campus-map',
+    'maps/floor/<floorId:\d+>/<roomIds:[0-9,]+(.svg)?>' => 'sys/wayfinding/generate-floor-map',
+    'maps/campus/<campusId:\d+>/<buildingIds:[0-9,]+(.svg)?>' => 'sys/wayfinding/generate-campus-map',
     '<(places|people|search)+>' => ['template' => 'index']
 ];
