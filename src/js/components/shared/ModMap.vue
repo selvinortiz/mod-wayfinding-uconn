@@ -78,7 +78,7 @@ export default {
           },
           {
             markers: [
-              { width: 0, height: 0, x: 0, xr: 0, y: 0,yr: 0 }
+              { x: 0, y: 0 }
             ]
           }
         ],
@@ -116,10 +116,10 @@ export default {
         for (var ii = 0; ii < this.selectedMap.markers.length; ii++) {
           var marker = this.selectedMap.markers[ii];
 
-          smallX == null || smallX > marker.xr ? (smallX = marker.xr) : null;
-          bigX == null || bigX < marker.xr ? (bigX = marker.xr) : null;
-          smallY == null || smallY > marker.yr ? (smallY = marker.yr) : null;
-          bigY == null || bigY < marker.yr ? (bigY = marker.yr) : null;
+          smallX == null || smallX > marker.x ? (smallX = marker.x) : null;
+          bigX == null || bigX < marker.x ? (bigX = marker.x) : null;
+          smallY == null || smallY > marker.y ? (smallY = marker.y) : null;
+          bigY == null || bigY < marker.y ? (bigY = marker.y) : null;
         }
 
         // Use the relational amounts to convert to the cords for the new sized image
@@ -214,7 +214,7 @@ export default {
         */
         this.translateX += diffX;
         this.translateY += diffY;
-        
+
         this.dragX = event.x;
         this.dragY = event.y;
       }

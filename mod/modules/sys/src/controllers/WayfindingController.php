@@ -2,13 +2,16 @@
 
 namespace modules\sys\controllers;
 
+use craft\elements\Asset;
 use craft\helpers\UrlHelper;
 use craft\web\Controller;
 use craft\elements\Category;
 use modules\sys\elements\Building;
 use modules\sys\elements\Campus;
+use modules\sys\elements\Floor;
 use modules\sys\elements\Place;
 use modules\sys\elements\Person;
+use modules\sys\elements\Room;
 use yii\web\HttpException;
 use yii\web\Response;
 use function modules\sys\sys;
@@ -49,18 +52,30 @@ class WayfindingController extends Controller
             ->id($buildingIds)
             ->all();
 
-        $markers = array_map(function($building) use ($map)
+        $markers = $this->generateMarkers($map, $buildings);
+
+        return sys()->web->asSvg($this->generateImage($map, $markers));
+    }
+
+    public function actionGenerateFloorMap(int $floorId, string $roomIds)
+    {
+        $floor = Floor::query()
+            ->with(['floorMap'])
+            ->id($floorId)
+            ->one();
+
+        if (!$floor || !($map = $floor->floorMap[0] ?? null))
         {
-            // 8 half of the circle marker width/height
-            $x = round(($building->placeMarker['xr']/100) * $map->getWidth()) + 32 + 8;  // 32 subtracted at save time
-            $y = round(($building->placeMarker['yr']/100) * $map->getHeight()) + 64 + 8; // 64 subtracted at save time
+            throw new HttpException(404, 'Floor map not found');
+        }
 
-            return compact('x', 'y');
-        }, $buildings);
+        $rooms = Room::query()
+            ->id($roomIds)
+            ->all();
 
-        return sys()->web->asSvg(
-            sys()->svg->fromImage($map->getUrl(), $markers, $map->getWidth(), $map->getHeight())
-        );
+        $markers = $this->generateMarkers($map, $rooms);
+
+        return sys()->web->asSvg($this->generateImage($map, $markers));
     }
 
     /**
@@ -81,8 +96,8 @@ class WayfindingController extends Controller
         // $markers = array_map(function($building) use ($map)
         // {
         //     // 8 half of the circle marker width/height
-        //     $x = round(($building->placeMarker['xr']/100) * $map->getWidth()) + 32 + 8;  // 32 subtracted at save time
-        //     $y = round(($building->placeMarker['yr']/100) * $map->getHeight()) + 64 + 8; // 64 subtracted at save time
+        //     $x = round(($building->placeMarker['x']/100) * $map->getWidth()) + 32 + 8;  // 32 subtracted at save time
+        //     $y = round(($building->placeMarker['y']/100) * $map->getHeight()) + 64 + 8; // 64 subtracted at save time
 
         //     return compact('x', 'y');
         // }, [$place->parent]);
@@ -90,6 +105,20 @@ class WayfindingController extends Controller
         // return sys()->web->asSvg(
         //     sys()->svg->fromImage($map->getUrl(), $markers, $map->getWidth(), $map->getHeight())
         // );
+
+        switch($place->type->handle) // person|campus|building|floor|room
+        {
+            case 'room':
+                $mapImage = UrlHelper::url(sprintf('maps/floor/%s/%s.svg', $place->parent->id, $place->id));
+            break;
+            case 'building':
+                $mapImage = UrlHelper::url(sprintf('maps/campus/%s/%s.svg', $place->parent->id, $place->id));
+            break;
+
+            default:
+             $mapImage = null;
+             break;
+        }
 
         $response = $place->asArray([
             'id',
@@ -99,7 +128,7 @@ class WayfindingController extends Controller
         $response['maps'] = [
             [
                 'markers' => [$place->placeMarker],
-                'image' => UrlHelper::url(sprintf('maps/campus/%s/%s.svg', $place->parent->id, $place->id))
+                'image' => $mapImage
             ]
         ];
 
@@ -170,5 +199,38 @@ class WayfindingController extends Controller
         }
 
         return sys()->web->asJson('Found departments', compact('departments'));
+    }
+
+    private function generateMarkers(Asset $image, array $places)
+    {
+        return array_map(function($place) use ($image)
+        {
+            // 8 half of the circle marker width/height
+            $x = round(($place->placeMarker['x']/100) * $image->getWidth());
+            $y = round(($place->placeMarker['y']/100) * $image->getHeight());
+
+            return compact('x', 'y');
+        }, $places);
+    }
+
+    private function generateImage(Asset $image, array $markers)
+    {
+        // Is it an SVG?
+        if (mb_stripos($image->getUrl(), '.svg') !== false)
+        {
+            return sys()->svg->fromSvg(
+                $image->getUrl(),
+                $markers,
+                $image->getWidth(),
+                $image->getHeight()
+            );
+        }
+
+        return sys()->svg->fromImage(
+            $image->getUrl(),
+            $markers,
+            $image->getWidth(),
+            $image->getHeight()
+        );
     }
 }

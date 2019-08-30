@@ -133,32 +133,15 @@
         var x = e.pageX - $img.offset().left;
         var y = e.pageY - $img.offset().top;
 
-        // Subtract half of the rendered marker width
-        x -= $marker.width() / 2;
+        $input.val(JSON.stringify({
+            x: (x / $img.width()) * 100,
+            y: (y / $img.height()) * 100
+        }));
 
-        // Subtract rendered marker height
-        y -= $marker.height();
-
-        // Record image width and height at the time of marking
-        var w = $img.width();
-        var h = $img.height();
-
-        // Make it relative
-        var xr = x / w * 100;
-        var yr = y / h * 100;
-
-        var value = {
-            x: x,
-            xr: xr,
-            y: y,
-            yr: yr,
-            width: w,
-            height: h,
-        };
-
-        $input.val(JSON.stringify(value));
-
-        setMarkerCoordinates(xr, yr);
+        setMarkerCoordinates(
+            ((x - ($marker.width() / 2)) / $img.width()) * 100,
+            ((y - $marker.height()) / $img.height()) * 100
+        );
     });
 
     function setMarkerCoordinates(x, y) {
