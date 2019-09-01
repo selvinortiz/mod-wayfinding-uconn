@@ -16,40 +16,55 @@ class Place extends Element
 
     public $sectionId = 2;
 
+    /**
+     * When converting a place to array, its values will be stored here
+     *
+     * @var array
+     */
+    public $values = [];
+
     public static function getQuery()
     {
         $query = parent::getQuery();
 
-        // $query->with(['roomSettings:roomSettingsBlock']);
-
         return $query;
+    }
+
+    public static function touch(Place $place): Place
+    {
+        if ($place->type->handle == static::TYPE_HANDLE) {
+            $place->values = array_merge(
+                $place->getAttributes(['id', 'title', 'type']),
+                $place->getFieldValues()
+            );
+        }
+
+        return $place;
+    }
+
+    public function values()
+    {
+        return
+            Room::unpack(
+                Floor::unpack(
+                    Building::unpack(
+                        Campus::unpack($this)
+                    )
+                )
+            )
+            ->values;
     }
 
     public function mapUrl()
     {
+        if (!$this->parent) {
+            return null;
+        }
+
         $type = $this->type->handle;
 
         $url = sprintf('maps/%s/%s/%s.svg', $type, $this->parent->id, $this->id);
 
         return UrlHelper::url($url);
-    }
-
-    public function fields()
-    {
-        $fields = [];
-
-        switch ($this->type->handle)
-        {
-            case 'room':
-                $fields['floor']    = $this->parent->asArray(['id', 'title']);
-                $fields['building'] = $this->parent->parent->asArray(['id', 'title']);
-                $fields['campus']   = $this->parent->parent->parent->asArray(['id', 'title']);
-            break;
-            case 'building':
-                $fields['campus']   = $this->parent->asArray(['id', 'title']);
-            break;
-        }
-
-        return $fields;
     }
 }

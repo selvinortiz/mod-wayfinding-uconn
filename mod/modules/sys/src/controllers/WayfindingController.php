@@ -3,7 +3,6 @@
 namespace modules\sys\controllers;
 
 use craft\elements\Asset;
-use craft\helpers\UrlHelper;
 use craft\web\Controller;
 use craft\elements\Category;
 use modules\sys\elements\Building;
@@ -12,6 +11,7 @@ use modules\sys\elements\Floor;
 use modules\sys\elements\Place;
 use modules\sys\elements\Person;
 use modules\sys\elements\Room;
+use yii\db\Query;
 use yii\web\HttpException;
 use yii\web\Response;
 use function modules\sys\sys;
@@ -74,28 +74,21 @@ class WayfindingController extends Controller
     public function actionPlace()
     {
         $id    = sys()->web->param('id');
-        $place = Place::query()->id($id)->one();
+        $place = Place::query()
+        ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
+        ->id($id)
+        ->one();
 
         if (!$place)
         {
             return sys()->web->asJsonWithError('Did not find a place');
         }
 
-        $response = $place->asArray([
-            'id',
-            'title',
-        ]);
-
-        $response['maps'] = [
-            [
-                'markers' => [$place->placeMarker],
-                'image'   => $place->mapUrl()
-            ]
-        ];
+        $place = $place->values();
 
         return sys()->web->asJson(
             'Place',
-            ['place' => array_merge($response, $place->fields())]
+            ['place' => $place]
         );
     }
 

@@ -11,7 +11,7 @@ namespace modules\sys\elements;
  * @property int $itemsPerPage
  * @property int $displayOrientation
  */
-class Building extends Element
+class Building extends Place
 {
     const TYPE_HANDLE    = 'building';
     const SECTION_HANDLE = 'places';
@@ -23,8 +23,43 @@ class Building extends Element
     {
         $query = parent::getQuery();
 
-        // $query->with(['buildingSettings:settingsBlock']);
-
         return $query;
     }
+    public static function unpack(Place $place): Place
+    {
+        if ($place->type->handle == self::TYPE_HANDLE)
+        {
+            $place->values = array_merge(
+                $place->getAttributes(['id', 'title', 'type']),
+                $place->getFieldValues()
+            );
+
+            $place->values['ancestors'] = Campus::touch(
+                $place->getAncestors()
+                    ->with([
+                        'campusMap',
+                        'campusPhoto',
+                    ])
+                    ->one()
+                )
+                ->values();
+
+            if (is_array($place->children))
+            {
+                $place->values['descendants'] = array_map(
+                    function($descendant)
+                    {
+                        return Floor::touch(Room::touch($descendant))->values();
+                    },
+                    $place->children
+                );
+            }
+            unset($place->values['campusMap']);
+            unset($place->values['campusPhoto']);
+            unset($place->values['floorMap']);
+        }
+
+        return $place;
+    }
+
 }

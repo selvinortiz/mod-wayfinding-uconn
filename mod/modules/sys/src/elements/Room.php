@@ -6,7 +6,7 @@ namespace modules\sys\elements;
  *
  * @package modules\sys\elements
  */
-class Room extends Element
+class Room extends Place
 {
     const TYPE_HANDLE    = 'room';
     const SECTION_HANDLE = 'places';
@@ -18,8 +18,49 @@ class Room extends Element
     {
         $query = parent::getQuery();
 
-        // $query->with(['roomSettings:roomSettingsBlock']);
-
         return $query;
+    }
+
+    public static function unpack(Place $place): Place
+    {
+        if ($place->type->handle == self::TYPE_HANDLE)
+        {
+            $place->values = array_merge(
+                $place->getAttributes(['id', 'title', 'type']),
+                $place->getFieldValues()
+            );
+
+            $place->values['ancestors'] = array_map(
+                function($ancestor)
+                {
+                    return
+                        Floor::touch(
+                            Building::touch(
+                                Campus::touch($ancestor)
+                            )
+                        )
+                        ->values();
+                },
+                $place->getAncestors()
+                    ->with([
+                        'campusMap',
+                        'campusPhoto',
+                        'buildingPhoto',
+                        'floorMap'
+                    ])
+                    ->orderBy('typeId desc')
+                    ->limit(3)
+                    ->all()
+            );
+
+            $place->values['descendants'] = [];
+
+            unset($place->values['campusMap']);
+            unset($place->values['campusPhoto']);
+            unset($place->values['buildingPhoto']);
+            unset($place->values['floorMap']);
+        }
+
+        return $place;
     }
 }

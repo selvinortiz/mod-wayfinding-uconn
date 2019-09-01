@@ -8,7 +8,7 @@ namespace modules\sys\elements;
  * @package modules\sys\elements
  *
  */
-class Campus extends Element
+class Campus extends Place
 {
     const TYPE_HANDLE    = 'campus';
     const SECTION_HANDLE = 'places';
@@ -20,8 +20,41 @@ class Campus extends Element
     {
         $query = parent::getQuery();
 
-        // $query->with(['campusSettings:settingsBlock']);
-
         return $query;
+    }
+
+    public static function unpack(Place $place): Place
+    {
+        if ($place->type->handle == self::TYPE_HANDLE)
+        {
+            $place->values = array_merge(
+                $place->getAttributes(['id', 'title', 'type']),
+                $place->getFieldValues()
+            );
+
+            $place->values['ancestors'] = [];
+
+            if (is_array($place->children))
+            {
+                $place->values['descendants'] = array_map(
+                    function($ancestor)
+                    {
+                        return
+                            Room::touch(
+                                Floor::touch(
+                                    Building::touch($ancestor)
+                                )
+                            )
+                            ->values();
+                    },
+                    $place->children
+                );
+            }
+
+            unset($place->values['buildingPhoto']);
+            unset($place->values['floorMap']);
+        }
+
+        return $place;
     }
 }
