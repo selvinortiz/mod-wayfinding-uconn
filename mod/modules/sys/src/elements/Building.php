@@ -44,16 +44,15 @@ class Building extends Place
                 )
                 ->values();
 
-            if (is_array($place->children))
-            {
-                $place->values['descendants'] = array_map(
-                    function($descendant)
-                    {
-                        return Floor::touch(Room::touch($descendant))->values();
-                    },
-                    $place->children
-                );
-            }
+            $descendants = $place->getDescendants(2)->all();
+
+            $place->values['descendants'] = array_map(
+                function($descendant)
+                {
+                    return Floor::touch(Room::touch($descendant))->values;
+                },
+                $descendants
+            );
             unset($place->values['campusMap']);
             unset($place->values['campusPhoto']);
             unset($place->values['floorMap']);
