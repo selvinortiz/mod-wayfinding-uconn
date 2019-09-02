@@ -1,6 +1,5 @@
 <template>
   <div class="w-full md:px-4">
-
     <div
       id="imageContainer"
       class="overflow-hidden relative mb-4"
@@ -10,7 +9,7 @@
       @mouseup="stopDrag()"
       @mouseleave="stopDrag()"
     >
-    <!---->
+      <!---->
       <img
         v-if="place.loaded"
         id="image"
@@ -31,36 +30,30 @@
           draggable="false"
         />
       </div>
-
     </div>
 
     <div class="flex w-full justify-start">
-
-
-        <button :class="'flex w-1/4 justify-center mr-4 bg-transparent '+
+      <button
+        :class="'flex w-1/4 justify-center mr-4 bg-transparent '+
                         'font-semibold hover:text-white py-2 px-4 border hover:border-transparent '+
-                        'hover:bg-'+primaryColor+' text-'+primaryColor+' border-'+primaryColor">
-          Campus Map
-        </button>
+                        'hover:bg-'+primaryColor+' text-'+primaryColor+' border-'+primaryColor"
+      >Campus Map</button>
 
-        <button :class="'flex w-1/4 justify-center bg-transparent '+
+      <button
+        :class="'flex w-1/4 justify-center bg-transparent '+
                         'font-semibold hover:text-white py-2 px-4 border hover:border-transparent '+
-                        'hover:bg-'+primaryColor+' text-'+primaryColor+' border-'+primaryColor">
-          Building Map
+                        'hover:bg-'+primaryColor+' text-'+primaryColor+' border-'+primaryColor"
+      >Building Map</button>
+
+      <div class="flex w-1/2 justify-end">
+        <button class="w-10 mr-2" @click="zoomMap(1)">
+          <img src="http://placehold.it/500" />
         </button>
-
-        <div class="flex w-1/2 justify-end">
-          <button class="w-10 mr-2" @click="zoomMap(1)">
-            <img src="http://placehold.it/500"/>
-          </button>
-          <button class="w-10" @click="zoomMap(-1)">
-            <img src="http://placehold.it/500"/>
-          </button>
-        </div>
-
-
+        <button class="w-10" @click="zoomMap(-1)">
+          <img src="http://placehold.it/500" />
+        </button>
+      </div>
     </div>
-
   </div>
 </template>
 
@@ -71,15 +64,13 @@ export default {
       type: Object,
       default: () => ({
         id: 0,
-        title: '',
+        title: "",
         maps: [
           {
-            image: ''
+            image: ""
           },
           {
-            markers: [
-              { x: 0, y: 0 }
-            ]
+            markers: [{ x: 0, y: 0 }]
           }
         ],
         loaded: false
@@ -111,7 +102,10 @@ export default {
         console.log(this.primaryColor);
         // Gather the smallest and largest cords for
         // finding the area encompassing all the markers
-        var smallX = null, bigX = null, smallY = null, bigY = null;
+        var smallX = null,
+          bigX = null,
+          smallY = null,
+          bigY = null;
 
         for (var ii = 0; ii < this.selectedMap.markers.length; ii++) {
           var marker = this.selectedMap.markers[ii];
@@ -140,7 +134,9 @@ export default {
 
         // Find the difference between the center of the marker encompassing area and the
         // center of the imageContainer to then translate the image to shair the same center
-        var imageContainer = document.getElementById("imageContainer").getBoundingClientRect();
+        var imageContainer = document
+          .getElementById("imageContainer")
+          .getBoundingClientRect();
         //console.log(imageContainer);
 
         var imageContainerCenterX = imageContainer.x + imageContainer.width / 2;
@@ -160,14 +156,15 @@ export default {
     },
 
     getSelectedMap() {
-      if (this.selectedMap == null)
-        this.selectedMap = this.place.maps[0];
+      if (this.selectedMap == null) this.selectedMap = this.place.maps[0];
       return this.selectedMap;
     },
 
     zoomMap(direction) {
       this.zoom + this.zoomFactor * direction < 4 &&
-      this.zoom + this.zoomFactor * direction >= 1 ? (this.zoom += this.zoomFactor * direction) : null;
+      this.zoom + this.zoomFactor * direction >= 1
+        ? (this.zoom += this.zoomFactor * direction)
+        : null;
 
       // Direct the map back into covering the view port when zooming out near a boundary
       /*
