@@ -1,51 +1,73 @@
 <template>
   <div class="p-8">
-
     <mod-page-header>Building</mod-page-header>
-
     <people-place-header heading="WAYFINDING" classes="flex lg:hidden"></people-place-header>
 
     <div class="flex flex-wrap justify-center">
-
-      <div class="flex flex-wrap justify-center
-      lg:w-1/2 lg:order-2 md:w-full md:mb-6 md:order-1">
-
+      <div class="flex flex-wrap justify-center md:w-full md:mb-6 md:order-1 lg:w-1/2 lg:order-2 ">
         <mod-map :place="place"></mod-map>
-
       </div>
 
       <div class="lg:w-1/2 lg:order-1 md:w-full md:order-2">
+        <div :style="containerStyles">
+          <div class="w-full flex flex-wrap justify-center p-4">
+            <div class="w-full mb-4 text-2xl font-black">{{place.title}}</div>
 
-        <place-info :place="place"></place-info>
+            <!-- Half -->
+            <div class="w-1/2">
+              <img class="w-4/5 mb-4" src="http://placehold.it/500" />
 
+              <div class="font-bold mb-4">Phone Number</div>
+              <div class="font-bold">Address Line 1</div>
+              <div class="font-bold mb-4">Address Line 2</div>
+              <div>Place Description</div>
+            </div>
+
+            <!-- Half -->
+            <div class="w-1/2 text-center">
+              <select
+                v-model="selectedRoom"
+                class="w-full flex items-center h-12 px-6 border-2 border-gray-600"
+              >
+                <option class="hidden" value selected disabled>Choose Destination</option>
+                <option
+                  v-for="floorOrRoom in place.descendants"
+                  :key="floorOrRoom.id"
+                  :value="floorOrRoom.id"
+                  :disabled="floorOrRoom.type.handle === 'floor'"
+                >{{ floorOrRoom.title }}</option>
+              </select>
+
+              <div class="pt-4">
+                Don&rsquo;t see what you&rsquo;re looking for?
+                <a
+                  class="text-blue-600 cursor-pointer"
+                  @click="() => $store.state.app.searchIsOpen = true"
+                >Switch to SEARCH</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
     </div>
-
   </div>
 </template>
 
 <script>
 import axios from "../../utils/Axios";
-import PeoplePlaceHeader from '../../components/shared/PeoplePlaceHeader.vue'
 import ModMap from '../../components/shared/ModMap.vue'
-import PlaceInfo from '../../components/shared/PlaceInfo.vue'
 
 export default {
   metaInfo: {
     title: "Place"
   },
   components: {
-    PeoplePlaceHeader,
     ModMap,
-    PlaceInfo
   },
   data() {
     return {
       place: {},
-
-      // Not Used
-      //primaryColor: this.$store.state.app.theme.main.wayfinding.text
+      selectedRoom: ''
     }
   },
   created() {
