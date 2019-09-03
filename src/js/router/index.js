@@ -9,4 +9,9 @@ Vue.use(VueRouter);
 
 const routes = app.concat(places, people);
 
-export default new VueRouter({ routes });
+const base = window.kioskId === null ? `/` : `/@${window.kioskId}`
+export default new VueRouter({
+  base,
+  routes,
+  mode: 'history',
+});

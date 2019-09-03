@@ -1,4 +1,5 @@
 const defaultState = {
+  kioskId: null,
   isMobile: false,
   theme: {
     bg: '#fff',
@@ -47,7 +48,6 @@ const defaultState = {
     }
   },
   initialized: false,
-
   searchIsOpen: false
 };
 
@@ -59,7 +59,8 @@ export default {
   //   }
   // },
   mutations: {
-    setInitialized: (state, { isMobile }) => {
+    setInitialized: (state, { isMobile, kioskId }) => {
+      state.kioskId = kioskId;
       state.isMobile = isMobile;
       state.initialized = true;
     }
