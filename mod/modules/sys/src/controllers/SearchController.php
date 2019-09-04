@@ -29,8 +29,8 @@ class SearchController extends Controller
 
         $search->type    = SearchContext::type($context);
         $search->section = SearchContext::section($context);
-        $search->limit   = 12;
         $search->search  = $this->prepareSearchQueryString($query);
+        $search->limit   = 16;
 
         $results = $this->elementsToArrays($search->all());
 

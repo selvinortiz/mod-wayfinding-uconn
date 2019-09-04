@@ -12,6 +12,7 @@ import ModPageHeader from "./components/shared/ModPageHeader.vue"
 import AppLogo from './components/partials/AppLogo.vue';
 import AppNav from './components/partials/AppNav.vue';
 import AppEnd from './components/partials/AppEnd.vue';
+import AppSearch from './components/partials/AppSearch.vue';
 
 import store from "./store"
 import router from "./router"
@@ -29,6 +30,7 @@ new Vue({
     AppLogo,
     AppNav,
     AppEnd,
+    AppSearch,
     ModClock,
     ModKeyboard,
   },

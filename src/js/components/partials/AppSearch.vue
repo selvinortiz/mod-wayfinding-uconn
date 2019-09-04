@@ -11,7 +11,7 @@
               :key="result.id"
               :to="{name: 'person', params: {id: result.id}}"
             >
-              <div class="flex-1 p-4 border border-gray-300 bg-gray-100 rounded">
+              <div class="flex-1 p-4 border border-gray-300 bg-white rounded">
                 <p class="font-thin text-xl">{{ result.title }}</p>
               </div>
             </router-link>
@@ -19,9 +19,9 @@
         </div>
       </section>
 
-      <section style="height: 330px;">
+      <section>
         <mod-page-header>Search</mod-page-header>
-        <div class="flex items-center my-4 border border-gray-200 animated fadeIn">
+        <div class="flex items-center my-4 border border-gray-200 bg-gray-100 animated fadeIn">
           <select v-model="context" class="bg-transparent outline-none focus:outline-none">
             <option value>All</option>
             <option value="people">People</option>
@@ -30,7 +30,7 @@
           </select>
           <input
             type="text"
-            class="py-2 px-2 outline-none"
+            class="py-2 px-2 bg-white outline-none"
             placeholder="Type to search..."
             style="flex: 6;"
             v-model="input"
@@ -57,8 +57,8 @@
 </template>
 
 <script>
-import axios from "../utils/Axios";
-import ModKeyboard from "../components/shared/ModKeyboard.vue";
+import axios from "../../utils/Axios";
+import ModKeyboard from "../shared/ModKeyboard.vue";
 
 export default {
   metaInfo: {
@@ -77,7 +77,7 @@ export default {
         "{space}": "Space",
         "{bksp}": "⇤",
         "{enter}": "Enter",
-        "{cancel}": "Cancel",
+        "{cancel}": "Close",
         "{lock}": "Caps",
         "{tab}": "Next",
         "{shift}": "123"
