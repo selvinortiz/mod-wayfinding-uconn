@@ -1,14 +1,5 @@
 <template>
-  <div class="p-8">
-    <div class="w-full flex-wrap pl-4 md:mb-4">
-      <div class="w-full text-3xl font-300">{{ place.title }}</div>
-      <div class="w-full text-1xl">
-          {{ 'Breadcrumb nav 1' }}
-          >
-          {{ 'Breadcrumb nav 2' }}
-      </div>
-    </div>
-
+  <div v-if="place.loaded" class="p-8">
     <div class="flex flex-wrap justify-center">
       <div class="flex flex-wrap justify-center md:w-full md:mb-6 md:order-1 lg:w-1/2 lg:order-2 ">
         <mod-map :place="place"></mod-map>
@@ -72,7 +63,9 @@ export default {
   },
   data() {
     return {
-      place: {},
+      place: {
+        loaded: false
+      },
       selectedRoom: ''
     }
   },
@@ -85,7 +78,6 @@ export default {
         ...response.data.place,
         loaded: true
       };
-      console.log(this.place);
     })
     .catch(error => console.error(error));
   }
