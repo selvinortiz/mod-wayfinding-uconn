@@ -8,11 +8,11 @@ return [
     ],
     'header' => [
         'bg' => [
-            'colors' => ['#132455', '#011031'],
+            'colors' => ['#000E2F', '#000E2F'],
             'direction' => 'to bottom'
         ],
         'logo' => [
-            'url' => '/img/modcore.png'
+            'url' => '/static/img/logo-light.svg'
         ],
         'clock' => [
             'fg' => '#fff'
@@ -31,17 +31,17 @@ return [
         ],
         'link' => [
             'bg' => '#fff',
-            'fg' => 'black',
+            'fg' => '#000E2F',
             'active' => [
                 'bg' => 'transparent',
                 'fg' => 'blue'
             ],
-            'class' => 'uppercase',
-            'style' => '',
+            'styles' => [],
+            'classes' => 'uppercase',
         ]
     ],
     'footer' => [
-        'bg' => 'rgba(0, 0, 0, 5)',
+        'bg' => '#000E2F',
         'fg' => 'white'
     ]
 ];

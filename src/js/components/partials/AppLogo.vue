@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link :to="{ name: 'index' }">
-      <img src="/img/modcore.png" alt />
+      <img :src="logo.url" alt />
     </router-link>
   </div>
 </template>
@@ -18,3 +18,16 @@ img {
   }
 }
 </style>
+
+<script>
+export default {
+  computed: {
+    theme() {
+      return this.$store.state.app.theme
+    },
+    logo() {
+      return this.theme.header.logo
+    }
+  }
+}
+</script>

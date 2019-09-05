@@ -1,11 +1,11 @@
 <template>
-  <div class="@page">
-    <header class="@page__header flex items-center justify-between px-4 border-b border-gray-400">
+  <div class="@page bg-cover bg-center w-full h-full" :style="styles.container">
+    <header class="@page__header flex items-center justify-between px-4" :style="styles.header">
       <app-logo></app-logo>
       <div>
         <mod-clock>
           <template v-slot:display="{ params }">
-            <h1 class="text-right text-xl">
+            <h1 class="text-right text-xl" :style="styles.clock">
               <span class="uppercase" v-text="params.monthName"></span>
               <span v-text="params.day"></span>,
               <span v-text="params.year"></span>
@@ -26,7 +26,7 @@
       </transition>
     </main>
 
-    <footer class="@page__footer flex flex-col justify-between border-t border-gray-400">
+    <footer class="@page__footer flex flex-col justify-between" :style="styles.footer">
       <app-nav></app-nav>
       <app-footer></app-footer>
     </footer>
@@ -50,6 +50,23 @@ export default {
     AppFooter,
     ModClock,
     ModKeyboard
+  },
+  computed: {
+    theme() {
+      return this.$store.state.app.theme;
+    },
+    styles() {
+      return {
+        container: [
+          this.$route.name === "index"
+            ? "background-image: url(/img/welcome-1.jpg)"
+            : ""
+        ].join(";"),
+        header: [this.$bg(this.theme.header.bg)].join(";"),
+        clock: [`color: ${this.theme.header.clock.fg}`].join(";"),
+        footer: [this.$bg(this.theme.footer.bg)].join(";"),
+      };
+    }
   }
 };
 </script>

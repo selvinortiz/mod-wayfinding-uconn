@@ -9,7 +9,7 @@ Vue.use(VueRouter);
 
 const routes = app.concat(places, people);
 
-const base = window.kiosk.id ? `/@${window.kiosk.id}` : `/`;
+const base = window.kiosk.id ? `/@${window.kiosk.id}` : ``;
 
 export default new VueRouter({
   base,

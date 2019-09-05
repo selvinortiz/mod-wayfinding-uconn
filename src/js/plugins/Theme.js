@@ -1,12 +1,10 @@
-import Vue from 'vue';
-
 const bg = (val) => {
   if (val === null) {
     return 'background-color: inherit'
   }
 
   if (typeof val === "string") {
-    return `background-color: ${val};`
+    return `background-color: ${val}`
   }
 
   if (typeof val === "object") {
@@ -15,7 +13,7 @@ const bg = (val) => {
 }
 
 export default {
-  install: (vue, options) => {
+  install: (vue) => {
     vue.prototype.$bg = bg
   }
 };
