@@ -1,7 +1,7 @@
 <template>
   <div class="p-8">
     <div class="w-full flex-wrap pl-4 md:mb-4">
-      <div class="w-full text-3xl font-300">{{ person.title }}</div>
+      <div class="w-full text-3xl font-300">Directory</div>
       <div class="w-full text-1xl">
           {{ 'Breadcrumb nav 1' }}
           >
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import axios from "../../utils/Axios";
+import { person } from "../../utils/Axios";
 import ModMap from '../../components/shared/ModMap.vue'
 import PersonInfo from '../../components/shared/PersonInfo.vue'
 
@@ -50,13 +50,9 @@ export default {
     }
   },
   created() {
-    axios
-      .post("/actions/sys/wayfinding/person", {
-        id: this.$route.params.id
-      })
+    person({id: this.$route.params.id})
       .then(response => {
         this.person = response.data.person;
-        //console.log(this.person);
       })
       .catch(error => console.error(error));
   }

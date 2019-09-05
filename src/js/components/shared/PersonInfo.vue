@@ -1,14 +1,5 @@
 <template>
   <div>
-    <div class="w-full flex-wrap pl-4 md:mb-4">
-      <div class="w-full text-3xl font-300">{{ person.title }}</div>
-      <div class="w-full text-1xl">
-          {{ 'Breadcrumb nav 1' }}
-          >
-          {{ 'Breadcrumb nav 2' }}
-      </div>
-    </div>
-
     <div class="w-full flex flex-wrap justify-center p-4">
       <!-- 3/5 -->
       <div :class="'w-3/5 text-'+primaryColor">
@@ -62,7 +53,7 @@ export default {
   },
   data() {
     return {
-      primaryColor: this.$store.state.app.theme.main.directory.text
+      primaryColor: 'blue'
     };
   }
 };

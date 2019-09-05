@@ -5385,11 +5385,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue_
 /*!*******************************!*\
   !*** ./src/js/utils/Axios.js ***!
   \*******************************/
-/*! exports provided: default */
+/*! exports provided: search, place, person, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({\n  headers: {\n    'X-CSRF-TOKEN': window.csrfTokenValue\n  }\n}));\n\n//# sourceURL=webpack:///./src/js/utils/Axios.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"search\", function() { return search; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"place\", function() { return place; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"person\", function() { return person; });\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n\nconst client = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({\n  headers: {\n    'X-CSRF-TOKEN': window.csrfTokenValue\n  }\n});\nconst search = params => {\n  return client.post('/actions/sys/wayfinding/search', params);\n};\nconst place = params => {\n  return client.post('/actions/sys/wayfinding/place', params);\n};\nconst person = params => {\n  return client.post('/actions/sys/wayfinding/person', params);\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (client);\n\n//# sourceURL=webpack:///./src/js/utils/Axios.js?");
 
 /***/ }),
 
