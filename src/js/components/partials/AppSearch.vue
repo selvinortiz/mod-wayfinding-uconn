@@ -46,7 +46,8 @@
         <mod-keyboard
           v-if="showKeyboard"
           animatedClass="slideInUp"
-          keyboardClass="keyboard--numeric"
+          keyboardClass="keyboard--standard"
+          :keyboardButtonLabels="keyboardButtonLabels"
           @change="handleKeyboardChange"
           @click="handleKeyboardClick"
           :input="input"
@@ -72,7 +73,6 @@ export default {
       results: [],
       searchErrorMessage: "",
       showKeyboard: !("ontouchstart" in document.documentElement),
-      keyboardLayout: ["1 2 3", "4 5 6", "7 8 9", "0 {tab}"],
       keyboardButtonLabels: {
         "{space}": "Space",
         "{bksp}": "⇤",
