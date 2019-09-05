@@ -19,8 +19,10 @@ return [
         ]
     ],
     'nav' => [
-        'fg' => '',
-        'bg' => 'white',
+        'fg' => [],
+        'bg' => '#fff',
+        'styles' => [],
+        'classes' => ['border-t', 'border-gray-300'],
         'links' => [
             ['id' => 'places', 'type' => 'route', 'title' => 'Places', 'route' => 'places', 'icon' => 'places.svg'],
             ['id' => 'people', 'type' => 'route', 'title' => 'People', 'route' => 'people', 'icon' => 'people.svg'],
@@ -32,12 +34,12 @@ return [
         'link' => [
             'bg' => '#fff',
             'fg' => '#000E2F',
-            'active' => [
-                'bg' => 'transparent',
-                'fg' => 'blue'
-            ],
             'styles' => [],
-            'classes' => 'uppercase',
+            'classes' => ['uppercase'],
+            'active' => [
+                'bg' => '#eee',
+                'fg' => '#666'
+            ],
         ]
     ],
     'footer' => [
