@@ -12,6 +12,7 @@
             <link rel="stylesheet" href="/css/app.css?v={{ 'now'|date('YmdHis') }}">
 
             <script>
+                window.theme = '{{ theme|e('js') }}';
                 window.kioskId = {{ kioskId ?? 'null' }};
                 window.csrfTokenName = "{{ craft.app.config.general.csrfTokenName|e('js') }}";
                 window.csrfTokenValue = "{{ craft.app.request.csrfToken|e('js') }}";

@@ -42,7 +42,13 @@ new Vue({
     appClasses: ""
   },
   created() {
-    this.$store.commit("setInitialized", { isMobile: window.isMobile, kioskId: window.kioskId })
+    const fromWindow = {
+      isMobile: window.isMobile,
+      kioskId: window.kioskId,
+      theme: window.theme
+    }
+
+    this.$store.commit("setInitialized", fromWindow)
   },
   computed: {
     theme() {

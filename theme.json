@@ -1,0 +1,44 @@
+{
+  "background": "#fff",
+  "foreground": "#333",
+  "font": {
+    "family": "'Work Sans', sans-serif"
+  },
+  "header": {
+    "background": {
+      "colors": ["#051937", "#004d7a", "#008793", "#00bf72", "#a8eb12"],
+      "direction": "to left bottom"
+    },
+    "logo": {
+      "url": "/img/modcore.png"
+    },
+    "clock": {
+      "foreground": "#999"
+    }
+  },
+  "nav": {
+    "foreground": "",
+    "background": "white",
+    "links": [
+      { "id": "places", "title": "Places", "route": "places", "icon": "places.svg" },
+      { "id": "people", "title": "People", "route": "people", "icon": "people.svg" },
+      { "id": "search", "title": "Search", "icon": "search.svg" },
+      { "id": "service1", "title": "Service One", "url": "https://uconn-test.modolabs.net/myuconn/bus_tracker_transloc/index", "icon": "settings.svg" },
+      { "id": "service2", "title": "Service Two", "url": "https://uconn-test.modolabs.net/myuconn/bus_tracker_transloc/index", "icon": "settings.svg" },
+      { "id": "service3", "title": "Service Three", "url": "https://uconn-test.modolabs.net/myuconn/bus_tracker_transloc/index", "icon": "settings.svg" }
+    ],
+    "link": {
+      "classes": "uppercase",
+      "background": "#fff",
+      "foreground": "black",
+      "active": {
+        "background": "transparent",
+        "foreground": "blue"
+      }
+    }
+  },
+  "footer": {
+    "background": "rgba(0, 0, 0, 5)",
+    "foreground": "white"
+  }
+}
