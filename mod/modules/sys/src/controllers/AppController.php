@@ -27,7 +27,7 @@ class AppController extends Controller
         }
 
         $kiosk = Json::encode($kiosk);
-        $theme = Json::encode(Craft::$app->config->getConfigFromFile('theme'));
+        $theme = file_get_contents(dirname(__DIR__, 5).'/theme.json');
 
         return $this->renderTemplate('index', compact('kiosk', 'theme'));
     }
