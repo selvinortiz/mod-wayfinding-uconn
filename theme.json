@@ -6,14 +6,14 @@
   },
   "header": {
     "background": {
-      "colors": ["#051937", "#004d7a", "#008793", "#00bf72", "#a8eb12"],
-      "direction": "to left bottom"
+      "colors": ["#132455", "#011031"],
+      "direction": "to bottom"
     },
     "logo": {
       "url": "/img/modcore.png"
     },
     "clock": {
-      "foreground": "#999"
+      "foreground": "#fff"
     }
   },
   "nav": {
