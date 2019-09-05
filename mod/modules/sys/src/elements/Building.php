@@ -25,6 +25,7 @@ class Building extends Place
 
         return $query;
     }
+
     public static function unpack(Place $place): Place
     {
         if ($place->type->handle == self::TYPE_HANDLE)

@@ -1,19 +1,23 @@
 <template>
   <div class="p-8">
-    
-    <!--mod-page-header>Place</mod-page-header-->
-
-    <people-place-header heading="WAYFINDING" classes="flex lg:hidden"></people-place-header>
+    <div class="w-full flex-wrap pl-4 md:mb-4">
+      <div class="w-full text-3xl font-300">{{ place.title }}</div>
+      <div class="w-full text-1xl">
+          {{ 'Breadcrumb nav 1' }}
+          >
+          {{ 'Breadcrumb nav 2' }}
+      </div>
+    </div>
 
     <div class="flex flex-wrap justify-center">
 
-      <div class="flex flex-wrap justify-center 
+      <div class="flex flex-wrap justify-center
       lg:w-1/2 lg:order-2 md:w-full md:mb-6 md:order-1">
 
         <mod-map :place="place"></mod-map>
 
       </div>
-      
+
       <div class="lg:w-1/2 lg:order-1 md:w-full md:order-2">
 
         <place-info :place="place"></place-info>
@@ -27,7 +31,6 @@
 
 <script>
 import axios from "../../utils/Axios";
-import PeoplePlaceHeader from '../../components/shared/PeoplePlaceHeader.vue'
 import ModMap from '../../components/shared/ModMap.vue'
 import PlaceInfo from '../../components/shared/PlaceInfo.vue'
 
@@ -36,7 +39,6 @@ export default {
     title: "Place"
   },
   components: {
-    PeoplePlaceHeader,
     ModMap,
     PlaceInfo
   },

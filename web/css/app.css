@@ -11483,6 +11483,11 @@ main {
   overflow: auto;
 }
 
+nav .icon {
+  max-height: 24px;
+  margin-right: 8px;
+}
+
 footer {
   height: 15vh;
   overflow: hidden;
@@ -11498,12 +11503,21 @@ footer .\@end {
   grid-template-rows: 1fr auto 1fr;
 }
 
+a {
+  cursor: pointer;
+}
+
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }
 
 .fade-enter, .fade-leave-to {
   opacity: 0;
+}
+
+body {
+  color: #333;
+  background-color: #fff;
 }
 
 @media (min-width: 640px) {

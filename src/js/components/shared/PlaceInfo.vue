@@ -1,6 +1,5 @@
 <template>
   <div :style="containerStyles">
-    <people-place-header heading="WAYFINDING" classes="hidden lg:flex"></people-place-header>
 
     <div class="w-full flex flex-wrap justify-center p-4">
       <div class="w-full mb-4 text-2xl font-black">{{place.title}}</div>
@@ -30,12 +29,8 @@
 </template>
 
 <script>
-import PeoplePlaceHeader from "../../components/shared/PeoplePlaceHeader.vue";
 
 export default {
-  components: {
-    PeoplePlaceHeader
-  },
   props: {
     place: {
       type: Object,

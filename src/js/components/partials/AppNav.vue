@@ -1,29 +1,25 @@
 <template>
   <div class="flex flex-1 justify-center">
-    <nav class="flex flex-1 max-w-6xl items-center justify-center" :style="navStyles">
-      <div v-for="(link, i) in theme.nav.links" :key="i" class="flex-grow">
-        <a v-if="link.url" :href="link.url" class="flex" :class="linkClasses" :style="linkStyles">
+    <nav class="flex flex-1 max-w-6xl items-center justify-center">
+      <div class="flex-grow @link" v-for="(link, i) in theme.nav.links" :key="i">
+        <a class="flex self-center" v-if="link.type === 'url'" :href="link.url">
           <img class="icon" :src="`/svg/icons/${link.icon}`" alt />
           <span>{{ link.title }}</span>
         </a>
 
         <router-link
-          v-if="link.route"
-          :to="{name: link.route}"
+          v-if="link.type === 'route'"
           class="flex"
-          :class="linkClasses"
-          :style="linkStyles"
+          :to="{name: link.route}"
         >
           <img class="icon" :src="`/svg/icons/${link.icon}`" alt />
           <span>{{ link.title }}</span>
         </router-link>
 
         <a
-          v-if="link.id == 'search'"
-          @click="() => $store.state.app.searchIsOpen = true"
+          v-if="link.type === 'action'"
           class="flex"
-          :class="linkClasses"
-          :style="linkStyles"
+          @click="action(link.id)"
         >
           <img class="icon" :src="`/svg/icons/${link.icon}`" alt />
           <span>{{ link.title }}</span>
@@ -33,37 +29,23 @@
   </div>
 </template>
 
-<style scoped>
-a {
-  cursor: pointer;
-}
-.icon {
-  max-height: 28px;
-  margin-right: 10px;
-}
-</style>
-
 <script>
 export default {
   computed: {
     theme() {
-      return this.$store.state.app.theme;
+      return this.$store.state.app.theme
+    }
+  },
+  methods: {
+    action(id) {
+      switch(id) {
+        case 'search':
+          return this.search()
+      }
     },
-    navStyles() {
-      return [
-        `color: ${this.theme.nav.foreground}`,
-        `background-color: ${this.theme.nav.background}`
-      ].join(";");
-    },
-    linkStyles() {
-      return [
-        `color: ${this.theme.nav.link.foreground}`,
-        `background-color: ${this.theme.nav.link.background}`
-      ].join(";");
-    },
-    linkClasses() {
-      return this.theme.nav.link.classes || "";
+    search() {
+      this.$store.commit('setSearchIsOpen', true)
     }
   }
-};
+}
 </script>

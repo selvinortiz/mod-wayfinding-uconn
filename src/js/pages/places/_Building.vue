@@ -1,7 +1,13 @@
 <template>
   <div class="p-8">
-    <mod-page-header>Building</mod-page-header>
-    <people-place-header heading="WAYFINDING" classes="flex lg:hidden"></people-place-header>
+    <div class="w-full flex-wrap pl-4 md:mb-4">
+      <div class="w-full text-3xl font-300">{{ place.title }}</div>
+      <div class="w-full text-1xl">
+          {{ 'Breadcrumb nav 1' }}
+          >
+          {{ 'Breadcrumb nav 2' }}
+      </div>
+    </div>
 
     <div class="flex flex-wrap justify-center">
       <div class="flex flex-wrap justify-center md:w-full md:mb-6 md:order-1 lg:w-1/2 lg:order-2 ">
@@ -9,7 +15,7 @@
       </div>
 
       <div class="lg:w-1/2 lg:order-1 md:w-full md:order-2">
-        <div :style="containerStyles">
+        <div>
           <div class="w-full flex flex-wrap justify-center p-4">
             <div class="w-full mb-4 text-2xl font-black">{{place.title}}</div>
 

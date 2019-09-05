@@ -1,8 +1,6 @@
 <template>
   <div v-if="people" class="flex flex-wrap">
     <div class="w-full p-4 overflow-y-scroll overflow-x-hidden" style="height: 60vh">
-      <!--mod-page-header>People</mod-page-header-->
-
       <div class="mb-1 text-3xl text-blue-800 font-300">DIRECTORY</div>
       <div class="mb-5 text-1xl font-300">Select the party you're looking for:</div>
 
@@ -50,7 +48,7 @@
             -->
 
           </router-link>
-          
+
         </div>
 
       </div>
@@ -68,7 +66,7 @@
         <option class="hidden" value="" disabled selected>Filter by Department</option>
         <option v-for="department in departments" :key="department.id" :value="department.title">{{department.title}}</option>
       </select>
-      
+
     </div>
 
   </div>

@@ -1,25 +1,22 @@
 const defaultState = {
+  kiosk: {},
   theme: {},
-  kioskId: null,
   isMobile: false,
-  initialized: false,
-  searchIsOpen: false
+  searchIsOpen: false,
+  initialized: false
 };
 
 export default {
   state: { ...defaultState },
-  // actions: {
-  //   INIT: context => {
-  //     context.commit('setInitialized', true);
-  //   }
-  // },
   mutations: {
-    setInitialized: (state, { isMobile, kioskId, theme }) => {
-      state.theme    = JSON.parse(theme);
-      state.kioskId  = kioskId;
-      state.isMobile = isMobile;
-
+    setInitialized: (state, { kiosk, theme }) => {
+      state.kiosk = kiosk;
+      state.theme = theme;
+      state.isMobile = kiosk ? true : false;
       state.initialized = true;
+    },
+    setSearchIsOpen: (state, isOpen) => {
+      state.searchIsOpen = isOpen
     }
   }
 };

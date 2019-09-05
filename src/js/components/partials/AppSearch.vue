@@ -1,9 +1,9 @@
 <template>
   <div class="p-4">
     <div class="mx-auto" style="display: grid; grid-template-rows: 1fr 1fr; max-width: 50%; height: 100vh">
-      <section>
+      <section class="@search__results">
         <div v-if="results.length" class="animated slideInDown overflow-y-scroll overflow-x-hidden" style="max-height: 50vh">
-          <mod-page-header>Results</mod-page-header>
+          <h2>Search Results</h2>
           <div class="flex flex-wrap -mx-2 lg:-mx-4">
             <router-link
               class="block w-full lg:w-1/2 xl:w-1/3 flex my-2 px-2 lg:my-4 lg:px-4"
@@ -19,9 +19,9 @@
         </div>
       </section>
 
-      <section>
-        <mod-page-header>Search</mod-page-header>
-        <div class="flex items-center my-4 border border-gray-200 bg-gray-100 animated fadeIn">
+      <section class="@search">
+        <h2>Search</h2>
+        <div class="flex items-center my-4 animated fadeIn">
           <select v-model="context" class="bg-transparent outline-none focus:outline-none">
             <option value>All</option>
             <option value="people">People</option>

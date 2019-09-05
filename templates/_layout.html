@@ -12,8 +12,10 @@
             <link rel="stylesheet" href="/css/app.css?v={{ 'now'|date('YmdHis') }}">
 
             <script>
+                window.kiosk = '{{ kiosk|e('js') }}';
                 window.theme = '{{ theme|e('js') }}';
-                window.kioskId = {{ kioskId ?? 'null' }};
+                window.siteName = '{{ siteName }}';
+                window.pageTitle = 'Welcome';
                 window.csrfTokenName = "{{ craft.app.config.general.csrfTokenName|e('js') }}";
                 window.csrfTokenValue = "{{ craft.app.request.csrfToken|e('js') }}";
             </script>
@@ -21,10 +23,10 @@
     </head>
 
     <body>
-        <div id="app" :class="classes" :style="styles">
+        <div id="app">
             {% block content %}{% endblock %}
-            <div v-if="$store.state.app.searchIsOpen" class="fixed top-0 w-full h-full">
-                <div class="fixed top-0 w-full h-full bg-black opacity-50"></div>
+            <div v-if="$store.state.app.searchIsOpen" class="fixed top-0 w-full h-full @search__container">
+                <div class="fixed top-0 w-full h-full @search__backdrop"></div>
                 <app-search></app-search>
             </div>
         </div>

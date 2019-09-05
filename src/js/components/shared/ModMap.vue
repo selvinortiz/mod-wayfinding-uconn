@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full md:px-4">
+  <div v-if="place.maps" class="w-full md:px-4">
     <div
       id="imageContainer"
       class="overflow-hidden relative mb-4"
@@ -9,7 +9,6 @@
       @mouseup="stopDrag()"
       @mouseleave="stopDrag()"
     >
-      <!---->
       <img
         v-if="place.loaded"
         id="image"
@@ -19,7 +18,6 @@
         @load="centerMap()"
         draggable="false"
       />
-      <!--map.image-->
       <div v-if="place.loaded" class="w-1/6 absolute bottom-0 right-0">
         <img
           @click="() => selectedMap = map"
@@ -67,9 +65,7 @@ export default {
         title: "",
         maps: [
           {
-            image: ""
-          },
-          {
+            image: "",
             markers: [{ x: 0, y: 0 }]
           }
         ],
@@ -92,7 +88,7 @@ export default {
 
       selectedMap: null,
 
-      primaryColor: this.$store.state.app.theme.main.modMap.text
+      primaryColor: 'blue'
     };
   },
   methods: {

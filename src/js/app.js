@@ -8,7 +8,7 @@ import Theme from './plugins/Theme';
 import Events from './plugins/Events';
 
 import App from './App.vue';
-import ModPageHeader from './components/shared/ModPageHeader.vue';
+import AppSearch from './components/partials/AppSearch.vue';
 
 import store from './store';
 import router from './router';
@@ -17,53 +17,22 @@ Vue.use(Meta);
 Vue.use(Theme);
 Vue.use(Events);
 
-Vue.component('mod-page-header', ModPageHeader);
-
 new Vue({
   el: '#app',
   store,
   router,
-  components: { App },
+  components: {
+    App,
+    AppSearch
+  },
   metaInfo: {
-    title: 'App',
-    titleTemplate: '%s | ModCore™'
+    title: `${window.pageTitle || 'App'}`,
+    titleTemplate: `%s | ${window.siteName || 'ModCore'}`
   },
   created() {
-    const fromWindow = {
-      isMobile: window.isMobile,
-      kioskId: window.kioskId,
-      theme: window.theme
-    };
+    const kiosk = window.kiosk ? JSON.parse(window.kiosk) : window.kiosk;
+    const theme = window.theme ? JSON.parse(window.theme) : window.theme;
 
-    this.$store.commit('setInitialized', fromWindow);
-  },
-  computed: {
-    theme() {
-      return this.$store.state.app.theme;
-    },
-    styles() {
-      if (this.$route.name !== 'index') return;
-
-      return `background-image: url(/img/welcome-1.jpg); width: 100%; height: 100%;`;
-    },
-    classes() {
-      if (this.$route.name !== 'index') {
-        return `bg-white text-gray-900`;
-      }
-
-      return `bg-cover bg-center`;
-    },
-    headerClasses() {
-      return ``;
-    },
-    headerStyles() {
-      return this.$bg(this.theme.header.background);
-    },
-    footerClasses() {
-      return ``;
-    },
-    footerStyles() {
-      return `background-color: rgba(255, 255, 255, .75);`;
-    }
+    this.$store.commit('setInitialized', { kiosk, theme });
   }
 });

@@ -1,9 +1,7 @@
 <template>
   <div class="p-8">
 
-    <mod-page-header>Room</mod-page-header>
-
-    <people-place-header heading="WAYFINDING" classes="flex lg:hidden"></people-place-header>
+    <h1>Room</h1>
 
     <div class="flex flex-wrap justify-center">
 
@@ -27,7 +25,6 @@
 
 <script>
 import axios from "../../utils/Axios";
-import PeoplePlaceHeader from '../../components/shared/PeoplePlaceHeader.vue'
 import ModMap from '../../components/shared/ModMap.vue'
 import PlaceInfo from '../../components/shared/PlaceInfo.vue'
 
@@ -36,7 +33,6 @@ export default {
     title: "Place"
   },
   components: {
-    PeoplePlaceHeader,
     ModMap,
     PlaceInfo
   },

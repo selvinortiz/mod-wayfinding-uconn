@@ -1,33 +1,28 @@
 <template>
   <div class="p-8">
-
-    <!--mod-page-header>Person</mod-page-header-->
-
-    <people-place-header heading="DIRECTORY" classes="flex lg:hidden"></people-place-header>
-
-    <div class="flex flex-wrap justify-center">
-
-      <div class="flex flex-wrap justify-center 
-      lg:w-1/2 lg:order-2 md:w-full md:mb-6 md:order-1">
-
-        <mod-map :place="person"></mod-map>
-
+    <div class="w-full flex-wrap pl-4 md:mb-4">
+      <div class="w-full text-3xl font-300">{{ person.title }}</div>
+      <div class="w-full text-1xl">
+          {{ 'Breadcrumb nav 1' }}
+          >
+          {{ 'Breadcrumb nav 2' }}
       </div>
-      
-      <div class="lg:w-1/2 lg:order-1 md:w-full md:order-2">
-
-        <person-info :person="person"></person-info>
-          
-      </div>
-
     </div>
 
+    <div class="flex flex-wrap justify-center">
+      <div class="flex flex-wrap justify-center
+      lg:w-1/2 lg:order-2 md:w-full md:mb-6 md:order-1">
+        <mod-map :place="person"></mod-map>
+      </div>
+      <div class="lg:w-1/2 lg:order-1 md:w-full md:order-2">
+        <person-info :person="person"></person-info>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "../../utils/Axios";
-import PeoplePlaceHeader from '../../components/shared/PeoplePlaceHeader.vue'
 import ModMap from '../../components/shared/ModMap.vue'
 import PersonInfo from '../../components/shared/PersonInfo.vue'
 
@@ -38,7 +33,6 @@ export default {
     }
   },
   components: {
-    PeoplePlaceHeader,
     ModMap,
     PersonInfo
   },
