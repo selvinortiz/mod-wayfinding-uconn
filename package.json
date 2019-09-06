@@ -6,8 +6,8 @@
   "scripts": {
     "start": "webpack --watch --progress --mode=development --hide-modules",
     "start:sync": "CRAFT_HOST_URL=http://mod-wayfinding-core.test webpack --watch --progress --mode=development --hide-modules",
-    "start:sync:so": "CRAFT_HOST_URL=https://modcore.test webpack --watch --progress --mode=development --hide-modules",
-    "start:sync:rl": "webpack --env.CRAFT_HOST_URL=http://modcore.test --watch --progress --mode=development --hide-modules",
+    "start:sync:so": "CRAFT_HOST_URL=https://uconn.test webpack --watch --progress --mode=development --hide-modules",
+    "start:sync:rl": "webpack --env.CRAFT_HOST_URL=http://uconn.test --watch --progress --mode=development --hide-modules",
     "build": "NODE_ENV=production webpack --mode=production"
   },
   "keywords": [
