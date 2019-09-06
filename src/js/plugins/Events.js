@@ -3,9 +3,9 @@ import Vue from 'vue';
 const Events = new Vue();
 
 export default {
-  install: (V, options) => {
-    V.prototype.$on   = Events.$on;
-    V.prototype.$once = Events.$once;
-    V.prototype.$emit = Events.$emit;
+  install: (vue, options) => {
+    vue.prototype.$on = Events.$on;
+    vue.prototype.$once = Events.$once;
+    vue.prototype.$emit = Events.$emit;
   }
 };

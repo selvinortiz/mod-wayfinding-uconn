@@ -8,31 +8,28 @@
 import SimpleKeyboard from "simple-keyboard";
 import "simple-keyboard/build/css/index.css";
 
-const layout = {
-  default: [
-    "` 1 2 3 4 5 6 7 8 9 0 - = {bksp}",
-    "{tab} q w e r t y u i o p [ ] \\",
-    "{lock} a s d f g h j k l ; ' {enter}",
-    "{shift} z x c v b n m , . / {shift}",
-    ".com @ {space}"
-  ],
-  shift: [
-    "~ ! @ # $ % ^ & * ( ) _ + {bksp}",
-    "{tab} Q W E R T Y U I O P { } |",
-    '{lock} A S D F G H J K L : " {enter}',
-    "{shift} Z X C V B N M < > ? {shift}",
-    ".com @ {space}"
-  ]
-};
+const layout = [
+  "Q W E R T Y U I O P",
+  "A S D F G H J K L",
+  "Z X C V B N M",
+  "{shift} {bksp} {space} {cancel}",
+];
 
-const display = {
+const layoutAfterShift = [
+  "1 2 3 4 5 6 7 8 9 0",
+  "- / : ; ( ) $ & @ \"",
+  ". , ? ! ",
+  "{shift} {bksp} {space} {cancel}"
+];
+
+const buttonLabels = {
   "{space}": "Space",
-  "{bksp}": "Back",
+  "{bksp}": "⇤",
   "{enter}": "Enter",
   "{cancel}": "Cancel",
   "{lock}": "Caps",
   "{tab}": "Tab",
-  "{shift}": "Shift"
+  "{shift}": "123"
 };
 
 const buttonTheme = [
@@ -79,7 +76,23 @@ export default {
     animatedClass: {
       type: String,
       default: ""
-    }
+    },
+    keyboardLayout: {
+      type: Array,
+      default: () => layout
+    },
+    keyboardLayoutAfterShift: {
+      type: Array,
+      default: () => layoutAfterShift
+    },
+    keyboardButtonLabels: {
+      type: Object,
+      default: () => buttonLabels
+    },
+    keyboardButtonTheme: {
+      type: Array,
+      default: () => buttonTheme
+    },
   },
   data() {
     return {
@@ -88,9 +101,12 @@ export default {
   },
   mounted() {
     this.keyboard = new SimpleKeyboard(`.${this.keyboardClass}`, {
-      layout,
-      display,
-      buttonTheme,
+      layout: {
+        default: this.keyboardLayout,
+        shift: this.keyboardLayoutAfterShift
+      },
+      display: this.keyboardButtonLabels,
+      buttonTheme: this.keyboardButtonTheme,
       onChange: this.onChange,
       onKeyPress: this.onKeyPress,
       theme: "simple-keyboard hg-theme-default"
@@ -104,8 +120,17 @@ export default {
       if (button === "{shift}") {
         let layout = this.keyboard.options.layoutName;
 
+        console.log(layout)
+
+        if (layout === "shift") {
+          buttonLabels['{shift}'] = '123'
+        } else {
+          buttonLabels['{shift}'] = 'ABC'
+        }
+
         this.keyboard.setOptions({
-          layoutName: layout === "default" ? "shift" : "default"
+          layoutName: layout === "default" ? "shift" : "default",
+          display: {...buttonLabels}
         });
       }
 
@@ -123,6 +148,6 @@ export default {
 <style scoped>
 .simple-keyboard.hg-theme-default {
   border-radius: 0;
-  background-color: #edf2f7
+  background-color: #edf2f7;
 }
 </style>

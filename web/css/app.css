@@ -11474,13 +11474,18 @@ video {
 }
 
 header {
-  height: 15vh;
+  height: 10vh;
   overflow: hidden;
 }
 
 main {
-  height: 70vh;
+  height: 75vh;
   overflow: auto;
+}
+
+nav .icon {
+  max-height: 24px;
+  margin-right: 6px;
 }
 
 footer {
@@ -11492,18 +11497,14 @@ footer .\@end {
   display: none;
 }
 
-@media screen and (min-width: 768px) {
-  main {
-    height: 65;
-  }
+.\@page {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 1fr auto 1fr;
+}
 
-  footer {
-    height: 20vh;
-  }
-
-  footer .\@end {
-    display: flex;
-  }
+a {
+  cursor: pointer;
 }
 
 .fade-enter-active, .fade-leave-active {
@@ -11512,6 +11513,11 @@ footer .\@end {
 
 .fade-enter, .fade-leave-to {
   opacity: 0;
+}
+
+body {
+  color: #333;
+  background-color: #fff;
 }
 
 @media (min-width: 640px) {

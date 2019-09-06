@@ -1,0 +1,151 @@
+<div class="smart-fields marker-coordinates">
+    <input id="{{ name ~ '-input' }}" type="hidden" name="{{ name }}" value='{{ value|json_encode }}'>
+    <div
+        class="image-container"
+        style="position: relative;"
+    >
+        <img
+            id="{{ name ~ '-map' }}"
+            style="width: 100%; height: auto; padding: 0; margin: 0; display: block"
+            class="noselect"
+            src="{{ image }}"
+            draggable="false"
+            alt=""
+        >
+
+        <span id="{{ name ~ '-marker' }}" style="position: absolute; top: 0; left: 0; display: none; width: 4%;">
+            <img src="{{ craft.app.assetManager.publishedUrl('@selvinortiz/smartfields/resources', true, 'marker.png') }}" alt=""
+            style="width: 100%" class="noselect" draggable="false">
+        </span>
+    </div>
+</div>
+
+{#
+<style>
+    .noselect {
+        -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                    user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome and Opera */
+    }
+</style>
+#}
+
+{% js %}
+    $input = $('{{ "#" ~ id ~ "-input" }}');
+    $map = $('{{ "#" ~ id ~ "-map" }}');
+    $marker = $('{{ "#" ~ id ~ "-marker" }}');
+
+    /*
+    var markerIsSelected = false;
+    var originalMarkerX = null, originalMarkerY = null;
+    */
+
+    if ($input.val()) {
+        var value = JSON.parse($input.val());
+
+        setMarkerCoordinates(value.xr, value.yr);
+    }
+
+    /*
+    $marker.on('mousedown', function(e) {
+        markerIsSelected = true;
+
+        originalMarkerX = $marker.css('left').replace('px', '');
+        originalMarkerY = $marker.css('top').replace('px', '');
+    });
+
+    $map.on('mousemove', function(e) {
+        if (markerIsSelected)
+            moveMarker(e.pageX, e.pageY)
+    });
+    $marker.on('mousemove', function (e) {
+        if (markerIsSelected) {
+            e.stopImmediatePropagation();
+            moveMarker(e.pageX, e.pageY)
+        }
+    });
+    function moveMarker(pageX, pageY) {
+        var x = pageX - $map.offset().left;
+        var y = pageY - $map.offset().top;
+
+        // Subtract half of the rendered marker width
+        x -= $marker.width() / 2;
+
+        // Subtract rendered marker height
+        y -= $marker.height();
+
+        // Record image width and height at the time of marking
+        var w = $map.width();
+        var h = $map.height();
+
+        // Make it relative
+        var xr = x / w * 100;
+        var yr = y / h * 100;
+
+        var value = {
+            x: x,
+            xr: xr,
+            y: y,
+            yr: yr,
+            width: w,
+            height: h,
+        };
+
+        $input.val(JSON.stringify(value));
+
+        setMarkerCoordinates(xr, yr);
+    }
+
+    $map.on('mouseup', function(e) {
+        if (markerIsSelected)
+            markerIsSelected = false;
+    });
+
+    $map.on('mouseleave', function(e) {
+        // Needs to know if the mouse has left the map or if it is just in front of the marker
+
+        if (markerIsSelected) {
+            markerIsSelected = false;
+
+            var x = originalMarkerX;
+            var y = originalMarkerY;
+
+            // Record image width and height at the time of marking
+            var w = $map.width();
+            var h = $map.height();
+
+            // Make it relative
+            var xr = x / w * 100;
+            var yr = y / h * 100;
+
+            setMarkerCoordinates(xr, yr);
+        }
+    });
+    */
+
+    $map.on('click', function(e) {
+        var $img = $(this);
+
+        var x = e.pageX - $img.offset().left;
+        var y = e.pageY - $img.offset().top;
+
+        $input.val(JSON.stringify({
+            x: (x / $img.width()) * 100,
+            y: (y / $img.height()) * 100
+        }));
+
+        setMarkerCoordinates(
+            ((x - ($marker.width() / 2)) / $img.width()) * 100,
+            ((y - $marker.height()) / $img.height()) * 100
+        );
+    });
+
+    function setMarkerCoordinates(x, y) {
+        $marker.css({top: y + '%', left: x + '%'});
+        $marker.fadeIn();
+    }
+{% endjs %}

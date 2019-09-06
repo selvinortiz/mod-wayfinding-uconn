@@ -1,46 +1,43 @@
 <template>
-  <nav class="flex text-center uppercase justify-center @nav">
-    <div v-for="(link, i) in theme.footer.nav.links" :key="i">
-      <a v-if="link.url" :href="link.url" class="link shadow rounded" :style="styles">
-        <img class="icon" :src="`/svg/icons/${link.icon}`" alt />
-        <span>{{ link.title }}</span>
-      </a>
-      <router-link
-        v-if="link.route"
-        :to="{name: link.route}"
-        class="link shadow rounded"
-        :style="styles"
-      >
-        <img class="icon" :src="`/svg/icons/${link.icon}`" alt />
-        <span>{{ link.title }}</span>
-      </router-link>
-    </div>
-  </nav>
+  <div class="flex justify-center" :class="classes.container" :style="styles.container">
+    <nav class="flex flex-1 max-w-6xl items-center justify-center">
+      <div class="flex-grow @link" v-for="(link, i) in theme.nav.links" :key="i">
+        <a
+          class="flex"
+          v-if="link.type === 'url'"
+          :href="link.url"
+          :class="classes.link"
+          :style="applyStyles(link)"
+        >
+          <img class="icon" :src="`/static/svg/icons/${link.icon}`" alt />
+          <span>{{ link.title }}</span>
+        </a>
+
+        <router-link
+          v-if="link.type === 'route'"
+          class="flex"
+          :to="{name: link.route}"
+          :class="classes.link"
+          :style="applyStyles(link)"
+        >
+          <img class="icon" :src="`/static/svg/icons/${link.icon}`" alt />
+          <span>{{ link.title }}</span>
+        </router-link>
+
+        <a
+          v-if="link.type === 'action'"
+          class="flex"
+          :class="classes.link"
+          :style="applyStyles(link)"
+          @click="action(link.id)"
+        >
+          <img class="icon" :src="`/static/svg/icons/${link.icon}`" alt />
+          <span>{{ link.title }}</span>
+        </a>
+      </div>
+    </nav>
+  </div>
 </template>
-
-<style scoped>
-.link {
-  display: inline-block;
-  margin: 0.5rem;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-}
-
-.icon {
-  display: inline;
-  max-height: 1rem;
-}
-@media screen and (min-width: 720px) {
-  .link {
-    margin: 1rem;
-    padding: 1rem 2rem;
-    font-size: 1.25rem;
-  }
-  .icon {
-    max-height: 1.25rem;
-  }
-}
-</style>
 
 <script>
 export default {
@@ -49,10 +46,52 @@ export default {
       return this.$store.state.app.theme;
     },
     styles() {
-      return [
-        `color: ${this.theme.footer.nav.item.text}`,
-        `background-color: ${this.theme.footer.nav.item.bg}`
-      ].join(";");
+      return {
+        container: [this.$bg(this.theme.nav.bg), `color: ${this.theme.nav.fg}`]
+          .concat(this.theme.nav.styles)
+          .join(";"),
+        link: [
+            this.$bg(this.theme.nav.link.bg),
+            `color: ${this.theme.nav.link.fg}`
+          ]
+          .concat(this.theme.nav.link.styles)
+          .join(";"),
+        linkActive: [
+          this.$bg(this.theme.nav.link.active.bg),
+            `color: ${this.theme.nav.link.active.fg}`
+          ]
+          .concat(this.theme.nav.link.active.styles||[])
+          .join(";")
+      };
+    },
+    classes() {
+      return {
+        container: [].concat(this.theme.nav.classes).join(" "),
+        link: [
+          'p-6',
+          'justify-around'
+        ].concat(this.theme.nav.link.classes).join(" ")
+      };
+    }
+  },
+  methods: {
+    action(id) {
+      switch (id) {
+        case "search":
+          return this.search();
+      }
+    },
+    search() {
+      this.$store.commit("setSearchIsOpen", true);
+    },
+    applyStyles(link) {
+      const styles = this.styles.link;
+
+      if (link.route && this.$route && this.$route.path.includes(link.route)) {
+        return this.styles.linkActive;
+      }
+
+      return this.styles.link;
     }
   }
 };

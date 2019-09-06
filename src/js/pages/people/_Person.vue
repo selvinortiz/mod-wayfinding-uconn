@@ -1,16 +1,30 @@
 <template>
-  <div class="p-4">
-    <mod-page-header>Person</mod-page-header>
-    <div class="font-thin text-2xl leading-none">
-      <h2>{{ person.personFirstName }} {{ person.personLastName}}</h2>
-      <p>{{ person.personEmail }}</p>
+  <div class="p-8">
+    <div class="w-full flex-wrap pl-4 md:mb-4">
+      <div class="w-full text-3xl font-300">Directory</div>
+      <div class="w-full text-1xl">
+          {{ 'Breadcrumb nav 1' }}
+          >
+          {{ 'Breadcrumb nav 2' }}
+      </div>
     </div>
-    <div class="font-normal" v-html="person.personDescription"></div>
+
+    <div class="flex flex-wrap justify-center">
+      <div class="flex flex-wrap justify-center
+      lg:w-1/2 lg:order-2 md:w-full md:mb-6 md:order-1">
+        <mod-map :place="person"></mod-map>
+      </div>
+      <div class="lg:w-1/2 lg:order-1 md:w-full md:order-2">
+        <person-info :person="person"></person-info>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import axios from "../../utils/Axios";
+import { person } from "../../utils/Axios";
+import ModMap from '../../components/shared/ModMap.vue'
+import PersonInfo from '../../components/shared/PersonInfo.vue'
 
 export default {
   metaInfo() {
@@ -18,9 +32,16 @@ export default {
       title: this.title,
     }
   },
+  components: {
+    ModMap,
+    PersonInfo
+  },
   data() {
     return {
-      person: {}
+      person: {},
+
+      // Not Used
+      //primaryColor: this.$store.state.app.theme.main.directory.text
     };
   },
   computed: {
@@ -29,15 +50,8 @@ export default {
     }
   },
   created() {
-    axios
-      .post("/actions/sys/wayfinding/person", {
-        id: this.$route.params.id
-      })
+    person({id: this.$route.params.id})
       .then(response => {
-        if (!response.data.success) {
-          return console.error(response.data.message);
-        }
-
         this.person = response.data.person;
       })
       .catch(error => console.error(error));

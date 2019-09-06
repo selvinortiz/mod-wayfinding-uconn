@@ -1,73 +1,38 @@
-import Vue from "vue"
-import Meta from "vue-meta"
+import Vue from 'vue';
+import Meta from 'vue-meta';
 
-import "core-js/stable"
-import "regenerator-runtime/runtime"
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
-import Events from "./plugins/Events"
-import ModClock from "./components/shared/ModClock.vue"
-import ModKeyboard from "./components/shared/ModKeyboard.vue"
-import ModPageHeader from "./components/shared/ModPageHeader.vue"
+import Theme from './plugins/Theme';
+import Events from './plugins/Events';
 
-import AppLogo from './components/partials/AppLogo.vue';
-import AppNav from './components/partials/AppNav.vue';
-import AppEnd from './components/partials/AppEnd.vue';
+import App from './App.vue';
+import AppSearch from './components/partials/AppSearch.vue';
 
-import store from "./store"
-import router from "./router"
+import store from './store';
+import router from './router';
 
-Vue.use(Meta)
-Vue.use(Events)
-
-Vue.component('mod-page-header', ModPageHeader);
+Vue.use(Meta);
+Vue.use(Theme);
+Vue.use(Events);
 
 new Vue({
-  el: "#app",
+  el: '#app',
   store,
   router,
   components: {
-    AppLogo,
-    AppNav,
-    AppEnd,
-    ModClock,
-    ModKeyboard,
+    App,
+    AppSearch
   },
   metaInfo: {
-    title: "UCONN Wayfinding",
-  },
-  data: {
-    appClasses: ""
+    title: `${window.pageTitle || 'App'}`,
+    titleTemplate: `%s | ${window.siteName || 'ModCore'}`
   },
   created() {
-    this.$store.commit("setInitialized", true)
-  },
-  computed: {
-    theme() {
-      return this.$store.state.app.theme
-    },
-    styles() {
-      if (this.$route.name !== "index") return
+    const kiosk = window.kiosk ? JSON.parse(window.kiosk) : window.kiosk;
+    const theme = window.theme ? JSON.parse(window.theme) : window.theme;
 
-      return `background-image: url(/img/welcome-1.jpg); width: 100%; height: 100%;`
-    },
-    classes() {
-      if (this.$route.name !== "index") {
-        return `bg-white text-gray-900`
-      }
-
-      return `bg-cover bg-center`
-    },
-    headerClasses() {
-      return ``
-    },
-    headerStyles() {
-      return `background-color: rgba(255, 255, 255, .90);`
-    },
-    footerClasses() {
-      return ``
-    },
-    footerStyles() {
-      return `background-color: rgba(255, 255, 255, .75);`
-    }
+    this.$store.commit('setInitialized', { kiosk, theme });
   }
-})
+});
