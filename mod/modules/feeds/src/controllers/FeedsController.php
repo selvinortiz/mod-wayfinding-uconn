@@ -4,7 +4,7 @@ namespace modules\feeds\controllers;
 
 use Craft;
 use craft\web\Controller;
-use modules\feeds\queue\PlaceFeed;
+use modules\feeds\queue\PlacesFeed;
 use modules\feeds\queue\PeopleFeed;
 
 class FeedsController extends Controller
@@ -16,7 +16,7 @@ class FeedsController extends Controller
         $config = Craft::$app->config->getConfigFromFile('feeds');
 
         // Enqueue feed job
-        Craft::$app->queue->push(new PlaceFeed(
+        Craft::$app->queue->push(new PlacesFeed(
             [
                 'id'     => 'places',
                 'config' => $config['places']

@@ -43,8 +43,6 @@ class PlacesFeed extends Feed
         $step  = 0;
         $total = $root->count();
 
-        // feeds()->info('Ready to import {total} items 🚀', compact('total'));
-
         foreach ($root as $element)
         {
             $step++;
@@ -72,9 +70,12 @@ class PlacesFeed extends Feed
 
             if (!$building)
             {
+                $buildingKey = sprintf('c%sb%s', $campus->id, ElementHelper::createSlug($buildingName));
+
+                // Give the feed a chance to define the building key
                 $building = new Building([
                     'newParentId'     => $campus->id,
-                    'buildingKey'     => sprintf('c%sb%s', $campus->id, ElementHelper::createSlug($buildingName)),
+                    'buildingKey'     => $buildingKey,
                     'buildingName'    => $buildingName,
                     'buildingAddress' => $this->str($element, 'building-street-address'),
                     'buildingCity'    => $this->str($element, 'building-city'),
@@ -90,11 +91,14 @@ class PlacesFeed extends Feed
 
             if (empty($floorFromXml))
             {
-                // Skip this puppy
+                // Skip this floor
                 continue;
             }
 
             $floorKey = sprintf('c%sb%sf%s', $campus->id, $building->id, $floorFromXml);
+
+            // Give the feed a chance to define the floor key
+            $floorKey = $this->str($element, 'floor-uid', $floorKey);
 
             $floor = Floor::query()
                 ->floorKey($floorKey)
@@ -104,7 +108,7 @@ class PlacesFeed extends Feed
             {
                 $floor = new Floor([
                     'newParentId' => $building->id,
-                    'floorKey'     => $floorKey,
+                    'floorKey'    => $floorKey,
                     'floorNumber' => $floorFromXml,
                 ]);
 
@@ -120,10 +124,12 @@ class PlacesFeed extends Feed
                 continue;
             }
 
-            $roomKey = sprintf('c%sb%sf%sr%s', $campus->id, $building->id, $floor->id, $roomFromXml);
+            $roomKey   = sprintf('c%sb%sf%sr%s', $campus->id, $building->id, $floor->id, $roomFromXml);
+            $roomTitle = sprintf('Room - %s', $roomFromXml);
 
-            // Give the feed a chance to define the room id
-            $roomKey = $this->str($element, 'room-uid', $roomKey);
+            // Give the feed a chance to define the room key and title
+            $roomKey   = $this->str($element, 'room-uid', $roomKey);
+            $roomTitle = $this->str($element, 'destination-name', $roomTitle);
 
             $room = Room::query()
                 ->roomKey($roomKey)
@@ -133,8 +139,10 @@ class PlacesFeed extends Feed
             {
                 $room = new Room([
                     'newParentId' => $floor->id,
+                    'title'       => $roomTitle,
                     'roomKey'     => $roomKey,
                     'roomNumber'  => $roomFromXml,
+                    'roomDisplay' => $this->boolean($element, 'display-on-directory', false)
                 ]);
 
                 $elements->saveElement($room);
@@ -142,8 +150,6 @@ class PlacesFeed extends Feed
 
             $this->setProgress($queue, $step / $total);
         }
-
-        // feeds()->info('Done importing {total} {id} 👍', compact('total', 'id'));
 
         return true;
     }
