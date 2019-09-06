@@ -30,8 +30,6 @@ class PlacesFeed extends Feed
         $elements = Craft::$app->getElements();
 
         // Load the feed
-        $file = $this->get('file');
-
         $root = simplexml_load_file($this->get('file'));
 
         // If the feed defines a node, set it as the root node
