@@ -25,7 +25,10 @@
     <body>
         <div id="app">
             {% block content %}{% endblock %}
-            <div v-if="$store.state.app.searchIsOpen" class="fixed top-0 w-full h-full @search__container">
+            <div
+                v-if="$store.state.app.searchIsOpen"
+                class="fixed top-0 w-full h-full @search__container"
+                >
                 <div class="fixed top-0 w-full h-full @search__backdrop"></div>
                 <app-search></app-search>
             </div>

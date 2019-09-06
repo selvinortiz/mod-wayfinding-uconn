@@ -1,5 +1,34 @@
-{% extends "_layout" %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% block content %}
-    <app></app>
-{% endblock %}
+        <title>{{ [title ?? null, siteName]|filter|join(' | ') }}</title>
+
+        {% block head %}
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" rel="stylesheet">
+            <link rel="stylesheet" href="/css/app.css?v={{ 'now'|date('YmdHis') }}">
+
+            <script>
+                window.kiosk = '{{ kiosk|e('js') }}';
+                window.theme = '{{ theme|e('js') }}';
+                window.siteName = '{{ siteName }}';
+                window.pageTitle = 'Welcome';
+                window.csrfTokenName = "{{ craft.app.config.general.csrfTokenName|e('js') }}";
+                window.csrfTokenValue = "{{ craft.app.request.csrfToken|e('js') }}";
+            </script>
+        {% endblock %}
+    </head>
+
+    <body>
+        <div id="app">
+            <app />
+        </div>
+
+        {% block footer %}
+            <script src="/js/app.js?v={{ 'now'|date('YmdHis') }}"></script>
+        {% endblock %}
+    </body>
+</html>

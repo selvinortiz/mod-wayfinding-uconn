@@ -30,6 +30,11 @@
       <app-nav></app-nav>
       <app-footer></app-footer>
     </footer>
+
+    <div v-if="$store.state.app.searchIsOpen" class="fixed top-0 w-full h-full @search__container">
+      <div class="fixed top-0 w-full h-full @search__backdrop" :style="styles.search.backdrop"></div>
+      <app-search></app-search>
+    </div>
   </div>
 </template>
 
@@ -65,6 +70,9 @@ export default {
         header: [this.$bg(this.theme.header.bg)].join(";"),
         clock: [`color: ${this.theme.header.clock.fg}`].join(";"),
         footer: [this.$bg(this.theme.footer.bg)].join(";"),
+        search: {
+          backdrop: [this.$bg(this.theme.search.bg)].join(";")
+        }
       };
     }
   }
