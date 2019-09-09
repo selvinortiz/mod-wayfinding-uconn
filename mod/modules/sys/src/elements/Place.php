@@ -2,6 +2,7 @@
 
 namespace modules\sys\elements;
 
+use craft\elements\Asset;
 use craft\helpers\UrlHelper;
 
 /**
@@ -53,6 +54,55 @@ class Place extends Element
                 )
             )
             ->values;
+    }
+
+    /**
+     * Ensures that fields do not overwrite eager loaded values
+     *
+     * @param array $fieldHandles
+     *
+     * @return array
+     */
+    public function getFieldValues(array $fieldHandles = null): array
+    {
+        $values = parent::getFieldValues($fieldHandles);
+
+        foreach ($values as $handle => &$value)
+        {
+            // Replace value with previously eager loaded one
+            if ($this->hasEagerLoadedElements($handle))
+            {
+                $value = $this->getEagerLoadedElements($handle);
+            }
+
+            // Clean up what is returned for asset fields
+            if (is_array($value))
+            {
+                foreach ($value as &$item)
+                {
+                    if ($item instanceof Asset)
+                    {
+                        $item = [
+                            'url'    => $item->getUrl(),
+                            'width'  => $item->getWidth(),
+                            'height' => $item->getHeight(),
+                        ];
+                    }
+                }
+            }
+        }
+
+        if (($map = $this->mapUrl()))
+        {
+            $values['maps'] = [
+                [
+                    'markers' => [$this->placeMarker ?? null],
+                    'image'   => $this->mapUrl()
+                ]
+            ];
+        }
+
+        return $values;
     }
 
     public function mapUrl()
