@@ -36,7 +36,7 @@ class SysModule extends Module
             $this->controllerNamespace = 'modules\sys\console\controllers';
         }
 
-        if (Craft::$app->config->general->devMode)
+        if (Craft::$app->config->general->suppressSslWarnings)
         {
             // Ensure that functions such as:
             // - file_get_contents
