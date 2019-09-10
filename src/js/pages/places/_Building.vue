@@ -1,7 +1,7 @@
 <template>
   <div v-if="place.loaded" class="p-8">
     <div class="flex flex-wrap justify-center">
-      <div class="flex flex-wrap justify-center md:w-full md:mb-6 md:order-1 lg:w-1/2 lg:order-2 ">
+      <div class="flex flex-wrap justify-center md:w-full md:mb-6 md:order-1 lg:w-1/2 lg:order-2">
         <mod-map :place="place"></mod-map>
       </div>
 
@@ -22,19 +22,20 @@
 
             <!-- Half -->
             <div class="w-1/2 text-center">
-              <select
+              <multiselect
                 v-model="selectedRoom"
-                class="w-full flex items-center h-12 px-6 border-2 border-gray-600"
+                deselect-label="Can't remove this value"
+                track-by="id"
+                label="title"
+                placeholder="Chose Destination"
+                :options="place.descendants"
+                :searchable="true"
+                :allow-empty="true"
               >
-                <option class="hidden" value selected disabled>Choose Destination</option>
-                <option
-                  v-for="floorOrRoom in place.descendants"
-                  :key="floorOrRoom.id"
-                  :value="floorOrRoom.id"
-                  :disabled="floorOrRoom.type.handle === 'floor'"
-                >{{ floorOrRoom.title }}</option>
-              </select>
-
+                <template slot="singleLabel" slot-scope="{ option }">
+                  <strong>{{ option.title }}</strong>
+                </template>
+              </multiselect>
               <div class="pt-4">
                 Don&rsquo;t see what you&rsquo;re looking for?
                 <a
@@ -52,34 +53,36 @@
 
 <script>
 import axios from "../../utils/Axios";
-import ModMap from '../../components/shared/ModMap.vue'
+import ModMap from "../../components/shared/ModMap.vue";
 
 export default {
   metaInfo: {
     title: "Place"
   },
   components: {
-    ModMap,
+    ModMap
   },
   data() {
     return {
       place: {
-        loaded: false
+        loaded: false,
+        descendants: [],
       },
-      selectedRoom: ''
-    }
+      selectedRoom: ""
+    };
   },
   created() {
-    axios.post("/actions/sys/wayfinding/place", {
-      id: this.$route.params.id
-    })
-    .then(response => {
-      this.place = {
-        ...response.data.place,
-        loaded: true
-      };
-    })
-    .catch(error => console.error(error));
+    axios
+      .post("/actions/sys/wayfinding/place", {
+        id: this.$route.params.id
+      })
+      .then(response => {
+        this.place = {
+          ...response.data.place,
+          loaded: true
+        };
+      })
+      .catch(error => console.error(error));
   }
 };
 </script>

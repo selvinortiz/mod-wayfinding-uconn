@@ -4,6 +4,8 @@ import Meta from 'vue-meta';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
+import MultiSelect from 'vue-multiselect';
+import 'vue-multiselect/dist/vue-multiselect.min.css';
 import Theme from './plugins/Theme';
 import Events from './plugins/Events';
 
@@ -16,6 +18,8 @@ import router from './router';
 Vue.use(Meta);
 Vue.use(Theme);
 Vue.use(Events);
+
+Vue.component('multiselect', MultiSelect);
 
 new Vue({
   el: '#app',
