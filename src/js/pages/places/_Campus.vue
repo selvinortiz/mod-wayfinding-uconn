@@ -3,9 +3,7 @@
     <div class="w-full flex-wrap pl-4 md:mb-4">
       <div class="w-full text-3xl font-300">{{ place.title }}</div>
       <div class="w-full text-1xl">
-          {{ 'Breadcrumb nav 1' }}
-          >
-          {{ 'Breadcrumb nav 2' }}
+          <router-link :to="{name: 'places'}">Wayfinding</router-link>
       </div>
     </div>
 
