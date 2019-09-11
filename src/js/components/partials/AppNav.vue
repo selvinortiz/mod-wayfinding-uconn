@@ -10,7 +10,7 @@
           :style="applyStyles(link)"
         >
           <p class="flex cursor-pointer">
-            <img class="icon" :src="`/static/svg/icons/${link.icon}`" alt />
+            <img class="icon" :src="`/static/icons/${link.icon}`" alt />
             <span>{{ link.title }}</span>
           </p>
         </router-link>
@@ -23,7 +23,7 @@
           @click="action(link.id)"
         >
           <p class="flex cursor-pointer">
-            <img class="icon" :src="`/static/svg/icons/${link.icon}`" alt />
+            <img class="icon" :src="`/static/icons/${link.icon}`" alt />
             <span>{{ link.title }}</span>
           </p>
         </a>
@@ -36,7 +36,7 @@
           :style="applyStyles(link)"
         >
           <p class="flex cursor-pointer flex-grow">
-            <img class="icon" :src="`/static/svg/icons/${link.icon}`" alt />
+            <img class="icon" :src="`/static/icons/${link.icon}`" alt />
             <span>{{ link.title }}</span>
           </p>
         </a>
