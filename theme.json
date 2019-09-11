@@ -1,4 +1,7 @@
 {
+  "app": {
+    "title": "ModCore"
+  },
   "bg": "#fff",
   "fg": "#333",
   "font": {
@@ -13,7 +16,7 @@
       "direction": "to bottom"
     },
     "logo": {
-      "url": "/static/img/logo-light.svg"
+      "url": "/static/img/logo.svg"
     },
     "clock": {
       "fg": "#fff"
