@@ -7,8 +7,8 @@
   "header": {
     "bg": {
       "colors": [
-        "#000E2F",
-        "#000E2F"
+        "#c0d",
+        "#f0d"
       ],
       "direction": "to bottom"
     },
@@ -20,8 +20,8 @@
     }
   },
   "nav": {
-    "fg": [],
     "bg": "#fff",
+    "fg": [],
     "styles": [],
     "classes": [
       "border-t",
@@ -57,20 +57,20 @@
       }
     ],
     "link": {
-      "bg": "#fff",
-      "fg": "#000E2F",
+      "bg": "#e9e",
+      "fg": "#333",
       "styles": [],
       "classes": [
         "uppercase"
       ],
       "active": {
-        "bg": "#eee",
-        "fg": "#666"
+        "bg": "#b6e",
+        "fg": "#000"
       }
     }
   },
   "footer": {
-    "bg": "#000E2F",
+    "bg": "#c0d",
     "fg": "white"
   },
   "search": {
