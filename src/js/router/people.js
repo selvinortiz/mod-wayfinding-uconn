@@ -2,6 +2,7 @@ export default [
   {
     name: 'people',
     path: '/people',
+    exact: true,
     component: () =>
       import(/* webpackChunkName: 'people' */ '../pages/people/Index.vue')
   },

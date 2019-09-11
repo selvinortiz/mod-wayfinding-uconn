@@ -75,10 +75,11 @@ export default {
     };
   },
   created() {
+    const id = this.$route.params.id;
+    const action = id ? "/actions/sys/wayfinding/place" : "/actions/sys/wayfinding/place-first"
+
     axios
-      .post("/actions/sys/wayfinding/place", {
-        id: this.$route.params.id
-      })
+      .post(action, { id })
       .then(response => {
         this.place = {
           ...response.data.place,

@@ -7,12 +7,15 @@ import people from './people';
 
 Vue.use(VueRouter);
 
+const base   = window.kiosk.id ? `/@${window.kiosk.id}` : ``;
 const routes = app.concat(places, people);
 
-const base = window.kiosk.id ? `/@${window.kiosk.id}` : ``;
-
-export default new VueRouter({
+const router = new VueRouter({
   base,
   routes,
   mode: 'history',
 });
+
+// Add route guard if necessary
+
+export default router;

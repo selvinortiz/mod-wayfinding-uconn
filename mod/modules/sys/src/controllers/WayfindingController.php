@@ -96,6 +96,29 @@ class WayfindingController extends Controller
      * @return Response
      * @throws HttpException
      */
+    public function actionPlaceFirst()
+    {
+        $place = Place::query()
+        ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
+        ->one();
+
+        if (!$place)
+        {
+            return sys()->web->asJsonWithError('Did not find a place');
+        }
+
+        $place = $place->values();
+
+        return sys()->web->asJson(
+            'Place',
+            ['place' => $place]
+        );
+    }
+
+    /**
+     * @return Response
+     * @throws HttpException
+     */
     public function actionPlaces()
     {
         $places = Place::query()->limit(100)->all();

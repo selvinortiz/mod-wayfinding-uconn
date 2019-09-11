@@ -34,8 +34,8 @@ new Vue({
     titleTemplate: `%s | ${window.siteName || 'ModCore'}`
   },
   created() {
-    const kiosk = window.kiosk ? JSON.parse(window.kiosk) : window.kiosk;
-    const theme = window.theme ? JSON.parse(window.theme) : window.theme;
+    const kiosk = window.kiosk;
+    const theme = window.theme;
 
     this.$store.commit('setInitialized', { kiosk, theme });
   }
