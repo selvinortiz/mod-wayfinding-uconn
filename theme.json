@@ -54,20 +54,6 @@
         "title": "Service One",
         "url": "https://uconn-test.modolabs.net/myuconn/bus_tracker_transloc/index",
         "icon": "settings.svg"
-      },
-      {
-        "id": "service2",
-        "type": "url",
-        "title": "Service Two",
-        "url": "https://uconn-test.modolabs.net/myuconn/bus_tracker_transloc/index",
-        "icon": "settings.svg"
-      },
-      {
-        "id": "service3",
-        "type": "url",
-        "title": "Service Three",
-        "url": "https://uconn-test.modolabs.net/myuconn/bus_tracker_transloc/index",
-        "icon": "settings.svg"
       }
     ],
     "link": {

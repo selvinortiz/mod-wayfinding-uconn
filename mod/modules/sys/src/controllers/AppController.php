@@ -28,8 +28,8 @@ class AppController extends Controller
         }
 
         $kiosk    = Json::encode($kiosk);
-        $theme    = file_get_contents(dirname(__DIR__, 5).'/theme.json');
-        $settings = $this->getGlobalSettings();
+        $theme    = $this->getTheme();
+        $settings = Json::encode($this->getGlobalSettings());
 
         return $this->renderTemplate('index', compact('kiosk', 'theme', 'settings'));
     }
@@ -73,5 +73,10 @@ class AppController extends Controller
         }
 
         return $settings;
+    }
+
+    private function getTheme()
+    {
+        return file_get_contents(dirname(__DIR__, 5).'/theme.json');
     }
 }

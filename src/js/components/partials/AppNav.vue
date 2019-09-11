@@ -2,17 +2,6 @@
   <div class="flex justify-center" :class="classes.container" :style="styles.container">
     <nav class="flex flex-1 max-w-6xl items-center justify-center">
       <div class="flex-grow @link" v-for="(link, i) in theme.nav.links" :key="i">
-        <a
-          class="flex"
-          v-if="link.type === 'url'"
-          :href="link.url"
-          :class="classes.link"
-          :style="applyStyles(link)"
-        >
-          <img class="icon" :src="`/static/svg/icons/${link.icon}`" alt />
-          <span>{{ link.title }}</span>
-        </a>
-
         <router-link
           v-if="link.type === 'route'"
           class="flex"
@@ -20,8 +9,10 @@
           :class="classes.link"
           :style="applyStyles(link)"
         >
-          <img class="icon" :src="`/static/svg/icons/${link.icon}`" alt />
-          <span>{{ link.title }}</span>
+          <p class="flex cursor-pointer">
+            <img class="icon" :src="`/static/svg/icons/${link.icon}`" alt />
+            <span>{{ link.title }}</span>
+          </p>
         </router-link>
 
         <a
@@ -31,8 +22,23 @@
           :style="applyStyles(link)"
           @click="action(link.id)"
         >
-          <img class="icon" :src="`/static/svg/icons/${link.icon}`" alt />
-          <span>{{ link.title }}</span>
+          <p class="flex cursor-pointer">
+            <img class="icon" :src="`/static/svg/icons/${link.icon}`" alt />
+            <span>{{ link.title }}</span>
+          </p>
+        </a>
+
+        <a
+          class="flex"
+          v-if="link.type === 'url'"
+          :href="link.url"
+          :class="classes.link"
+          :style="applyStyles(link)"
+        >
+          <p class="flex cursor-pointer flex-grow">
+            <img class="icon" :src="`/static/svg/icons/${link.icon}`" alt />
+            <span>{{ link.title }}</span>
+          </p>
         </a>
       </div>
     </nav>

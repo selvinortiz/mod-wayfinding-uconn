@@ -36,7 +36,8 @@ new Vue({
   created() {
     const kiosk = window.kiosk;
     const theme = window.theme;
+    const settings = window.settings;
 
-    this.$store.commit('setInitialized', { kiosk, theme });
+    this.$store.commit('setInitialized', { kiosk, theme, settings });
   }
 });
