@@ -12,8 +12,9 @@
             <link rel="stylesheet" href="/css/app.css?v={{ 'now'|date('YmdHis') }}">
 
             <script>
-                window.kiosk = '{{ kiosk|e('js') }}';
-                window.theme = '{{ theme|e('js') }}';
+                window.kiosk = JSON.parse('{{ kiosk|e('js') }}');
+                window.theme = JSON.parse('{{ theme|e('js') }}');
+                window.settings = JSON.parse('{{ settings|e('js') }}');
                 window.siteName = '{{ siteName }}';
                 window.pageTitle = 'Welcome';
                 window.csrfTokenName = "{{ craft.app.config.general.csrfTokenName|e('js') }}";

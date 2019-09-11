@@ -156,7 +156,7 @@
       {
           "group": "Place",
           "name": "Building Photo",
-          "handle": "BuildingPhoto",
+          "handle": "buildingPhoto",
           "instructions": "",
           "type": "craft\\fields\\Assets",
           "useSingleFolder": "1",

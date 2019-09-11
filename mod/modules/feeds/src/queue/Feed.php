@@ -56,6 +56,6 @@ abstract class Feed extends BaseJob
     {
         $val = $this->str($node, $key, $default);
 
-        return in_array($val, ['1', 'true', 'yes']) ? true : false;
+        return in_array(mb_strtolower($val), ['1', 'true', 'yes']) ? true : false;
     }
 }

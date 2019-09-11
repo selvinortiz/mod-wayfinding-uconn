@@ -1,6 +1,7 @@
 const defaultState = {
-  kiosk: {},
+  kiosk: null,
   theme: {},
+  settings: {},
   isMobile: false,
   searchIsOpen: false,
   initialized: false

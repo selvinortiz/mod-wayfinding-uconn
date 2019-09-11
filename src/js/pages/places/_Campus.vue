@@ -3,9 +3,7 @@
     <div class="w-full flex-wrap pl-4 md:mb-4">
       <div class="w-full text-3xl font-300">{{ place.title }}</div>
       <div class="w-full text-1xl">
-          {{ 'Breadcrumb nav 1' }}
-          >
-          {{ 'Breadcrumb nav 2' }}
+          <router-link :to="{name: 'places'}">Wayfinding</router-link>
       </div>
     </div>
 
@@ -77,10 +75,11 @@ export default {
     };
   },
   created() {
+    const id = this.$route.params.id;
+    const action = id ? "/actions/sys/wayfinding/place" : "/actions/sys/wayfinding/place-first"
+
     axios
-      .post("/actions/sys/wayfinding/place", {
-        id: this.$route.params.id
-      })
+      .post(action, { id })
       .then(response => {
         this.place = {
           ...response.data.place,
