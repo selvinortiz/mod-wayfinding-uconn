@@ -7,8 +7,8 @@
   "header": {
     "bg": {
       "colors": [
-        "#c0d",
-        "#f0d"
+        "#132455",
+        "#000E2F"
       ],
       "direction": "to bottom"
     },
@@ -20,25 +20,22 @@
     }
   },
   "nav": {
-    "bg": "#fff",
-    "fg": [],
+    "bg": "#f6f6f6",
+    "fg": "#000e2f",
     "styles": [],
-    "classes": [
-      "border-t",
-      "border-gray-300"
-    ],
+    "classes": [],
     "links": [
       {
         "id": "places",
         "type": "route",
-        "title": "Places",
+        "title": "Wayfinding",
         "route": "places",
         "icon": "places.svg"
       },
       {
         "id": "people",
         "type": "route",
-        "title": "People",
+        "title": "Directory",
         "route": "people",
         "icon": "people.svg"
       },
@@ -51,29 +48,29 @@
       {
         "id": "service1",
         "type": "url",
-        "title": "Service One",
+        "title": "Bus Tracker",
         "url": "https://uconn-test.modolabs.net/myuconn/bus_tracker_transloc/index",
         "icon": "settings.svg"
       }
     ],
     "link": {
-      "bg": "#e9e",
-      "fg": "#333",
+      "bg": "#f6f6f6",
+      "fg": "#000e2f",
       "styles": [],
       "classes": [
         "uppercase"
       ],
       "active": {
-        "bg": "#b6e",
-        "fg": "#000"
+        "bg": "#e6e6e6",
+        "fg": "#000e2f"
       }
     }
   },
   "footer": {
-    "bg": "#c0d",
+    "bg": "#000e2f",
     "fg": "white"
   },
   "search": {
-    "bg": "rgba(23, 2, 97, 0.5)"
+    "bg": "rgba(0, 14, 47, 0.75)"
   }
 }
