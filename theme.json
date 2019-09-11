@@ -71,6 +71,16 @@
     "fg": "white"
   },
   "search": {
-    "bg": "rgba(0, 14, 47, 0.75)"
+    "bg": "rgba(0, 14, 47, 0.75)",
+    "button": {
+      "bg": "000e2f",
+      "fg": "#fff"
+    }
+  },
+  "keyboard": {
+    "bg": "transparent",
+    "button": {
+      "fg": "#000e2f"
+    }
   }
 }
