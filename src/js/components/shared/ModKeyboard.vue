@@ -1,6 +1,6 @@
 <template>
-  <section class="animated" :class="animatedClass">
-    <div :class="keyboardClass"></div>
+  <section class="animated" :class="animatedClass" :style="keyboardContainerStyles">
+    <div :class="keyboardClass" :style="keyboardStyles"></div>
   </section>
 </template>
 
@@ -72,6 +72,12 @@ export default {
     keyboardClass: {
       type: String,
       required: true
+    },
+    keyboardStyles: {
+      type: String,
+    },
+    keyboardContainerStyles: {
+      type: String,
     },
     animatedClass: {
       type: String,
@@ -148,6 +154,6 @@ export default {
 <style scoped>
 .simple-keyboard.hg-theme-default {
   border-radius: 0;
-  background-color: #edf2f7;
+  background-color: transparent;
 }
 </style>

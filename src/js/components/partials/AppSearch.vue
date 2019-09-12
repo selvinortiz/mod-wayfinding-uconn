@@ -23,7 +23,7 @@
         <h2 class="font-thin text-2xl">Search</h2>
         <div class="flex items-center my-4 bg-blue-800">
           <select v-model="context" class="bg-transparent outline-none focus:outline-none">
-            <option value>All</option>
+            <option value>Everything</option>
             <option value="people">People</option>
             <option value="places">Places</option>
             <option value="building">Buildings</option>
@@ -44,9 +44,11 @@
         </div>
 
         <mod-keyboard
-          v-if="showKeyboard"
+          v-if="true"
           animatedClass="slideInUp"
           keyboardClass="keyboard--standard"
+          :keyboardStyles="styles.keyboard"
+          :keyboardContainerStyles="styles.keyboardContainer"
           :keyboardButtonLabels="keyboardButtonLabels"
           @change="handleKeyboardChange"
           @click="handleKeyboardClick"
@@ -72,7 +74,6 @@ export default {
       searching: false,
       results: [],
       searchErrorMessage: "",
-      showKeyboard: !("ontouchstart" in document.documentElement),
       keyboardButtonLabels: {
         "{space}": "Space",
         "{bksp}": "⇤",
@@ -95,9 +96,11 @@ export default {
       return {
         search: [
           `color: #fff`
-        ].concat(this.theme.search.styles || []).join(";")
+        ].concat(this.theme.search.styles || []).join(";"),
+        keyboard: `color: #111`,
+        keyboardContainer: '',
       }
-    }
+    },
   },
   methods: {
     search() {
@@ -111,7 +114,6 @@ export default {
         .then(response => {
           if (response.data.success) {
             this.results = response.data.results;
-            console.log(this.results);
           } else {
             this.searchErrorMessage = response.data.message;
           }
@@ -120,11 +122,9 @@ export default {
         .catch(error => console.error(error));
     },
     handleKeyboardChange(input) {
-      console.log("Input changed", input);
       this.input = input;
     },
     handleKeyboardClick(button) {
-      console.log("Button clicked", button);
       switch (button) {
         case "{enter}":
           this.search();
