@@ -1,5 +1,7 @@
 <template>
   <div v-if="place.loaded" class="p-8">
+    <page-header>Wayfinding</page-header>
+
     <div class="flex flex-wrap justify-center">
       <div class="flex flex-wrap justify-center md:w-full md:mb-6 md:order-1 lg:w-1/2 lg:order-2">
         <mod-map :place="place"></mod-map>
@@ -11,22 +13,24 @@
             <div class="w-full mb-4 text-2xl font-black">{{place.buildingName}}</div>
 
             <!-- Half -->
-            <div class="w-1/2">
+            <div class="w-1/2 font-thin text-xl">
               <img class="w-4/5 mb-4" src="http://placehold.it/500" />
 
-              <div class="font-bold mb-4">Phone Number</div>
-              <div class="font-bold">Address Line 1</div>
-              <div class="font-bold mb-4">Address Line 2</div>
-              <div>Place Description</div>
+              <div class="">{{ place.buildingPhone }}</div>
+              <div class="">{{ place.buildingAddress }}</div>
+              <div class="">
+                {{ `${place.buildingCity}, ${place.buildingState} ${place.buildingZipcode}` }}
+              </div>
+              <div>{{ place.buildingDescription }}</div>
             </div>
 
             <!-- Half -->
             <div class="w-1/2 text-center">
-              <multiselect
+              <multi-select
                 track-by="id"
                 label="title"
                 placeholder="Chose Destination"
-                value=""
+                value
                 :options="place.descendants"
                 :show-labels="false"
                 :allow-empty="true"
@@ -35,7 +39,7 @@
                 <template slot="singleLabel" slot-scope="{ option }">
                   <strong>{{ option.title }}</strong>
                 </template>
-              </multiselect>
+              </multi-select>
               <div class="pt-4">
                 Don&rsquo;t see what you&rsquo;re looking for?
                 <a
@@ -66,7 +70,7 @@ export default {
     return {
       place: {
         loaded: false,
-        descendants: [],
+        descendants: []
       }
     };
   },
@@ -87,11 +91,11 @@ export default {
     handleSelectedPlace(place) {
       if (place && place.id) {
         this.$router.push({
-          name: 'room',
+          name: "room",
           params: {
             id: place.id
           }
-        })
+        });
       }
     }
   }

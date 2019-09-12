@@ -6,11 +6,14 @@ import 'regenerator-runtime/runtime';
 
 import MultiSelect from 'vue-multiselect';
 import 'vue-multiselect/dist/vue-multiselect.min.css';
+
 import Theme from './plugins/Theme';
 import Events from './plugins/Events';
 
 import App from './App.vue';
 import AppSearch from './components/partials/AppSearch.vue';
+
+import PageHeader from './components/shared/PageHeader.vue';
 
 import store from './store';
 import router from './router';
@@ -19,7 +22,8 @@ Vue.use(Meta);
 Vue.use(Theme);
 Vue.use(Events);
 
-Vue.component('multiselect', MultiSelect);
+Vue.component('page-header', PageHeader);
+Vue.component('multi-select', MultiSelect);
 
 new Vue({
   el: '#app',
