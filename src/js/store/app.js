@@ -1,6 +1,7 @@
 const defaultState = {
-  kiosk: null,
   theme: {},
+  kiosk: null,
+  campus: null,
   settings: {},
   isMobile: false,
   searchIsOpen: false,
@@ -10,9 +11,10 @@ const defaultState = {
 export default {
   state: { ...defaultState },
   mutations: {
-    setInitialized: (state, { kiosk, theme }) => {
-      state.kiosk = kiosk;
+    setInitialized: (state, { theme, campus, kiosk }) => {
       state.theme = theme;
+      state.kiosk = kiosk;
+      state.campus = campus;
       state.isMobile = kiosk ? true : false;
       state.initialized = true;
     },

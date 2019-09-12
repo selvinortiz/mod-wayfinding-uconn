@@ -7,6 +7,7 @@ use craft\elements\GlobalSet;
 use craft\helpers\Json;
 use craft\web\Controller;
 use modules\sys\elements\Building;
+use modules\sys\elements\Campus;
 
 class AppController extends Controller
 {
@@ -14,24 +15,31 @@ class AppController extends Controller
 
     public function actionIndex(int $kioskId = null)
     {
-        $kiosk = [];
+        $kiosk  = [];
+        $campus = [];
 
         if ($kioskId)
         {
             $kiosk = Building::query()
                 ->id($kioskId)
                 ->with(['buildingPhoto'])
-                ->asArray()
-                ->one();
-
-            $kiosk = $kiosk ?: [];
+                ->one()
+                ->values();
+        }
+        else
+        {
+            $campus = Campus::query()
+            ->with(['campusMap', 'campusPhoto'])
+            ->one()
+            ->values();
         }
 
-        $kiosk    = Json::encode($kiosk);
         $theme    = $this->getTheme();
+        $kiosk    = Json::encode($kiosk);
+        $campus   = Json::encode($campus);
         $settings = Json::encode($this->getGlobalSettings());
 
-        return $this->renderTemplate('index', compact('kiosk', 'theme', 'settings'));
+        return $this->renderTemplate('index', compact('theme', 'campus', 'kiosk', 'settings'));
     }
 
     private function getGlobalSettings()

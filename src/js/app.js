@@ -34,10 +34,11 @@ new Vue({
     titleTemplate: `%s | ${window.siteName || 'ModCore'}`
   },
   created() {
-    const kiosk = window.kiosk;
     const theme = window.theme;
+    const kiosk = window.kiosk;
+    const campus = window.campus;
     const settings = window.settings;
 
-    this.$store.commit('setInitialized', { kiosk, theme, settings });
+    this.$store.commit('setInitialized', { theme, campus, kiosk, settings });
   }
 });
