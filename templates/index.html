@@ -7,29 +7,25 @@
 
         <title></title>
 
-        {% block head %}
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" rel="stylesheet">
-            <link rel="stylesheet" href="/css/app.css?v={{ 'now'|date('YmdHis') }}">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/app.css?v={{ 'now'|date('YmdHis') }}">
 
-            <script>
-                window.kiosk = JSON.parse('{{ kiosk|e('js') }}');
-                window.theme = JSON.parse('{{ theme|e('js') }}');
-                window.settings = JSON.parse('{{ settings|e('js') }}');
-                window.siteName = '{{ siteName }}';
-                window.pageTitle = 'Welcome';
-                window.csrfTokenName = "{{ craft.app.config.general.csrfTokenName|e('js') }}";
-                window.csrfTokenValue = "{{ craft.app.request.csrfToken|e('js') }}";
-            </script>
-        {% endblock %}
+        <script>
+            window.kiosk = JSON.parse('{{ kiosk|e('js') }}');
+            window.theme = JSON.parse('{{ theme|e('js') }}');
+            window.settings = JSON.parse('{{ settings|e('js') }}');
+            window.siteName = '{{ siteName }}';
+            window.pageTitle = 'Welcome';
+            window.csrfTokenName = "{{ craft.app.config.general.csrfTokenName|e('js') }}";
+            window.csrfTokenValue = "{{ craft.app.request.csrfToken|e('js') }}";
+        </script>
     </head>
 
     <body>
         <div id="app">
-            <app />
+            <app/>
         </div>
 
-        {% block footer %}
-            <script src="/js/app.js?v={{ 'now'|date('YmdHis') }}"></script>
-        {% endblock %}
+        <script src="/js/app.js?v={{ 'now'|date('YmdHis') }}"></script>
     </body>
 </html>
