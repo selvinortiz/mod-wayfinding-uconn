@@ -8,7 +8,7 @@
       <div class="lg:w-1/2 lg:order-1 md:w-full md:order-2">
         <div>
           <div class="w-full flex flex-wrap justify-center p-4">
-            <div class="w-full mb-4 text-2xl font-black">{{place.title}}</div>
+            <div class="w-full mb-4 text-2xl font-black">{{place.buildingName}}</div>
 
             <!-- Half -->
             <div class="w-1/2">
@@ -23,14 +23,14 @@
             <!-- Half -->
             <div class="w-1/2 text-center">
               <multiselect
-                v-model="selectedRoom"
-                deselect-label="Can't remove this value"
                 track-by="id"
                 label="title"
                 placeholder="Chose Destination"
+                value=""
                 :options="place.descendants"
-                :searchable="true"
+                :show-labels="false"
                 :allow-empty="true"
+                @input="handleSelectedPlace"
               >
                 <template slot="singleLabel" slot-scope="{ option }">
                   <strong>{{ option.title }}</strong>
@@ -67,8 +67,7 @@ export default {
       place: {
         loaded: false,
         descendants: [],
-      },
-      selectedRoom: ""
+      }
     };
   },
   created() {
@@ -83,6 +82,18 @@ export default {
         };
       })
       .catch(error => console.error(error));
+  },
+  methods: {
+    handleSelectedPlace(place) {
+      if (place && place.id) {
+        this.$router.push({
+          name: 'room',
+          params: {
+            id: place.id
+          }
+        })
+      }
+    }
   }
 };
 </script>

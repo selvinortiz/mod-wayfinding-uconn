@@ -29,17 +29,20 @@
 
             <!-- Half -->
             <div class="w-1/2 text-center">
-              <select
-                v-model="selectedBuilding"
-                class="w-full flex items-center h-12 px-6 border-2 border-gray-600"
+              <multiselect
+                track-by="id"
+                label="buildingName"
+                placeholder="Chose Building"
+                value=""
+                :options="place.descendants"
+                :show-labels="false"
+                :allow-empty="true"
+                @input="handleSelectedPlace"
               >
-                <option class="hidden" value="" disabled>Choose Building</option>
-                <option
-                  v-for="building in place.descendants"
-                  :key="building.id"
-                  :value="building.id"
-                >{{ building.buildingName }}</option>
-              </select>
+                <template slot="singleLabel" slot-scope="{ option }">
+                  <strong>{{ option.buildingName }}</strong>
+                </template>
+              </multiselect>
 
               <div class="pt-4">
                 Don&rsquo;t see what you&rsquo;re looking for?
@@ -70,8 +73,10 @@ export default {
   },
   data() {
     return {
-      place: {},
-      selectedBuilding: ""
+      place: {
+        loaded: false,
+        descendants: [],
+      }
     };
   },
   created() {
@@ -97,6 +102,16 @@ export default {
   methods: {
     containerStyles() {
       return [`background-color: white`, `color: black`].join(";");
+    },
+    handleSelectedPlace(place) {
+      if (place && place.id) {
+        this.$router.push({
+          name: 'building',
+          params: {
+            id: place.id
+          }
+        })
+      }
     }
   }
 };
