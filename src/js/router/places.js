@@ -1,22 +1,9 @@
 export default [
   {
-    name: 'places',
-    path: '/places',
-    exact: true,
-    component: () =>
-      import(/* webpackChunkName: 'places' */ '../pages/places/_Place.vue')
-  },
-  {
     name: 'place',
     path: '/places/:id',
     component: () =>
       import(/* webpackChunkName: 'place' */ '../pages/places/_Place.vue')
-  },
-  {
-    name: 'campus',
-    path: '/places/campus',
-    component: () =>
-      import(/* webpackChunkName: 'campus' */ '../pages/places/_Campus.vue')
   },
   {
     name: 'campus',

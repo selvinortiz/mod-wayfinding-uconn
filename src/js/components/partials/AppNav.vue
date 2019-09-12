@@ -5,7 +5,7 @@
         <router-link
           v-if="link.type === 'route'"
           class="flex"
-          :to="{name: link.route}"
+          :to="route(link)"
           :class="classes.link"
           :style="applyStyles(link)"
         >
@@ -51,6 +51,12 @@ export default {
     theme() {
       return this.$store.state.app.theme;
     },
+    kiosk() {
+      return this.$store.state.app.kiosk;
+    },
+    campus() {
+      return this.$store.state.app.campus;
+    },
     styles() {
       return {
         container: [this.$bg(this.theme.nav.bg), `color: ${this.theme.nav.fg}`]
@@ -81,6 +87,19 @@ export default {
     }
   },
   methods: {
+    route(link) {
+      if (link.route === 'places') {
+        if (this.kiosk.id) {
+          return { name: 'building', params: { id: this.$store.state.app.kiosk.id } }
+        }
+
+        return { name: 'campus', params: { id: this.$store.state.app.campus.id } }
+      }
+
+      return {
+        name: link.route
+      }
+    },
     action(id) {
       switch (id) {
         case "search":
