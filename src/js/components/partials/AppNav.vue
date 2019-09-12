@@ -90,10 +90,10 @@ export default {
     route(link) {
       if (link.route === 'places') {
         if (this.kiosk.id) {
-          return { name: 'building', params: { id: this.$store.state.app.kiosk.id } }
+          return { name: 'building', params: { id: this.kiosk.id } }
         }
 
-        return { name: 'campus', params: { id: this.$store.state.app.campus.id } }
+        return { name: 'campus', params: { id: this.campus.id } }
       }
 
       return {
