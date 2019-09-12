@@ -31,7 +31,7 @@ new Vue({
   },
   metaInfo: {
     title: `${window.pageTitle || 'App'}`,
-    titleTemplate: `%s | ${window.siteName || 'ModCore'}`
+    titleTemplate: `%s | ${window.theme.app.title || 'ModCore'}`
   },
   created() {
     const theme = window.theme;
