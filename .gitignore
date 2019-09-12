@@ -5,6 +5,7 @@
 /.env
 /.idea
 /.vscode
+/theme.json
 vendor
 node_modules
 
