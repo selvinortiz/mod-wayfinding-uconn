@@ -1,11 +1,6 @@
 <template>
   <div class="p-8">
-    <div class="w-full flex-wrap pl-4 md:mb-4">
-      <div class="w-full text-3xl font-300">{{ place.title }}</div>
-      <div class="w-full text-1xl">
-          <router-link :to="{name: 'places'}">Wayfinding</router-link>
-      </div>
-    </div>
+    <page-header>Wayfinding</page-header>
 
     <div class="flex flex-wrap justify-center">
       <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-2 md:w-full md:mb-6 md:order-1">
@@ -15,7 +10,7 @@
       <div class="lg:w-1/2 lg:order-1 md:w-full md:order-2">
         <div :style="containerStyles">
           <div class="w-full flex flex-wrap justify-center p-4">
-            <div class="w-full mb-4 text-2xl font-black">{{place.title}}</div>
+            <div class="w-full mb-4 text-2xl font-black">{{ place.campusName }}</div>
 
             <!-- Half -->
             <div class="w-1/2">
@@ -29,7 +24,7 @@
 
             <!-- Half -->
             <div class="w-1/2 text-center">
-              <multiselect
+              <multi-select
                 track-by="id"
                 label="buildingName"
                 placeholder="Chose Building"
@@ -42,7 +37,7 @@
                 <template slot="singleLabel" slot-scope="{ option }">
                   <strong>{{ option.buildingName }}</strong>
                 </template>
-              </multiselect>
+              </multi-select>
 
               <div class="pt-4">
                 Don&rsquo;t see what you&rsquo;re looking for?

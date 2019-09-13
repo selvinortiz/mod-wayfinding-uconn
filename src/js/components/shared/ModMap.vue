@@ -95,59 +95,52 @@ export default {
     centerMap() {
       // Only run this part once at the start
       if (!this.defaultedToCenter) {
-        console.log(this.primaryColor);
         // Gather the smallest and largest cords for
         // finding the area encompassing all the markers
         var smallX = null,
-          bigX = null,
-          smallY = null,
-          bigY = null;
+            bigX   = null,
+            smallY = null,
+            bigY   = null;
 
         for (var ii = 0; ii < this.selectedMap.markers.length; ii++) {
           var marker = this.selectedMap.markers[ii];
 
           smallX == null || smallX > marker.x ? (smallX = marker.x) : null;
-          bigX == null || bigX < marker.x ? (bigX = marker.x) : null;
+          bigX   == null || bigX < marker.x ? (bigX = marker.x) : null;
           smallY == null || smallY > marker.y ? (smallY = marker.y) : null;
-          bigY == null || bigY < marker.y ? (bigY = marker.y) : null;
+          bigY   == null || bigY < marker.y ? (bigY = marker.y) : null;
         }
 
         // Use the relational amounts to convert to the cords for the new sized image
         var image = document.getElementById("image").getBoundingClientRect();
-        //console.log(image);
 
         smallX = (smallX / 100) * image.width;
-        bigX = (bigX / 100) * image.width;
+        bigX   = (bigX / 100) * image.width;
         smallY = (smallY / 100) * image.height;
-        bigY = (bigY / 100) * image.height;
-        //console.log([smallX, bigY, bigX - smallX, bigY - smallY]);
+        bigY   = (bigY / 100) * image.height;
 
         // Correct for the default xy of the image on page
         smallX += image.x;
-        bigX += image.x;
+        bigX   += image.x;
         smallY += image.y;
-        bigY += image.y;
+        bigY   += image.y;
 
         // Find the difference between the center of the marker encompassing area and the
         // center of the imageContainer to then translate the image to shair the same center
         var imageContainer = document
           .getElementById("imageContainer")
           .getBoundingClientRect();
-        //console.log(imageContainer);
 
         var imageContainerCenterX = imageContainer.x + imageContainer.width / 2;
-        var imageContainerCenterY =
-          imageContainer.y + imageContainer.height / 2;
+        var imageContainerCenterY = imageContainer.y + imageContainer.height / 2;
 
         var markerAreaCenterX = smallX + (bigX - smallX) / 2;
         var markerAreaCenterY = smallY + (bigY - smallY) / 2;
 
-        //console.log(imageContainerCenterX + "  " + imageContainerCenterY);
-        //console.log(markerAreaCenterX + "  " + markerAreaCenterY);
-        //console.log(markerAreaCenterX - imageContainerCenterX + "  " + (markerAreaCenterY - imageContainerCenterY));
-
-        this.translateX = -(markerAreaCenterX - imageContainerCenterX);
-        this.translateY = -(markerAreaCenterY - imageContainerCenterY);
+        // this.translateX = -(markerAreaCenterX - imageContainerCenterX);
+        // this.translateY = -(markerAreaCenterY - imageContainerCenterY);
+        this.translateX = markerAreaCenterX;
+        this.translateY = markerAreaCenterY;
       }
     },
 
