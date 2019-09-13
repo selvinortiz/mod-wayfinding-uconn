@@ -5,17 +5,16 @@
         <div v-if="results.length" class="animated slideInDown overflow-y-scroll overflow-x-hidden" style="max-height: 50vh">
           <h2>Search Results</h2>
           <div class="flex flex-wrap -mx-2 lg:-mx-4">
-            <router-link
+            <a
               class="block w-full lg:w-1/2 xl:w-1/3 flex my-2 px-2 lg:my-4 lg:px-4"
               v-for="result in results"
               :key="result.id"
-              :to="{name: 'person', params: {id: result.id}}"
-              @click="() => alert('Hello')"
+              @click.prevent="navigate(result, $event)"
             >
               <div class="flex-1 p-4 border border-gray-300 bg-white rounded">
                 <p class="font-thin text-xl">{{ result.title }}</p>
               </div>
-            </router-link>
+            </a>
           </div>
         </div>
       </section>
@@ -143,6 +142,13 @@ export default {
           console.log(button);
           break;
       }
+    },
+    navigate(place, event) {
+      console.log(place, event)
+      this.$store.commit('setSearchIsOpen', false)
+      this.$nextTick(() => {
+        this.$router.push({name: 'person', params: {id: place.id} })
+      })
     }
   }
 };
