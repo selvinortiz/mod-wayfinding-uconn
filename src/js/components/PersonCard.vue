@@ -1,8 +1,8 @@
 <template>
-  <router-link class="flex" :to="{ name: 'person', params: {id: person.id} }">
-    <img class="w-full" src="/static/img/avatar.svg" />
+  <router-link class="block" :to="{ name: 'person', params: {id: person.id} }">
+    <img src="/static/img/avatar.svg" style="max-height: 80px;" />
 
-    <div class="w-full p-2">
+    <div class="p-2">
       <p class="font-bold text-2xl">
         {{ person.personFirstName }}
         {{ person.personLastName }}

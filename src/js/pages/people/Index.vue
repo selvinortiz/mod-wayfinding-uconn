@@ -17,13 +17,13 @@
       </div>
     </div>
 
-    <div class="w-full flex justify-center items-center px-3" style="height: 10vh">
-      <select class="flex w-1/2 h-12 mt-1 mr-2 px-6 border-2 border-blue-800">
+    <div class="w-full flex justify-center items-center px-4 bg-gray-200" style="height: 10vh">
+      <select class="flex w-1/2 h-12 mt-1 mr-2 px-8 border-2 border-blue-800">
         <option class="hidden" value disabled selected>Filter by Last Initial</option>
         <option v-for="option in getAlphabet()" :key="option" :value="option">{{option}}</option>
       </select>
 
-      <select class="flex w-1/2 h-12 mt-1 ml-2 px-6 border-2 border-blue-800">
+      <select class="flex w-1/2 h-12 mt-1 ml-2 px-8 border-2 border-blue-800">
         <option class="hidden" value disabled selected>Filter by Department</option>
         <option
           v-for="department in departments"

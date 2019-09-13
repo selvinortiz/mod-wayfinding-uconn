@@ -1,11 +1,5 @@
 export default [
   {
-    name: 'place',
-    path: '/places/:id',
-    component: () =>
-      import(/* webpackChunkName: 'place' */ '../pages/places/_Place.vue')
-  },
-  {
     name: 'campus',
     path: '/places/campus/:id',
     component: () =>

@@ -1,17 +1,9 @@
 <template>
   <div class="p-8">
-    <div class="w-full flex-wrap pl-4 md:mb-4">
-      <div class="w-full text-3xl font-300">Directory</div>
-      <div class="w-full text-1xl">
-          {{ 'Breadcrumb nav 1' }}
-          >
-          {{ 'Breadcrumb nav 2' }}
-      </div>
-    </div>
+    <page-header>Directory</page-header>
 
     <div class="flex flex-wrap justify-center">
-      <div class="flex flex-wrap justify-center
-      lg:w-1/2 lg:order-2 md:w-full md:mb-6 md:order-1">
+      <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-2 md:w-full md:mb-6 md:order-1">
         <mod-map :place="person"></mod-map>
       </div>
       <div class="lg:w-1/2 lg:order-1 md:w-full md:order-2">
@@ -23,14 +15,14 @@
 
 <script>
 import { person } from "../../utils/Axios";
-import ModMap from '../../components/shared/ModMap.vue'
-import PersonInfo from '../../components/shared/PersonInfo.vue'
+import ModMap from "../../components/shared/ModMap.vue";
+import PersonInfo from "../../components/shared/PersonInfo.vue";
 
 export default {
   metaInfo() {
     return {
-      title: this.title,
-    }
+      title: this.title
+    };
   },
   components: {
     ModMap,
@@ -38,23 +30,33 @@ export default {
   },
   data() {
     return {
-      person: {},
-
-      // Not Used
-      //primaryColor: this.$store.state.app.theme.main.directory.text
+      person: {}
     };
   },
   computed: {
     title() {
-      return `${this.person.personFirstName} ${this.person.personLastName}`
+      return `${this.person.personFirstName} ${this.person.personLastName}`;
     }
   },
   created() {
-    person({id: this.$route.params.id})
-      .then(response => {
-        this.person = response.data.person;
-      })
-      .catch(error => console.error(error));
+    this.fetch();
+  },
+  methods: {
+    fetch() {
+      person({ id: this.$route.params.id })
+        .then(response => {
+          this.person = response.data.person;
+        })
+        .catch(error => console.error(error));
+    }
+  },
+  watch: {
+    $route(to) {
+      if (to.name === "person" && to.path !== this.$route.path) {
+        this.place = {};
+        this.fetch();
+      }
+    }
   }
 };
 </script>

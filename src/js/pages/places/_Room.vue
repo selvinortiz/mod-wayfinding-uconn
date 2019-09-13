@@ -40,24 +40,34 @@ export default {
   data() {
     return {
       place: {}
-
-      // Not Used
-      //primaryColor: this.$store.state.app.theme.main.wayfinding.text
     };
   },
   created() {
-    axios
-      .post("/actions/sys/wayfinding/place", {
-        id: this.$route.params.id
-      })
-      .then(response => {
-        this.place = {
-          ...response.data.place,
-          loaded: true
-        };
-        console.log(this.place);
-      })
-      .catch(error => console.error(error));
+    this.fetch();
+  },
+  methods: {
+    fetch() {
+      axios
+        .post("/actions/sys/wayfinding/place", {
+          id: this.$route.params.id
+        })
+        .then(response => {
+          this.place = {
+            ...response.data.place,
+            loaded: true
+          };
+          console.log(this.place);
+        })
+        .catch(error => console.error(error));
+    }
+  },
+  watch: {
+    $route(to) {
+      if (to.name === "room" && to.path !== this.$route.path) {
+        this.place = {};
+        this.fetch();
+      }
+    }
   }
 };
 </script>

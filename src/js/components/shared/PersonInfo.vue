@@ -27,7 +27,7 @@
 
       <!-- 2/5 -->
       <div class="w-2/5">
-        <img class="w-3/5 mb-6" style="max-width: 300px" src="http://placehold.it/500" />
+        <img class="w-3/5 mb-6" style="max-width: 300px" src="/static/img/avatar.svg" />
         <div
           :class="'w-3/5 text-center text-'+primaryColor+' border border-'+primaryColor"
         >Send to Phone</div>
