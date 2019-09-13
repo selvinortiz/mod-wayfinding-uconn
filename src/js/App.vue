@@ -1,6 +1,6 @@
 <template>
   <div class="@page bg-cover bg-center w-full h-full" :style="styles.container">
-    <header class="@page__header flex items-center justify-between px-4" :style="styles.header">
+    <header class="@page__header flex items-center justify-between px-8" :style="styles.header">
       <app-logo></app-logo>
       <div>
         <mod-clock>
@@ -20,9 +20,11 @@
       </div>
     </header>
 
-    <main class="@page__content">
+    <main class="@page__content p-8">
       <transition name="fade" mode="out-in">
-        <router-view></router-view>
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
       </transition>
     </main>
 

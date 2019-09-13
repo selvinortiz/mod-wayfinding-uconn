@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4">
+  <div class="p-8">
     <div class="mx-auto" style="display: grid; grid-template-rows: 1fr 1fr; max-width: 65%; height: 100vh">
       <section class="@search__results">
         <div v-if="results.length" class="animated slideInDown overflow-y-scroll overflow-x-hidden" style="max-height: 50vh">
@@ -10,6 +10,7 @@
               v-for="result in results"
               :key="result.id"
               :to="{name: 'person', params: {id: result.id}}"
+              @click="() => alert('Hello')"
             >
               <div class="flex-1 p-4 border border-gray-300 bg-white rounded">
                 <p class="font-thin text-xl">{{ result.title }}</p>

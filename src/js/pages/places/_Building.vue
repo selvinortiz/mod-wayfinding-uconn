@@ -16,11 +16,11 @@
             <div class="w-1/2 font-thin text-xl">
               <img class="w-4/5 mb-4" src="http://placehold.it/500" />
 
-              <div class="">{{ place.buildingPhone }}</div>
-              <div class="">{{ place.buildingAddress }}</div>
-              <div class="">
-                {{ `${place.buildingCity}, ${place.buildingState} ${place.buildingZipcode}` }}
-              </div>
+              <div class>{{ place.buildingPhone }}</div>
+              <div class>{{ place.buildingAddress }}</div>
+              <div
+                class
+              >{{ `${place.buildingCity}, ${place.buildingState} ${place.buildingZipcode}` }}</div>
               <div>{{ place.buildingDescription }}</div>
             </div>
 
@@ -37,7 +37,9 @@
                 @input="handleSelectedPlace"
               >
                 <template slot="singleLabel" slot-scope="{ option }">
-                  <strong>{{ option.title }}</strong>
+                  <span
+                    :class="{'text-gray-600': option.type.handle !== 'floor'}"
+                  >{{ option.title }}</span>
                 </template>
               </multi-select>
               <div class="pt-4">
@@ -96,6 +98,18 @@ export default {
             id: place.id
           }
         });
+      }
+    }
+  },
+  watch: {
+    $route(to) {
+      if (to.name === "building" && to.path !== this.$route.path) {
+        this.place = {
+          loaded: false,
+          descendants: []
+        };
+
+        this.fetch();
       }
     }
   }
