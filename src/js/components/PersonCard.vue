@@ -1,6 +1,6 @@
 <template>
-  <router-link class="block" :to="{ name: 'person', params: {id: person.id} }">
-    <img src="/static/img/avatar.svg" style="max-height: 80px;" />
+  <router-link class="flex items-start p-4 border border-gray-200 rounded" :to="{ name: 'person', params: {id: person.id} }">
+    <img class="block p-2" src="/static/img/avatar.svg" style="max-height: 80px;" />
 
     <div class="p-2">
       <p class="font-bold text-2xl">
