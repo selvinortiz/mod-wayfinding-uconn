@@ -54,6 +54,14 @@ class Building extends Place
                 },
                 $descendants
             );
+
+            $place->values['maps'] = [
+                [
+                    'image'   => $place->mapUrl(),
+                    'markers' => [$place->placeMarker]
+                ]
+            ];
+
             unset($place->values['campusMap']);
             unset($place->values['campusPhoto']);
             unset($place->values['floorMap']);

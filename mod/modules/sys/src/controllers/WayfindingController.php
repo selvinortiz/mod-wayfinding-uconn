@@ -165,6 +165,7 @@ class WayfindingController extends Controller
         return sys()->web->asJson('Found people', compact('people'));
     }
 
+
     /**
      * @return Response
      * @throws HttpException
