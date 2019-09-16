@@ -20,6 +20,7 @@
  */
 
 return [
+    'offline'                                                                    => ['template' => 'offline'],
     'maps/<type:(floor|room)+>/<floorId:\d+>/<roomIds:[0-9,]+(.svg)?>'           => 'sys/wayfinding/generate-floor-map',
     'maps/<type:(campus|building)+>/<campusId:\d+>/<buildingIds:[0-9,]+(.svg)?>' => 'sys/wayfinding/generate-campus-map',
     '@<kioskId:\d+>'                                                             => 'sys/app/index',
