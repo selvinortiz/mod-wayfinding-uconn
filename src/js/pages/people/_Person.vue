@@ -51,8 +51,8 @@ export default {
     }
   },
   watch: {
-    $route(to) {
-      if (to.name === "person" && to.path !== this.$route.path) {
+    '$route' (to) {
+      if (to.name === "person") {
         this.place = {};
         this.fetch();
       }

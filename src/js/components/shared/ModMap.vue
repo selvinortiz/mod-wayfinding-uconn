@@ -1,5 +1,5 @@
 <template>
-  <div v-if="place.maps" class="w-full md:px-4">
+  <div v-if="place.maps" class="w-full">
     <div
       id="imageContainer"
       class="overflow-hidden relative mb-4"
@@ -15,7 +15,6 @@
         class="w-full"
         :style="{'transform': `scale(${zoom}) translate(${translateX + 'px'}, ${translateY + 'px'})`}"
         :src="getSelectedMap().image"
-        @load="centerMap()"
         draggable="false"
       />
       <div v-if="place.loaded" class="w-1/6 absolute bottom-0 right-0">
