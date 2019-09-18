@@ -27,6 +27,8 @@ return [
         // (see https://docs.craftcms.com/v3/project-config.html)
         'useProjectConfigFile' => false,
 
+        'enableCsrfProtection' => false,
+
         'suppressSslWarnings' => getenv('SUPPRESS_SSL_WARNINGS')
     ],
 
