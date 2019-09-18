@@ -155,8 +155,30 @@ class WayfindingController extends Controller
      */
     public function actionPeople()
     {
-        $people = Person::query()->limit(100)->all();
+        $filters = sys()->web->param('filters');
 
+        $query = Person::query();
+
+        if (!empty($filters))
+        {
+            $letter = $filters['letter'] ?? null;
+
+            if (mb_strlen(trim($letter)) == 1)
+            {
+                $query->search(sprintf('personLastName:%s*', $letter));
+            }
+
+            $department = $filters['department'] ?? null;
+
+            if ($department && ($department = Category::find()->groupId(1)->id($department)->one()))
+            {
+                $query->relatedTo([
+                    'targetElement' => $department
+                ]);
+            }
+        }
+
+        $people = $query->limit(100)->all();
         if (!$people)
         {
             return sys()->web->asJsonWithError('Did not find any people');

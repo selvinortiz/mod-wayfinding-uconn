@@ -1,22 +1,18 @@
 <template>
-  <router-link class="flex items-start p-4 border border-gray-200 rounded" :to="{ name: 'person', params: {id: person.id} }">
-    <img class="block p-2" src="/static/img/avatar.svg" style="max-height: 80px;" />
+  <router-link class="flex-1 flex p-4 cursor-pointer bg-gray-100 border border-gray-200 hover:bg-gray-200" :to="{ name: 'person', params: {id: person.id} }">
+    <!-- <img class="block p-2" src="/static/img/avatar.svg" style="max-height: 80px;" /> -->
 
-    <div class="p-2">
-      <p class="font-bold text-2xl">
+    <div>
+      <h2 class="cursor-pointer font-semibold uppercase">
         {{ person.personFirstName }}
         {{ person.personLastName }}
-      </p>
-      <p>
+      </h2>
+      <p class="cursor-pointer">
         Role
         <!--{{ person.personFirstName }}-->
       </p>
-      <p>
+      <p class="cursor-pointer">
         Suite #
-        <!--{{ person.personFirstName }}-->
-      </p>
-      <p>
-        Can't tell what goes here
         <!--{{ person.personFirstName }}-->
       </p>
     </div>
