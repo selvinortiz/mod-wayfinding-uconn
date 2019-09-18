@@ -56,8 +56,6 @@ import AppSearch from "./components/partials/AppSearch.vue";
 import AppFooter from "./components/partials/AppFooter.vue";
 import AppSlides from "./components/partials/AppSlides.vue";
 
-let slidesInterval;
-
 export default {
   components: {
     AppNav,
