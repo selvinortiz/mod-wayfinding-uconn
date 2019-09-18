@@ -5,7 +5,7 @@
         <mod-map :place="place"></mod-map>
       </div>
       <div class="lg:w-1/2 lg:order-1 md:w-full md:order-2">
-        <div :style="containerStyles">
+        <div>
           <div class="w-full flex flex-wrap p-4">
             <div class="w-full mb-4 text-2xl font-black">{{place.title}}</div>
 
@@ -56,7 +56,6 @@ export default {
             ...response.data.place,
             loaded: true
           };
-          console.log(this.place);
         })
         .catch(error => console.error(error));
     }

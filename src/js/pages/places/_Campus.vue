@@ -84,7 +84,6 @@ export default {
           ...response.data.place,
           loaded: true
         };
-        console.log(this.place);
       })
       .catch(error => console.error(error));
   },
