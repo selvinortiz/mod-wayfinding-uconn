@@ -1,6 +1,6 @@
 <template>
   <div>
-    <app-slides />
+    <app-slides v-if="$route.name === 'index'"></app-slides>
     <div class="@page absolute z-10 w-full h-full">
       <header class="@page__header flex items-center justify-between px-8" :style="styles.header">
         <app-logo></app-logo>
