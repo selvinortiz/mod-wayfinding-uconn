@@ -14,6 +14,7 @@ import App from './App.vue';
 import AppSearch from './components/partials/AppSearch.vue';
 
 import PageHeader from './components/shared/PageHeader.vue';
+import UIButton from './components/shared/UIButton.vue';
 
 import store from './store';
 import router from './router';
@@ -24,6 +25,7 @@ Vue.use(Events);
 
 Vue.component('page-header', PageHeader);
 Vue.component('multi-select', MultiSelect);
+Vue.component('ui-button', UIButton);
 
 new Vue({
   el: '#app',

@@ -3,7 +3,7 @@
     <div class="mx-auto" style="display: grid; grid-template-rows: 1fr 1fr; max-width: 65%; height: 100vh">
       <section class="@search__results">
         <div v-if="results.length" class="animated slideInDown overflow-y-scroll overflow-x-hidden" style="max-height: 50vh">
-          <h2>Search Results</h2>
+          <h2 class="font-thin text-2xl uppercase text-white">Results</h2>
           <div class="flex flex-wrap -mx-2 lg:-mx-4">
             <a
               class="block w-full lg:w-1/2 xl:w-1/3 flex my-2 px-2 lg:my-4 lg:px-4"
@@ -20,10 +20,10 @@
       </section>
 
       <section class="animated fadeIn @search" :style="styles.search">
-        <h2 class="font-thin text-2xl">Search</h2>
+        <h2 class="font-thin text-2xl uppercase text-white">Search</h2>
         <div class="flex items-center my-4 bg-blue-800">
           <select v-model="context" class="bg-transparent outline-none focus:outline-none">
-            <option value>Everything</option>
+            <option value>All</option>
             <option value="people">People</option>
             <option value="places">Places</option>
             <option value="building">Buildings</option>
@@ -36,11 +36,7 @@
             v-model="input"
             @keydown.enter="search"
           />
-          <button
-            class="py-2 border-l border-gray-200 bg-blue-800 outline-none focus:outline-none"
-            style="flex: 2"
-            @click="search"
-          >Search</button>
+          <ui-button :loading="searching" style="flex: 2;" @click="search">Search</ui-button>
         </div>
 
         <mod-keyboard
