@@ -25,21 +25,22 @@ class SearchController extends Controller
         $query   = sys()->web->param('searchQuery', Craft::$app->request->getQueryParam('qry'));
         $context = sys()->web->param('searchContext', Craft::$app->request->getQueryParam('ctx'));
 
-        $search = Element::query();
+        $elements = Element::query()
+            ->type(SearchContext::type($context))
+            ->section(SearchContext::section($context))
+            ->search($this->prepareSearchQueryString($query))
+            ->limit(12)
+            ->with(['relatedDepartments'])
+            ->all();
 
-        $search->type    = SearchContext::type($context);
-        $search->section = SearchContext::section($context);
-        $search->search  = $this->prepareSearchQueryString($query);
-        $search->limit   = 16;
-
-        $results = $this->elementsToArrays($search->all());
+        $results = $this->elementsToArrays($elements);
 
         return sys()->web->asJson('Results', compact('results'));
     }
 
     private function prepareSearchQueryString(string $query)
     {
-        return sprintf('*%s*', trim($query));
+        return sprintf('title:%s', trim($query));
     }
 
     /**
