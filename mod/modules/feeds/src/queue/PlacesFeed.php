@@ -54,6 +54,9 @@ class PlacesFeed extends Feed
             {
                 $campus = new Campus([
                     'campusName' => $this->str($element, 'campus'),
+                    'placeCity'    => $this->str($element, 'building-city'),
+                    'placeState'   => $this->str($element, 'building-state'),
+                    'placeZipcode' => $this->str($element, 'building-postal-zip')
                 ]);
 
                 $elements->saveElement($campus);
@@ -71,14 +74,21 @@ class PlacesFeed extends Feed
                 $buildingKey = sprintf('c%sb%s', $campus->id, ElementHelper::createSlug($buildingName));
 
                 // Give the feed a chance to define the building key
+                $buildingKeyFromXml = $this->str($element, 'building-uid');
+
+                if (!empty($buildingKeyFromXml))
+                {
+                    $buildingKey = $buildingKeyFromXml;
+                }
+
                 $building = new Building([
-                    'newParentId'     => $campus->id,
-                    'buildingKey'     => $buildingKey,
-                    'buildingName'    => $buildingName,
-                    'buildingAddress' => $this->str($element, 'building-street-address'),
-                    'buildingCity'    => $this->str($element, 'building-city'),
-                    'buildingState'   => $this->str($element, 'building-state'),
-                    'buildingZipcode' => $this->str($element, 'building-postal-zip')
+                    'newParentId'  => $campus->id,
+                    'buildingKey'  => $buildingKey,
+                    'buildingName' => $buildingName,
+                    'placeAddress' => $this->str($element, 'building-street-address'),
+                    'placeCity'    => $this->str($element, 'building-city'),
+                    'placeState'   => $this->str($element, 'building-state'),
+                    'placeZipcode' => $this->str($element, 'building-postal-zip')
                 ]);
 
                 $elements->saveElement($building);
@@ -136,11 +146,11 @@ class PlacesFeed extends Feed
             if (!$room)
             {
                 $room = new Room([
-                    'newParentId' => $floor->id,
-                    'title'       => $roomTitle,
-                    'roomKey'     => $roomKey,
-                    'roomNumber'  => $roomFromXml,
-                    'roomDisplay' => $this->boolean($element, 'display-on-directory', false)
+                    'newParentId'  => $floor->id,
+                    'title'        => $roomTitle,
+                    'roomKey'      => $roomKey,
+                    'roomNumber'   => $roomFromXml,
+                    'roomDisplay'  => $this->boolean($element, 'display-on-directory', false)
                 ]);
 
                 $elements->saveElement($room);

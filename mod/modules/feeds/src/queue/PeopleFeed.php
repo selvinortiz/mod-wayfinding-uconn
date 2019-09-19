@@ -65,18 +65,6 @@ class PeopleFeed extends Feed
             </person>
             */
 
-            // ROOM
-            // $roomFromXml    = $this->str($element, 'room-number');
-            // $roomKeyFromXml = $this->str($element, 'room-uid');
-
-            // if (empty($roomFromXml) || mb_strtolower($roomFromXml) == 'none')
-            // {
-            //     $roomFromXml = null;
-            // }
-
-            // // Give the feed a chance to define the room id
-            // $roomKey = $this->str($element, 'room-uid', $roomKey);
-
             $emailFromXml      = $this->str($element, 'email');
             $titleFromXml      = $this->str($element, 'title');
             $departmentFromXml = $this->str($element, 'department');
@@ -128,6 +116,10 @@ class PeopleFeed extends Feed
                     'personLastName'  => $this->str($element, 'last-name'),
                     'personEmail'     => $this->str($element, 'email'),
                     'personPhone'     => $this->str($element, 'phone'),
+                    'personAddress'   => $this->str($element, 'building-street'),
+                    'personCity'      => $this->str($element, 'building-city'),
+                    'personState'     => $this->str($element, 'building-state'),
+                    'personZipcode'   => $this->str($element, 'building-postal-zip')
                 ]);
 
                 if ($roles)
@@ -141,8 +133,6 @@ class PeopleFeed extends Feed
 
             $this->setProgress($queue, $step / $total);
         }
-
-        // feeds()->info('Done importing {total} {id} 👍', compact('total', 'id'));
 
         return true;
     }
