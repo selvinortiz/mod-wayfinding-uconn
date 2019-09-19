@@ -1,4 +1,4 @@
-const { colors } = require("tailwindcss/defaultTheme")
+const { colors, opacity } = require("tailwindcss/defaultTheme")
 
 module.exports = {
   theme: {
@@ -8,13 +8,12 @@ module.exports = {
           ...colors.red,
           default: "#cod"
         }
+      },
+      opacity: {
+        ...opacity,
+        95: ".95"
       }
     },
-    inset: {
-      "0": 0,
-      auto: "auto",
-      "1/4": "25%"
-    }
   },
   variants: {},
   plugins: []
