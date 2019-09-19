@@ -21,7 +21,7 @@
 
       <section class="animated fadeIn @search" :style="styles.search">
         <h2 class="font-thin text-2xl uppercase text-white">Search</h2>
-        <div class="flex items-center my-4 bg-blue-800">
+        <div class="flex items-center my-4" :style="styles.searchControls">
           <select v-model="context" class="bg-transparent outline-none focus:outline-none">
             <option value>All</option>
             <option value="people">People</option>
@@ -93,6 +93,9 @@ export default {
         search: [
           `color: #fff`
         ].concat(this.theme.search.styles || []).join(";"),
+        searchControls: [
+          `background-color: ${this.theme.colors.primary}`
+        ].join(";"),
         keyboard: `color: #111`,
         keyboardContainer: '',
       }
