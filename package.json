@@ -5,9 +5,9 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "webpack --watch --progress --mode=development --hide-modules",
-    "start:sync": "CRAFT_HOST_URL=http://mod-wayfinding-core.test webpack --watch --progress --mode=development --hide-modules",
-    "start:sync:so": "CRAFT_HOST_URL=https://modcore.test webpack --watch --progress --mode=development --hide-modules",
-    "start:sync:rl": "webpack --env.CRAFT_HOST_URL=http://modcore.test --watch --progress --mode=development --hide-modules",
+    "start:sync": "cross-env CRAFT_HOST_URL=http://mod-wayfinding-core.test webpack --watch --progress --mode=development --hide-modules",
+    "start:sync:so": "cross-env CRAFT_HOST_URL=https://modcore.test webpack --watch --progress --mode=development --hide-modules",
+    "start:sync:pl": "cross-env CRAFT_HOST_URL=http://modcore.test webpack --watch --progress --mode=development --hide-modules",
     "build": "NODE_ENV=production webpack --mode=production"
   },
   "keywords": [
@@ -30,6 +30,7 @@
     "browser-sync": "^2.26.7",
     "browser-sync-webpack-plugin": "^2.2.2",
     "core-js": "^3.2.0",
+    "cross-env": "^6.0.0",
     "css-loader": "^3.2.0",
     "extract-loader": "^3.1.0",
     "file-loader": "^4.2.0",
