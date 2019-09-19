@@ -23,15 +23,17 @@ class AppController extends Controller
             $kiosk = Building::query()
                 ->id($kioskId)
                 ->with(['buildingPhoto'])
-                ->one()
-                ->values();
+                ->one() ?? new Building();
+
+            $kiosk = $kiosk->values();
         }
         else
         {
             $campus = Campus::query()
             ->with(['campusMap', 'campusPhoto'])
-            ->one()
-            ->values();
+            ->one() ?? new Campus();
+
+            $campus = $campus->values();
         }
 
         $theme    = $this->getTheme();
