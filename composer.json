@@ -2,7 +2,6 @@
   "require": {
     "craftcms/cms": "3.3.4.1",
     "craftcms/redactor": "2.4.0",
-    "mobiledetect/mobiledetectlib": "^2.8",
     "pennebaker/craft-architect": "^2.3",
     "selvinortiz/hiddenfields": "^1.1",
     "selvinortiz/smartfields": "^1.0",

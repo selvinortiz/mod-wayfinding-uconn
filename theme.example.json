@@ -2,8 +2,14 @@
   "app": {
     "title": "ModCore"
   },
-  "bg": "#fff",
-  "fg": "#333",
+  "colors": {
+    "background": "#fff",
+    "foreground": "#333",
+    "primary": "#c0d",
+    "gray": "#999",
+    "warm": "#fcd94e",
+    "hot": "#d81835"
+  },
   "font": {
     "family": "'Work Sans', sans-serif"
   },
@@ -23,7 +29,7 @@
     }
   },
   "nav": {
-    "bg": "#fff",
+    "bg": "#e9e",
     "fg": [],
     "styles": [],
     "classes": [],
@@ -51,7 +57,7 @@
       {
         "id": "service1",
         "type": "url",
-        "title": "Service One",
+        "title": "Service",
         "url": "https://uconn-test.modolabs.net/myuconn/bus_tracker_transloc/index",
         "icon": "service1.svg"
       }
