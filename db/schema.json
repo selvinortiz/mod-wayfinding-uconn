@@ -1,813 +1,813 @@
 {
   "siteGroups": [
-    "Default"
+      "Default"
   ],
   "sites": [
-    {
-      "group": "Default",
-      "name": "Default",
-      "handle": "default",
-      "language": "en-US",
-      "primary": "1",
-      "hasUrls": true,
-      "baseUrl": "$DEFAULT_SITE_URL"
-    }
+      {
+          "group": "Default",
+          "name": "Default",
+          "handle": "default",
+          "language": "en-US",
+          "primary": "1",
+          "hasUrls": true,
+          "baseUrl": "$DEFAULT_SITE_URL"
+      }
   ],
   "fieldGroups": [
-    "Place",
-    "Settings",
-    "Person"
+      "Place",
+      "Settings",
+      "Person"
   ],
   "volumes": [
-    {
-      "name": "Uploads",
-      "handle": "uploads",
-      "type": "craft\\volumes\\Local",
-      "hasUrls": true,
-      "url": "@web\/uploads",
-      "settings": {
-        "path": "@webroot\/uploads"
+      {
+          "name": "Uploads",
+          "handle": "uploads",
+          "type": "craft\\volumes\\Local",
+          "hasUrls": true,
+          "url": "@web\/uploads",
+          "settings": {
+              "path": "@webroot\/uploads"
+          },
+          "fieldLayout": []
       },
-      "fieldLayout": []
-    },
-    {
-      "name": "System",
-      "handle": "system",
-      "type": "craft\\volumes\\Local",
-      "hasUrls": true,
-      "url": "@web\/system",
-      "settings": {
-        "path": "@webroot\/system"
-      },
-      "fieldLayout": []
-    }
+      {
+          "name": "System",
+          "handle": "system",
+          "type": "craft\\volumes\\Local",
+          "hasUrls": true,
+          "url": "@web\/system",
+          "settings": {
+              "path": "@webroot\/system"
+          },
+          "fieldLayout": []
+      }
   ],
   "categoryGroups": [
-    {
-      "name": "Departments",
-      "handle": "departments",
-      "maxLevels": 1,
-      "siteSettings": [
-        []
-      ],
-      "fieldLayout": []
-    }
+      {
+          "name": "Departments",
+          "handle": "departments",
+          "maxLevels": 1,
+          "siteSettings": [
+              []
+          ],
+          "fieldLayout": []
+      }
   ],
   "sections": [
-    {
-      "name": "People",
-      "handle": "people",
-      "type": "structure",
-      "enableVersioning": false,
-      "maxLevels": "1",
-      "siteSettings": [
-        {
-          "hasUrls": false,
-          "enabledByDefault": false
-        }
-      ]
-    },
-    {
-      "name": "Places",
-      "handle": "places",
-      "type": "structure",
-      "enableVersioning": true,
-      "maxLevels": "5",
-      "siteSettings": [
-        {
-          "hasUrls": false,
-          "enabledByDefault": true
-        }
-      ]
-    }
+      {
+          "name": "People",
+          "handle": "people",
+          "type": "structure",
+          "enableVersioning": false,
+          "maxLevels": "1",
+          "siteSettings": [
+              {
+                  "hasUrls": false,
+                  "enabledByDefault": false
+              }
+          ]
+      },
+      {
+          "name": "Places",
+          "handle": "places",
+          "type": "structure",
+          "enableVersioning": true,
+          "maxLevels": "5",
+          "siteSettings": [
+              {
+                  "hasUrls": false,
+                  "enabledByDefault": true
+              }
+          ]
+      }
   ],
   "fields": [
-    {
-      "group": "Place",
-      "name": "Building Description",
-      "handle": "buildingDescription",
-      "instructions": "",
-      "type": "craft\\redactor\\Field",
-      "redactorConfig": "Simple.json",
-      "purifierConfig": "",
-      "cleanupHtml": true,
-      "removeInlineStyles": "1",
-      "removeEmptyTags": "1",
-      "removeNbsp": "1",
-      "purifyHtml": "1",
-      "columnType": "text",
-      "availableVolumes": "",
-      "availableTransforms": "*"
-    },
-    {
-      "group": "Place",
-      "name": "Building Key",
-      "handle": "buildingKey",
-      "instructions": "For internal use only",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Place",
-      "name": "Building Name",
-      "handle": "buildingName",
-      "instructions": "",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Place",
-      "name": "Building Photo",
-      "handle": "buildingPhoto",
-      "instructions": "",
-      "type": "craft\\fields\\Assets",
-      "useSingleFolder": "1",
-      "defaultUploadLocationSource": "volume:uploads",
-      "defaultUploadLocationSubpath": "",
-      "singleUploadLocationSource": "volume:uploads",
-      "singleUploadLocationSubpath": "building\/photos",
-      "restrictFiles": "1",
-      "allowedKinds": [
-        "image"
-      ],
-      "sources": "*",
-      "viewMode": "large",
-      "limit": "1",
-      "selectionLabel": "Add building photo",
-      "localizeRelations": false,
-      "validateRelatedElements": ""
-    },
-    {
-      "group": "Place",
-      "name": "Campus Description",
-      "handle": "campusDescription",
-      "instructions": "",
-      "type": "craft\\redactor\\Field",
-      "redactorConfig": "Simple.json",
-      "purifierConfig": "",
-      "cleanupHtml": true,
-      "removeInlineStyles": "1",
-      "removeEmptyTags": "1",
-      "removeNbsp": "1",
-      "purifyHtml": "1",
-      "columnType": "text",
-      "availableVolumes": "",
-      "availableTransforms": "*"
-    },
-    {
-      "group": "Place",
-      "name": "Campus Key",
-      "handle": "campusKey",
-      "instructions": "For internal use only",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Place",
-      "name": "Campus Map",
-      "handle": "campusMap",
-      "instructions": "",
-      "type": "craft\\fields\\Assets",
-      "useSingleFolder": "1",
-      "defaultUploadLocationSource": "volume:uploads",
-      "defaultUploadLocationSubpath": "",
-      "singleUploadLocationSource": "volume:uploads",
-      "singleUploadLocationSubpath": "campus\/maps",
-      "restrictFiles": "1",
-      "allowedKinds": [
-        "image"
-      ],
-      "sources": "*",
-      "viewMode": "large",
-      "limit": "1",
-      "selectionLabel": "Add campus map",
-      "localizeRelations": false,
-      "validateRelatedElements": ""
-    },
-    {
-      "group": "Place",
-      "name": "Campus Name",
-      "handle": "campusName",
-      "instructions": "",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Place",
-      "name": "Campus Photo",
-      "handle": "campusPhoto",
-      "instructions": "",
-      "type": "craft\\fields\\Assets",
-      "useSingleFolder": "1",
-      "defaultUploadLocationSource": "volume:uploads",
-      "defaultUploadLocationSubpath": "",
-      "singleUploadLocationSource": "volume:uploads",
-      "singleUploadLocationSubpath": "campus\/photos",
-      "restrictFiles": "1",
-      "allowedKinds": [
-        "image"
-      ],
-      "sources": "*",
-      "viewMode": "large",
-      "limit": "1",
-      "selectionLabel": "Add campus photo",
-      "localizeRelations": false,
-      "validateRelatedElements": ""
-    },
-    {
-      "group": "Place",
-      "name": "Floor Key",
-      "handle": "floorKey",
-      "instructions": "For internal use only",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Place",
-      "name": "Floor Map",
-      "handle": "floorMap",
-      "instructions": "",
-      "type": "craft\\fields\\Assets",
-      "useSingleFolder": "",
-      "defaultUploadLocationSource": "volume:uploads",
-      "defaultUploadLocationSubpath": "floor\/maps",
-      "singleUploadLocationSource": "volume:uploads",
-      "singleUploadLocationSubpath": "",
-      "restrictFiles": "1",
-      "allowedKinds": [
-        "image"
-      ],
-      "sources": "*",
-      "viewMode": "large",
-      "limit": "1",
-      "selectionLabel": "Add floor map",
-      "localizeRelations": false,
-      "validateRelatedElements": ""
-    },
-    {
-      "group": "Place",
-      "name": "Floor Number",
-      "handle": "floorNumber",
-      "instructions": "",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Settings",
-      "name": "Images",
-      "handle": "images",
-      "instructions": "",
-      "type": "craft\\fields\\Assets",
-      "useSingleFolder": "1",
-      "defaultUploadLocationSource": "volume:uploads",
-      "defaultUploadLocationSubpath": "",
-      "singleUploadLocationSource": "volume:uploads",
-      "singleUploadLocationSubpath": "settings\/images",
-      "restrictFiles": "1",
-      "allowedKinds": [
-        "image"
-      ],
-      "sources": "*",
-      "viewMode": "large",
-      "limit": "10",
-      "selectionLabel": "Add image",
-      "localizeRelations": false,
-      "validateRelatedElements": ""
-    },
-    {
-      "group": "Settings",
-      "name": "Logo",
-      "handle": "logo",
-      "instructions": "",
-      "type": "craft\\fields\\Assets",
-      "useSingleFolder": "1",
-      "defaultUploadLocationSource": "volume:uploads",
-      "defaultUploadLocationSubpath": "",
-      "singleUploadLocationSource": "volume:uploads",
-      "singleUploadLocationSubpath": "settings\/logo",
-      "restrictFiles": "1",
-      "allowedKinds": [
-        "image"
-      ],
-      "sources": "*",
-      "viewMode": "large",
-      "limit": "1",
-      "selectionLabel": "Add logo",
-      "localizeRelations": false,
-      "validateRelatedElements": ""
-    },
-    {
-      "group": "Person",
-      "name": "Person Address",
-      "handle": "personAddress",
-      "instructions": "",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "123 Sunset Blvd",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Person",
-      "name": "Person City",
-      "handle": "personCity",
-      "instructions": "",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "Minneapolis",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Person",
-      "name": "Person Description",
-      "handle": "personDescription",
-      "instructions": "A short bio or profile summary about this person",
-      "type": "craft\\redactor\\Field",
-      "redactorConfig": "Simple.json",
-      "purifierConfig": "",
-      "cleanupHtml": true,
-      "removeInlineStyles": "1",
-      "removeEmptyTags": "1",
-      "removeNbsp": "1",
-      "purifyHtml": "1",
-      "columnType": "text",
-      "availableVolumes": "",
-      "availableTransforms": "*"
-    },
-    {
-      "group": "Person",
-      "name": "Person Email",
-      "handle": "personEmail",
-      "instructions": "",
-      "type": "craft\\fields\\Email",
-      "placeholder": ""
-    },
-    {
-      "group": "Person",
-      "name": "Person First Name",
-      "handle": "personFirstName",
-      "instructions": "",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Person",
-      "name": "Person Key",
-      "handle": "personKey",
-      "instructions": "For internal use only",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Person",
-      "name": "Person Last Name",
-      "handle": "personLastName",
-      "instructions": "",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Person",
-      "name": "Person Phone",
-      "handle": "personPhone",
-      "instructions": "",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Place",
-      "name": "Person Photo",
-      "handle": "personPhoto",
-      "instructions": "",
-      "type": "craft\\fields\\Assets",
-      "useSingleFolder": "1",
-      "defaultUploadLocationSource": "volume:uploads",
-      "defaultUploadLocationSubpath": "",
-      "singleUploadLocationSource": "volume:uploads",
-      "singleUploadLocationSubpath": "people\/photos",
-      "restrictFiles": "1",
-      "allowedKinds": [
-        "image"
-      ],
-      "sources": "*",
-      "viewMode": "large",
-      "limit": "1",
-      "selectionLabel": "Add person photo",
-      "localizeRelations": false,
-      "validateRelatedElements": ""
-    },
-    {
-      "group": "Person",
-      "name": "Person Related Departments",
-      "handle": "personRelatedDepartments",
-      "instructions": "",
-      "type": "craft\\fields\\Categories",
-      "allowLimit": false,
-      "allowMultipleSources": false,
-      "branchLimit": "1",
-      "sources": "*",
-      "source": "group:departments",
-      "selectionLabel": "Add department",
-      "localizeRelations": false,
-      "validateRelatedElements": ""
-    },
-    {
-      "group": "Person",
-      "name": "Person Related Place",
-      "handle": "personRelatedPlace",
-      "instructions": "",
-      "type": "craft\\fields\\Entries",
-      "sources": [
-        "section:places"
-      ],
-      "limit": "1",
-      "selectionLabel": "Add related place",
-      "localizeRelations": false,
-      "validateRelatedElements": ""
-    },
-    {
-      "group": "Person",
-      "name": "Person Roles",
-      "handle": "personRoles",
-      "instructions": "",
-      "type": "craft\\fields\\Matrix",
-      "minBlocks": "",
-      "maxBlocks": "",
-      "propagationMethod": "all",
-      "blockTypes": [
-        {
-          "name": "Role",
-          "handle": "role",
-          "fields": [
-            {
-              "required": true,
-              "name": "Title",
-              "handle": "roleTitle",
-              "instructions": "",
-              "type": "craft\\fields\\PlainText",
-              "typesettings": {
-                "placeholder": "",
-                "code": "",
-                "multiline": "",
-                "initialRows": "4",
-                "charLimit": "",
-                "columnType": "text"
+      {
+          "group": "Place",
+          "name": "Building Description",
+          "handle": "buildingDescription",
+          "instructions": "",
+          "type": "craft\\redactor\\Field",
+          "redactorConfig": "Simple.json",
+          "purifierConfig": "",
+          "cleanupHtml": true,
+          "removeInlineStyles": "1",
+          "removeEmptyTags": "1",
+          "removeNbsp": "1",
+          "purifyHtml": "1",
+          "columnType": "text",
+          "availableVolumes": "",
+          "availableTransforms": "*"
+      },
+      {
+          "group": "Place",
+          "name": "Building Key",
+          "handle": "buildingKey",
+          "instructions": "For internal use only",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Place",
+          "name": "Building Name",
+          "handle": "buildingName",
+          "instructions": "",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Place",
+          "name": "Building Photo",
+          "handle": "buildingPhoto",
+          "instructions": "",
+          "type": "craft\\fields\\Assets",
+          "useSingleFolder": "1",
+          "defaultUploadLocationSource": "volume:uploads",
+          "defaultUploadLocationSubpath": "",
+          "singleUploadLocationSource": "volume:uploads",
+          "singleUploadLocationSubpath": "building\/photos",
+          "restrictFiles": "1",
+          "allowedKinds": [
+              "image"
+          ],
+          "sources": "*",
+          "viewMode": "large",
+          "limit": "1",
+          "selectionLabel": "Add building photo",
+          "localizeRelations": false,
+          "validateRelatedElements": ""
+      },
+      {
+          "group": "Place",
+          "name": "Campus Description",
+          "handle": "campusDescription",
+          "instructions": "",
+          "type": "craft\\redactor\\Field",
+          "redactorConfig": "Simple.json",
+          "purifierConfig": "",
+          "cleanupHtml": true,
+          "removeInlineStyles": "1",
+          "removeEmptyTags": "1",
+          "removeNbsp": "1",
+          "purifyHtml": "1",
+          "columnType": "text",
+          "availableVolumes": "",
+          "availableTransforms": "*"
+      },
+      {
+          "group": "Place",
+          "name": "Campus Key",
+          "handle": "campusKey",
+          "instructions": "For internal use only",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Place",
+          "name": "Campus Map",
+          "handle": "campusMap",
+          "instructions": "",
+          "type": "craft\\fields\\Assets",
+          "useSingleFolder": "1",
+          "defaultUploadLocationSource": "volume:uploads",
+          "defaultUploadLocationSubpath": "",
+          "singleUploadLocationSource": "volume:uploads",
+          "singleUploadLocationSubpath": "campus\/maps",
+          "restrictFiles": "1",
+          "allowedKinds": [
+              "image"
+          ],
+          "sources": "*",
+          "viewMode": "large",
+          "limit": "1",
+          "selectionLabel": "Add campus map",
+          "localizeRelations": false,
+          "validateRelatedElements": ""
+      },
+      {
+          "group": "Place",
+          "name": "Campus Name",
+          "handle": "campusName",
+          "instructions": "",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Place",
+          "name": "Campus Photo",
+          "handle": "campusPhoto",
+          "instructions": "",
+          "type": "craft\\fields\\Assets",
+          "useSingleFolder": "1",
+          "defaultUploadLocationSource": "volume:uploads",
+          "defaultUploadLocationSubpath": "",
+          "singleUploadLocationSource": "volume:uploads",
+          "singleUploadLocationSubpath": "campus\/photos",
+          "restrictFiles": "1",
+          "allowedKinds": [
+              "image"
+          ],
+          "sources": "*",
+          "viewMode": "large",
+          "limit": "1",
+          "selectionLabel": "Add campus photo",
+          "localizeRelations": false,
+          "validateRelatedElements": ""
+      },
+      {
+          "group": "Place",
+          "name": "Floor Key",
+          "handle": "floorKey",
+          "instructions": "For internal use only",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Place",
+          "name": "Floor Map",
+          "handle": "floorMap",
+          "instructions": "",
+          "type": "craft\\fields\\Assets",
+          "useSingleFolder": "",
+          "defaultUploadLocationSource": "volume:uploads",
+          "defaultUploadLocationSubpath": "floor\/maps",
+          "singleUploadLocationSource": "volume:uploads",
+          "singleUploadLocationSubpath": "",
+          "restrictFiles": "1",
+          "allowedKinds": [
+              "image"
+          ],
+          "sources": "*",
+          "viewMode": "large",
+          "limit": "1",
+          "selectionLabel": "Add floor map",
+          "localizeRelations": false,
+          "validateRelatedElements": ""
+      },
+      {
+          "group": "Place",
+          "name": "Floor Number",
+          "handle": "floorNumber",
+          "instructions": "",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Settings",
+          "name": "Images",
+          "handle": "images",
+          "instructions": "",
+          "type": "craft\\fields\\Assets",
+          "useSingleFolder": "1",
+          "defaultUploadLocationSource": "volume:uploads",
+          "defaultUploadLocationSubpath": "",
+          "singleUploadLocationSource": "volume:uploads",
+          "singleUploadLocationSubpath": "settings\/images",
+          "restrictFiles": "1",
+          "allowedKinds": [
+              "image"
+          ],
+          "sources": "*",
+          "viewMode": "large",
+          "limit": "10",
+          "selectionLabel": "Add image",
+          "localizeRelations": false,
+          "validateRelatedElements": ""
+      },
+      {
+          "group": "Settings",
+          "name": "Logo",
+          "handle": "logo",
+          "instructions": "",
+          "type": "craft\\fields\\Assets",
+          "useSingleFolder": "1",
+          "defaultUploadLocationSource": "volume:uploads",
+          "defaultUploadLocationSubpath": "",
+          "singleUploadLocationSource": "volume:uploads",
+          "singleUploadLocationSubpath": "settings\/logo",
+          "restrictFiles": "1",
+          "allowedKinds": [
+              "image"
+          ],
+          "sources": "*",
+          "viewMode": "large",
+          "limit": "1",
+          "selectionLabel": "Add logo",
+          "localizeRelations": false,
+          "validateRelatedElements": ""
+      },
+      {
+          "group": "Person",
+          "name": "Person Address",
+          "handle": "personAddress",
+          "instructions": "",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "123 Sunset Blvd",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Person",
+          "name": "Person City",
+          "handle": "personCity",
+          "instructions": "",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "Minneapolis",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Person",
+          "name": "Person Description",
+          "handle": "personDescription",
+          "instructions": "A short bio or profile summary about this person",
+          "type": "craft\\redactor\\Field",
+          "redactorConfig": "Simple.json",
+          "purifierConfig": "",
+          "cleanupHtml": true,
+          "removeInlineStyles": "1",
+          "removeEmptyTags": "1",
+          "removeNbsp": "1",
+          "purifyHtml": "1",
+          "columnType": "text",
+          "availableVolumes": "",
+          "availableTransforms": "*"
+      },
+      {
+          "group": "Person",
+          "name": "Person Email",
+          "handle": "personEmail",
+          "instructions": "",
+          "type": "craft\\fields\\Email",
+          "placeholder": ""
+      },
+      {
+          "group": "Person",
+          "name": "Person First Name",
+          "handle": "personFirstName",
+          "instructions": "",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Person",
+          "name": "Person Key",
+          "handle": "personKey",
+          "instructions": "For internal use only",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Person",
+          "name": "Person Last Name",
+          "handle": "personLastName",
+          "instructions": "",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Person",
+          "name": "Person Phone",
+          "handle": "personPhone",
+          "instructions": "",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Place",
+          "name": "Person Photo",
+          "handle": "personPhoto",
+          "instructions": "",
+          "type": "craft\\fields\\Assets",
+          "useSingleFolder": "1",
+          "defaultUploadLocationSource": "volume:uploads",
+          "defaultUploadLocationSubpath": "",
+          "singleUploadLocationSource": "volume:uploads",
+          "singleUploadLocationSubpath": "people\/photos",
+          "restrictFiles": "1",
+          "allowedKinds": [
+              "image"
+          ],
+          "sources": "*",
+          "viewMode": "large",
+          "limit": "1",
+          "selectionLabel": "Add person photo",
+          "localizeRelations": false,
+          "validateRelatedElements": ""
+      },
+      {
+          "group": "Person",
+          "name": "Person Related Departments",
+          "handle": "personRelatedDepartments",
+          "instructions": "",
+          "type": "craft\\fields\\Categories",
+          "allowLimit": false,
+          "allowMultipleSources": false,
+          "branchLimit": "1",
+          "sources": "*",
+          "source": "group:departments",
+          "selectionLabel": "Add department",
+          "localizeRelations": false,
+          "validateRelatedElements": ""
+      },
+      {
+          "group": "Person",
+          "name": "Person Related Place",
+          "handle": "personRelatedPlace",
+          "instructions": "",
+          "type": "craft\\fields\\Entries",
+          "sources": [
+              "section:places"
+          ],
+          "limit": "1",
+          "selectionLabel": "Add related place",
+          "localizeRelations": false,
+          "validateRelatedElements": ""
+      },
+      {
+          "group": "Person",
+          "name": "Person Roles",
+          "handle": "personRoles",
+          "instructions": "",
+          "type": "craft\\fields\\Matrix",
+          "minBlocks": "",
+          "maxBlocks": "",
+          "propagationMethod": "all",
+          "blockTypes": [
+              {
+                  "name": "Role",
+                  "handle": "role",
+                  "fields": [
+                      {
+                          "required": true,
+                          "name": "Title",
+                          "handle": "roleTitle",
+                          "instructions": "",
+                          "type": "craft\\fields\\PlainText",
+                          "typesettings": {
+                              "placeholder": "",
+                              "code": "",
+                              "multiline": "",
+                              "initialRows": "4",
+                              "charLimit": "",
+                              "columnType": "text"
+                          }
+                      },
+                      {
+                          "required": true,
+                          "name": "Department",
+                          "handle": "roleDepartment",
+                          "instructions": "",
+                          "type": "craft\\fields\\Categories",
+                          "typesettings": {
+                              "allowLimit": false,
+                              "allowMultipleSources": false,
+                              "branchLimit": "1",
+                              "sources": "*",
+                              "source": "group:departments",
+                              "selectionLabel": "Add department",
+                              "localizeRelations": false,
+                              "validateRelatedElements": ""
+                          }
+                      }
+                  ]
               }
-            },
-            {
-              "required": true,
-              "name": "Department",
-              "handle": "roleDepartment",
-              "instructions": "",
-              "type": "craft\\fields\\Categories",
-              "typesettings": {
-                "allowLimit": false,
-                "allowMultipleSources": false,
-                "branchLimit": "1",
-                "sources": "*",
-                "source": "group:departments",
-                "selectionLabel": "Add department",
-                "localizeRelations": false,
-                "validateRelatedElements": ""
-              }
-            }
           ]
-        }
-      ]
-    },
-    {
-      "group": "Person",
-      "name": "Person State",
-      "handle": "personState",
-      "instructions": "",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "MN",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Person",
-      "name": "Person Zipcode",
-      "handle": "personZipcode",
-      "instructions": "",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "55434",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Place",
-      "name": "Place Address",
-      "handle": "placeAddress",
-      "instructions": "",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "123 Sunset Blvd, Unit 301",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Place",
-      "name": "Place City",
-      "handle": "placeCity",
-      "instructions": "",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "Minneapolis",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Place",
-      "name": "Place Marker",
-      "handle": "placeMarker",
-      "instructions": "",
-      "type": "selvinortiz\\smartfields\\fields\\MarkerCoordinatesField"
-    },
-    {
-      "group": "Place",
-      "name": "Place State",
-      "handle": "placeState",
-      "instructions": "",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "MN",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Place",
-      "name": "Place Zipcode",
-      "handle": "placeZipcode",
-      "instructions": "",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "55434",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Place",
-      "name": "Room Description",
-      "handle": "roomDescription",
-      "instructions": "",
-      "type": "craft\\redactor\\Field",
-      "redactorConfig": "",
-      "purifierConfig": "",
-      "cleanupHtml": true,
-      "removeInlineStyles": "1",
-      "removeEmptyTags": "1",
-      "removeNbsp": "1",
-      "purifyHtml": "1",
-      "columnType": "text",
-      "availableVolumes": "",
-      "availableTransforms": "*"
-    },
-    {
-      "group": "Place",
-      "name": "Room Display",
-      "handle": "roomDisplay",
-      "instructions": "",
-      "type": "craft\\fields\\Lightswitch",
-      "default": ""
-    },
-    {
-      "group": "Place",
-      "name": "Room Key",
-      "handle": "roomKey",
-      "instructions": "For internal use only",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    },
-    {
-      "group": "Place",
-      "name": "Room Number",
-      "handle": "roomNumber",
-      "instructions": "",
-      "type": "craft\\fields\\PlainText",
-      "placeholder": "",
-      "code": "",
-      "multiline": "",
-      "initialRows": "4",
-      "charLimit": "",
-      "columnType": "text"
-    }
+      },
+      {
+          "group": "Person",
+          "name": "Person State",
+          "handle": "personState",
+          "instructions": "",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "MN",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Person",
+          "name": "Person Zipcode",
+          "handle": "personZipcode",
+          "instructions": "",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "55434",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Place",
+          "name": "Place Address",
+          "handle": "placeAddress",
+          "instructions": "",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "123 Sunset Blvd, Unit 301",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Place",
+          "name": "Place City",
+          "handle": "placeCity",
+          "instructions": "",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "Minneapolis",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Place",
+          "name": "Place Marker",
+          "handle": "placeMarker",
+          "instructions": "",
+          "type": "selvinortiz\\smartfields\\fields\\MarkerCoordinatesField"
+      },
+      {
+          "group": "Place",
+          "name": "Place State",
+          "handle": "placeState",
+          "instructions": "",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "MN",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Place",
+          "name": "Place Zipcode",
+          "handle": "placeZipcode",
+          "instructions": "",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "55434",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Place",
+          "name": "Room Description",
+          "handle": "roomDescription",
+          "instructions": "",
+          "type": "craft\\redactor\\Field",
+          "redactorConfig": "",
+          "purifierConfig": "",
+          "cleanupHtml": true,
+          "removeInlineStyles": "1",
+          "removeEmptyTags": "1",
+          "removeNbsp": "1",
+          "purifyHtml": "1",
+          "columnType": "text",
+          "availableVolumes": "",
+          "availableTransforms": "*"
+      },
+      {
+          "group": "Place",
+          "name": "Room Display",
+          "handle": "roomDisplay",
+          "instructions": "",
+          "type": "craft\\fields\\Lightswitch",
+          "default": ""
+      },
+      {
+          "group": "Place",
+          "name": "Room Key",
+          "handle": "roomKey",
+          "instructions": "For internal use only",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      },
+      {
+          "group": "Place",
+          "name": "Room Number",
+          "handle": "roomNumber",
+          "instructions": "",
+          "type": "craft\\fields\\PlainText",
+          "placeholder": "",
+          "code": "",
+          "multiline": "",
+          "initialRows": "4",
+          "charLimit": "",
+          "columnType": "text"
+      }
   ],
   "entryTypes": [
-    {
-      "sectionHandle": "people",
-      "name": "Person",
-      "handle": "person",
-      "hasTitleField": false,
-      "titleLabel": "",
-      "titleFormat": "{personFirstName} {personLastName}",
-      "fieldLayout": {
-        "Person": [
-          "personPhoto",
-          "personFirstName",
-          "personLastName",
-          "personEmail",
-          "personPhone",
-          "personDescription",
-          "personRoles",
-          "personAddress",
-          "personCity",
-          "personState",
-          "personZipcode"
-        ],
-        "System": [
-          "personKey",
-          "personRelatedDepartments",
-          "personRelatedPlace"
-        ]
+      {
+          "sectionHandle": "people",
+          "name": "Person",
+          "handle": "person",
+          "hasTitleField": false,
+          "titleLabel": "",
+          "titleFormat": "{personFirstName} {personLastName}",
+          "fieldLayout": {
+              "Person": [
+                  "personPhoto",
+                  "personFirstName",
+                  "personLastName",
+                  "personEmail",
+                  "personPhone",
+                  "personDescription",
+                  "personRoles",
+                  "personAddress",
+                  "personCity",
+                  "personState",
+                  "personZipcode"
+              ],
+              "System": [
+                  "personKey",
+                  "personRelatedDepartments",
+                  "personRelatedPlace"
+              ]
+          },
+          "requiredFields": [
+              "personFirstName",
+              "personLastName",
+              "personEmail"
+          ]
       },
-      "requiredFields": [
-        "personFirstName",
-        "personLastName",
-        "personEmail"
-      ]
-    },
-    {
-      "sectionHandle": "places",
-      "name": "Campus",
-      "handle": "campus",
-      "hasTitleField": false,
-      "titleLabel": "",
-      "titleFormat": "Campus - {campusName}",
-      "fieldLayout": {
-        "Campus": [
-          "campusPhoto",
-          "campusName",
-          "campusDescription",
-          "campusMap",
-          "placeAddress",
-          "placeCity",
-          "placeState",
-          "placeZipcode"
-        ],
-        "System": [
-          "campusKey"
-        ]
+      {
+          "sectionHandle": "places",
+          "name": "Campus",
+          "handle": "campus",
+          "hasTitleField": false,
+          "titleLabel": "",
+          "titleFormat": "Campus - {campusName}",
+          "fieldLayout": {
+              "Campus": [
+                  "campusPhoto",
+                  "campusName",
+                  "campusDescription",
+                  "campusMap",
+                  "placeAddress",
+                  "placeCity",
+                  "placeState",
+                  "placeZipcode"
+              ],
+              "System": [
+                  "campusKey"
+              ]
+          },
+          "requiredFields": [
+              "campusName"
+          ]
       },
-      "requiredFields": [
-        "campusName"
-      ]
-    },
-    {
-      "sectionHandle": "places",
-      "name": "Building",
-      "handle": "building",
-      "hasTitleField": false,
-      "titleLabel": "",
-      "titleFormat": "Building - {buildingName}",
-      "fieldLayout": {
-        "Building": [
-          "buildingName",
-          "buildingPhoto",
-          "buildingDescription",
-          "placeAddress",
-          "placeCity",
-          "placeState",
-          "placeZipcode"
-        ],
-        "System": [
-          "buildingKey",
-          "placeMarker"
-        ]
+      {
+          "sectionHandle": "places",
+          "name": "Building",
+          "handle": "building",
+          "hasTitleField": false,
+          "titleLabel": "",
+          "titleFormat": "Building - {buildingName}",
+          "fieldLayout": {
+              "Building": [
+                  "buildingName",
+                  "buildingPhoto",
+                  "buildingDescription",
+                  "placeAddress",
+                  "placeCity",
+                  "placeState",
+                  "placeZipcode"
+              ],
+              "System": [
+                  "buildingKey",
+                  "placeMarker"
+              ]
+          },
+          "requiredFields": [
+              "buildingName"
+          ]
       },
-      "requiredFields": [
-        "buildingName"
-      ]
-    },
-    {
-      "sectionHandle": "places",
-      "name": "Floor",
-      "handle": "floor",
-      "hasTitleField": false,
-      "titleLabel": "",
-      "titleFormat": "Floor {floorNumber}",
-      "fieldLayout": {
-        "Floor": [
-          "floorNumber",
-          "floorMap"
-        ],
-        "System": [
-          "floorKey"
-        ]
+      {
+          "sectionHandle": "places",
+          "name": "Floor",
+          "handle": "floor",
+          "hasTitleField": false,
+          "titleLabel": "",
+          "titleFormat": "Floor {floorNumber}",
+          "fieldLayout": {
+              "Floor": [
+                  "floorNumber",
+                  "floorMap"
+              ],
+              "System": [
+                  "floorKey"
+              ]
+          },
+          "requiredFields": [
+              "floorNumber",
+              "floorKey"
+          ]
       },
-      "requiredFields": [
-        "floorNumber",
-        "floorKey"
-      ]
-    },
-    {
-      "sectionHandle": "places",
-      "name": "Room",
-      "handle": "room",
-      "hasTitleField": true,
-      "titleLabel": "Room Name",
-      "titleFormat": "",
-      "fieldLayout": {
-        "Room": [
-          "roomNumber",
-          "roomDescription"
-        ],
-        "System": [
-          "roomKey",
-          "placeMarker",
-          "roomDisplay"
-        ]
-      },
-      "requiredFields": [
-        "roomNumber",
-        "roomKey"
-      ]
-    }
+      {
+          "sectionHandle": "places",
+          "name": "Room",
+          "handle": "room",
+          "hasTitleField": true,
+          "titleLabel": "Room Name",
+          "titleFormat": "",
+          "fieldLayout": {
+              "Room": [
+                  "roomNumber",
+                  "roomDescription"
+              ],
+              "System": [
+                  "roomKey",
+                  "placeMarker",
+                  "roomDisplay"
+              ]
+          },
+          "requiredFields": [
+              "roomNumber",
+              "roomKey"
+          ]
+      }
   ],
   "globalSets": [
-    {
-      "name": "Settings",
-      "handle": "settings",
-      "fieldLayout": {
-        "Settings": [
-          "logo",
-          "images"
-        ]
+      {
+          "name": "Settings",
+          "handle": "settings",
+          "fieldLayout": {
+              "Settings": [
+                  "logo",
+                  "images"
+              ]
+          }
       }
-    }
   ]
 }
