@@ -11,7 +11,7 @@
               :key="result.id"
               @click.prevent="navigate(result, $event)"
             >
-              <div class="flex-1 p-4 border border-gray-300 bg-white rounded">
+              <div class="flex-1 p-4 border border-gray-300 bg-white">
                 <p class="font-thin text-xl">{{ result.title }}</p>
               </div>
             </a>

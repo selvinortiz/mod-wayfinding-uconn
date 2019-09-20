@@ -1,9 +1,10 @@
 <template>
-  <div v-if="people" class="flex flex-wrap">
-    <div class="w-full p-4 overflow-y-scroll overflow-x-hidden" style="height: 60vh">
+  <content-loader :loaded="loaded.people && loaded.departments" classes="flex flex-wrap">
+    <div v-if="!this.people.length" class="flex-1 flex items-center justify-center" style="height: 65vh;">
+      <h1 class="font-thin text-4xl text-center">We did not find anyone matching your criteria.</h1>
+    </div>
+    <div v-else class="w-full p-4 overflow-y-scroll overflow-x-hidden" style="height: 60vh">
       <page-header>Directory</page-header>
-
-      <div class="mb-5 text-1xl font-300">Select the person you&rsquo;re looking for:</div>
 
       <div class="flex flex-wrap -mx-2 lg:-mx-4">
         <div
@@ -17,11 +18,11 @@
     </div>
 
     <div
-      class="w-full flex justify-center items-center px-4 border-t border-dotted border-gray-500"
+      class="w-full flex justify-center items-center self-end px-4 border-t border-dotted border-gray-500"
       style="height: 10vh"
     >
       <select
-        value
+        :value="filters.letter"
         @input="handleSelectedFilter('letter', $event)"
         class="flex w-1/2 h-12 mt-1 mr-2 px-8 border-2 border-blue-800"
       >
@@ -30,7 +31,7 @@
       </select>
 
       <select
-        value
+        :value="filters.department"
         @input="handleSelectedFilter('department', $event)"
         class="flex w-1/2 h-12 mt-1 ml-2 px-8 border-2 border-blue-800"
       >
@@ -42,7 +43,7 @@
         >{{department.title}}</option>
       </select>
     </div>
-  </div>
+  </content-loader>
 </template>
 
 <script>
@@ -58,6 +59,10 @@ export default {
   },
   data() {
     return {
+      loaded: {
+        people: false,
+        departments: false,
+      },
       filters: {
         letter: "",
         department: ""
@@ -72,21 +77,29 @@ export default {
   },
   methods: {
     fetchPeople(params = {}) {
+      this.loaded.people = false;
       axios
         .post("/actions/sys/wayfinding/people", params)
         .then(response => {
           if (response.data.success) {
             this.people = response.data.people;
+          } else {
+            this.people = [];
           }
+
+          this.loaded.people = true;
         })
         .catch(error => console.error(error));
     },
     fetchDepartments() {
+      this.loaded.departments = false;
+
       axios
         .post("/actions/sys/wayfinding/departments")
         .then(response => {
           if (response.data.success) {
             this.departments = response.data.departments;
+            this.loaded.departments = true;
           }
         })
         .catch(error => console.error(error));
