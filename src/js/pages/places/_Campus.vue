@@ -28,7 +28,6 @@
               label="buildingName"
               placeholder="Chose Building"
               value
-              style="background-color: red;"
               :options="place.descendants"
               :show-labels="false"
               :allow-empty="true"
