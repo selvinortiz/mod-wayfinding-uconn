@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 1224 792">
+  <defs>
+    <style>.cls-1{fill:#d2d3d4;}.cls-2{fill:#ed2024;}.cls-3{fill:#fff;}.cls-4{fill:#7c878e;}.cls-5,.cls-7{fill:none;}.cls-5,.cls-7,.cls-9{stroke:#59595b;stroke-miterlimit:10;}.cls-5{stroke-width:2px;}.cls-6{fill:#ffce0a;}.cls-8,.cls-9{fill:#59595b;}.cls-9{stroke-width:0.75px;}.cls-10{font-size:9px;fill:#58595b;font-family:Gotham-Bold, Gotham;font-weight:700;}.cls-11{letter-spacing:0em;}.cls-12{letter-spacing:-0.01em;}.cls-13{letter-spacing:-0.03em;}.cls-14{letter-spacing:0em;}.cls-15{letter-spacing:-0.02em;}.cls-16{fill:#8dc63f;}.cls-17{fill:#1b75bc;}</style>
+  </defs>
+  <title>Rowe_Second_Floor</title>
+  <polygon class="cls-1" points="21.4 133.65 19.75 296.03 188.31 296.35 188.39 401.95 88.8 401.95 88.28 678 934.05 678 934.05 654.46 1215.44 654.46 1215.44 369.86 932.98 369.86 932.53 401.95 851.66 402.36 851.66 303.52 715.87 301.87 712.76 136.03 712.49 126.31 688.35 130.19 321.98 128.05 130.58 128.05 21.4 126.78 21.4 133.65"></polygon>
+  <rect class="cls-2" x="701.87" y="289.61" width="10.7" height="21.4"></rect>
+  <rect class="cls-2" x="259.99" y="291.75" width="8.56" height="8.56"></rect>
+  <rect class="cls-2" x="188.31" y="289.61" width="9.63" height="21.4"></rect>
+  <rect class="cls-2" x="333.82" y="291.75" width="9.63" height="9.63"></rect>
+  <rect class="cls-2" x="405.5" y="291.75" width="11.77" height="8.56"></rect>
+  <rect class="cls-2" x="481.47" y="290.68" width="10.7" height="10.7"></rect>
+  <rect class="cls-2" x="630.19" y="243.6" width="7.49" height="14.98"></rect>
+  <rect class="cls-2" x="629.12" y="289.61" width="8.56" height="11.77"></rect>
+  <rect class="cls-2" x="555.29" y="288.54" width="8.56" height="11.77"></rect>
+  <path class="cls-3" d="M683.69,486l1-77.87,10.92-2.43,3.2-45.48L811,358.42l1.9,48.88h38.79l.17-103.78-139.26-.17V241.46l-85.34.58-.61,15.47L264.27,259v-17.5H189.46l-1.15,54.23.08,105.94,27.73,2,.58,83.91-31.61.2V498l1.41,38.81,921.94-1.87.39-49.49Zm-426.2,1.55L258.92,406V302.45l378.76-2.14v58.75l5.59,128.49h-75.2l-1.19-10.7-26.41.19-.19,10.51H257.49Z"></path>
+  <polygon class="cls-4" points="259.99 303.51 259.99 406.23 637.68 408.85 638.18 301.38 259.99 303.51"></polygon>
+  <line class="cls-5" x1="135.88" y1="584.91" x2="135.88" y2="620.22"></line>
+  <rect class="cls-6" x="88.8" y="484.34" width="98.43" height="63.13"></rect>
+  <polygon class="cls-6" points="1136.07 467.38 1218.65 464.93 1218.65 548.53 1131.37 548.48 1131.61 536.72 1108.45 535.31 1108.47 480.06 1133.69 480.06 1136.07 467.38"></polygon>
+  <polygon class="cls-6" points="697.59 360.03 697.59 407.3 812.08 407.3 812.08 357.13 697.59 360.03"></polygon>
+  <line class="cls-7" x1="153.53" y1="485.41" x2="153.53" y2="515.37"></line>
+  <polyline class="cls-5" points="768.21 395.53 786.36 395.53 811.01 395.53"></polyline>
+  <rect class="cls-8" x="337.03" y="187.97" width="3.21" height="7.49"></rect>
+  <rect class="cls-8" x="629.12" y="239.32" width="16.05" height="3.21"></rect>
+  <polygon class="cls-8" points="258.92 432.98 255.71 432.98 255.71 489.69 278.18 489.69 278.18 486.48 258.92 486.48 258.92 432.98"></polygon>
+  <polygon class="cls-8" points="569.2 478.86 569.2 477.37 569.2 408.37 565.99 408.37 565.99 475.78 538.17 475.78 538.17 488.62 541.38 488.62 541.38 478.99 565.99 478.99 565.99 489.69 576.69 489.69 576.69 485.41 569.2 485.41 569.2 478.86"></polygon>
+  <rect class="cls-8" x="589.53" y="485.41" width="22.47" height="3.21"></rect>
+  <rect class="cls-8" x="921.21" y="483.27" width="21.4" height="3.21"></rect>
+  <polygon class="cls-8" points="897.67 466.15 899.9 466.15 901.51 466.15 934.05 466.15 934.05 462.94 903.02 462.94 903.02 442.61 899.81 442.61 899.81 462.94 894.46 462.94 894.46 483.27 890.18 483.27 890.18 486.48 904.09 486.48 904.09 483.27 897.67 483.27 897.67 466.15"></polygon>
+  <polygon class="cls-8" points="992.89 483.27 996.11 483.27 996.11 476.85 1076.35 476.85 1076.35 483.27 981.13 483.27 981.13 486.48 1078.49 486.48 1078.49 473.64 992.89 473.64 992.89 483.27"></polygon>
+  <rect class="cls-8" x="2.14" y="220.06" width="16.05" height="13.91"></rect>
+  <rect class="cls-8" x="2.14" y="192.25" width="16.05" height="13.91"></rect>
+  <path class="cls-8" d="M1224,408.37v-7.49h-3.21V366.65H1191.9V344.18H1178v15h-5.35v7.49h-43.87v-7.49h-5.35V341h-13.91v18.19h-11.77v7.49h-43.87v-8.56h-10.7v-15h-13.91v15h-6.42v8.56h-42.8v-8.56H971.5v-15H957.59v23.54H930.84v33.17h-76V299.24h-138V125.91h-1.07v-15H701.87v15h-61V112H627v13.91H568.13V112H554.22v12.84h-2.14v1.07H493.24v-15H479.33v15h-61v-16H404.43v16H345.59v-15H331.68v15h-61v-15H256.78v15H194.73v-15H180.82v15h-53.5V112H113.41v13.91h-16V112H83.45v13.91H24.61v-16H10.7v12.56l.66.28H0v13.91H18.19V287.47H1.07v13.91H9.63v10.7H23.54V299.24H81.31v15H95.22v-15h12.84v15H122v-15H185.1V399.81H85.59V681.2H937.26l-.18-24.61h278.36v1.07h5.35V621.29H1224V613.8h-3.21V568.86h2.14v-7.49h-2.14v-16H1224v-7.49h-3.21V485.41H1224v-7.49h-3.21V464H1224v-7.49h-3.21V408.37Zm-31,183v59.92h-26.75V591.33Zm-28.89,0v59.92h-53.5V591.33Zm46-128.39h-77v13.91h-24.61v6.42h-11.77v3.21h11.77v9.63h3.21v-16h23.54V466.15h74.9v81.31h-77V534.62h-21.4v-8.56h-3.21v7.49h-11.77v4.28H1101v12.84h110.2V651.25H1194v-61h-83.45V565.65h-2.14v8.56h-36.38v3.21h35.31v73.83H1056v-77h-3.21v77H983.27V577.42h52.43v-3.21h-4.28v-9.63h-3.21v9.63H983.27V537.83h38.52v8.56h53.5v-8.56h4.28v-4.28H962.94v4.28h17.12v24.61H934v24.61h3.21v-21.4h42.8V603.1H934v22.47h3.21V606.31h42.8l-.28,44.94-48.94-.05v10.75h-.2l.46,13.91H890.18v-31h26.75v-3.21l-30,0,.25,34.26h-43v-1.07h2.14V623.43H903V601h-3.21v19.26H845.24V584.91H903v-21.4h-3.21V581.7H845.24V546.39h96.29v-9.63h4.28v-3.21H835.62v3.21h7.49v68.48H809.94v3.21h31v67.41H792.82V605.24l-38.52,0v3.18l35.31,0v67.44H738.25V605.24H735v70.62H683.69V609.52h34.24v-3.21H683.69v-61h7.49v-8.56h34.24v48.15H697.59v2.14h30V536.76H775.7v8.56H757.51v31h15v-2.14H759.65V546.39h18.19v-9.63l26.75,1.07v37.45h2.14V537.83h1.07v7.49h8.56v-7.49h4.28v-4.28H669.78v3.21h10.7V675.85H490V545.32H501.8v-8.56H652.66v-3.21H396.94v3.22h5.35v9.62h5.35v44.94h1.07v5.35h11.77v-5.35h30v-46H459v-7.49h27.82v50.29H467.56v2.14h19.26v85.59h-76v-53.5h59.92v-3.21H355.22v3.21h52.43v53.5H338.1V619.15h-3.21v56.71H265.34V632H290v-9.63h27.82v-3.21h-31v9.63l-21.67.32-.05-3.52h-2.88l0,50.29H210.78l0-66.21h53.93l0-3.2H210.78V537.83h51.36v51.36h3.21V545.32h23.54v-7.49h41.73v46H281.39v3.21h52.43V537.83h38.52v10.7h2.14v-10.7h5.35v-3.21H207.57v80.24h0v7.49H165.84v22.47H151.93V647h16V624.5h40.66v3.21h0v48.15H138V647h3.21v-2.14H137V635.2h-2.14v40.66H90.94V603.1h43.87v17.12h1.07V584.91h-1.07v16H90.94V549.6h96.29V537.83h7.49v-3.21H184v11.77H92V486.48h92v12.84h3.21v-16H92v-78.1h123v80.24h-10.7v3.21h13.91V402H190.45V293.89H122V227.55h-3.21v66.34H23.54v-2.14h1.07V229.69h76v-3.21h-76V131.26H83.45v78.1h3.21v-78.1h99.5v52.43H102.71v3.21h83.45v71.69h3.21v-15h12.84v-3.21H189.38V228.62h5.35v-8.56h-5.35V201.88h5.35v-7.49h-5.35V131.26H263.2V240.39h-42.8v3.21h42.8v16H456.86v-3.21H382V223.27h-3.21v33.17H340.24V229.69H337v26.75H265.34V214.72H338.1v-3.21H265.34V131.26H337V189H394.8v-3.21H340.24V131.26h69.55V188H413V131.26h71.69v54.57H429V189h55.64v37.45h3.21V189H535v-3.21H487.89V131.26h64.2V189h3.21V131.26H628v54.57H572.41V189H628v66.34H582V207.23h-3.21v49.22H472.91v2.14H631.26V131.26H711.5v62.06H704v8.56h7.49v16H704v11.77h7.49v9.63H661.22v3.21H711.5v62.06h138V405.16H813.15V355.95H695.45v49.22H690.1v-4.28h-7.49v86.66h7.49v-1.07h34.24v-3.21H690.1v-74.9h56.71v74.9h-6.42v3.21h50.29v-3.21H750v-74.9h59.92v74.9h-5.35v3.21H875.2v-3.21h-61v-74.9h85.59V428.7H903V408.37h30v-2.14h3.21V372H960.8V483.27h-3.21v3.21H964V372h72.76v85.59H1040V372h46v64.2h-30v4.28h66.34v-4.28h-33.17V372h49.22v73.83h3.21V372h68.48Zm-80.24,74.9v9.63h-25.68v-9.63h25.68ZM1025,543.18v-6.42h47.08v6.42Zm-179.75,0v-6.42h93.08v6.42Zm-398-6.42v51.36H410.85V546.39h1.07v-9.63Zm362.71-131.6H698.66v-46H809.94Z"></path>
+  <polygon class="cls-8" points="372.34 563.51 372.34 581.7 347.73 581.7 347.73 582.77 347.73 583.84 374.52 583.84 374.52 563.51 372.8 563.51 372.34 563.51"></polygon>
+  <path class="cls-9" d="M149.26,514.83v-30h-5.35v30H140.7v-30h-6.42v30h-3.21v-30H130v30h-3.21v-30h-1.07v30h-3.21v-31h-5.35l-.27,31h-5.07v-30h-1.07v63.39l4.13-.76.12-.23h0l2-3.88.37-.71h0l13.91-26.78h3v3.25l-13.7,28.38.91.49,4.23-8.77v7.67h1.07v-9.7l3.21-6.68v18.52h5.35V515.9h4.28V548H145V515.9h3.21V548h6.42V514.83ZM130,515.9v.22l-3.21,6.68v-6.9Zm-4.28,0v9l-3.21,6.68V515.9Zm-7.25-31h3v30h-3.21Zm-5.58,31h4.28l-.2,26.92L115,547l-2.13.44Zm5.35,0h3.21V533h.19l-3.4,8ZM131.07,548V529.81h-.34l3.55-7.24V548Zm8.56-33.17h-4.28V485.94h4.28Zm4.28,32.1H140.7v-31h3.21Zm4.28-32.1H145V485.94h3.21Zm5.35,32.1h-3.21v-31h3.21Z"></path>
+  <path class="cls-8" d="M740.84,393.39h-2.59V357h-7.49v36.38h-2.14V358.09h-7.49v35.31h-4.28V358.09h-6.42v35.31h-3.21V358.09h-2.14v35.31l-6.42-.07,0,2.21,72.68.84-31.13-41.45Zm-26.13,0h-2.14V360.23h2.14Zm11.77,0-3.21,0v-34.2h3.21Zm9.63,0-3.21,0v-34.2h3.21Zm19.26,1.07h-2.14V376.55l2.77,4h-.63Zm-4.28-20.33v20.33l-3.21,0V370l3.24,4.14Zm6.42,20.23V383l9,11.46Zm-11.38-26.65h-.39v26.75l-2.71,0-.56-31.38Z"></path>
+  <path class="cls-8" d="M802.45,393.39V359.16h-2.14v34.24H797.1V358.09H795v35.31h-3.21V358.09h-2.14v35.31H786.4V358.09h-2.14v33.19L781,387.74V358.09H780v27l-2.14-2v-25H775.7v22.36l-3.21-4.13V358.09h-3.21v15.68l-2.05-3.91h-.09V357.18l-14,.24,22.6,26.26v.09h.08l10.13,11.77h26.17v-2.14ZM765,368l-6.72-8.2,6.72-.12Z"></path>
+  <path class="cls-8" d="M1188.69,498.25V465.08H1163V549.6h13.91v1.07h6.42V549.6h5.35V520.72h23.54V498.25Zm21.4,2.14v2.14h-21.4v-2.14Zm-21.4,4.28h20.91l-20.09,8.56h-.82Zm-9.63-38.52h2.14v32.1h-2.14Zm-5.35,0h2.14v32.1h-2.14Zm-4.28,0h2.14v32.1h-2.14Zm-4.28,0h3.21v32.1h-3.21Zm2.14,81.31h-2.14V520.72h2.14Zm4.28,0h-2.14V520.72h2.14Zm4.28,0h-2.14V520.72h2.14Zm5.35,0h-2.14V520.72h2.14Zm5.35,0h-3.21V520.72h3.21Zm0-28.89h-21.4V500.39h4.28v.08h17.13v-2.32h-3.22V467.22h3.21Zm23.54,0h-21.4v-2.72l1.23-.49h20.17Zm0-5.35h-15l15-6.38Z"></path>
+  <text class="cls-10" transform="translate(41.69 182.36) scale(0.92 1)">2<tspan class="cls-11" x="5.61" y="0">3</tspan><tspan x="11.15" y="0">5B</tspan></text>
+  <text class="cls-10" transform="translate(124.83 160.71) scale(0.92 1)">2<tspan class="cls-11" x="5.61" y="0">3</tspan><tspan x="11.15" y="0">5C</tspan></text>
+  <text class="cls-10" transform="translate(56.59 269.96) scale(0.92 1)">2<tspan class="cls-11" x="5.61" y="0">3</tspan><tspan x="11.15" y="0">5A</tspan></text>
+  <text class="cls-10" transform="translate(141.08 230) scale(0.92 1)">2<tspan class="cls-11" x="5.61" y="0">3</tspan><tspan x="11.15" y="0">5</tspan></text>
+  <text class="cls-10" transform="translate(219.18 187.67) scale(0.92 1)">234</text>
+  <text class="cls-10" transform="translate(286.58 174.13) scale(0.92 1)">231B</text>
+  <text class="cls-10" transform="translate(286.58 240.85) scale(0.92 1)">231A</text>
+  <text class="cls-10" transform="translate(360.47 160.71) scale(0.92 1)">231C</text>
+  <text class="cls-10" transform="translate(405.65 225.16) scale(0.92 1)">231</text>
+  <text class="cls-10" transform="translate(436.49 160.71) scale(0.92 1)">231D</text>
+  <text class="cls-10" transform="translate(507.54 160.71) scale(0.92 1)">231E</text>
+  <text class="cls-10" transform="translate(524.57 227.1) scale(0.92 1)">231H</text>
+  <text class="cls-10" transform="translate(583.45 163.2) scale(0.92 1)">231F</text>
+  <text class="cls-10" transform="translate(596.13 227.1) scale(0.92 1)">231G</text>
+  <text class="cls-10" transform="translate(664.08 182.36) scale(0.92 1)">230</text>
+  <text class="cls-10" transform="translate(725.71 336.62) scale(0.92 1)">C2B</text>
+  <text class="cls-10" transform="translate(748.26 404.23) scale(0.92 1)">S2C</text>
+  <text class="cls-10" transform="translate(708.57 444.38) scale(0.92 1)">205</text>
+  <text class="cls-10" transform="translate(771.08 432.78) scale(0.92 1)">204</text>
+  <text class="cls-10" transform="translate(841.24 451.1) scale(0.92 1)">2<tspan class="cls-12" x="5.61" y="0">0</tspan><tspan x="12.09" y="0">3</tspan></text>
+  <text class="cls-10" transform="translate(924.98 442.73) scale(0.92 1)">2<tspan class="cls-12" x="5.61" y="0">0</tspan><tspan x="12.09" y="0">2</tspan></text>
+  <text class="cls-10" transform="translate(903.72 477.98) scale(0.92 1)">2<tspan class="cls-12" x="5.61" y="0">0</tspan><tspan x="12.09" y="0">2A</tspan></text>
+  <text class="cls-10" transform="translate(988.32 430.79) scale(0.92 1)">2<tspan class="cls-11" x="5.61" y="0">0</tspan><tspan x="12.13" y="0">1D</tspan></text>
+  <text class="cls-10" transform="translate(1053.43 407.88) scale(0.92 1)">2<tspan class="cls-11" x="5.61" y="0">0</tspan><tspan x="12.13" y="0">1C</tspan></text>
+  <text class="cls-10" transform="translate(1103.09 407.88) scale(0.92 1)">2<tspan class="cls-11" x="5.61" y="0">0</tspan><tspan x="12.13" y="0">1B</tspan></text>
+  <text class="cls-10" transform="translate(1075.55 462.7) scale(0.92 1)">2<tspan class="cls-11" x="5.61" y="0">0</tspan><tspan x="12.13" y="0">1</tspan></text>
+  <text class="cls-10" transform="translate(1166.03 415.26) scale(0.92 1)">2<tspan class="cls-11" x="5.61" y="0">0</tspan><tspan x="12.13" y="0">1A</tspan></text>
+  <text class="cls-10" transform="translate(1133.99 512.13) scale(0.92 1)">S2A</text>
+  <text class="cls-10" transform="translate(1064.87 562.9) scale(0.92 1)">221</text>
+  <text class="cls-10" transform="translate(1152.98 576.89) scale(0.92 1)">221A</text>
+  <text class="cls-10" transform="translate(1071.68 622.5) scale(0.92 1)">221B</text>
+  <text class="cls-10" transform="translate(1005.72 622.5) scale(0.92 1)">221C</text>
+  <text class="cls-10" transform="translate(995.44 560.12) scale(0.92 1)">221D</text>
+  <text class="cls-10" transform="translate(909.66 598.82) scale(0.92 1)">220</text>
+  <text class="cls-10" transform="translate(950.94 585.34) scale(0.92 1)">220A</text>
+  <text class="cls-10" transform="translate(949.4 624.6) scale(0.92 1)">220B</text>
+  <text class="cls-10" transform="translate(896.37 666.18) scale(0.92 1)">220C</text>
+  <text class="cls-10" transform="translate(853.77 666.18) scale(0.92 1)">220D</text>
+  <text class="cls-10" transform="translate(856.73 608.34) scale(0.92 1)">220E</text>
+  <text class="cls-10" transform="translate(858.11 569.6) scale(0.92 1)">220F</text>
+  <text class="cls-10" transform="translate(805.56 649.9) scale(0.92 1)">218A</text>
+  <text class="cls-10" transform="translate(754.68 651.08) scale(0.92 1)">218B</text>
+  <text class="cls-10" transform="translate(698.58 651.08) scale(0.92 1)">218C</text>
+  <text class="cls-10" transform="translate(753.52 594) scale(0.92 1)">218</text>
+  <text class="cls-10" transform="translate(573.07 612.62) scale(0.92 1)">217</text>
+  <text class="cls-10" transform="translate(438.98 652.38) scale(0.92 1)">215B</text>
+  <text class="cls-10" transform="translate(360.47 653.81) scale(0.92 1)">215C</text>
+  <text class="cls-10" transform="translate(292.08 654.3) scale(0.92 1)">215D</text>
+  <text class="cls-10" transform="translate(322.33 605.49) scale(0.92 1)">215</text>
+  <text class="cls-10" transform="translate(229.49 652.04) scale(0.92 1)">215E</text>
+  <text class="cls-10" transform="translate(223.23 574.45) scale(0.92 1)">215F</text>
+  <text class="cls-10" transform="translate(167.44 594) scale(0.92 1)">214</text>
+  <text class="cls-10" transform="translate(160.24 517.48) scale(0.92 1)">S2B</text>
+  <text class="cls-10" transform="translate(143.15 451.1) scale(0.92 1)">213</text>
+  <text class="cls-10" transform="translate(270.24 444.38) scale(0.92 1)">211</text>
+  <text class="cls-10" transform="translate(318.67 442.73) scale(0.92 1)">210</text>
+  <text class="cls-10" transform="translate(376.42 442.73) scale(0.92 1)">208</text>
+  <text class="cls-10" transform="translate(427.6 442.73) scale(0.92 1)">209</text>
+  <text class="cls-10" transform="translate(575.11 479.34) scale(0.92 1)">2<tspan class="cls-13" x="5.61" y="0">0</tspan><tspan class="cls-14" x="11.95" y="0">7</tspan></text>
+  <text class="cls-10" transform="translate(410.51 357.5) scale(0.92 1)">open <tspan class="cls-15" x="25.87" y="0">t</tspan><tspan class="cls-14" x="29.47" y="0">o l</tspan><tspan class="cls-13" x="40.87" y="0">ow</tspan><tspan x="54.14" y="0">er floor</tspan></text>
+  <text class="cls-10" transform="translate(443.09 285.75) scale(0.92 1)">C2C</text>
+  <text class="cls-10" transform="translate(214.73 340.9) scale(0.92 1)">C2D</text>
+  <text class="cls-10" transform="translate(688.04 512.71) scale(0.92 1)">C2A</text>
+  <path class="cls-8" d="M640.89,402V299.24H256.78V433h2.14V409.44l37.45-.06v77.09h-3.21v2.14h21.4v-2.14h-15v-77l54.57-.08v53.58h-21.4v24.61H337v-21.4h18.19v22.47h7.49v-2.14h-5.35v-77l52.43-.08v77.12l-33.17-1.07v3.21h61v-3.21H413v-77l48.15-.07v77.11h-7.49v3.21h68.48v-3.21H465.42v-77l113.41-.18v60.09h24.61v17.12h3.21V465.08H582V408.37l55.64-.09v77.12H627v3.21h20.33V402Zm-3.21,3.21L260,405.74V302.45H637.68Z"></path>
+  <polygon class="cls-8" points="933.16 466.38 933.16 484.17 935.99 484.17 935.99 462.94 933.16 462.94 933.16 466.38"></polygon>
+  <ellipse class="cls-16" cx="430.6" cy="560.12" rx="11.93" ry="12.21" transform="translate(-5.31 4.12) rotate(-0.55)"></ellipse>
+  <path class="cls-3" d="M423.49,555.31l.12,12.14,6.81-.06-.12-12.14Zm3.43,2.2a.6.6,0,1,1-.59.61A.6.6,0,0,1,426.92,557.51Zm1.43,4.36a.26.26,0,0,1-.52,0l0-1.7h-.16l0,4.68a.32.32,0,1,1-.64,0l0-2.62h-.15l0,2.62a.32.32,0,1,1-.65,0l0-4.68h-.16l0,1.7a.26.26,0,0,1-.52,0l0-2.49c0-.14.11-.41.25-.41h0l2.27,0h0c.14,0,.26.26.26.41Z"></path>
+  <path class="cls-3" d="M430.81,555.24l.12,12.14,6.81-.06-.12-12.14Zm3.43,2.2a.6.6,0,1,1-.59.61A.6.6,0,0,1,434.23,557.44Zm1.43,4.36a.26.26,0,1,1-.52,0l0-1.7H435l0,4.68a.32.32,0,1,1-.65,0l0-2.62h-.15l0,2.62a.32.32,0,1,1-.65,0l0-4.68h-.16l0,1.7a.26.26,0,1,1-.52,0l0-2.49c0-.14.11-.41.25-.41l2.27,0h0c.14,0,.26.26.26.41Z"></path>
+  <rect class="cls-3" x="426.77" y="552.86" width="7.55" height="2.04" transform="translate(-5.25 4.12) rotate(-0.55)"></rect>
+  <polygon class="cls-3" points="439.52 558.58 438.19 560.4 438.94 560.39 438.96 562.83 440.16 562.82 440.13 560.38 440.87 560.37 439.52 558.58"></polygon>
+  <polygon class="cls-3" points="421.7 563 420.34 561.2 421.08 561.19 421.06 558.75 422.26 558.74 422.28 561.18 423.02 561.17 421.7 563"></polygon>
+  <ellipse class="cls-17" cx="612.9" cy="439.03" rx="11.97" ry="12.25" transform="translate(-4.15 5.85) rotate(-0.55)"></ellipse>
+  <circle class="cls-3" cx="612.91" cy="431.71" r="1.35" transform="matrix(1, -0.01, 0.01, 1, -4.08, 5.85)"></circle>
+  <path class="cls-3" d="M615.49,433.67h-.89l-1.67,0-1.66,0h-.9c-.32,0-.58.6-.57.93l.05,5.61a.58.58,0,1,0,1.16,0l0-3.83.14,0a.73.73,0,0,1,.21,0l0,3.54V440l.07,6.93a.73.73,0,0,0,1.45,0l-.06-5.92h.34l.06,5.92a.73.73,0,0,0,1.45,0l-.07-6.93v-.08l0-3.54a.73.73,0,0,1,.21,0h.14l0,3.83a.58.58,0,1,0,1.16,0l-.05-5.61C616.08,434.26,615.81,433.67,615.49,433.67Z"></path>
+  <ellipse class="cls-17" cx="519.5" cy="444.38" rx="11.97" ry="12.25" transform="translate(-4.21 4.96) rotate(-0.55)"></ellipse>
+  <circle class="cls-3" cx="519.36" cy="437.06" r="1.35" transform="translate(-4.14 4.96) rotate(-0.55)"></circle>
+  <path class="cls-3" d="M521.91,439.94c0-.32-.27-.92-.59-.91h-3.76c-.32,0-.58.6-.57.93l-1.3,5.62a.58.58,0,1,0,1.16,0l1-4.74h.1l-1.06,6a.37.37,0,0,0,.34.39h.69l0,5.09a.73.73,0,0,0,1.45,0l0-5.09h.34l0,5.09a.73.73,0,0,0,1.45,0l0-5.09h.57a.37.37,0,0,0,.33-.4l-1.06-6h.1l.95,4.73a.58.58,0,1,0,1.16,0Z"></path>
+</svg>

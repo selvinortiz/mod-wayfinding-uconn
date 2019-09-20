@@ -8,6 +8,7 @@ use craft\helpers\Json;
 use craft\web\Controller;
 use modules\sys\elements\Building;
 use modules\sys\elements\Campus;
+use yii\base\Exception;
 
 class AppController extends Controller
 {
@@ -23,15 +24,17 @@ class AppController extends Controller
             $kiosk = Building::query()
                 ->id($kioskId)
                 ->with(['buildingPhoto'])
-                ->one()
-                ->values();
+                ->one() ?? new Building();
+
+            $kiosk = $kiosk->values();
         }
         else
         {
             $campus = Campus::query()
             ->with(['campusMap', 'campusPhoto'])
-            ->one()
-            ->values();
+            ->one() ?? new Campus();
+
+            $campus = $campus->values();
         }
 
         $theme    = $this->getTheme();
@@ -85,6 +88,13 @@ class AppController extends Controller
 
     private function getTheme()
     {
-        return file_get_contents(dirname(__DIR__, 5).'/theme.json');
+        $file = dirname(__DIR__, 5) . '/theme.json';
+
+        if (!is_readable($file))
+        {
+            throw new Exception('Please make sure there is a "theme.json" file at project root');
+        }
+
+        return file_get_contents($file);
     }
 }

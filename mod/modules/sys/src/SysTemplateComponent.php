@@ -4,8 +4,5 @@ namespace modules\sys;
 
 class SysTemplateComponent
 {
-    public function isMobile()
-    {
-        return (new \Mobile_Detect())->isMobile();
-    }
+    // Template API code goes here
 }

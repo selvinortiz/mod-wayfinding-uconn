@@ -11,15 +11,15 @@ import "simple-keyboard/build/css/index.css";
 const layout = [
   "Q W E R T Y U I O P",
   "A S D F G H J K L",
-  "Z X C V B N M",
-  "{shift} {bksp} {space} {cancel}",
+  "Z X C V B N M {bksp}",
+  "{shift} {space} {cancel}",
 ];
 
 const layoutAfterShift = [
   "1 2 3 4 5 6 7 8 9 0",
   "- / : ; ( ) $ & @ \"",
-  ". , ? ! ",
-  "{shift} {bksp} {space} {cancel}"
+  ". , ? ! {bksp}",
+  "{shift} {space} {cancel}"
 ];
 
 const buttonLabels = {
@@ -151,9 +151,12 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .simple-keyboard.hg-theme-default {
   border-radius: 0;
   background-color: transparent;
+}
+.hg-theme-default .keyboard-button-space {
+  flex: 2;
 }
 </style>

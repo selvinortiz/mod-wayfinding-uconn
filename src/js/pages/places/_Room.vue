@@ -1,27 +1,27 @@
 <template>
-  <div class="p-8">
-    <div class="flex flex-wrap justify-center">
-      <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-2 md:w-full md:mb-6 md:order-1">
-        <mod-map :place="place"></mod-map>
+  <content-loader :loaded="place.loaded" classes="p-8">
+    <page-header>Back</page-header>
+
+    <section class="lg:flex flex-wrap">
+      <div class="w-full lg:w-2/3 lg:order-1">
+        <mod-map :place="place" class="p-8 pl-4"></mod-map>
       </div>
-      <div class="lg:w-1/2 lg:order-1 md:w-full md:order-2">
-        <div>
-          <div class="w-full flex flex-wrap p-4">
-            <div class="w-full mb-4 text-2xl font-black">{{place.title}}</div>
+      <div class="w-full lg:w-1/3">
+        <div class="p-8 pr-4">
+          <h2 class="font-thin text-4xl pt-4">{{ place.title }}</h2>
 
-            <div>
-              <img class="w-4/5 mb-4" src="http://placehold.it/500" />
-
-              <div class="font-bold mb-4">Phone Number</div>
-              <div class="font-bold">Address Line 1</div>
-              <div class="font-bold mb-4">Address Line 2</div>
-              <div>Place Description</div>
-            </div>
+          <div class="text-xl">
+            <p class="pt-4">
+              <span class="block">{{ '123 Placeholder Lane' }}, {{ place.roomNumber }}</span>
+              <span
+                class="block"
+              >{{ 'City' }}, {{ 'State' }} {{ 'Zipcode' }}</span>
+            </p>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </content-loader>
 </template>
 
 <script>
@@ -39,7 +39,11 @@ export default {
   },
   data() {
     return {
-      place: {}
+      place: {
+        id: 0,
+        loaded: false,
+        ancestors: [],
+      }
     };
   },
   created() {
@@ -62,8 +66,12 @@ export default {
   },
   watch: {
     $route(to) {
-      if (to.name === "room" && to.path !== this.$route.path) {
-        this.place = {};
+      if (to.name === "room" && this.$route.params.id != this.place.id) {
+        this.place = {
+          id: 0,
+          loaded: [],
+          ancestors: [],
+        };
         this.fetch();
       }
     }

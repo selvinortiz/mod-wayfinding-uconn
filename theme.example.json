@@ -1,9 +1,15 @@
 {
   "app": {
-    "title": "ModCore"
+    "title": "UCONN"
   },
-  "bg": "#fff",
-  "fg": "#333",
+  "colors": {
+    "background": "#fff",
+    "foreground": "#333",
+    "primary": "#000e2f",
+    "gray": "#7c878e",
+    "warm": "#ffcd00",
+    "hot": "#b61311"
+  },
   "font": {
     "family": "'Work Sans', sans-serif"
   },

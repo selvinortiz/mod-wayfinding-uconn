@@ -1,46 +1,46 @@
 <template>
-  <div class="p-8">
-    <page-header>Wayfinding</page-header>
-
-    <section class="lg:flex">
-      <div class="lg:order-1">
-        <mod-map :place="place"></mod-map>
+  <content-loader :loaded="place.loaded">
+    <section class="lg:flex flex-wrap">
+      <div class="lg:w-1/2 lg:order-1">
+        <mod-map :place="place" class="p-8 pl-4"></mod-map>
       </div>
-      <div class="lg:flex">
-        <div class="w-1/3">
-          <h2 class="text-4xl">{{ place.campusName || 'Loading...' }}</h2>
-          <img class="w-full" src="https://picsum.photos/512?grayscale" alt />
-          <div class="text-lg">
-            <p>555-1234-5678</p>
-            <p>
-              <span class="block">{{ place.campusAddress || '123 Happy Street' }}</span>
-              <span
-                class="block"
-              >{{ place.campusCity || 'Mod City' }}, {{ place.campusState || 'MN' }} {{ place.campusZipcode || '55555' }}</span>
-            </p>
+      <div class="w-full lg:w-1/2 lg:flex">
+        <div class="lg:w-1/2">
+          <div class="p-8 pr-4">
+            <ui-photo :photo="photo"></ui-photo>
+
+            <h2 class="font-thin text-4xl pt-4">{{ place.campusName }} {{ place.type.name }}</h2>
+
+            <div class="text-xl">
+              <p class="pt-4">
+                <span class="block">{{ place.placeAddress }}</span>
+                <span
+                  class="block"
+                >{{ place.placeCity }}, {{ place.placeState }} {{ place.placeZipcode }}</span>
+              </p>
+            </div>
           </div>
         </div>
-        <div class="w-2/3">
-          <div class="lg:p-8">
+        <div class="w-full lg:w-1/2">
+          <div class="py-8 px-4">
             <multi-select
               track-by="id"
               label="buildingName"
               placeholder="Chose Building"
               value
+              style="background-color: red;"
               :options="place.descendants"
               :show-labels="false"
               :allow-empty="true"
               @input="handleSelectedPlace"
             >
-              <template slot="singleLabel" slot-scope="{ option }">
-                <strong>{{ option.buildingName }}</strong>
-              </template>
             </multi-select>
 
             <div class="pt-4">
               Don&rsquo;t see what you&rsquo;re looking for?
               <a
-                class="text-blue-600 cursor-pointer"
+                class="cursor-pointer"
+                :style="styles.link"
                 @click="() => $store.state.app.searchIsOpen = true"
               >Switch to SEARCH</a>
             </div>
@@ -48,8 +48,15 @@
         </div>
       </div>
     </section>
-  </div>
+  </content-loader>
 </template>
+
+<style>
+.multiselect__option--highlight {
+  color: #333;
+  background-color: #ddd;
+}
+</style>
 
 <script>
 import axios from "../../utils/Axios";
@@ -66,6 +73,8 @@ export default {
   data() {
     return {
       place: {
+        id: 0,
+        type: { name: "" },
         loaded: false,
         descendants: []
       }
@@ -90,6 +99,22 @@ export default {
   computed: {
     theme() {
       return this.$store.state.app.theme;
+    },
+    photo() {
+      if (this.place.loaded && this.place.campusPhoto) {
+        return this.place.campusPhoto[0];
+      }
+
+      return {
+        url: "",
+        width: 0,
+        height: 0
+      };
+    },
+    styles() {
+      return {
+        link: [`color: ${this.theme.colors.primary}`].join(";")
+      };
     }
   },
   methods: {

@@ -5182,6 +5182,10 @@ video {
   opacity: 0.75;
 }
 
+.opacity-95 {
+  opacity: .95;
+}
+
 .opacity-100 {
   opacity: 1;
 }
@@ -5202,6 +5206,10 @@ video {
   opacity: 0.75;
 }
 
+.hover\:opacity-95:hover {
+  opacity: .95;
+}
+
 .hover\:opacity-100:hover {
   opacity: 1;
 }
@@ -5220,6 +5228,10 @@ video {
 
 .focus\:opacity-75:focus {
   opacity: 0.75;
+}
+
+.focus\:opacity-95:focus {
+  opacity: .95;
 }
 
 .focus\:opacity-100:focus {
@@ -9663,13 +9675,6 @@ video {
   left: auto;
 }
 
-.inset-1\/4 {
-  top: 25%;
-  right: 25%;
-  bottom: 25%;
-  left: 25%;
-}
-
 .inset-y-0 {
   top: 0;
   bottom: 0;
@@ -9688,16 +9693,6 @@ video {
 .inset-x-auto {
   right: auto;
   left: auto;
-}
-
-.inset-y-1\/4 {
-  top: 25%;
-  bottom: 25%;
-}
-
-.inset-x-1\/4 {
-  right: 25%;
-  left: 25%;
 }
 
 .top-0 {
@@ -9730,22 +9725,6 @@ video {
 
 .left-auto {
   left: auto;
-}
-
-.top-1\/4 {
-  top: 25%;
-}
-
-.right-1\/4 {
-  right: 25%;
-}
-
-.bottom-1\/4 {
-  bottom: 25%;
-}
-
-.left-1\/4 {
-  left: 25%;
 }
 
 .resize-none {
@@ -11474,12 +11453,10 @@ video {
 }
 
 header {
-  height: 10vh;
   overflow: hidden;
 }
 
 main {
-  height: 75vh;
   overflow: auto;
 }
 
@@ -11489,7 +11466,6 @@ nav .icon {
 }
 
 footer {
-  height: 15vh;
   overflow: hidden;
 }
 
@@ -11500,7 +11476,9 @@ footer .\@end {
 .\@page {
   display: grid;
   height: 100vh;
-  grid-template-rows: 1fr auto 1fr;
+  width: 100vw;
+  overflow: hidden;
+  grid-template-rows: 10vh auto 15vh;
 }
 
 a {
@@ -11513,11 +11491,6 @@ a {
 
 .fade-enter, .fade-leave-to {
   opacity: 0;
-}
-
-body {
-  color: #333;
-  background-color: #fff;
 }
 
 @media (min-width: 640px) {
@@ -16073,6 +16046,10 @@ body {
     opacity: 0.75;
   }
 
+  .sm\:opacity-95 {
+    opacity: .95;
+  }
+
   .sm\:opacity-100 {
     opacity: 1;
   }
@@ -16093,6 +16070,10 @@ body {
     opacity: 0.75;
   }
 
+  .sm\:hover\:opacity-95:hover {
+    opacity: .95;
+  }
+
   .sm\:hover\:opacity-100:hover {
     opacity: 1;
   }
@@ -16111,6 +16092,10 @@ body {
 
   .sm\:focus\:opacity-75:focus {
     opacity: 0.75;
+  }
+
+  .sm\:focus\:opacity-95:focus {
+    opacity: .95;
   }
 
   .sm\:focus\:opacity-100:focus {
@@ -20554,13 +20539,6 @@ body {
     left: auto;
   }
 
-  .sm\:inset-1\/4 {
-    top: 25%;
-    right: 25%;
-    bottom: 25%;
-    left: 25%;
-  }
-
   .sm\:inset-y-0 {
     top: 0;
     bottom: 0;
@@ -20579,16 +20557,6 @@ body {
   .sm\:inset-x-auto {
     right: auto;
     left: auto;
-  }
-
-  .sm\:inset-y-1\/4 {
-    top: 25%;
-    bottom: 25%;
-  }
-
-  .sm\:inset-x-1\/4 {
-    right: 25%;
-    left: 25%;
   }
 
   .sm\:top-0 {
@@ -20621,22 +20589,6 @@ body {
 
   .sm\:left-auto {
     left: auto;
-  }
-
-  .sm\:top-1\/4 {
-    top: 25%;
-  }
-
-  .sm\:right-1\/4 {
-    right: 25%;
-  }
-
-  .sm\:bottom-1\/4 {
-    bottom: 25%;
-  }
-
-  .sm\:left-1\/4 {
-    left: 25%;
   }
 
   .sm\:resize-none {
@@ -26918,6 +26870,10 @@ body {
     opacity: 0.75;
   }
 
+  .md\:opacity-95 {
+    opacity: .95;
+  }
+
   .md\:opacity-100 {
     opacity: 1;
   }
@@ -26938,6 +26894,10 @@ body {
     opacity: 0.75;
   }
 
+  .md\:hover\:opacity-95:hover {
+    opacity: .95;
+  }
+
   .md\:hover\:opacity-100:hover {
     opacity: 1;
   }
@@ -26956,6 +26916,10 @@ body {
 
   .md\:focus\:opacity-75:focus {
     opacity: 0.75;
+  }
+
+  .md\:focus\:opacity-95:focus {
+    opacity: .95;
   }
 
   .md\:focus\:opacity-100:focus {
@@ -31399,13 +31363,6 @@ body {
     left: auto;
   }
 
-  .md\:inset-1\/4 {
-    top: 25%;
-    right: 25%;
-    bottom: 25%;
-    left: 25%;
-  }
-
   .md\:inset-y-0 {
     top: 0;
     bottom: 0;
@@ -31424,16 +31381,6 @@ body {
   .md\:inset-x-auto {
     right: auto;
     left: auto;
-  }
-
-  .md\:inset-y-1\/4 {
-    top: 25%;
-    bottom: 25%;
-  }
-
-  .md\:inset-x-1\/4 {
-    right: 25%;
-    left: 25%;
   }
 
   .md\:top-0 {
@@ -31466,22 +31413,6 @@ body {
 
   .md\:left-auto {
     left: auto;
-  }
-
-  .md\:top-1\/4 {
-    top: 25%;
-  }
-
-  .md\:right-1\/4 {
-    right: 25%;
-  }
-
-  .md\:bottom-1\/4 {
-    bottom: 25%;
-  }
-
-  .md\:left-1\/4 {
-    left: 25%;
   }
 
   .md\:resize-none {
@@ -37763,6 +37694,10 @@ body {
     opacity: 0.75;
   }
 
+  .lg\:opacity-95 {
+    opacity: .95;
+  }
+
   .lg\:opacity-100 {
     opacity: 1;
   }
@@ -37783,6 +37718,10 @@ body {
     opacity: 0.75;
   }
 
+  .lg\:hover\:opacity-95:hover {
+    opacity: .95;
+  }
+
   .lg\:hover\:opacity-100:hover {
     opacity: 1;
   }
@@ -37801,6 +37740,10 @@ body {
 
   .lg\:focus\:opacity-75:focus {
     opacity: 0.75;
+  }
+
+  .lg\:focus\:opacity-95:focus {
+    opacity: .95;
   }
 
   .lg\:focus\:opacity-100:focus {
@@ -42244,13 +42187,6 @@ body {
     left: auto;
   }
 
-  .lg\:inset-1\/4 {
-    top: 25%;
-    right: 25%;
-    bottom: 25%;
-    left: 25%;
-  }
-
   .lg\:inset-y-0 {
     top: 0;
     bottom: 0;
@@ -42269,16 +42205,6 @@ body {
   .lg\:inset-x-auto {
     right: auto;
     left: auto;
-  }
-
-  .lg\:inset-y-1\/4 {
-    top: 25%;
-    bottom: 25%;
-  }
-
-  .lg\:inset-x-1\/4 {
-    right: 25%;
-    left: 25%;
   }
 
   .lg\:top-0 {
@@ -42311,22 +42237,6 @@ body {
 
   .lg\:left-auto {
     left: auto;
-  }
-
-  .lg\:top-1\/4 {
-    top: 25%;
-  }
-
-  .lg\:right-1\/4 {
-    right: 25%;
-  }
-
-  .lg\:bottom-1\/4 {
-    bottom: 25%;
-  }
-
-  .lg\:left-1\/4 {
-    left: 25%;
   }
 
   .lg\:resize-none {
@@ -48608,6 +48518,10 @@ body {
     opacity: 0.75;
   }
 
+  .xl\:opacity-95 {
+    opacity: .95;
+  }
+
   .xl\:opacity-100 {
     opacity: 1;
   }
@@ -48628,6 +48542,10 @@ body {
     opacity: 0.75;
   }
 
+  .xl\:hover\:opacity-95:hover {
+    opacity: .95;
+  }
+
   .xl\:hover\:opacity-100:hover {
     opacity: 1;
   }
@@ -48646,6 +48564,10 @@ body {
 
   .xl\:focus\:opacity-75:focus {
     opacity: 0.75;
+  }
+
+  .xl\:focus\:opacity-95:focus {
+    opacity: .95;
   }
 
   .xl\:focus\:opacity-100:focus {
@@ -53089,13 +53011,6 @@ body {
     left: auto;
   }
 
-  .xl\:inset-1\/4 {
-    top: 25%;
-    right: 25%;
-    bottom: 25%;
-    left: 25%;
-  }
-
   .xl\:inset-y-0 {
     top: 0;
     bottom: 0;
@@ -53114,16 +53029,6 @@ body {
   .xl\:inset-x-auto {
     right: auto;
     left: auto;
-  }
-
-  .xl\:inset-y-1\/4 {
-    top: 25%;
-    bottom: 25%;
-  }
-
-  .xl\:inset-x-1\/4 {
-    right: 25%;
-    left: 25%;
   }
 
   .xl\:top-0 {
@@ -53156,22 +53061,6 @@ body {
 
   .xl\:left-auto {
     left: auto;
-  }
-
-  .xl\:top-1\/4 {
-    top: 25%;
-  }
-
-  .xl\:right-1\/4 {
-    right: 25%;
-  }
-
-  .xl\:bottom-1\/4 {
-    bottom: 25%;
-  }
-
-  .xl\:left-1\/4 {
-    left: 25%;
   }
 
   .xl\:resize-none {
