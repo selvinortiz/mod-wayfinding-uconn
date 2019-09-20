@@ -28,14 +28,12 @@
               label="buildingName"
               placeholder="Chose Building"
               value
+              style="background-color: red;"
               :options="place.descendants"
               :show-labels="false"
               :allow-empty="true"
               @input="handleSelectedPlace"
             >
-              <template slot="singleLabel" slot-scope="{ option }">
-                <strong>{{ option.buildingName }}</strong>
-              </template>
             </multi-select>
 
             <div class="pt-4">
@@ -52,6 +50,13 @@
     </section>
   </content-loader>
 </template>
+
+<style>
+.multiselect__option--highlight {
+  color: #333;
+  background-color: #ddd;
+}
+</style>
 
 <script>
 import axios from "../../utils/Axios";

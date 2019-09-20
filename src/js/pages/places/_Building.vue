@@ -54,6 +54,13 @@
   </content-loader>
 </template>
 
+<style>
+.multiselect__option--highlight {
+  color: #333;
+  background-color: #ddd;
+}
+</style>
+
 <script>
 import axios from "../../utils/Axios";
 import ModMap from "../../components/shared/ModMap.vue";
