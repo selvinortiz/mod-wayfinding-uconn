@@ -39,7 +39,10 @@ export default {
   },
   data() {
     return {
-      place: {}
+      place: {
+        id: 0,
+        loaded: false,
+      }
     };
   },
   created() {
@@ -62,8 +65,11 @@ export default {
   },
   watch: {
     $route(to) {
-      if (to.name === "room" && to.path !== this.$route.path) {
-        this.place = {};
+      if (to.name === "room" && this.$route.params.id != this.place.id) {
+        this.place = {
+          id: 0,
+          loaded: []
+        };
         this.fetch();
       }
     }

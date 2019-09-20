@@ -71,25 +71,29 @@ export default {
   data() {
     return {
       place: {
+        id: 0,
         loaded: false,
         descendants: []
       }
     };
   },
   created() {
-    axios
-      .post("/actions/sys/wayfinding/place", {
-        id: this.$route.params.id
-      })
-      .then(response => {
-        this.place = {
-          ...response.data.place,
-          loaded: true
-        };
-      })
-      .catch(error => console.error(error));
+    this.fetch();
   },
   methods: {
+    fetch() {
+      axios
+        .post("/actions/sys/wayfinding/place", {
+          id: this.$route.params.id
+        })
+        .then(response => {
+          this.place = {
+            ...response.data.place,
+            loaded: true
+          };
+        })
+        .catch(error => console.error(error));
+    },
     handleSelectedPlace(place) {
       if (place && place.id) {
         this.$router.push({
@@ -103,8 +107,11 @@ export default {
   },
   watch: {
     $route(to) {
-      if (to.name === "building" && to.path !== this.$route.path) {
+      console.log(to, this)
+
+      if (to.name === "building" && to.params.id != this.place.id) {
         this.place = {
+          id: 0,
           loaded: false,
           descendants: []
         };
