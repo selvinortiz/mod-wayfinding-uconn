@@ -1,5 +1,5 @@
 <template>
-  <div class="p-8">
+  <content-loader :loaded="place.loaded" classes="p-8">
     <page-header>Wayfinding</page-header>
 
     <section class="lg:flex">
@@ -13,10 +13,10 @@
           <div class="text-lg">
             <p>555-1234-5678</p>
             <p>
-              <span class="block">{{ place.campusAddress || '123 Happy Street' }}</span>
+              <span class="block">{{ place.placeAddress }}</span>
               <span
                 class="block"
-              >{{ place.campusCity || 'Mod City' }}, {{ place.campusState || 'MN' }} {{ place.campusZipcode || '55555' }}</span>
+              >{{ place.placeCity }}, {{ place.placeState }} {{ place.placeZipcode }}</span>
             </p>
           </div>
         </div>
@@ -48,7 +48,7 @@
         </div>
       </div>
     </section>
-  </div>
+  </content-loader>
 </template>
 
 <script>

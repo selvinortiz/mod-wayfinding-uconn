@@ -1,5 +1,5 @@
 <template>
-  <div v-if="place.loaded" class="p-8">
+  <content-loader :loaded="place.loaded" classes="p-8">
     <page-header>Wayfinding</page-header>
 
     <div class="flex flex-wrap justify-center">
@@ -54,7 +54,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </content-loader>
 </template>
 
 <script>

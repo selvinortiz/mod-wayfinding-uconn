@@ -1,5 +1,5 @@
 <template>
-  <div class="p-8">
+  <content-loader :loaded="place.loaded" classes="p-8">
     <div class="flex flex-wrap justify-center">
       <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-2 md:w-full md:mb-6 md:order-1">
         <mod-map :place="place"></mod-map>
@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </content-loader>
 </template>
 
 <script>
@@ -41,7 +41,7 @@ export default {
     return {
       place: {
         id: 0,
-        loaded: false,
+        loaded: false
       }
     };
   },

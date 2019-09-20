@@ -13,6 +13,7 @@ import Events from './plugins/Events';
 import App from './App.vue';
 import AppSearch from './components/partials/AppSearch.vue';
 
+import ContentLoader from './components/shared/ContentLoader.vue';
 import PageHeader from './components/shared/PageHeader.vue';
 import UIButton from './components/shared/UIButton.vue';
 
@@ -23,6 +24,7 @@ Vue.use(Meta);
 Vue.use(Theme);
 Vue.use(Events);
 
+Vue.component('content-loader', ContentLoader);
 Vue.component('page-header', PageHeader);
 Vue.component('multi-select', MultiSelect);
 Vue.component('ui-button', UIButton);

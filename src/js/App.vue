@@ -1,7 +1,7 @@
 <template>
   <div>
-    <app-slides v-if="$route.name === 'index'"></app-slides>
-    <div class="@page absolute z-10 w-full h-full">
+    <app-slides v-if="isWelcomeScreen"></app-slides>
+    <div class="@page absolute z-10 w-full h-full" :class="{ 'bg-gray-100': !isWelcomeScreen }">
       <header class="@page__header flex items-center justify-between px-8 opacity-95" :style="styles.header">
         <app-logo></app-logo>
         <div>
@@ -22,7 +22,7 @@
         </div>
       </header>
 
-      <main class="@page__content p-8">
+      <main class="@page__content">
         <transition name="fade" mode="out-in">
           <keep-alive>
             <router-view></router-view>
@@ -79,6 +79,9 @@ export default {
           backdrop: [this.$bg(this.theme.search.bg)].join(";")
         }
       };
+    },
+    isWelcomeScreen() {
+      return this.$route.name === 'index'
     }
   }
 };
