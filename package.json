@@ -43,6 +43,7 @@
     "style-loader": "^1.0.0",
     "tailwindcss": "^1.1.1",
     "vue": "^2.6.10",
+    "vue-friendly-iframe": "^0.13.0",
     "vue-loader": "^15.7.1",
     "vue-meta": "^2.2.1",
     "vue-multiselect": "^2.1.6",

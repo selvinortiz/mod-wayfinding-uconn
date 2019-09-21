@@ -31,9 +31,9 @@
         <a
           class="flex"
           v-if="link.type === 'url'"
-          :href="link.url"
           :class="classes.link"
           :style="applyStyles(link)"
+          @click="service(link.url)"
         >
           <p class="flex cursor-pointer flex-grow">
             <img class="icon" :src="`/static/icons/${link.icon}`" alt />
@@ -105,6 +105,9 @@ export default {
         case "search":
           return this.search();
       }
+    },
+    service(url) {
+      this.$router.push({ name: 'service', query: {src: url} })
     },
     search() {
       this.$store.commit("setSearchIsOpen", true);

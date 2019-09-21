@@ -4,6 +4,7 @@ import Meta from 'vue-meta';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
+import ContentIframe from 'vue-friendly-iframe';
 import MultiSelect from 'vue-multiselect';
 import 'vue-multiselect/dist/vue-multiselect.min.css';
 
@@ -25,6 +26,7 @@ Vue.use(Meta);
 Vue.use(Theme);
 Vue.use(Events);
 
+Vue.component('content-iframe', ContentIframe);
 Vue.component('content-loader', ContentLoader);
 Vue.component('page-header', PageHeader);
 Vue.component('multi-select', MultiSelect);
