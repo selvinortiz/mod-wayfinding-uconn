@@ -1,95 +1,118 @@
 <template>
-  <div
-    v-if="place.loaded && place.maps.length"
-    class="w-full flex flex-col justify-center overflow-hidden"
-    style="max-height: 60vh;"
-  >
+  <fullscreen ref="fullscreen" @change="handleFullScreenChange">
     <div
-      ref="container"
-      class="overflow-hidden bg-gray-200 shadow"
-      style="flex: 10; h-full"
-      @pointerdown="startDrag($event)"
-      @pointermove="dragMap($event)"
-      @pointerup="stopDrag()"
-      @pointerleave="stopDrag()"
+      v-if="place.loaded && place.maps.length"
+      class="w-full flex flex-col justify-center overflow-hidden"
+      :style="`max-height: ${isFullScreen ? 100 : 60}vh;`"
     >
-      <img
-        ref="image"
-        class="w-full"
-        :style="`transform: scale(${zoom}) translate(${translateX}px, ${translateY}px); transition: all .25s ease-in-out;`"
-        :src="getSelectedMap().image"
-        @load="centerMap()"
-        draggable="false"
-      />
-      <!--div v-if="place.loaded" class="w-1/6 absolute bottom-0 right-0">
+      <div
+        ref="container"
+        class="overflow-hidden bg-gray-200 shadow"
+        style="flex: 10; h-full"
+        @pointerdown="startDrag($event)"
+        @pointermove="dragMap($event)"
+        @pointerup="stopDrag()"
+        @pointerleave="stopDrag()"
+      >
         <img
-          @click="() => selectedMap = map"
-          v-for="(map, index) in place.maps"
-          :key="index"
+          ref="image"
           class="w-full"
-          :src="map.image"
+          :style="`transform: scale(${zoom}) translate(${translateX}px, ${translateY}px); transition: all .25s ease-in-out;`"
+          :src="getSelectedMap().image"
+          @load="centerMap()"
           draggable="false"
         />
-      </div-->
-    </div>
+        <!--div v-if="place.loaded" class="w-1/6 absolute bottom-0 right-0">
+          <img
+            @click="() => selectedMap = map"
+            v-for="(map, index) in place.maps"
+            :key="index"
+            class="w-full"
+            :src="map.image"
+            draggable="false"
+          />
+        </div-->
+      </div>
 
-    <div class="flex items-center justify-between mt-4" style="flex: 2;">
-      <div>
-        <button
-          class="py-2 px-4 uppercase border text-white"
-          :style="`border-color: ${colors.primary}; background-color: ${colors.primary}`"
-        >Campus Map</button>
-        <button
-          class="py-2 px-4 uppercase border text-black"
-          :style="`border-color: ${colors.primary};`"
-        >Building Map</button>
-      </div>
-      <div>
-        <button
-          class="ml-2 text-gray-600 outline-none focus:outline-none"
-          style="width: 28px;"
-          @click="zoomMap(1)"
-        >
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            data-prefix="fas"
-            data-icon="search-plus"
-            class="svg-inline--fa fa-search-plus fa-w-16"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
+      <div class="flex items-center justify-between mt-4" style="flex: 2;">
+        <div>
+          <button
+            class="py-2 px-4 uppercase border text-white"
+            :style="`border-color: ${colors.primary}; background-color: ${colors.primary}`"
+          >Campus Map</button>
+          <button
+            class="py-2 px-4 uppercase border text-black"
+            :style="`border-color: ${colors.primary};`"
+          >Building Map</button>
+        </div>
+        <div>
+          <button
+            class="ml-2 text-gray-600 outline-none focus:outline-none"
+            style="width: 28px;"
+            @click="zoomMap(1)"
           >
-            <path
-              fill="currentColor"
-              d="M304 192v32c0 6.6-5.4 12-12 12h-56v56c0 6.6-5.4 12-12 12h-32c-6.6 0-12-5.4-12-12v-56h-56c-6.6 0-12-5.4-12-12v-32c0-6.6 5.4-12 12-12h56v-56c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v56h56c6.6 0 12 5.4 12 12zm201 284.7L476.7 505c-9.4 9.4-24.6 9.4-33.9 0L343 405.3c-4.5-4.5-7-10.6-7-17V372c-35.3 27.6-79.7 44-128 44C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208c0 48.3-16.4 92.7-44 128h16.3c6.4 0 12.5 2.5 17 7l99.7 99.7c9.3 9.4 9.3 24.6 0 34zM344 208c0-75.2-60.8-136-136-136S72 132.8 72 208s60.8 136 136 136 136-60.8 136-136z"
-            />
-          </svg>
-        </button>
-        <button
-          class="ml-2 text-gray-600 outline-none focus:outline-none"
-          style="width: 28px;"
-          @click="zoomMap(-1)"
-        >
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            data-prefix="fas"
-            data-icon="search-minus"
-            class="svg-inline--fa fa-search-minus fa-w-16"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fas"
+              data-icon="search-plus"
+              class="svg-inline--fa fa-search-plus fa-w-16"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+            >
+              <path
+                fill="currentColor"
+                d="M304 192v32c0 6.6-5.4 12-12 12h-56v56c0 6.6-5.4 12-12 12h-32c-6.6 0-12-5.4-12-12v-56h-56c-6.6 0-12-5.4-12-12v-32c0-6.6 5.4-12 12-12h56v-56c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v56h56c6.6 0 12 5.4 12 12zm201 284.7L476.7 505c-9.4 9.4-24.6 9.4-33.9 0L343 405.3c-4.5-4.5-7-10.6-7-17V372c-35.3 27.6-79.7 44-128 44C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208c0 48.3-16.4 92.7-44 128h16.3c6.4 0 12.5 2.5 17 7l99.7 99.7c9.3 9.4 9.3 24.6 0 34zM344 208c0-75.2-60.8-136-136-136S72 132.8 72 208s60.8 136 136 136 136-60.8 136-136z"
+              />
+            </svg>
+          </button>
+          <button
+            class="ml-2 text-gray-600 outline-none focus:outline-none"
+            style="width: 28px;"
+            @click="zoomMap(-1)"
           >
-            <path
-              fill="currentColor"
-              d="M304 192v32c0 6.6-5.4 12-12 12H124c-6.6 0-12-5.4-12-12v-32c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm201 284.7L476.7 505c-9.4 9.4-24.6 9.4-33.9 0L343 405.3c-4.5-4.5-7-10.6-7-17V372c-35.3 27.6-79.7 44-128 44C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208c0 48.3-16.4 92.7-44 128h16.3c6.4 0 12.5 2.5 17 7l99.7 99.7c9.3 9.4 9.3 24.6 0 34zM344 208c0-75.2-60.8-136-136-136S72 132.8 72 208s60.8 136 136 136 136-60.8 136-136z"
-            />
-          </svg>
-        </button>
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fas"
+              data-icon="search-minus"
+              class="svg-inline--fa fa-search-minus fa-w-16"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+            >
+              <path
+                fill="currentColor"
+                d="M304 192v32c0 6.6-5.4 12-12 12H124c-6.6 0-12-5.4-12-12v-32c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm201 284.7L476.7 505c-9.4 9.4-24.6 9.4-33.9 0L343 405.3c-4.5-4.5-7-10.6-7-17V372c-35.3 27.6-79.7 44-128 44C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208c0 48.3-16.4 92.7-44 128h16.3c6.4 0 12.5 2.5 17 7l99.7 99.7c9.3 9.4 9.3 24.6 0 34zM344 208c0-75.2-60.8-136-136-136S72 132.8 72 208s60.8 136 136 136 136-60.8 136-136z"
+              />
+            </svg>
+          </button>
+          <button
+            class="ml-2 text-gray-600 outline-none focus:outline-none"
+            style="width: 28px;"
+            @click="toggleFullScreen()"
+          >
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fas"
+              data-icon="compress-wide"
+              class="svg-inline--fa fa-compress-wide fa-w-16"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+            >
+              <path
+                fill="currentColor"
+                d="M500 224H376c-13.3 0-24-10.7-24-24V76c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v84h84c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm-340-24V76c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v84H12c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h124c13.3 0 24-10.7 24-24zm0 236V312c0-13.3-10.7-24-24-24H12c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h84v84c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm256 0v-84h84c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12H376c-13.3 0-24 10.7-24 24v124c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12z"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+  </fullscreen>
 </template>
 
 <script>
@@ -121,7 +144,8 @@ export default {
       dragX: null,
       dragY: null,
 
-      selectedMap: null
+      selectedMap: null,
+      isFullScreen: false
     };
   },
   computed: {
@@ -133,6 +157,13 @@ export default {
     }
   },
   methods: {
+    handleFullScreenChange(fullscreen) {
+      this.isFullScreen = fullscreen;
+      this.centerMap();
+    },
+    toggleFullScreen() {
+      this.$refs.fullscreen.toggle();
+    },
     centerMap() {
       // Use first marker in provided collection
       let marker = this.selectedMap.markers[0];
@@ -159,7 +190,10 @@ export default {
       const height = (marker.y / 100) * (image.height / this.zoom);
 
       this.translateX = containerX - width;
-      this.translateY = containerY + (imageTallerBy / 100) * container.height * this.zoom - height;
+      this.translateY =
+        containerY +
+        (imageTallerBy / 100) * container.height * this.zoom -
+        height;
     },
     getSelectedMap() {
       if (this.selectedMap == null) {

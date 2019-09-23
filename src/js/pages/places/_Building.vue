@@ -4,7 +4,7 @@
 
     <section class="lg:flex flex-wrap">
       <div class="lg:w-1/2 lg:order-1">
-        <mod-map :place="place" class="p-8 pl-4"></mod-map>
+        <mod-map :place="place"></mod-map>
       </div>
 
       <div class="w-full lg:w-1/2 lg:flex">

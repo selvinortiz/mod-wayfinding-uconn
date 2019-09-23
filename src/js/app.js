@@ -4,6 +4,7 @@ import Meta from 'vue-meta';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
+import Fullscreen from 'vue-fullscreen';
 import ContentIframe from 'vue-friendly-iframe';
 import MultiSelect from 'vue-multiselect';
 import 'vue-multiselect/dist/vue-multiselect.min.css';
@@ -25,6 +26,7 @@ import router from './router';
 Vue.use(Meta);
 Vue.use(Theme);
 Vue.use(Events);
+Vue.use(Fullscreen);
 
 Vue.component('content-iframe', ContentIframe);
 Vue.component('content-loader', ContentLoader);
