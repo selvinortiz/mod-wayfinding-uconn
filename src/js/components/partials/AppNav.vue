@@ -63,42 +63,41 @@ export default {
           .concat(this.theme.nav.styles)
           .join(";"),
         link: [
-            this.$bg(this.theme.nav.link.bg),
-            `color: ${this.theme.nav.link.fg}`
-          ]
+          this.$bg(this.theme.nav.link.bg),
+          `color: ${this.theme.nav.link.fg}`
+        ]
           .concat(this.theme.nav.link.styles)
           .join(";"),
         linkActive: [
           this.$bg(this.theme.nav.link.active.bg),
-            `color: ${this.theme.nav.link.active.fg}`
-          ]
-          .concat(this.theme.nav.link.active.styles||[])
+          `color: ${this.theme.nav.link.active.fg}`
+        ]
+          .concat(this.theme.nav.link.active.styles || [])
           .join(";")
       };
     },
     classes() {
       return {
         container: [].concat(this.theme.nav.classes).join(" "),
-        link: [
-          'p-6',
-          'justify-around'
-        ].concat(this.theme.nav.link.classes).join(" ")
+        link: ["p-6", "justify-around"]
+          .concat(this.theme.nav.link.classes)
+          .join(" ")
       };
     }
   },
   methods: {
     route(link) {
-      if (link.route === 'places') {
+      if (link.route === "places") {
         if (this.kiosk.id) {
-          return { name: 'building', params: { id: this.kiosk.id } }
+          return { name: "building", params: { id: this.kiosk.id } };
         }
 
-        return { name: 'campus', params: { id: this.campus.id } }
+        return { name: "campus", params: { id: this.campus.id } };
       }
 
       return {
         name: link.route
-      }
+      };
     },
     action(id) {
       switch (id) {
@@ -107,7 +106,7 @@ export default {
       }
     },
     service(url) {
-      this.$router.push({ name: 'service', query: {src: url} })
+      this.$router.push({ name: "service", query: { url } });
     },
     search() {
       this.$store.commit("setSearchIsOpen", true);

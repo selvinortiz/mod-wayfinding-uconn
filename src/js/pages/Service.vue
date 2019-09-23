@@ -1,11 +1,22 @@
 <template>
-  <content-iframe class="wrapper" :src="$route.query.src"></content-iframe>
+  <content-iframe v-if="src" class="wrapper" :src="src"></content-iframe>
 </template>
 
 <style>
-.wrapper, iframe {
+.wrapper,
+iframe {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 </style>
+
+<script>
+export default {
+  computed: {
+    src() {
+      return this.$route.query.url;
+    }
+  }
+};
+</script>
