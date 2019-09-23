@@ -1,9 +1,9 @@
 <template>
-  <content-loader :loaded="place.loaded">
+  <content-loader :loaded="place.loaded" class="p-8">
     <page-header>Wayfinding</page-header>
     <section class="lg:flex flex-wrap">
       <div class="lg:w-1/2 lg:order-1">
-        <mod-map :place="place" class="px-4"></mod-map>
+        <mod-map :place="place"></mod-map>
       </div>
       <div class="w-full flex flex-wrap lg:w-1/2">
         <div class="w-1/2">
