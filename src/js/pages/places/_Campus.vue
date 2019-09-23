@@ -1,7 +1,7 @@
 <template>
   <content-loader :loaded="place.loaded">
-    <h1 class="font-thin text-4xl text-default uppercase ml-4">WayFinding</h1>
-    <h2 class="lg:hidden sm:flex text-default font-bold text-2x1 py-0 ml-4">{{ place.campusName }} {{ place.type.name }}</h2>
+    <h1 class="font-thin text-4xl text-default uppercase lg:ml-10 sm:ml-12" :style="styles.defaultColor">WayFinding</h1>
+    <h2 class="lg:hidden sm:flex text-default font-bold text-2x1 py-0 ml-4" :style="styles.defaultColor">{{ place.campusName }} {{ place.type.name }}</h2>
     <section class="lg:flex flex-wrap">
       <div class="lg:w-1/2 lg:order-1">
         <mod-map :place="place" class="p-8 pl-4"></mod-map>
@@ -41,7 +41,7 @@
               Don&rsquo;t see what you&rsquo;re looking for?
               <a
                 class="cursor-pointer"
-                :style="styles.link"
+                :style="styles.defaultColor"
                 @click="() => $store.state.app.searchIsOpen = true"
               >Switch to SEARCH</a>
             </div>
@@ -117,7 +117,7 @@ export default {
     },
     styles() {
       return {
-        link: [`color: ${this.theme.colors.primary}`].join(";"),
+        defaultColor: [`color: ${this.theme.colors.primary}`].join(";"),
         border: [`border-color: ${this.theme.colors.primary}`].join(";") 
       };
     }

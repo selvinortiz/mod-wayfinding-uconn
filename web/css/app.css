@@ -10247,10 +10247,6 @@ video {
   color: #702459;
 }
 
-.text-default {
-  color: #c0d;
-}
-
 .hover\:text-transparent:hover {
   color: transparent;
 }
@@ -10627,10 +10623,6 @@ video {
   color: #702459;
 }
 
-.hover\:text-default:hover {
-  color: #c0d;
-}
-
 .focus\:text-transparent:focus {
   color: transparent;
 }
@@ -11005,10 +10997,6 @@ video {
 
 .focus\:text-pink-900:focus {
   color: #702459;
-}
-
-.focus\:text-default:focus {
-  color: #c0d;
 }
 
 .text-xs {
@@ -21123,10 +21111,6 @@ a {
     color: #702459;
   }
 
-  .sm\:text-default {
-    color: #c0d;
-  }
-
   .sm\:hover\:text-transparent:hover {
     color: transparent;
   }
@@ -21503,10 +21487,6 @@ a {
     color: #702459;
   }
 
-  .sm\:hover\:text-default:hover {
-    color: #c0d;
-  }
-
   .sm\:focus\:text-transparent:focus {
     color: transparent;
   }
@@ -21881,10 +21861,6 @@ a {
 
   .sm\:focus\:text-pink-900:focus {
     color: #702459;
-  }
-
-  .sm\:focus\:text-default:focus {
-    color: #c0d;
   }
 
   .sm\:text-xs {
@@ -31959,10 +31935,6 @@ a {
     color: #702459;
   }
 
-  .md\:text-default {
-    color: #c0d;
-  }
-
   .md\:hover\:text-transparent:hover {
     color: transparent;
   }
@@ -32339,10 +32311,6 @@ a {
     color: #702459;
   }
 
-  .md\:hover\:text-default:hover {
-    color: #c0d;
-  }
-
   .md\:focus\:text-transparent:focus {
     color: transparent;
   }
@@ -32717,10 +32685,6 @@ a {
 
   .md\:focus\:text-pink-900:focus {
     color: #702459;
-  }
-
-  .md\:focus\:text-default:focus {
-    color: #c0d;
   }
 
   .md\:text-xs {
@@ -42795,10 +42759,6 @@ a {
     color: #702459;
   }
 
-  .lg\:text-default {
-    color: #c0d;
-  }
-
   .lg\:hover\:text-transparent:hover {
     color: transparent;
   }
@@ -43175,10 +43135,6 @@ a {
     color: #702459;
   }
 
-  .lg\:hover\:text-default:hover {
-    color: #c0d;
-  }
-
   .lg\:focus\:text-transparent:focus {
     color: transparent;
   }
@@ -43553,10 +43509,6 @@ a {
 
   .lg\:focus\:text-pink-900:focus {
     color: #702459;
-  }
-
-  .lg\:focus\:text-default:focus {
-    color: #c0d;
   }
 
   .lg\:text-xs {
@@ -53631,10 +53583,6 @@ a {
     color: #702459;
   }
 
-  .xl\:text-default {
-    color: #c0d;
-  }
-
   .xl\:hover\:text-transparent:hover {
     color: transparent;
   }
@@ -54011,10 +53959,6 @@ a {
     color: #702459;
   }
 
-  .xl\:hover\:text-default:hover {
-    color: #c0d;
-  }
-
   .xl\:focus\:text-transparent:focus {
     color: transparent;
   }
@@ -54389,10 +54333,6 @@ a {
 
   .xl\:focus\:text-pink-900:focus {
     color: #702459;
-  }
-
-  .xl\:focus\:text-default:focus {
-    color: #c0d;
   }
 
   .xl\:text-xs {
