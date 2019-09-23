@@ -11,7 +11,7 @@
       </p>
     </div>
     <div class="py-2 px-8">
-      <a @click="toggleAdaMode" class="flex items-end text-base leading-none">
+      <a v-if="showAdaToggle" @click="toggleAdaMode" class="flex items-end text-base leading-none">
         <span class="px-4 text-right">Tap for improved ADA accessability</span>
         <img style="max-height: 32px;" src="/static/icons/ada.svg" />
       </a>
@@ -24,6 +24,11 @@ export default {
   data() {
     return {
       adaModeEnabled: false
+    }
+  },
+  computed: {
+    showAdaToggle() {
+      return !this.$store.state.app.isMobile
     }
   },
   methods: {

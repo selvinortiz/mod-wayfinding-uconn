@@ -1,18 +1,15 @@
 <template>
   <content-loader :loaded="place.loaded" classes="p-8">
-    <page-header>Back</page-header>
-
+    <page-header>Wayfinding</page-header>
     <section class="lg:flex flex-wrap">
       <div class="lg:w-1/2 lg:order-1">
-        <mod-map :place="place"></mod-map>
+        <mod-map :place="place" class="px-4"></mod-map>
       </div>
-
-      <div class="w-full lg:w-1/2 lg:flex">
-        <div class="lg:w-1/2">
-          <div class="p-8 pr-4">
+      <div class="w-full flex flex-wrap lg:w-1/2">
+        <div class="w-1/2">
+          <div class="pt-8 px-4">
+            <h2 class="font-thin text-4xl">{{ place.buildingName }} {{ place.type.name }}</h2>
             <ui-photo :photo="photo"></ui-photo>
-
-            <h2 class="font-thin text-4xl pt-4">{{ place.buildingName }} {{ place.type.name }}</h2>
 
             <div class="text-xl">
               <p class="pt-4">
@@ -24,8 +21,8 @@
             </div>
           </div>
         </div>
-        <div class="w-full lg:w-1/2">
-          <div class="py-8 px-4">
+        <div class="w-1/2">
+          <div class="pt-20 px-4">
             <multi-select
               track-by="id"
               label="title"
@@ -36,14 +33,13 @@
               :allow-empty="true"
               @input="handleSelectedPlace"
             >
-              <template slot="singleLabel" slot-scope="{ option }">
-                <span :class="{'text-gray-600': option.type.handle !== 'floor'}">{{ option.title }}</span>
-              </template>
             </multi-select>
+
             <div class="pt-4">
               Don&rsquo;t see what you&rsquo;re looking for?
               <a
-                class="text-blue-600 cursor-pointer"
+                class="cursor-pointer"
+                :style="styles.link"
                 @click="() => $store.state.app.searchIsOpen = true"
               >Switch to SEARCH</a>
             </div>
@@ -63,14 +59,10 @@
 
 <script>
 import axios from "../../utils/Axios";
-import ModMap from "../../components/ModMap.vue";
 
 export default {
   metaInfo: {
     title: "Place"
-  },
-  components: {
-    ModMap
   },
   data() {
     return {
@@ -86,6 +78,9 @@ export default {
     this.fetch();
   },
   computed: {
+    theme() {
+      return this.$store.state.app.theme;
+    },
     photo() {
       if (this.place.loaded && this.place.buildingPhoto) {
         return this.place.buildingPhoto[0];

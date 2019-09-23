@@ -1,28 +1,19 @@
 <template>
   <content-loader :loaded="place.loaded">
+    <page-header>Wayfinding</page-header>
     <section class="lg:flex flex-wrap">
       <div class="lg:w-1/2 lg:order-1">
-        <mod-map :place="place" class="p-8 pl-4"></mod-map>
+        <mod-map :place="place" class="px-4"></mod-map>
       </div>
-      <div class="w-full lg:w-1/2 lg:flex">
-        <div class="lg:w-1/2">
-          <div class="p-8 pr-4">
+      <div class="w-full flex flex-wrap lg:w-1/2">
+        <div class="w-1/2">
+          <div class="pt-8 px-4">
+            <h2 class="font-thin text-4xl">{{ place.campusName }} {{ place.type.name }}</h2>
             <ui-photo :photo="photo"></ui-photo>
-
-            <h2 class="font-thin text-4xl pt-4">{{ place.campusName }} {{ place.type.name }}</h2>
-
-            <div class="text-xl">
-              <p class="pt-4">
-                <span class="block">{{ place.placeAddress }}</span>
-                <span
-                  class="block"
-                >{{ place.placeCity }}, {{ place.placeState }} {{ place.placeZipcode }}</span>
-              </p>
-            </div>
           </div>
         </div>
-        <div class="w-full lg:w-1/2">
-          <div class="py-8 px-4">
+        <div class="w-1/2">
+          <div class="pt-20 px-4">
             <multi-select
               track-by="id"
               label="buildingName"
@@ -59,15 +50,10 @@
 
 <script>
 import axios from "../../utils/Axios";
-import ModMap from "../../components/ModMap.vue";
-import PlaceInfo from "../../components/shared/PlaceInfo.vue";
 
 export default {
   metaInfo: {
     title: "Place"
-  },
-  components: {
-    ModMap
   },
   data() {
     return {
