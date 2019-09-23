@@ -12,6 +12,9 @@ module.exports = {
       opacity: {
         ...opacity,
         95: ".95"
+      },
+      textColor: {
+      'default': '#c0d',
       }
     },
   },
