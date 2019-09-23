@@ -1,5 +1,7 @@
 <template>
   <content-loader :loaded="place.loaded">
+    <h1 class="font-thin text-4xl text-default uppercase ml-4">WayFinding</h1>
+    <h2 class="lg:hidden sm:flex text-default font-bold text-2x1 py-0 ml-4">{{ place.campusName }} {{ place.type.name }}</h2>
     <section class="lg:flex flex-wrap">
       <div class="lg:w-1/2 lg:order-1">
         <mod-map :place="place" class="p-8 pl-4"></mod-map>
