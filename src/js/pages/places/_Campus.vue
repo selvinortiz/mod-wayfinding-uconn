@@ -3,17 +3,17 @@
     <page-header>Wayfinding</page-header>
     <section class="lg:flex flex-wrap">
       <div class="lg:w-1/2 lg:order-1">
-        <mod-map :place="place"></mod-map>
+        <mod-map :place="place" class="lg:px-4 lg:mt-16"></mod-map>
       </div>
       <div class="w-full flex flex-wrap lg:w-1/2">
         <div class="w-1/2">
-          <div class="pt-8 px-4">
-            <h2 class="font-thin text-4xl">{{ place.campusName }} {{ place.type.name }}</h2>
+          <div>
+            <h2 class="pt-8 pb-2 lg:pt-0 font-thin text-4xl">{{ place.campusName }} {{ place.type.name }}</h2>
             <ui-photo :photo="photo"></ui-photo>
           </div>
         </div>
         <div class="w-1/2">
-          <div class="pt-20 px-4">
+          <div class="pt-16 px-4">
             <multi-select
               track-by="id"
               label="buildingName"
