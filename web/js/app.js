@@ -4764,7 +4764,7 @@ eval("exports = module.exports = __webpack_require__(/*! ../../../css-loader/dis
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\nimg[data-v-34a9847b] {\\n  width: auto;\\n  max-height: 64px;\\n}\\n@media screen and (min-width: 720px) {\\nimg[data-v-34a9847b] {\\n    max-height: 90px;\\n}\\n}\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/partials/AppLogo.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
+eval("exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\nimg[data-v-34a9847b] {\\r\\n  width: auto;\\r\\n  max-height: 64px;\\n}\\n@media screen and (min-width: 720px) {\\nimg[data-v-34a9847b] {\\r\\n    max-height: 90px;\\n}\\n}\\r\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/partials/AppLogo.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
@@ -4775,7 +4775,7 @@ eval("exports = module.exports = __webpack_require__(/*! ../../../../node_module
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n.simple-keyboard.hg-theme-default {\\n  border-radius: 0;\\n  background-color: transparent;\\n}\\n.hg-theme-default .keyboard-button-space {\\n  flex: 2;\\n}\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/shared/ModKeyboard.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
+eval("exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n.simple-keyboard.hg-theme-default {\\r\\n  border-radius: 0;\\r\\n  background-color: transparent;\\n}\\n.hg-theme-default .keyboard-button-space {\\r\\n  flex: 2;\\n}\\r\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/shared/ModKeyboard.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
@@ -4786,7 +4786,7 @@ eval("exports = module.exports = __webpack_require__(/*! ../../../../node_module
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n.wrapper, iframe {\\n  width: 100%;\\n  height: 100%;\\n  overflow: hidden;\\n}\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/pages/Service.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
+eval("exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n.wrapper, iframe {\\r\\n  width: 100%;\\r\\n  height: 100%;\\r\\n  overflow: hidden;\\n}\\r\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/pages/Service.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 

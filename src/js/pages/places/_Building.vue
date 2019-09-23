@@ -25,7 +25,9 @@
           </div>
         </div>
         <div class="w-full lg:w-1/2">
-          <div class="py-8 px-4">
+          <div class="py-8 px-4"
+            :style="styles.border"
+          >
             <multi-select
               track-by="id"
               label="title"
@@ -43,7 +45,8 @@
             <div class="pt-4">
               Don&rsquo;t see what you&rsquo;re looking for?
               <a
-                class="text-blue-600 cursor-pointer"
+                class="cursor-pointer"
+                :style="styles.link"
                 @click="() => $store.state.app.searchIsOpen = true"
               >Switch to SEARCH</a>
             </div>
@@ -86,6 +89,9 @@ export default {
     this.fetch();
   },
   computed: {
+     theme() {
+      return this.$store.state.app.theme;
+    },
     photo() {
       if (this.place.loaded && this.place.buildingPhoto) {
         return this.place.buildingPhoto[0];
@@ -99,7 +105,8 @@ export default {
     },
     styles() {
       return {
-        link: [`color: ${this.theme.colors.primary}`].join(";")
+        link: [`color: ${this.theme.colors.primary}`].join(";"),
+        border: [`border-color: ${this.theme.colors.primary}`].join(";")
       };
     }
   },

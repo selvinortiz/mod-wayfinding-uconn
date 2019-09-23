@@ -55,12 +55,15 @@
   color: #333;
   background-color: #ddd;
 }
+.multiselect__tags{
+border: 2px solid  #c0d;
+}
 </style>
 
 <script>
 import axios from "../../utils/Axios";
 import ModMap from "../../components/shared/ModMap.vue";
-import PlaceInfo from "../../components/shared/PlaceInfo.vue";
+//import PlaceInfo from "../../components/shared/PlaceInfo.vue";
 
 export default {
   metaInfo: {
@@ -112,7 +115,8 @@ export default {
     },
     styles() {
       return {
-        link: [`color: ${this.theme.colors.primary}`].join(";")
+        link: [`color: ${this.theme.colors.primary}`].join(";"),
+        border: [`border-color: ${this.theme.colors.primary}`].join(";") 
       };
     }
   },
