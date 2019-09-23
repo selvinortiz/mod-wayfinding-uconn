@@ -26,7 +26,7 @@
 
 <script>
 import axios from "../../utils/Axios";
-import ModMap from "../../components/shared/ModMap.vue";
+import ModMap from "../../components/ModMap.vue";
 import PlaceInfo from "../../components/shared/PlaceInfo.vue";
 
 export default {

@@ -15,7 +15,7 @@
 
 <script>
 import { person } from "../../utils/Axios";
-import ModMap from "../../components/shared/ModMap.vue";
+import ModMap from "../../components/ModMap.vue";
 import PersonInfo from "../../components/shared/PersonInfo.vue";
 
 export default {

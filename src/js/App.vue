@@ -47,8 +47,8 @@
 </template>
 
 <script>
-import ModClock from "./components/shared/ModClock.vue";
-import ModKeyboard from "./components/shared/ModKeyboard.vue";
+import ModClock from "./components/ModClock.vue";
+import ModKeyboard from "./components/ModKeyboard.vue";
 
 import AppNav from "./components/partials/AppNav.vue";
 import AppLogo from "./components/partials/AppLogo.vue";
