@@ -2,7 +2,7 @@
   <fullscreen ref="fullscreen" @change="handleFullScreenChange">
     <div
       v-if="place.loaded && place.maps.length"
-      class="w-full flex flex-col justify-center overflow-hidden"
+      class="w-full flex flex-col justify-center"
       :style="`max-height: ${isFullScreen ? 100 : 60}vh;`"
     >
       <div

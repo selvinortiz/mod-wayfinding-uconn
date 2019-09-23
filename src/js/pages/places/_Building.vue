@@ -11,7 +11,7 @@
             <h2 class="font-thin text-4xl">{{ place.buildingName }} {{ place.type.name }}</h2>
             <ui-photo :photo="photo"></ui-photo>
 
-            <div class="text-xl">
+            <div class="text-2xl">
               <p class="pt-4">
                 <span class="block">{{ place.placeAddress }}</span>
                 <span
