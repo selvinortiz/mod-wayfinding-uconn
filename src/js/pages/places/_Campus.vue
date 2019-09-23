@@ -111,9 +111,7 @@ export default {
       };
     },
     styles() {
-      return {
-        link: [`color: ${this.theme.colors.primary}`].join(";")
-      };
+      return {link: [`color: ${this.theme.colors.primary}`].join(";")};
     }
   },
   methods: {

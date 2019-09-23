@@ -55,6 +55,17 @@ export default {
     return {
       primaryColor: 'blue'
     };
+  },
+  computed:{
+    theme() {
+      return this.$store.state.app.theme;
+    },
+    styles(){
+      return {
+        primaryColor: [`color: ${this.theme.colors.primary}`].join(";"),
+        background: [this.$bg(this.theme.header.bg)].join(";")
+      };
+    }
   }
 };
 </script>
