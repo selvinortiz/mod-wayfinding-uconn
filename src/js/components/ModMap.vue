@@ -16,7 +16,7 @@
       <img
         ref="image"
         class="w-full"
-        :style="{'transform': `scale(${zoom}) translate(${translateX + 'px'}, ${translateY + 'px'})`}"
+        :style="`transform: scale(${zoom}) translate(${translateX}px, ${translateY}px); transition: all .25s ease-in-out;`"
         :src="getSelectedMap().image"
         @load="centerMap()"
         draggable="false"
@@ -112,7 +112,7 @@ export default {
   },
   data() {
     return {
-      zoom: 1,
+      zoom: 2,
       zoomFactor: 0.5,
       translateX: 0,
       translateY: 0,
@@ -134,53 +134,33 @@ export default {
   },
   methods: {
     centerMap() {
-      // Only run this part once at the start
-      if (this.selectedMap && this.zoom > 1) {
-        // Gather the smallest and largest cords for
-        // finding the area encompassing all the markers
-        var smallX = null,
-          bigX = null,
-          smallY = null,
-          bigY = null;
+      // Use first marker in provided collection
+      let marker = this.selectedMap.markers[0];
+      // Get bounding box for map container and map image
+      let image = this.$refs.image.getBoundingClientRect();
+      let container = this.$refs.container.getBoundingClientRect();
 
-        for (var ii = 0; ii < this.selectedMap.markers.length; ii++) {
-          var marker = this.selectedMap.markers[ii];
+      // Figure out how much taller the image is than the container (%)
+      let imageTallerBy = (image.height / this.zoom - container.height) / 100;
 
-          smallX == null || smallX > marker.x ? (smallX = marker.x) : null;
-          bigX == null || bigX < marker.x ? (bigX = marker.x) : null;
-          smallY == null || smallY > marker.y ? (smallY = marker.y) : null;
-          bigY == null || bigY < marker.y ? (bigY = marker.y) : null;
-        }
+      // Figure out the center for the container
+      const containerX = container.width / 2;
+      const containerY = container.height / 2;
 
-        // Use the relational amounts to convert to the cords for the new sized image
-        var image = this.$refs.image.getBoundingClientRect();
+      if (!marker) {
+        // If there is not marker, just center image within the container
+        this.translateX = containerX - image.width / (2 * this.zoom);
+        this.translateY = containerY - image.height / (2 * this.zoom);
 
-        smallX = (smallX / 100) * image.width;
-        bigX = (bigX / 100) * image.width;
-        smallY = (smallY / 100) * image.height;
-        bigY = (bigY / 100) * image.height;
-
-        // Correct for the default xy of the image on page
-        smallX += image.x;
-        bigX += image.x;
-        smallY += image.y;
-        bigY += image.y;
-
-        // Find the difference between the center of the marker encompassing area and the
-        // center of the container to then translate the image to shair the same center
-        var container = this.$refs.container.getBoundingClientRect();
-
-        var containerCenterX = container.x + container.width / 2;
-        var containerCenterY = container.y + container.height / 2;
-
-        var markerAreaCenterX = smallX + (bigX - smallX) / 2;
-        var markerAreaCenterY = smallY + (bigY - smallY) / 2;
-
-        this.translateX = -(markerAreaCenterX - containerCenterX);
-        this.translateY = -(markerAreaCenterY - containerCenterY);
+        return;
       }
-    },
 
+      const width = (marker.x / 100) * (image.width / this.zoom);
+      const height = (marker.y / 100) * (image.height / this.zoom);
+
+      this.translateX = containerX - width;
+      this.translateY = containerY + (imageTallerBy / 100) * container.height * this.zoom - height;
+    },
     getSelectedMap() {
       if (this.selectedMap == null) {
         this.selectedMap = this.place.maps[0];
@@ -191,22 +171,9 @@ export default {
 
     zoomMap(direction) {
       this.zoom + this.zoomFactor * direction < 10 &&
-      this.zoom + this.zoomFactor * direction >= 1
+      this.zoom + this.zoomFactor * direction >= 0.5
         ? (this.zoom += this.zoomFactor * direction)
         : null;
-
-      // Direct the map back into covering the view port when zooming out near a boundary
-      // if (direction == -1) {
-      //   var container = this.$refs.container.getBoundingClientRect();
-      //   var image = this.$refs.image.getBoundingClientRect();
-
-      //   if (image.x > container.x) image.x = container.x;
-
-      //   if (image.y > container.y) image.y = container.y;
-
-      //   this.translateX = 0;
-      //   this.translateY = 0;
-      // }
     },
 
     startDrag(event) {
