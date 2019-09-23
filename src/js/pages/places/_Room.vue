@@ -6,7 +6,7 @@
         <mod-map :place="place" class="px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap lg:w-1/2">
-        <div class="w-1/2 lg:w-full">
+        <div class="w-full">
           <div class="pt-8 px-4">
             <h2 class="font-thin text-4xl leading-none">{{ place.title }}</h2>
 
