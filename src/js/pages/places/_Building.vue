@@ -8,14 +8,14 @@
       <div class="w-full flex flex-wrap lg:w-1/2">
         <div class="w-1/2">
           <div>
-            <h2 class="pt-8 pb-2 lg:pt-0 font-thin text-4xl">{{ place.buildingName }} {{ place.type.name }}</h2>
+            <building-name>{{ place.buildingName }} {{ place.type.name }}</building-name>
             <ui-photo :photo="photo"></ui-photo>
 
             <div class="text-xl lg:text-2xl">
               <p class="pt-4">
-                <span class="block">{{ place.placeAddress }}</span>
+                <span class="block" :style="styles.defaultColor">{{ place.placeAddress }}</span>
                 <span
-                  class="block"
+                  class="block" :style="styles.defaultColor"
                 >{{ place.placeCity }}, {{ place.placeState }} {{ place.placeZipcode }}</span>
               </p>
             </div>
@@ -54,6 +54,9 @@
 .multiselect__option--highlight {
   color: #333;
   background-color: #ddd;
+}
+.multiselect__tags{
+border: 2px solid  #c0d;
 }
 </style>
 

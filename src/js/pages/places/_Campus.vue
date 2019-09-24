@@ -2,18 +2,35 @@
   <content-loader :loaded="place.loaded" class="p-8">
     <page-header>Wayfinding</page-header>
     <section class="lg:flex flex-wrap">
-      <div class="lg:w-1/2 lg:order-1">
-        <mod-map :place="place" class="lg:px-4 lg:mt-16"></mod-map>
+      <div class="lg:w-1/2 lg:order-1 lg">
+        <mod-map :place="place" class="lg:px-4 mt-6"></mod-map>
       </div>
-      <div class="w-full flex flex-wrap lg:w-1/2">
+      <div class="w-full flex flex-wrap lg:w-1/2 lg:pt-6">
         <div class="w-1/2">
           <div>
-            <h2 class="pt-8 pb-2 lg:pt-0 font-thin text-4xl">{{ place.campusName }} {{ place.type.name }}</h2>
+            <building-name
+              >{{ place.campusName }} {{ place.type.name }}</building-name
+            >
             <ui-photo :photo="photo"></ui-photo>
+            <div>
+              <p class="pt-4 text-xl lg:text-4xl">
+                <span class="hidden lg:block md:hidden sm:hidden " :style="styles.defaultColor"
+                  >{{ place.campusName }} {{ place.type.name }}</span
+                >
+              </p>
+              <p class="pt-2 text-2x1">
+                <span class="block" :style="styles.defaultColor"
+                  >From Horsebarn Hill to Downtown Storrs, our picturesque main
+                  campus is home to more than 19,000 undergraduates, as well as
+                  graduate students pursuing one of 17 graduate degrees or a
+                  doctorate in pharmacy.</span
+                >
+              </p>
+            </div>
           </div>
         </div>
         <div class="w-1/2">
-          <div class="pt-16 px-4">
+          <div class="pt-16 lg:pt-0 md:pt-16 sm:pt-16 px-4">
             <multi-select
               track-by="id"
               label="buildingName"
@@ -31,8 +48,9 @@
               <a
                 class="cursor-pointer"
                 :style="styles.defaultColor"
-                @click="() => $store.state.app.searchIsOpen = true"
-              >Switch to SEARCH</a>
+                @click="() => ($store.state.app.searchIsOpen = true)"
+                >Switch to SEARCH</a
+              >
             </div>
           </div>
         </div>
@@ -46,8 +64,8 @@
   color: #333;
   background-color: #ddd;
 }
-.multiselect__tags{
-border: 2px solid  #c0d;
+.multiselect__tags {
+  border: 2px solid #c0d;
 }
 </style>
 
@@ -102,7 +120,7 @@ export default {
     styles() {
       return {
         defaultColor: [`color: ${this.theme.colors.primary}`].join(";"),
-        border: [`border-color: ${this.theme.colors.primary}`].join(";") 
+        border: [`border-color: ${this.theme.colors.primary}`].join(";")
       };
     }
   },
