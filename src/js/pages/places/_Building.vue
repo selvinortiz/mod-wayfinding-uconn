@@ -3,26 +3,32 @@
     <page-header>Wayfinding</page-header>
     <section class="lg:flex flex-wrap">
       <div class="lg:w-1/2 lg:order-1">
-        <mod-map :place="place" class="lg:px-4 lg:mt-16"></mod-map>
+        <mod-map :place="place" class="lg:px-4 mt-6"></mod-map>
       </div>
-      <div class="w-full flex flex-wrap lg:w-1/2">
+      <div class="w-full flex flex-wrap lg:w-1/2 lg:pt-6">
         <div class="w-1/2">
           <div>
-            <building-name>{{ place.buildingName }} {{ place.type.name }}</building-name>
+            <span class="block lg:hidden md:block sm:block">
+              <building-name>{{ place.buildingName }} {{ place.type.name }}</building-name>
+              </span>
             <ui-photo :photo="photo"></ui-photo>
-
-            <div class="text-xl lg:text-2xl">
-              <p class="pt-4">
+            <div>
+               <p class="pt-4 text-xl lg:text-4xl">
+                <span class="hidden lg:block md:hidden sm:hidden">
+                  <building-name>{{ place.buildingName }} {{ place.type.name }}</building-name>
+                </span>
+              </p>
+              <p class="text-2x1">
                 <span class="block" :style="styles.defaultColor">{{ place.placeAddress }}</span>
-                <span
-                  class="block" :style="styles.defaultColor"
-                >{{ place.placeCity }}, {{ place.placeState }} {{ place.placeZipcode }}</span>
+                <span class="block" :style="styles.defaultColor">
+                  {{ place.placeCity }}, {{ place.placeState }} {{ place.placeZipcode }}
+                  </span>
               </p>
             </div>
           </div>
         </div>
         <div class="w-1/2">
-          <div class="pt-16 px-4" :style="styles.border">
+          <div class="pt-16 lg:pt-0 md:pt-16 sm:pt-16 px-4">
             <multi-select
               track-by="id"
               label="title"
@@ -98,7 +104,6 @@ export default {
     styles() {
       return {
         defaultColor: [`color: ${this.theme.colors.primary}`].join(";"),
-        border: [`border-color: ${this.theme.colors.primary}`].join(";"), 
       };
     }
   },

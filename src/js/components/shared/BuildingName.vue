@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="inline-block lg:hidden md:inline-block sm:inline-block pb-2 font-thin text-4xl" :style="styles.defaultColor">
+    <h2 class="pb-2 font-thin text-4xl" :style="styles.defaultColor">
       <slot></slot>
     </h2>
   </div>

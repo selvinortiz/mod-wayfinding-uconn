@@ -8,17 +8,15 @@
       <div class="w-full flex flex-wrap lg:w-1/2 lg:pt-6">
         <div class="w-1/2">
           <div>
-            <building-name
-              >{{ place.campusName }} {{ place.type.name }}</building-name
-            >
+            <span class="block lg:hidden md:block sm:block">
+              <building-name>{{ place.campusName }} {{ place.type.name }}</building-name>
+              </span>
             <ui-photo :photo="photo"></ui-photo>
             <div>
-              <p class="pt-4 text-xl lg:text-4xl">
-                <span class="hidden lg:block md:hidden sm:hidden " :style="styles.defaultColor"
-                  >{{ place.campusName }} {{ place.type.name }}</span
-                >
-              </p>
-              <p class="pt-2 text-2x1">
+                <span class="hidden lg:block md:hidden sm:hidden pt-4 text-xl lg:text-4xl">
+                  <building-name>{{ place.campusName }} {{ place.type.name }}</building-name>
+                </span>
+              <p class="text-2x1">
                 <span class="block" :style="styles.defaultColor"
                   >From Horsebarn Hill to Downtown Storrs, our picturesque main
                   campus is home to more than 19,000 undergraduates, as well as
