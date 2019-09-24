@@ -1,9 +1,22 @@
 <template>
-  <content-loader :loaded="loaded.people && loaded.departments" classes="flex flex-wrap">
-    <div v-if="!this.people.length" class="flex-1 flex items-center justify-center" style="height: 65vh;">
-      <h1 class="font-thin text-4xl text-center">We did not find anyone matching your criteria.</h1>
+  <content-loader
+    :loaded="loaded.people && loaded.departments"
+    classes="flex flex-wrap"
+  >
+    <div
+      v-if="!this.people.length"
+      class="flex-1 flex items-center justify-center"
+      style="height: 65vh;"
+    >
+      <h1 class="font-thin text-4xl text-center">
+        We did not find anyone matching your criteria.
+      </h1>
     </div>
-    <div v-else class="w-full p-4 overflow-y-scroll overflow-x-hidden" style="height: 60vh">
+    <div
+      v-else
+      class="w-full p-4 overflow-y-scroll overflow-x-hidden"
+      style="height: 60vh"
+    >
       <page-header>Directory</page-header>
 
       <div class="flex flex-wrap -mx-2 lg:-mx-4">
@@ -19,28 +32,37 @@
 
     <div
       class="w-full flex justify-center items-center self-end px-4 border-t border-dotted border-gray-500"
-      style="height: 10vh"
+      style="height: 10vh;"
     >
       <select
         :value="filters.letter"
         @input="handleSelectedFilter('letter', $event)"
-        class="flex w-1/2 h-12 mt-1 mr-2 px-8 border-2 border-blue-800"
+        class="flex w-1/2 h-12 mt-1 mr-2 px-8 border-2"
+        :style="styles.border"
       >
-        <option class="hidden" value disabled selected>Filter by Last Initial</option>
-        <option v-for="option in alphabet()" :key="option" :value="option">{{option}}</option>
+        <option class="hidden" value disabled selected
+          >Filter by Last Initial</option
+        >
+        <option v-for="option in alphabet()" :key="option" :value="option">{{
+          option
+        }}</option>
       </select>
 
       <select
         :value="filters.department"
         @input="handleSelectedFilter('department', $event)"
-        class="flex w-1/2 h-12 mt-1 ml-2 px-8 border-2 border-blue-800"
+        class="flex w-1/2 h-12 mt-1 ml-2 px-8 border-2"
+        :style="styles.border"
       >
-        <option class="hidden" value disabled selected>Filter by Department</option>
+        <option class="hidden" value disabled selected
+          >Filter by Department</option
+        >
         <option
           v-for="department in departments"
           :key="department.id"
           :value="department.id"
-        >{{department.title}}</option>
+          >{{ department.title }}</option
+        >
       </select>
     </div>
   </content-loader>
@@ -61,7 +83,7 @@ export default {
     return {
       loaded: {
         people: false,
-        departments: false,
+        departments: false
       },
       filters: {
         letter: "",
@@ -74,6 +96,16 @@ export default {
   created() {
     this.fetchPeople();
     this.fetchDepartments();
+  },
+  computed: {
+    theme() {
+      return this.$store.state.app.theme;
+    },
+    styles() {
+      return {
+        border: [`border-color: ${this.theme.colors.primary}`].join(";")
+      }; 
+    }
   },
   methods: {
     fetchPeople(params = {}) {

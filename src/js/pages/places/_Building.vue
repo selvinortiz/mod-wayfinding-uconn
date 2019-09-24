@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class="w-1/2">
-          <div class="pt-16 px-4">
+          <div class="pt-16 px-4" :style="styles.border">
             <multi-select
               track-by="id"
               label="title"
@@ -39,7 +39,7 @@
               Don&rsquo;t see what you&rsquo;re looking for?
               <a
                 class="cursor-pointer"
-                :style="styles.link"
+                :style="styles.defaultColor"
                 @click="() => $store.state.app.searchIsOpen = true"
               >Switch to SEARCH</a>
             </div>
@@ -94,7 +94,8 @@ export default {
     },
     styles() {
       return {
-        link: [`color: ${this.theme.colors.primary}`].join(";")
+        defaultColor: [`color: ${this.theme.colors.primary}`].join(";"),
+        border: [`border-color: ${this.theme.colors.primary}`].join(";"), 
       };
     }
   },

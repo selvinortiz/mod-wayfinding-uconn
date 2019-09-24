@@ -30,7 +30,7 @@
               Don&rsquo;t see what you&rsquo;re looking for?
               <a
                 class="cursor-pointer"
-                :style="styles.link"
+                :style="styles.defaultColor"
                 @click="() => $store.state.app.searchIsOpen = true"
               >Switch to SEARCH</a>
             </div>
@@ -45,6 +45,9 @@
 .multiselect__option--highlight {
   color: #333;
   background-color: #ddd;
+}
+.multiselect__tags{
+border: 2px solid  #c0d;
 }
 </style>
 
@@ -97,7 +100,10 @@ export default {
       };
     },
     styles() {
-      return {link: [`color: ${this.theme.colors.primary}`].join(";")};
+      return {
+        defaultColor: [`color: ${this.theme.colors.primary}`].join(";"),
+        border: [`border-color: ${this.theme.colors.primary}`].join(";") 
+      };
     }
   },
   methods: {
