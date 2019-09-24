@@ -2,6 +2,10 @@
   "app": {
     "title": "ModCore"
   },
+  "cards": {
+    "bg": "#cacbcc",
+    "primary": "#c0d"
+  },
   "colors": {
     "background": "#fff",
     "foreground": "#333",
