@@ -1,16 +1,15 @@
 <template>
-  <div class="p-8">
+  <content-loader :loaded="person.loaded" class="p-8">
     <page-header>Directory</page-header>
-
     <div class="flex flex-wrap justify-center">
       <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-2 md:w-full md:mb-6 md:order-1">
-        <mod-map :place="person"></mod-map>
+       <!-- <mod-map :place="person"></mod-map> -->
       </div>
       <div class="lg:w-1/2 lg:order-1 md:w-full md:order-2">
         <person-info :person="person"></person-info>
       </div>
     </div>
-  </div>
+  </content-loader>
 </template>
 
 <script>
@@ -30,7 +29,10 @@ export default {
   },
   data() {
     return {
-      person: {}
+      person: {
+        id: 0,
+        loaded: false
+      }
     };
   },
   computed: {
@@ -45,7 +47,10 @@ export default {
     fetch() {
       person({ id: this.$route.params.id })
         .then(response => {
-          this.person = response.data.person;
+          this.person = {
+          ...response.data.person,
+          loaded: true
+          };
         })
         .catch(error => console.error(error));
     }

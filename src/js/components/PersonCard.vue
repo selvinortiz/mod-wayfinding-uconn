@@ -5,18 +5,21 @@
   :style="styles.background">
     <!-- <img class="block p-2" src="/static/img/avatar.svg" style="max-height: 80px;" /> -->
 
-    <div>
-      <h2 class="cursor-pointer font-semibold uppercase" :style="styles.textColor">
+    <div :style="styles.textColor">
+      <h2 class="cursor-pointer font-semibold uppercase">
         {{ person.personFirstName }}
         {{ person.personLastName }}
       </h2>
       <p class="cursor-pointer">
-        Role
+        Department
         <!--{{ person.personFirstName }}-->
       </p>
       <p class="cursor-pointer">
         Suite #
         <!--{{ person.personFirstName }}-->
+      </p>
+      <p class="cursor-pointer">
+        Building Name 
       </p>
     </div>
   </router-link>
