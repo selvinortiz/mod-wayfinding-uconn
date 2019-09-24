@@ -4,6 +4,8 @@ import Meta from 'vue-meta';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
+import Fullscreen from 'vue-fullscreen';
+import ContentIframe from 'vue-friendly-iframe';
 import MultiSelect from 'vue-multiselect';
 import 'vue-multiselect/dist/vue-multiselect.min.css';
 
@@ -15,6 +17,7 @@ import AppSearch from './components/partials/AppSearch.vue';
 
 import ContentLoader from './components/shared/ContentLoader.vue';
 import PageHeader from './components/shared/PageHeader.vue';
+import ModMap from './components/ModMap.vue';
 import UIButton from './components/shared/UIButton.vue';
 import UIPhoto from './components/shared/UIPhoto.vue';
 
@@ -24,9 +27,12 @@ import router from './router';
 Vue.use(Meta);
 Vue.use(Theme);
 Vue.use(Events);
+Vue.use(Fullscreen);
 
+Vue.component('content-iframe', ContentIframe);
 Vue.component('content-loader', ContentLoader);
 Vue.component('page-header', PageHeader);
+Vue.component('mod-map', ModMap);
 Vue.component('multi-select', MultiSelect);
 Vue.component('ui-button', UIButton);
 Vue.component('ui-photo', UIPhoto);

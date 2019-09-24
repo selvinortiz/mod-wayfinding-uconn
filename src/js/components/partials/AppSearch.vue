@@ -57,7 +57,7 @@
 
 <script>
 import axios from "../../utils/Axios";
-import ModKeyboard from "../shared/ModKeyboard.vue";
+import ModKeyboard from "../ModKeyboard.vue";
 
 export default {
   metaInfo: {
