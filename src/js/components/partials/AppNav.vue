@@ -11,7 +11,7 @@
         >
           <p class="flex cursor-pointer">
             <img class="icon" :src="`/static/icons/${link.icon}`" alt />
-            <span>{{ link.title }}</span>
+            <span v-html="link.title"></span>
           </p>
         </router-link>
 
@@ -24,7 +24,7 @@
         >
           <p class="flex cursor-pointer">
             <img class="icon" :src="`/static/icons/${link.icon}`" alt />
-            <span>{{ link.title }}</span>
+            <span v-html="link.title"></span>
           </p>
         </a>
 
@@ -37,7 +37,7 @@
         >
           <p class="flex cursor-pointer">
             <img class="icon" :src="`/static/icons/${link.icon}`" alt />
-            <span>{{ link.title }}</span>
+            <span v-html="link.title"></span>
           </p>
         </a>
       </div>
