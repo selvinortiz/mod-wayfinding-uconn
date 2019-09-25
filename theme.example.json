@@ -55,7 +55,7 @@
       {
         "id": "service1",
         "type": "url",
-        "title": "Bus Tracker",
+        "title": "Bus&nbsp;Tracker",
         "url": "https://huskygo.transloc.com",
         "icon": "service1.svg"
       },
