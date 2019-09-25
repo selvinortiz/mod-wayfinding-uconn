@@ -1,6 +1,5 @@
 <template>
   <content-loader :loaded="person.loaded" class="p-8">
-    <page-header>Directory</page-header>
     <section class="xl:flex flex-wrap">
       <div class="xl:w-1/2 xl:order-1">
         <mod-map :place="place" class="xl:px-4"></mod-map>
