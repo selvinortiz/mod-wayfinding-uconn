@@ -2,18 +2,33 @@
   <content-loader :loaded="place.loaded" class="p-8">
     <page-header>Wayfinding</page-header>
     <section class="lg:flex flex-wrap">
-      <div class="lg:w-1/2 lg:order-1">
-        <mod-map :place="place" class="lg:px-4 lg:mt-16"></mod-map>
+      <div class="lg:w-1/2 lg:order-1 lg">
+        <mod-map :place="place" class="lg:px-4 mt-6"></mod-map>
       </div>
-      <div class="w-full flex flex-wrap lg:w-1/2">
+      <div class="w-full flex flex-wrap lg:w-1/2 lg:pt-6">
         <div class="w-1/2">
           <div>
-            <h2 class="pt-8 pb-2 lg:pt-0 font-thin text-4xl">{{ place.campusName }} {{ place.type.name }}</h2>
+            <span class="block lg:hidden md:block sm:block">
+              <building-name>{{ place.campusName }} {{ place.type.name }}</building-name>
+              </span>
             <ui-photo :photo="photo"></ui-photo>
+            <div>
+                <span class="hidden lg:block md:hidden sm:hidden pt-4 text-xl lg:text-4xl">
+                  <building-name>{{ place.campusName }} {{ place.type.name }}</building-name>
+                </span>
+              <p class="text-2x1">
+                <span class="block" :style="styles.defaultColor"
+                  >From Horsebarn Hill to Downtown Storrs, our picturesque main
+                  campus is home to more than 19,000 undergraduates, as well as
+                  graduate students pursuing one of 17 graduate degrees or a
+                  doctorate in pharmacy.</span
+                >
+              </p>
+            </div>
           </div>
         </div>
         <div class="w-1/2">
-          <div class="pt-16 px-4">
+          <div class="pt-16 lg:pt-0 md:pt-16 sm:pt-16 px-4">
             <multi-select
               track-by="id"
               label="buildingName"
@@ -30,9 +45,10 @@
               Don&rsquo;t see what you&rsquo;re looking for?
               <a
                 class="cursor-pointer"
-                :style="styles.link"
-                @click="() => $store.state.app.searchIsOpen = true"
-              >Switch to SEARCH</a>
+                :style="styles.defaultColor"
+                @click="() => ($store.state.app.searchIsOpen = true)"
+                >Switch to SEARCH</a
+              >
             </div>
           </div>
         </div>
@@ -45,6 +61,9 @@
 .multiselect__option--highlight {
   color: #333;
   background-color: #ddd;
+}
+.multiselect__tags {
+  border: 2px solid #c0d;
 }
 </style>
 
@@ -98,7 +117,8 @@ export default {
     },
     styles() {
       return {
-        link: [`color: ${this.theme.colors.primary}`].join(";")
+        defaultColor: [`color: ${this.theme.colors.primary}`].join(";"),
+        border: [`border-color: ${this.theme.colors.primary}`].join(";")
       };
     }
   },

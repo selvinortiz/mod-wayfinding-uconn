@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1 class="font-thin text-4xl uppercase lg:pt-0 pr-8" :style="styles.defaultColor">
+    <h2 class="pb-2 font-thin text-4xl" :style="styles.defaultColor">
       <slot></slot>
-    </h1>
+    </h2>
   </div>
 </template>
 
@@ -15,11 +15,11 @@ export default {
     styles() {
       return {
         defaultColor: [`color: ${this.theme.colors.primary}`].join(";")
-      }; 
+      };
     }
   }
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 </style>

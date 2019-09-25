@@ -8,19 +8,19 @@
       <div class="w-full flex flex-wrap lg:w-1/2">
         <div class="w-full">
           <div class="pt-8 px-4">
-            <h2 class="font-thin text-4xl leading-none">{{ place.title }}</h2>
+            <h2 class="font-thin text-4xl leading-none" :style="styles.defaultColor">{{ place.title }}</h2>
 
             <div class="text-xl">
               <p class="pt-4 text-2xl">
-                <span class="block">{{ building.buildingName }} Building</span>
+                <span class="block" :style="styles.defaultColor" >{{ building.buildingName }} Building</span>
               </p>
 
               <p class="pt-4">
-                <span class="block">Floor #: {{ floor.floorNumber }}</span>
-                <span class="block">Suite #: {{ place.roomNumber }}</span>
+                <span class="block" :style="styles.defaultColor">Floor #: {{ floor.floorNumber }}</span>
+                <span class="block" :style="styles.defaultColor">Suite #: {{ place.roomNumber }}</span>
               </p>
               <p class="pt-4">
-                <span class="block">
+                <span class="block" :style="styles.defaultColor">
                   {{ building.placeCity }}, {{ building.placeState }} {{ building.placeZipcode }}
                 </span>
               </p>
@@ -70,7 +70,7 @@ export default {
     },
     styles() {
       return {
-        link: [`color: ${this.theme.colors.primary}`].join(";")
+        defaultColor: [`color: ${this.theme.colors.primary}`].join(";"),
       };
     },
     floor() {
