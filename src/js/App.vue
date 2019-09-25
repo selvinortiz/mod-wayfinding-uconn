@@ -78,7 +78,7 @@ export default {
         search: {
           backdrop: [this.$bg(this.theme.search.bg)].join(";")
         },
-        container: `font-family: Raleway, sans-serf;`
+        container: `font-family: ${this.theme.font.family};`
       };
     },
     isWelcomeScreen() {
