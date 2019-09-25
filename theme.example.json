@@ -2,6 +2,10 @@
   "app": {
     "title": "UCONN"
   },
+  "cards": {
+    "bg": "#fff",
+    "primary": "#7c878e"
+  },
   "colors": {
     "background": "#fff",
     "foreground": "#333",
@@ -49,17 +53,17 @@
         "icon": "people.svg"
       },
       {
+        "id": "service1",
+        "type": "url",
+        "title": "Bus Tracker",
+        "url": "https://huskygo.transloc.com",
+        "icon": "service1.svg"
+      },
+      {
         "id": "search",
         "type": "action",
         "title": "Search",
         "icon": "search.svg"
-      },
-      {
-        "id": "service1",
-        "type": "url",
-        "title": "Bus Tracker",
-        "url": "https://uconn-test.modolabs.net/myuconn/bus_tracker_transloc/index",
-        "icon": "service1.svg"
       }
     ],
     "link": {
