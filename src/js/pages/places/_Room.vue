@@ -6,24 +6,23 @@
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2">
         <div class="w-full">
-          <div class="pt-8 px-4">
-            <h2 class="font-thin text-4xl leading-none" :style="styles.defaultColor">{{ place.title }}</h2>
+          <page-header>{{ place.title }}</page-header>
 
-            <div class="text-xl">
-              <p class="pt-4 text-2xl">
-                <span class="block" :style="styles.defaultColor" >{{ building.buildingName }} Building</span>
-              </p>
+          <div class="text-xl">
+            <p class="pt-4 text-2xl">
+              <span class="block" :style="styles.defaultColor">{{ building.buildingName }} Building</span>
+            </p>
 
-              <p class="pt-4">
-                <span class="block" :style="styles.defaultColor">Floor #: {{ floor.floorNumber }}</span>
-                <span class="block" :style="styles.defaultColor">Suite #: {{ place.roomNumber }}</span>
-              </p>
-              <p class="pt-4">
-                <span class="block" :style="styles.defaultColor">
-                  {{ building.placeCity }}, {{ building.placeState }} {{ building.placeZipcode }}
-                </span>
-              </p>
-            </div>
+            <p class="pt-4">
+              <span class="block" :style="styles.defaultColor">Floor #: {{ floor.floorNumber }}</span>
+              <span class="block" :style="styles.defaultColor">Suite #: {{ place.roomNumber }}</span>
+            </p>
+            <p class="pt-4">
+              <span
+                class="block"
+                :style="styles.defaultColor"
+              >{{ building.placeCity }}, {{ building.placeState }} {{ building.placeZipcode }}</span>
+            </p>
           </div>
         </div>
       </div>
@@ -57,7 +56,7 @@ export default {
     },
     styles() {
       return {
-        defaultColor: [`color: ${this.theme.colors.primary}`].join(";"),
+        defaultColor: [`color: ${this.theme.colors.primary}`].join(";")
       };
     },
     floor() {
