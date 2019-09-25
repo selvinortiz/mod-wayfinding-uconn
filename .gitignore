@@ -10,3 +10,4 @@ vendor
 node_modules
 
 config/license.key
+.eslintrc.json
