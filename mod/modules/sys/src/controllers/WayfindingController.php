@@ -139,14 +139,25 @@ class WayfindingController extends Controller
     {
         $id = sys()->web->param('id');
 
-        $person = Person::query()->id($id)->one();
+        $person = Person::query()
+            ->with([
+                'personPhoto',
+                'personRelatedPlace',
+                'personRelatedDepartments',
+                'personRoles.role:roleDepartment'
+            ])
+            ->id($id)
+            ->one();
 
         if (!$person)
         {
             return sys()->web->asJsonWithError('Did not find a person');
         }
 
-        return sys()->web->asJson('Found person', compact('person'));
+        return sys()->web->asJson(
+            'Found person',
+            ['person' => $person->getFieldValues()]
+        );
     }
 
     /**
@@ -158,6 +169,10 @@ class WayfindingController extends Controller
         $filters = sys()->web->param('filters');
 
         $query = Person::query();
+
+        $query->with([
+            'personRoles.role:roleDepartment'
+        ]);
 
         if (!empty($filters))
         {
@@ -178,7 +193,8 @@ class WayfindingController extends Controller
             }
         }
 
-        $people = $query->limit(100)->all();
+        $people = $query->limit(50)->all();
+
         if (!$people)
         {
             return sys()->web->asJsonWithError('Did not find any people');
