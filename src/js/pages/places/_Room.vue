@@ -1,6 +1,5 @@
 <template>
   <content-loader :loaded="place.loaded" classes="p-8">
-    <page-header>Wayfinding</page-header>
     <section class="xl:flex flex-wrap">
       <div class="xl:w-1/2 xl:order-1">
         <mod-map :place="place"></mod-map>

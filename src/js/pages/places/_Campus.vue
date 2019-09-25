@@ -1,34 +1,33 @@
 <template>
   <content-loader :loaded="place.loaded" class="p-8">
-    <page-header>Wayfinding</page-header>
     <section class="xl:flex flex-wrap">
       <div class="xl:w-1/2 xl:order-1 lg">
-        <mod-map :place="place" class="xl:px-4 mt-6"></mod-map>
+        <mod-map :place="place" class="xl:px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
         <div class="w-1/2">
           <div>
-            <span class="block xl:hidden md:block sm:block">
-              <building-name>{{ place.campusName }} {{ place.type.name }}</building-name>
-              </span>
+            <page-header
+              class="block xl:hidden md:block sm:block"
+            >{{ place.campusName }} {{ place.type.name }}</page-header>
             <ui-photo :photo="photo"></ui-photo>
             <div>
-                <span class="hidden xl:block md:hidden sm:hidden pt-4 text-xl xl:text-4xl">
-                  <building-name>{{ place.campusName }} {{ place.type.name }}</building-name>
-                </span>
-              <p class="text-2x1">
-                <span class="block" :style="styles.defaultColor"
-                  >From Horsebarn Hill to Downtown Storrs, our picturesque main
+              <page-header
+                class="hidden xl:block md:hidden sm:hidden pt-4 text-xl xl:text-4xl"
+              >{{ place.campusName }} {{ place.type.name }}</page-header>
+              <p class="pt-8 text-xl leading-tight">
+                <span class="block" :style="styles.defaultColor">
+                  From Horsebarn Hill to Downtown Storrs, our picturesque main
                   campus is home to more than 19,000 undergraduates, as well as
                   graduate students pursuing one of 17 graduate degrees or a
-                  doctorate in pharmacy.</span
-                >
+                  doctorate in pharmacy.
+                </span>
               </p>
             </div>
           </div>
         </div>
         <div class="w-1/2">
-          <div class="pt-16 xl:pt-0 md:pt-16 sm:pt-16 px-4">
+          <div class="pt-20 xl:pt-0 px-4">
             <multi-select
               track-by="id"
               label="buildingName"
@@ -38,8 +37,7 @@
               :show-labels="false"
               :allow-empty="true"
               @input="handleSelectedPlace"
-            >
-            </multi-select>
+            ></multi-select>
 
             <div class="pt-4">
               Don&rsquo;t see what you&rsquo;re looking for?
@@ -47,8 +45,7 @@
                 class="cursor-pointer"
                 :style="styles.defaultColor"
                 @click="() => ($store.state.app.searchIsOpen = true)"
-                >Switch to SEARCH</a
-              >
+              >Switch to SEARCH</a>
             </div>
           </div>
         </div>
@@ -63,7 +60,8 @@
   background-color: #ddd;
 }
 .multiselect__tags {
-  border: 2px solid #c0d;
+  border: 2px solid #000e2f;
+  border-radius: 0;
 }
 </style>
 
