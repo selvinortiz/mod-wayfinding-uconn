@@ -1,25 +1,7 @@
 <template>
   <div>
-    <h1 class="font-thin text-4xl uppercase lg:pt-0 pr-8" :style="styles.defaultColor">
+    <h1 class="font-black text-3xl leading-tight pt-8 pb-4" :style="`color: ${$store.state.app.theme.colors.primary}`">
       <slot></slot>
     </h1>
   </div>
 </template>
-
-<script>
-export default {
-  computed: {
-    theme() {
-      return this.$store.state.app.theme;
-    },
-    styles() {
-      return {
-        defaultColor: [`color: ${this.theme.colors.primary}`].join(";")
-      }; 
-    }
-  }
-};
-</script>
-
-<style lang="css" scoped>
-</style>

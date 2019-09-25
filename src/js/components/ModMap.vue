@@ -3,7 +3,7 @@
     <div
       v-if="place.loaded && place.maps.length"
       class="w-full flex flex-col justify-center"
-      :style="`max-height: ${isFullScreen ? 100 : 50}vh;`"
+      :style="`max-height: ${isFullScreen ? 100 : 40}vh;`"
     >
       <div
         ref="container"
@@ -37,12 +37,12 @@
       <div class="flex items-center justify-between mt-4" style="flex: 2;">
         <div>
           <button
-            class="py-2 px-4 uppercase border text-white"
-            :style="`border-color: ${colors.primary}; background-color: ${colors.primary}`"
+            class="py-2 px-4 uppercase border"
+            :style="styles.buttons.campus"
           >Campus Map</button>
           <button
-            class="py-2 px-4 uppercase border text-black"
-            :style="`border-color: ${colors.primary};`"
+            class="py-2 px-4 uppercase border"
+            :style="styles.buttons.building"
           >Building Map</button>
         </div>
         <div>
@@ -135,7 +135,7 @@ export default {
   },
   data() {
     return {
-      zoom: 2,
+      zoom: 1,
       zoomFactor: 0.5,
       translateX: 0,
       translateY: 0,
@@ -154,6 +154,27 @@ export default {
     },
     colors() {
       return this.theme.colors;
+    },
+    styles() {
+      const onCampus = this.$route.path.includes('campus');
+
+      const buttonStyles = [
+        `color: ${this.colors.primary}`,
+        `border-color: ${this.colors.primary}`,
+      ].join(";")
+
+      const buttonStylesActive = [
+        `color: white`,
+        `border-color: ${this.colors.primary}`,
+        `background-color: ${this.colors.primary}`
+      ].join(";");
+
+      return {
+        buttons: {
+          campus: onCampus ? buttonStylesActive : buttonStyles,
+          building: onCampus ? buttonStyles : buttonStylesActive
+        }
+      }
     }
   },
   methods: {

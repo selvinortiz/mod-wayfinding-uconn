@@ -1,34 +1,34 @@
 <template>
   <content-loader :loaded="place.loaded" classes="p-8">
-    <page-header>Wayfinding</page-header>
     <section class="xl:flex flex-wrap">
       <div class="xl:w-1/2 xl:order-1">
-        <mod-map :place="place" class="xl:px-4 mt-6"></mod-map>
+        <mod-map :place="place" class="xl:px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
         <div class="w-1/2">
           <div>
-            <span class="block xl:hidden md:block sm:block">
-              <building-name>{{ place.buildingName }} {{ place.type.name }}</building-name>
-              </span>
+            <page-header class="block xl:hidden md:block sm:block">
+              {{ place.buildingName }} {{ place.type.name }}
+            </page-header>
             <ui-photo :photo="photo"></ui-photo>
             <div>
-               <p class="pt-4 text-xl xl:text-4xl">
-                <span class="hidden xl:block md:hidden sm:hidden">
-                  <building-name>{{ place.buildingName }} {{ place.type.name }}</building-name>
-                </span>
+              <p class="pt-4 text-xl xl:text-4xl">
+                <page-header class="hidden xl:block md:hidden sm:hidden">
+                  {{ place.buildingName }} {{ place.type.name }}
+                </page-header>
               </p>
-              <p class="text-2x1">
+              <p class="pt-8 text-xl leading-tight">
                 <span class="block" :style="styles.defaultColor">{{ place.placeAddress }}</span>
-                <span class="block" :style="styles.defaultColor">
-                  {{ place.placeCity }}, {{ place.placeState }} {{ place.placeZipcode }}
-                  </span>
+                <span
+                  class="block"
+                  :style="styles.defaultColor"
+                >{{ place.placeCity }}, {{ place.placeState }} {{ place.placeZipcode }}</span>
               </p>
             </div>
           </div>
         </div>
         <div class="w-1/2">
-          <div class="pt-16 xl:pt-0 md:pt-16 sm:pt-16 px-4">
+          <div class="pt-16 xl:pt-0 px-4">
             <multi-select
               track-by="id"
               label="title"
@@ -38,8 +38,7 @@
               :show-labels="false"
               :allow-empty="true"
               @input="handleSelectedPlace"
-            >
-            </multi-select>
+            ></multi-select>
 
             <div class="pt-4">
               Don&rsquo;t see what you&rsquo;re looking for?
@@ -61,8 +60,9 @@
   color: #333;
   background-color: #ddd;
 }
-.multiselect__tags{
-border: 2px solid  #c0d;
+.multiselect__tags {
+  border: 2px solid #000e2f;
+  border-radius: 0;
 }
 </style>
 
@@ -103,7 +103,7 @@ export default {
     },
     styles() {
       return {
-        defaultColor: [`color: ${this.theme.colors.primary}`].join(";"),
+        defaultColor: [`color: ${this.theme.colors.primary}`].join(";")
       };
     }
   },

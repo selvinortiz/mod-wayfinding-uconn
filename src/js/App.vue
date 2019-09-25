@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :style="styles.container">
     <app-slides v-if="isWelcomeScreen"></app-slides>
     <div class="@page absolute z-10 w-full h-full" :class="{ 'bg-gray-100': !isWelcomeScreen }">
       <header class="@page__header flex items-center justify-between px-8 opacity-95" :style="styles.header">
@@ -77,7 +77,8 @@ export default {
         footer: [this.$bg(this.theme.footer.bg)].join(";"),
         search: {
           backdrop: [this.$bg(this.theme.search.bg)].join(";")
-        }
+        },
+        container: `font-family: Raleway, sans-serf;`
       };
     },
     isWelcomeScreen() {
