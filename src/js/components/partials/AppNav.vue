@@ -29,13 +29,13 @@
         </a>
 
         <a
-          class="flex"
           v-if="link.type === 'url'"
+          class="flex"
           :class="classes.link"
           :style="applyStyles(link)"
           @click="service(link.url)"
         >
-          <p class="flex cursor-pointer flex-grow">
+          <p class="flex cursor-pointer">
             <img class="icon" :src="`/static/icons/${link.icon}`" alt />
             <span>{{ link.title }}</span>
           </p>
@@ -112,7 +112,13 @@ export default {
       this.$store.commit("setSearchIsOpen", true);
     },
     applyStyles(link) {
-      const styles = this.styles.link;
+      if (link.id == "search" && this.$store.state.app.searchIsOpen) {
+        return this.styles.linkActive;
+      }
+
+      if (link.url && this.$route && this.$route.query.url && this.$route.query.url === link.url) {
+        return this.styles.linkActive;
+      }
 
       if (link.route && this.$route && this.$route.path.includes(link.route)) {
         return this.styles.linkActive;

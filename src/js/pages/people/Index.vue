@@ -19,9 +19,9 @@
     >
       <page-header>Directory</page-header>
 
-      <div class="flex flex-wrap -mx-2 lg:-mx-4">
+      <div class="flex flex-wrap -mx-2 xl:-mx-4">
         <div
-          class="w-1/2 sm:w-1/3 md:w-1/3 lg:w-1/4 xl:w-1/5 flex my-2 px-2 lg:my-4 lg:px-4"
+          class="w-1/2 sm:w-1/3 md:w-1/3 xl:w-1/4 xl:w-1/5 flex my-2 px-2 xl:my-4 xl:px-4"
           v-for="person in people"
           :key="person.id"
         >
@@ -104,7 +104,7 @@ export default {
     styles() {
       return {
         border: [`border-color: ${this.theme.colors.primary}`].join(";")
-      }; 
+      };
     }
   },
   methods: {

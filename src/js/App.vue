@@ -24,7 +24,7 @@
 
       <main class="@page__content">
         <transition name="fade" mode="out-in">
-          <keep-alive>
+          <keep-alive exclude="service">
             <router-view></router-view>
           </keep-alive>
         </transition>

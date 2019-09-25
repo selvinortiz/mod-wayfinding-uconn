@@ -23,4 +23,41 @@ class Person extends Element
 
         return $query;
     }
+
+    public function getFieldValues(array $fieldHandles = null): array
+    {
+        $values = parent::getFieldValues($fieldHandles);
+
+        foreach ($values as $handle => &$value)
+        {
+            // Replace value with previously eager loaded one
+            if ($this->hasEagerLoadedElements($handle))
+            {
+                $value = $this->getEagerLoadedElements($handle);
+            }
+
+            // Clean up what is returned for asset fields
+            if (is_array($value))
+            {
+                foreach ($value as &$item)
+                {
+                    if ($item instanceof Asset)
+                    {
+                        $item = [
+                            'url'    => $item->getUrl(),
+                            'width'  => $item->getWidth(),
+                            'height' => $item->getHeight(),
+                        ];
+                    }
+                }
+
+                if ($handle == 'personRelatedPlace' && $item->id)
+                {
+                    $item = Place::query()->id($item->id)->one()->values();
+                }
+            }
+        }
+
+        return $values;
+    }
 }

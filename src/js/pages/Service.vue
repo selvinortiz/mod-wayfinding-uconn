@@ -13,6 +13,7 @@ iframe {
 
 <script>
 export default {
+  name: "service",
   computed: {
     src() {
       return this.$route.query.url;

@@ -26,7 +26,7 @@ const buttonLabels = {
   "{space}": "Space",
   "{bksp}": "⇤",
   "{enter}": "Enter",
-  "{cancel}": "Cancel",
+  "{cancel}": "Close",
   "{lock}": "Caps",
   "{tab}": "Tab",
   "{shift}": "123"

@@ -1,11 +1,11 @@
 <template>
   <content-loader :loaded="place.loaded" classes="p-8">
     <page-header>Wayfinding</page-header>
-    <section class="lg:flex flex-wrap">
-      <div class="lg:w-1/2 lg:order-1">
-        <mod-map :place="place" class="px-4"></mod-map>
+    <section class="xl:flex flex-wrap">
+      <div class="xl:w-1/2 xl:order-1">
+        <mod-map :place="place"></mod-map>
       </div>
-      <div class="w-full flex flex-wrap lg:w-1/2">
+      <div class="w-full flex flex-wrap xl:w-1/2">
         <div class="w-full">
           <div class="pt-8 px-4">
             <h2 class="font-thin text-4xl leading-none" :style="styles.defaultColor">{{ place.title }}</h2>
@@ -27,18 +27,6 @@
             </div>
           </div>
         </div>
-        <!--div class="w-1/2">
-          <div class="pt-20 px-4">
-            <div class="pt-4">
-              Don&rsquo;t see what you&rsquo;re looking for?
-              <a
-                class="cursor-pointer"
-                :style="styles.link"
-                @click="() => $store.state.app.searchIsOpen = true"
-              >Switch to SEARCH</a>
-            </div>
-          </div>
-        </div-->
       </div>
     </section>
   </content-loader>
