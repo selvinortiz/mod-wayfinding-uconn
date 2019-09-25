@@ -38,7 +38,7 @@
               >{{ person.personCity }}, {{ person.personState }} {{ person.personZipcode }} &rarr;</a>
             </div>
 
-            <div>{{ person.personDescription }}</div>
+            <div class="pt-4" v-html="person.personDescription"></div>
           </div>
         </div>
       </div>
