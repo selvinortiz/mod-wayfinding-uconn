@@ -12,13 +12,13 @@
     <div class="flex flex-wrap justify-center">
 
       <div class="flex flex-wrap justify-center
-      lg:w-1/2 lg:order-2 md:w-full md:mb-6 md:order-1">
+      xl:w-1/2 xl:order-2 md:w-full md:mb-6 md:order-1">
 
         <mod-map :place="place"></mod-map>
 
       </div>
 
-      <div class="lg:w-1/2 lg:order-1 md:w-full md:order-2">
+      <div class="xl:w-1/2 xl:order-1 md:w-full md:order-2">
 
         <place-info :place="place"></place-info>
 

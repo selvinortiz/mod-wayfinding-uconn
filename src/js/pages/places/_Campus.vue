@@ -1,19 +1,19 @@
 <template>
   <content-loader :loaded="place.loaded" class="p-8">
     <page-header>Wayfinding</page-header>
-    <section class="lg:flex flex-wrap">
-      <div class="lg:w-1/2 lg:order-1 lg">
-        <mod-map :place="place" class="lg:px-4 mt-6"></mod-map>
+    <section class="xl:flex flex-wrap">
+      <div class="xl:w-1/2 xl:order-1 lg">
+        <mod-map :place="place" class="xl:px-4 mt-6"></mod-map>
       </div>
-      <div class="w-full flex flex-wrap lg:w-1/2 lg:pt-6">
+      <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
         <div class="w-1/2">
           <div>
-            <span class="block lg:hidden md:block sm:block">
+            <span class="block xl:hidden md:block sm:block">
               <building-name>{{ place.campusName }} {{ place.type.name }}</building-name>
               </span>
             <ui-photo :photo="photo"></ui-photo>
             <div>
-                <span class="hidden lg:block md:hidden sm:hidden pt-4 text-xl lg:text-4xl">
+                <span class="hidden xl:block md:hidden sm:hidden pt-4 text-xl xl:text-4xl">
                   <building-name>{{ place.campusName }} {{ place.type.name }}</building-name>
                 </span>
               <p class="text-2x1">
@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="w-1/2">
-          <div class="pt-16 lg:pt-0 md:pt-16 sm:pt-16 px-4">
+          <div class="pt-16 xl:pt-0 md:pt-16 sm:pt-16 px-4">
             <multi-select
               track-by="id"
               label="buildingName"

@@ -3,7 +3,7 @@
     <div
       v-if="place.loaded && place.maps.length"
       class="w-full flex flex-col justify-center"
-      :style="`max-height: ${isFullScreen ? 100 : 60}vh;`"
+      :style="`max-height: ${isFullScreen ? 100 : 50}vh;`"
     >
       <div
         ref="container"

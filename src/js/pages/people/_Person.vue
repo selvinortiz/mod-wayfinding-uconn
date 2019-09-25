@@ -1,17 +1,20 @@
 <template>
   <content-loader :loaded="person.loaded" class="p-8">
     <page-header>Directory</page-header>
-    <div class="flex flex-wrap justify-center">
-      <div class="flex flex-wrap justify-center lg:w-1/2 lg:order-2 md:w-full md:mb-6 md:order-1">
-        <mod-map :place="place"></mod-map>
+    <section class="xl:flex flex-wrap">
+      <div class="xl:w-1/2 xl:order-1">
+        <mod-map :place="place" class="xl:px-4"></mod-map>
       </div>
-      <div class="lg:w-1/2 lg:order-1 md:w-full md:order-2">
-        <div class="w-full flex flex-wrap justify-center">
-          <div class="w-3/5 pt-4">
-            <div
-              class="text-2xl uppercase"
+      <div class="w-full flex flex-wrap xl:w-1/2 pt-4">
+        <div class="pt-8" style="flex: 4;">
+          <img style="max-width: 256px;" src="/static/img/avatar.svg" />
+        </div>
+        <div style="flex: 8;">
+          <div class="pt-8 px-4">
+            <h2
+              class="font-thin text-4xl leading-none uppercase"
               :style="`color: ${theme.colors.primary}`"
-            >{{ person.personFirstName }} {{ person.personLastName }}</div>
+            >{{ person.personFirstName }} {{ person.personLastName }}</h2>
 
             <div class="pt-2" v-for="role in person.personRoles" :key="role.id">
               <p class="font-bold">{{ role.roleTitle }}</p>
@@ -24,22 +27,22 @@
             </div>
 
             <!-- <div class="font-bold">Building Name</div>
-            <div>Suite #</div>
+              <div>Suite #</div>
             <div class="mb-4">Floor #</div>-->
 
             <div class="pt-4">
-              <p>{{ person.personCity }}, {{ person.personState }} {{ person.personZipcode }}</p>
+              <a
+                class="cursor-pointer"
+                :style="`color: ${theme.colors.primary}`"
+                @click="openInMaps"
+              >{{ person.personCity }}, {{ person.personState }} {{ person.personZipcode }} &rarr;</a>
             </div>
 
             <div>{{ person.personDescription }}</div>
           </div>
-
-          <div class="w-2/5" :style="`color: `">
-            <img class="w-3/5 mb-6" style="max-width: 300px" src="/static/img/avatar.svg" />
-          </div>
         </div>
       </div>
-    </div>
+    </section>
   </content-loader>
 </template>
 
@@ -71,9 +74,15 @@ export default {
       return `${this.person.personFirstName} ${this.person.personLastName}`;
     },
     place() {
-      return this.person.loaded
+      const place = this.person.loaded
         ? this.person.personRelatedPlace[0]
         : { id: null };
+
+      if (place.id) {
+        place.loaded = true;
+      }
+
+      return place;
     }
   },
   methods: {
@@ -86,6 +95,19 @@ export default {
           };
         })
         .catch(error => console.error(error));
+    },
+    openInMaps() {
+      const address = `maps.google.com/maps?daddr=${[
+        this.person.personCity,
+        this.person.personState,
+        this.person.personZipcode
+      ].join("+")}&ll=`;
+
+      if (navigator.platform.includes("iP")) {
+        window.open(`https://${address}`);
+      } else {
+        window.open(`maps://${address}`);
+      }
     }
   },
   watch: {
