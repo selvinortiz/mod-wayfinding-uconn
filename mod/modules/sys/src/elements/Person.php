@@ -53,7 +53,12 @@ class Person extends Element
 
                 if ($handle == 'personRelatedPlace' && $item->id)
                 {
-                    $item = Place::query()->id($item->id)->one()->values();
+                    $place = Place::query()->id($item->id)->one();
+
+                    if ($place)
+                    {
+                        $item = $place->values();
+                    }
                 }
             }
         }
