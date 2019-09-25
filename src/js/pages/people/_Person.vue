@@ -73,13 +73,13 @@ export default {
       return `${this.person.personFirstName} ${this.person.personLastName}`;
     },
     place() {
-      const place = this.person.loaded
-        ? this.person.personRelatedPlace[0]
-        : { id: null };
+      let place = this.person.loaded ? this.person.personRelatedPlace[0] : null;
 
-      if (place.id) {
-        place.loaded = true;
+      if (!place) {
+        place = {id: null};
       }
+
+      place.loaded = true;
 
       return place;
     }
@@ -112,7 +112,7 @@ export default {
   watch: {
     $route(to) {
       if (to.name === "person") {
-        this.place = {};
+        this.person = {};
         this.fetch();
       }
     }

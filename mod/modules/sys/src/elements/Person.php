@@ -55,10 +55,8 @@ class Person extends Element
                 {
                     $place = Place::query()->id($item->id)->one();
 
-                    if ($place)
-                    {
-                        $item = $place->values();
-                    }
+
+                    $item = $place ? $place->values() : [];
                 }
             }
         }

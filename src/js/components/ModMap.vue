@@ -1,7 +1,7 @@
 <template>
   <fullscreen ref="fullscreen" @change="handleFullScreenChange">
     <div
-      v-if="place.loaded && place.maps.length"
+      v-if="place.loaded && place.maps && place.maps.length"
       class="w-full flex flex-col justify-center"
       :style="`max-height: ${isFullScreen ? 100 : 40}vh;`"
     >
