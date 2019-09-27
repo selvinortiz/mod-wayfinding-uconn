@@ -73,16 +73,30 @@ class WayfindingController extends Controller
      */
     public function actionPlace()
     {
-        $id    = sys()->web->param('id');
+        $id = sys()->web->param('id');
+
+        // Set when the user is at a Kiosk
+        $locationId = sys()->web->param('locationId');
+
         $place = Place::query()
-        ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
-        ->id($id)
-        ->one();
+            ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
+            ->id($id)
+            ->one();
 
         if (!$place)
         {
             return sys()->web->asJsonWithError('Did not find a place');
         }
+
+        /*
+            + User @Kiosk?
+                + @Kiosk in same building as target building
+                    + @Kiosk in same floor as target floor
+                        + Show single floor map with two markers
+                        - Show double floor map with 1 marker for source and 1 for target
+                    - Show campus map, then single floor map
+                - Show campus map, then single floor map
+        */
 
         $place = $place->values();
 
@@ -99,8 +113,8 @@ class WayfindingController extends Controller
     public function actionPlaceFirst()
     {
         $place = Place::query()
-        ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
-        ->one();
+            ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
+            ->one();
 
         if (!$place)
         {

@@ -7,42 +7,43 @@
       <div class="flex flex-wrap w-full pr-6 xl:w-1/3 lg:full lg:pr-0">
         <div class="w-full xl:w-full lg:w-1/2 lg:pr-6">
           <div>
-            <page-header class="block">{{
+            <page-header class="block">
+              {{
               place.title
-            }}</page-header>
+              }}
+            </page-header>
             <ui-photo :photo="photo"></ui-photo>
           </div>
         </div>
         <div class="w-full xl:w-full lg:w-1/2">
-            <div class="mt-24 xl:mt-0">
-              <p class="pt-4">
-                <span class="block font-bold" :style="styles.defaultColor"
-                  >{{ building.buildingName }} Building</span
-                >
-              </p>
-              <p class="pt-4">
-                <span class="block font-bold"
-                  >Floor #: {{ floor.floorNumber }}</span
-                >
-                <span class="block font-bold"
-                  >Suite #: {{ place.roomNumber }}</span
-                >
-              </p>
-              <p class="pt-4">
-                <span class="block font-bold">555-555-5555</span>
-              </p>
-              <p class="pt-4">
-                <span class="block font-bold">{{ building.placeAddress }}</span>
-                <span class="block font-bold"
-                  >{{ building.placeCity }}, {{ building.placeState }}
-                  {{ building.placeZipcode }}</span
-                >
-              </p>
-              <p class="pt-4" >
-                <span class="block font-medium h-40 xl:h-56 max-w-full overflow-y-auto" v-html="place.roomDescription"></span
-                >
-              </p>
-            </div>
+          <div class="mt-24 xl:mt-0">
+            <p class="pt-4">
+              <span
+                class="block font-bold"
+                :style="styles.defaultColor"
+              >{{ building.buildingName }} Building</span>
+            </p>
+            <p class="pt-4">
+              <span class="block font-bold">Floor #: {{ floor.floorNumber }}</span>
+              <span class="block font-bold">Suite #: {{ place.roomNumber }}</span>
+            </p>
+            <p class="pt-4">
+              <span class="block font-bold">555-555-5555</span>
+            </p>
+            <p class="pt-4">
+              <span class="block font-bold">{{ building.placeAddress }}</span>
+              <span class="block font-bold">
+                {{ building.placeCity }}, {{ building.placeState }}
+                {{ building.placeZipcode }}
+              </span>
+            </p>
+            <p class="pt-4">
+              <span
+                class="block font-medium h-40 xl:h-56 max-w-full overflow-y-auto"
+                v-html="place.roomDescription"
+              ></span>
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -74,7 +75,11 @@ export default {
       return this.$store.state.app.theme;
     },
     photo() {
-      if (this.building && this.building.buildingPhoto && this.building.buildingPhoto.length) {
+      if (
+        this.building &&
+        this.building.buildingPhoto &&
+        this.building.buildingPhoto.length
+      ) {
         return this.building.buildingPhoto[0];
       }
       return {
@@ -88,6 +93,9 @@ export default {
         defaultColor: [`color: ${this.theme.colors.primary}`].join(";")
       };
     },
+    kiosk() {
+      return this.$store.state.app.kiosk || { id: null };
+    },
     floor() {
       return this.place.ancestors[0] || {};
     },
@@ -100,10 +108,11 @@ export default {
   },
   methods: {
     fetch() {
+      const id         = this.$route.params.id;
+      const locationId = this.kiosk.id;
+
       axios
-        .post("/actions/sys/wayfinding/place", {
-          id: this.$route.params.id
-        })
+        .post("/actions/sys/wayfinding/place", { id, locationId })
         .then(response => {
           this.place = {
             ...response.data.place,
@@ -124,7 +133,6 @@ export default {
         this.fetch();
       }
     }
-  },
+  }
 };
-
 </script>
