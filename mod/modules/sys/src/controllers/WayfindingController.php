@@ -25,7 +25,7 @@ class WayfindingController extends Controller
 {
     protected $allowAnonymous = true;
 
-    public function actionGenerateCampusMap(int $campusId, string $buildingIds)
+    public function actionGenerateCampusMap(int $campusId, string $buildingIds = null)
     {
         $campus = Campus::query()
             ->with(['campusMap'])
@@ -37,13 +37,17 @@ class WayfindingController extends Controller
             throw new HttpException(404, 'Campus map not found');
         }
 
-        $buildings = Building::query()
-            ->id($buildingIds)
-            ->all();
+        if (!empty($buildingIds))
+        {
+            $buildingIds = explode(',', $buildingIds);
+            $buildings   = Building::query()
+                ->id($buildingIds)
+                ->all();
 
-        $markers = $this->generateMarkers($map, $buildings);
+            $markers = $this->generateMarkers($map, $buildings);
+        }
 
-        return sys()->web->asSvg($this->generateImage($map, $markers));
+        return sys()->web->asSvg($this->generateImage($map, $markers ?? []));
     }
 
     public function actionGenerateFloorMap(int $floorId, string $roomIds)
@@ -97,6 +101,18 @@ class WayfindingController extends Controller
                     - Show campus map, then single floor map
                 - Show campus map, then single floor map
         */
+
+        if ($locationId)
+        {
+            $location = Place::query()
+                ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
+                ->id($locationId)
+                ->one();
+
+            $place->location = $location;
+        }
+
+        $place->prepareMaps();
 
         $place = $place->values();
 
@@ -246,7 +262,7 @@ class WayfindingController extends Controller
         }, $places);
     }
 
-    private function generateImage(Asset $image, array $markers)
+    private function generateImage(Asset $image, array $markers = [])
     {
         // Is it an SVG?
         if (mb_stripos($image->getUrl(), '.svg') !== false)

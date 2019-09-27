@@ -92,6 +92,9 @@ export default {
     this.fetch();
   },
   computed: {
+    kiosk() {
+      return this.$store.state.app.kiosk || { id: null }
+    },
     theme() {
       return this.$store.state.app.theme;
     },
@@ -116,7 +119,8 @@ export default {
     fetch() {
       axios
         .post("/actions/sys/wayfinding/place", {
-          id: this.$route.params.id
+          id: this.$route.params.id,
+          locationId: this.kiosk.id
         })
         .then(response => {
           this.place = {

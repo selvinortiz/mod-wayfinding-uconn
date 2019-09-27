@@ -14,27 +14,21 @@
         @pointerup="stopDrag()"
         @pointerleave="stopDrag()"
       >
-        <img
-          ref="image"
-          class="w-full"
-          :style="`transform: scale(${zoom}) translate(${translateX}px, ${translateY}px); transition: all .25s ease-in-out;`"
-          :src="getSelectedMap().image"
-          @load="centerMap()"
-          draggable="false"
-        />
-        <!--div v-if="place.loaded" class="w-1/6 absolute bottom-0 right-0">
+        <template v-for="(map, i) in place.maps">
           <img
-            @click="() => selectedMap = map"
-            v-for="(map, index) in place.maps"
-            :key="index"
             class="w-full"
+            :key="i"
+            :ref="`map-${i}`"
+            :v-show="selectedMapIndex === i"
+            :style="`transform: scale(${zoom}) translate(${translateX}px, ${translateY}px); transition: all .25s ease-in-out;`"
             :src="map.image"
+            @load="centerMap(map, i)"
             draggable="false"
           />
-        </div-->
+        </template>
       </div>
 
-      <div class="flex items-center justify-between mt-4" style="flex: 2;">
+      <div v-if="buttons" class="flex items-center justify-between mt-4" style="flex: 2;">
         <div>
           <button
             class="py-2 px-4 uppercase border"
@@ -131,6 +125,10 @@ export default {
         ],
         loaded: false
       })
+    },
+    buttons: {
+      type: Boolean,
+      default: true,
     }
   },
   data() {
@@ -144,7 +142,7 @@ export default {
       dragX: null,
       dragY: null,
 
-      selectedMap: null,
+      selectedMapIndex: 0,
       isFullScreen: false
     };
   },
@@ -185,11 +183,12 @@ export default {
     toggleFullScreen() {
       this.$refs.fullscreen.toggle();
     },
-    centerMap() {
+    centerMap(map, index) {
+      return;
       // Use first marker in provided collection
-      let marker = this.selectedMap.markers[0];
+      let marker = map.markers[0];
       // Get bounding box for map container and map image
-      let image = this.$refs.image.getBoundingClientRect();
+      let image = this.$refs[`image-${index}`].getBoundingClientRect();
       let container = this.$refs.container.getBoundingClientRect();
 
       // Figure out how much taller the image is than the container (%)
@@ -217,11 +216,11 @@ export default {
         height;
     },
     getSelectedMap() {
-      if (this.selectedMap == null) {
-        this.selectedMap = this.place.maps[0];
+      if (this.place.maps && this.place.maps.length) {
+        return this.place.maps[this.selectedMapIndex];
       }
 
-      return this.selectedMap;
+      return null;
     },
 
     zoomMap(direction) {

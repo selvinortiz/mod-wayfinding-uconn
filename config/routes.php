@@ -20,9 +20,10 @@
  */
 
 return [
-    'maps/<type:(floor|room)+>/<floorId:\d+>/<roomIds:[0-9,]+(.svg)?>'           => 'sys/wayfinding/generate-floor-map',
-    'maps/<type:(campus|building)+>/<campusId:\d+>/<buildingIds:[0-9,]+(.svg)?>' => 'sys/wayfinding/generate-campus-map',
-    '@<kioskId:\d+>'                                                             => 'sys/app/index',
-    '@<kioskId:\d+>/<app:.*>'                                                    => 'sys/app/index',
-    '<all:.*>'                                                                   => 'sys/app/index'
+    'maps/<type:(floor|room)+>/<floorId:\d+>/<roomIds:[0-9,]+><ext:(.svg)?>'           => 'sys/wayfinding/generate-floor-map',
+    'maps/<type:(campus|building)+>/<campusId:\d+><ext:(.svg)?>'                       => 'sys/wayfinding/generate-campus-map',
+    'maps/<type:(campus|building)+>/<campusId:\d+>/<buildingIds:[0-9,]+><ext:(.svg)?>' => 'sys/wayfinding/generate-campus-map',
+    '@<kioskId:\d+>'                                                                   => 'sys/app/index',
+    '@<kioskId:\d+>/<app:.*>'                                                          => 'sys/app/index',
+    '<all:.*>'                                                                         => 'sys/app/index'
 ];

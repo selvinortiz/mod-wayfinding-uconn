@@ -2,7 +2,7 @@
   <content-loader :loaded="place.loaded" class="p-8">
     <section class="xl:flex flex-wrap">
       <div class="xl:w-1/2 xl:order-1 xl:pt-6">
-        <mod-map :place="place" class="xl:px-4"></mod-map>
+        <mod-map :place="place" :buttons="false" class="xl:px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
         <div class="w-1/2">
@@ -16,8 +16,10 @@
                 class="hidden xl:block md:hidden sm:hidden text-xl xl:text-4xl"
               >{{ place.campusName }} {{ place.type.name }}</page-header>
               <p class="pt-6 xl:pt-2">
-                <span class="block h-40 xl:h-56 max-w-full overflow-y-auto " v-html="place.campusDescription">
-                </span>
+                <span
+                  class="block h-40 xl:h-56 max-w-full overflow-y-auto"
+                  v-html="place.campusDescription"
+                ></span>
               </p>
             </div>
           </div>
@@ -79,22 +81,12 @@ export default {
     };
   },
   created() {
-    const id = this.$route.params.id;
-    const action = id
-      ? "/actions/sys/wayfinding/place"
-      : "/actions/sys/wayfinding/place-first";
-
-    axios
-      .post(action, { id })
-      .then(response => {
-        this.place = {
-          ...response.data.place,
-          loaded: true
-        };
-      })
-      .catch(error => console.error(error));
+    this.fetch();
   },
   computed: {
+    kiosk() {
+      return this.$store.state.app.kiosk || { id: null };
+    },
     theme() {
       return this.$store.state.app.theme;
     },
@@ -117,6 +109,22 @@ export default {
     }
   },
   methods: {
+    fetch() {
+      const id = this.$route.params.id;
+      const action = id
+        ? "/actions/sys/wayfinding/place"
+        : "/actions/sys/wayfinding/place-first";
+
+      axios
+        .post(action, { id, locationId: this.kiosk.id })
+        .then(response => {
+          this.place = {
+            ...response.data.place,
+            loaded: true
+          };
+        })
+        .catch(error => console.error(error));
+    },
     containerStyles() {
       return [`background-color: white`, `color: black`].join(";");
     },
