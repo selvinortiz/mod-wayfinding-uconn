@@ -74,7 +74,7 @@ export default {
       return this.$store.state.app.theme;
     },
     photo() {
-      if (this.building) {
+      if (this.building && this.building.buildingPhoto && this.building.buildingPhoto.length) {
         return this.building.buildingPhoto[0];
       }
       return {
