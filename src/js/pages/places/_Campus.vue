@@ -1,7 +1,7 @@
 <template>
   <content-loader :loaded="place.loaded" class="p-8">
     <section class="xl:flex flex-wrap">
-      <div class="xl:w-1/2 xl:order-1 lg">
+      <div class="xl:w-1/2 xl:order-1 xl:pt-6">
         <mod-map :place="place" class="xl:px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
@@ -13,21 +13,17 @@
             <ui-photo :photo="photo"></ui-photo>
             <div>
               <page-header
-                class="hidden xl:block md:hidden sm:hidden pt-4 text-xl xl:text-4xl"
+                class="hidden xl:block md:hidden sm:hidden text-xl xl:text-4xl"
               >{{ place.campusName }} {{ place.type.name }}</page-header>
-              <p class="pt-8 text-xl leading-tight">
-                <span class="block" :style="styles.defaultColor">
-                  From Horsebarn Hill to Downtown Storrs, our picturesque main
-                  campus is home to more than 19,000 undergraduates, as well as
-                  graduate students pursuing one of 17 graduate degrees or a
-                  doctorate in pharmacy.
+              <p class="pt-6 xl:pt-2">
+                <span class="block h-40 xl:h-56 max-w-full overflow-y-auto " v-html="place.campusDescription">
                 </span>
               </p>
             </div>
           </div>
         </div>
         <div class="w-1/2">
-          <div class="pt-20 xl:pt-0 px-4">
+          <div class="pt-20 xl:pt-0 lg:pt-25 md:pt-30 sm:pt-30 px-4">
             <multi-select
               track-by="id"
               label="buildingName"

@@ -1,7 +1,7 @@
 <template>
   <content-loader :loaded="place.loaded" classes="p-8">
     <section class="xl:flex flex-wrap">
-      <div class="xl:w-1/2 xl:order-1">
+      <div class="xl:w-1/2 xl:order-1 xl:pt-6">
         <mod-map :place="place" class="xl:px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
@@ -17,18 +17,22 @@
                   {{ place.buildingName }} {{ place.type.name }}
                 </page-header>
               </p>
-              <p class="pt-8 text-xl leading-tight">
-                <span class="block" :style="styles.defaultColor">{{ place.placeAddress }}</span>
-                <span
-                  class="block"
-                  :style="styles.defaultColor"
-                >{{ place.placeCity }}, {{ place.placeState }} {{ place.placeZipcode }}</span>
-              </p>
+                <p class="text-xl leading-tight">
+                  <span class="block font-medium pb-2">555-555-555</span>
+                  <span class="block font-bold">{{ place.placeAddress }}</span>
+                  <span class="block font-bold">
+                    {{ place.placeCity }}, {{ place.placeState }}
+                    {{ place.placeZipcode }}
+                  </span>
+                </p>
+                <p class="pt-4">
+                  <span class="block h-40 xl:h-56 max-w-full overflow-y-auto" v-html="place.buildingDescription"></span>
+                </p>
             </div>
           </div>
         </div>
         <div class="w-1/2">
-          <div class="pt-16 xl:pt-0 px-4">
+          <div class="pt-20 xl:pt-0 lg:pt-25 md:pt-30 sm:pt-30 px-4">
             <multi-select
               track-by="id"
               label="title"
@@ -45,8 +49,9 @@
               <a
                 class="cursor-pointer"
                 :style="styles.defaultColor"
-                @click="() => $store.state.app.searchIsOpen = true"
-              >Switch to SEARCH</a>
+                @click="() => ($store.state.app.searchIsOpen = true)"
+                >Switch to SEARCH</a
+              >
             </div>
           </div>
         </div>
