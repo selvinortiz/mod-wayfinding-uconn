@@ -5,25 +5,30 @@
         <mod-map :place="place" class="xl:px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
-        <div class="w-1/2">
+        <!-- Portrait pageheader above image and text for long titles -->
+        <div class="w-full mb-4">
+          <page-header class="block xl:hidden lg:block md:block sm:block">
+            {{ place.campusName }} {{ place.type.name }}
+          </page-header>
+        </div>
+        <div class="w-1/2 pr-10">
           <div>
-            <page-header
-              class="block xl:hidden md:block sm:block"
-            >{{ place.campusName }} {{ place.type.name }}</page-header>
             <ui-photo :photo="photo"></ui-photo>
-            <div>
-              <page-header
-                class="hidden xl:block md:hidden sm:hidden text-xl xl:text-4xl"
-              >{{ place.campusName }} {{ place.type.name }}</page-header>
-              <p class="pt-6 xl:pt-2">
-                <span class="block h-40 xl:h-56 max-w-full overflow-y-auto " v-html="place.campusDescription">
-                </span>
-              </p>
-            </div>
+            <p class="pt-4 text-xl xl:text-4xl">
+              <!-- landscape pageheader -->
+              <page-header class="hidden xl:block md:hidden sm:hidden">
+                {{ place.campusName }} {{ place.type.name }}
+              </page-header>
+            </p>
+            <p class="pt-4">
+              <span class="block h-40 xl:h-56 max-w-full overflow-y-auto "
+                v-html="place.campusDescription">
+              </span>
+            </p>
           </div>
         </div>
         <div class="w-1/2">
-          <div class="pt-20 xl:pt-0 lg:pt-25 md:pt-30 sm:pt-30 px-4">
+          <div class="px-4">
             <multi-select
               track-by="id"
               label="buildingName"
@@ -41,7 +46,8 @@
                 class="cursor-pointer"
                 :style="styles.defaultColor"
                 @click="() => ($store.state.app.searchIsOpen = true)"
-              >Switch to SEARCH</a>
+                >Switch to SEARCH</a
+              >
             </div>
           </div>
         </div>
