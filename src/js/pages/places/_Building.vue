@@ -5,37 +5,42 @@
         <mod-map :place="place" class="xl:px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
-        <div class="w-1/2">
+      <!-- Portrait pageheader above image and text for long titles -->
+        <div class="w-full mb-4">
+          <page-header class="block xl:hidden lg:block md:block sm:block">
+            {{ place.buildingName }} {{ place.type.name }}
+          </page-header>
+        </div>
+        <div class="w-1/2 pr-10">
           <div>
-            <page-header
-              class="block xl:hidden md:block sm:block"
-            >{{ place.buildingName }} {{ place.type.name }}</page-header>
             <ui-photo :photo="photo"></ui-photo>
-            <div>
-              <p class="pt-4 text-xl xl:text-4xl">
-                <page-header
-                  class="hidden xl:block md:hidden sm:hidden"
-                >{{ place.buildingName }} {{ place.type.name }}</page-header>
-              </p>
-              <p class="text-xl leading-tight">
-                <span class="block font-medium pb-2">555-555-555</span>
-                <span class="block font-bold">{{ place.placeAddress }}</span>
-                <span class="block font-bold">
-                  {{ place.placeCity }}, {{ place.placeState }}
-                  {{ place.placeZipcode }}
-                </span>
-              </p>
-              <p class="pt-4">
-                <span
-                  class="block h-40 xl:h-56 max-w-full overflow-y-auto"
-                  v-html="place.buildingDescription"
-                ></span>
-              </p>
-            </div>
+            <p class="pt-4 text-xl xl:text-4xl">
+              <!-- landscape pageheader -->
+              <page-header class="hidden xl:block md:hidden sm:hidden">
+                {{ place.buildingName }} {{ place.type.name }}
+              </page-header>
+            </p>
+            <p class="pt-4">
+              <span class="block font-bold pb-2">555-555-555</span>
+            </p>
+            <p class="pt-4">
+            <span class="block font-bold">{{ place.placeAddress }}</span>
+            <span class="block font-bold">
+              {{ place.placeCity }}, {{ place.placeState }}
+              {{ place.placeZipcode }}
+            </span>
+            </p>
+
+            <p class="pt-4">
+              <span
+                class="block h-40 xl:h-56 max-w-full overflow-y-auto"
+                v-html="place.buildingDescription"
+              ></span>
+            </p>
           </div>
         </div>
         <div class="w-1/2">
-          <div class="pt-20 xl:pt-0 lg:pt-25 md:pt-30 sm:pt-30 px-4">
+          <div class="px-4">
             <multi-select
               track-by="id"
               label="title"

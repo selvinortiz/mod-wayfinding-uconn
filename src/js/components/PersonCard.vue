@@ -2,17 +2,21 @@
   <router-link
     class="flex-1 flex p-4 cursor-pointer bg-white border border-gray-200 hover:bg-gray-200"
     :to="{ name: 'person', params: {id: person.id}}"
-    :style="styles.background"
   >
     <!-- <img class="block p-2" src="/static/img/avatar.svg" style="max-height: 80px;" /> -->
 
-    <div>
-      <h2 class="font-semibold text-lg cursor-pointer uppercase" :style="styles.title">
+    <div class="w-full shadow-md" :style="styles.background">
+      <img :src="role.url" />
+      <div class="p-4">
+      <h2 class="font-bold text-lg cursor-pointer uppercase" :style="styles.title">
         {{ person.personFirstName }}
         {{ person.personLastName }}
       </h2>
       <p class="text-md cursor-pointer">{{ role.title }}</p>
-      <p class="text-sm cursor-pointer opacity-75 ">{{ role.department}}</p>
+      <p class="text-md cursor-pointer">{{ role.department}}</p>
+      <!-- <p class="text-md cursor-pointer">{{ role.building }}</p>
+      <p class="text-md cursor-pointer">{{ role.suite }}</p> -->
+      </div>
     </div>
   </router-link>
 </template>
@@ -40,13 +44,20 @@ export default {
     role() {
       const role = {
         title: "",
-        department: ""
+        department: "",
+        url: "",
+        building: "",
+        suite: ""
       };
 
       if (this.person.personRoles) {
         return {
           title: this.person.personRoles[0].roleTitle,
-          department: this.person.personRoles[0].roleDepartment[0].title
+          department: this.person.personRoles[0].roleDepartment[0].title,
+          url: "/uploads/people/photos/default-avatar.svg", 
+          building: "Building Name",
+          suite: "Suite 1"
+          
         };
       }
 

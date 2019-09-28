@@ -21,7 +21,7 @@
 
       <div class="flex flex-wrap -mx-2 xl:-mx-4">
         <div
-          class="w-1/2 sm:w-1/3 md:w-1/3 xl:w-1/4 xl:w-1/5 flex my-2 px-2 xl:my-4 xl:px-4"
+          class="w-1/2 max-h-screen sm:w-1/4 md:w-1/4 xl:w-1/6 lg:w-1/4 flex my-2 px-0 xl:px-0 lg:px-0"
           v-for="person in people"
           :key="person.id"
         >
@@ -65,6 +65,14 @@
         >
       </select>
     </div>
+    <div class="m-auto">
+              Don&rsquo;t see what you&rsquo;re looking for?
+              <a
+                class="cursor-pointer"
+                :style="styles.defaultColor"
+                @click="() => ($store.state.app.searchIsOpen = true)"
+              >Switch to SEARCH</a>
+    </div>
   </content-loader>
 </template>
 
@@ -103,7 +111,8 @@ export default {
     },
     styles() {
       return {
-        border: [`border-color: ${this.theme.colors.primary}`].join(";")
+        border: [`border-color: ${this.theme.colors.primary}`].join(";"),
+        defaultColor: [`color: ${this.theme.colors.primary}`].join(";")
       };
     }
   },
