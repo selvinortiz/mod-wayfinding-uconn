@@ -1,21 +1,33 @@
 <template>
   <router-link
     class="flex-1 flex p-4 cursor-pointer bg-white border border-gray-200 hover:bg-gray-200"
-    :to="{ name: 'person', params: {id: person.id}}"
+    :to="{ name: 'person', params: { id: person.id } }"
   >
     <!-- <img class="block p-2" src="/static/img/avatar.svg" style="max-height: 80px;" /> -->
 
     <div class="w-full shadow-md" :style="styles.background">
-      <img :src="role.url" />
+      <div v-if="directoryPhoto">
+        <img v-if="role.imageurl" :src="role.imageurl" />
+        <img v-else src="/uploads/people/photos/GenericAvatar.jpg" />
+      </div>
       <div class="p-4">
-      <h2 class="font-bold text-lg cursor-pointer uppercase" :style="styles.title">
-        {{ person.personFirstName }}
-        {{ person.personLastName }}
-      </h2>
-      <p class="text-md cursor-pointer">{{ role.title }}</p>
-      <p class="text-md cursor-pointer">{{ role.department}}</p>
-      <!-- <p class="text-md cursor-pointer">{{ role.building }}</p>
-      <p class="text-md cursor-pointer">{{ role.suite }}</p> -->
+        <h2
+          class="font-bold text-lg cursor-pointer uppercase"
+          :style="styles.title"
+        >
+          {{ person.personFirstName }}
+          {{ person.personLastName }}
+        </h2>
+        <p v-if="role.title" class="text-md cursor-pointer">{{ role.title }}</p>
+        <p v-if="role.department" class="text-md cursor-pointer">
+          {{ role.department }}
+        </p>
+        <p v-if="role.building" class="text-md cursor-pointer">
+          {{ role.building }}
+        </p>
+        <p v-if="role.building" class="text-md cursor-pointer">
+          {{ role.suite }}
+        </p>
       </div>
     </div>
   </router-link>
@@ -27,9 +39,14 @@ export default {
     person: {
       type: Object,
       default: () => {
-        id: null;
+        null;
       }
     }
+  },
+  data: function() {
+    return {
+      directoryPhoto: true
+    };
   },
   computed: {
     theme() {
@@ -45,22 +62,20 @@ export default {
       const role = {
         title: "",
         department: "",
-        url: "",
+        imageurl: "",
         building: "",
         suite: ""
       };
 
-      if (this.person.personRoles) {
+      if (this.person.personRoles.length > 0) {
         return {
           title: this.person.personRoles[0].roleTitle,
           department: this.person.personRoles[0].roleDepartment[0].title,
-          url: "/uploads/people/photos/default-avatar.svg", 
-          building: "Building Name",
-          suite: "Suite 1"
-          
+          imageurl: "",
+          building: "",
+          suite: ""
         };
       }
-
       return role;
     }
   }
