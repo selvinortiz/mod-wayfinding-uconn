@@ -38,13 +38,13 @@
             @click="() => selectedMapIndex = 1"
           >Campus Map</button>
           <button
-            class="py-2 px-4 uppercase border"
+            class="ml-4 py-2 px-4 uppercase border"
             :style="styles.buttons.building"
           >Building Map</button>
         </div>
         <div>
           <button
-            class="ml-2 text-gray-600 outline-none focus:outline-none"
+            class="ml-4 text-gray-600 outline-none focus:outline-none"
             style="width: 28px;"
             @click="zoomMap(1)"
           >
@@ -65,7 +65,7 @@
             </svg>
           </button>
           <button
-            class="ml-2 text-gray-600 outline-none focus:outline-none"
+            class="ml-4 text-gray-600 outline-none focus:outline-none"
             style="width: 28px;"
             @click="zoomMap(-1)"
           >
