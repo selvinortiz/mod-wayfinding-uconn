@@ -4,14 +4,15 @@
       class="mx-auto"
       style="display: grid; grid-template-rows: 1fr 1fr; max-width: 65%; height: 100vh"
     >
-      <section class="@search__results">
+      <section class="relative @search__results">
         <div
           v-if="results.length"
-          class="animated slideInDown overflow-y-scroll overflow-x-hidden"
+          class="animated slideInDown absolute inset-x-0 bottom-0 px-4 overflow-y-scroll overflow-x-hidden"
           style="max-height: 50vh"
         >
           <h2 class="font-thin text-2xl uppercase text-white">Results</h2>
-          <div class="flex flex-wrap -mx-2 lg:-mx-4">
+          <!-- creates search box -->
+          <div class="flex flex-wrap -mx-2 lg:-mx-2">
             <router-link
               class="block w-full lg:w-1/2 xl:w-1/3 flex my-2 px-2 lg:my-4 lg:px-4"
               v-for="result in results"
@@ -19,7 +20,7 @@
               :to="{name: result.type, params: { id: result.id}}"
               @click.native="handleCardClick"
             >
-              <div class="flex-1 p-4 border border-gray-300 bg-white">
+              <div class="flex-1 px-4 py-2 border border-gray-300 bg-white">
                 <p class="font-thin text-xl">{{ result.title }}</p>
               </div>
             </router-link>
