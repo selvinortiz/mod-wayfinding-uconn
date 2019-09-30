@@ -1,7 +1,7 @@
 <g class="marker__group">
-    <circle cx="{{ object.x }}" cy="{{ object.y }}" fill="none" r="16" stroke="{{ object.fill ?? 'red' }}" stroke-width="2">
-        <animate attributeName="r" from="12" to="32" dur="1.5s" begin="0s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" from="1" to="0" dur="1.5s" begin="0s" repeatCount="indefinite"/>
+    <circle cx="{{ object.x }}" cy="{{ object.y }}" fill="none" r="12" stroke="{{ object.fill ?? 'blue' }}" stroke-width="2">
+        <animate attributeName="r" from="8" to="16" dur="1s" begin="0s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0s" repeatCount="indefinite"/>
     </circle>
-    <circle cx="{{ object.x }}" cy="{{ object.y }}" fill="{{ object.fill ?? 'red' }}" r="16" stroke="rgba(0,0,0, .25)" stroke-width="2"/>
+    <circle cx="{{ object.x }}" cy="{{ object.y }}" fill="{{ object.fill ?? 'blue' }}" r="12" opacity="0.9" />
 </g>

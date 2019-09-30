@@ -1,6 +1,6 @@
 <template>
   <div v-if="photo.url">
-    <img width="100%" :src="photo.url" />
+    <img class="h-auto xl:h-64 lg:h-48 md:h-48 sm:h-48 w-full object-cover" :src="photo.url" />
   </div>
 </template>
 
