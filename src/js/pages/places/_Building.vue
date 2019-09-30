@@ -7,27 +7,30 @@
       <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
         <div class="w-1/2">
           <div>
-            <page-header class="block xl:hidden md:block sm:block">
-              {{ place.buildingName }} {{ place.type.name }}
-            </page-header>
+            <page-header
+              class="block xl:hidden md:block sm:block"
+            >{{ place.buildingName }} {{ place.type.name }}</page-header>
             <ui-photo :photo="photo"></ui-photo>
             <div>
               <p class="pt-4 text-xl xl:text-4xl">
-                <page-header class="hidden xl:block md:hidden sm:hidden">
-                  {{ place.buildingName }} {{ place.type.name }}
-                </page-header>
+                <page-header
+                  class="hidden xl:block md:hidden sm:hidden"
+                >{{ place.buildingName }} {{ place.type.name }}</page-header>
               </p>
-                <p class="text-xl leading-tight">
-                  <span class="block font-medium pb-2">555-555-555</span>
-                  <span class="block font-bold">{{ place.placeAddress }}</span>
-                  <span class="block font-bold">
-                    {{ place.placeCity }}, {{ place.placeState }}
-                    {{ place.placeZipcode }}
-                  </span>
-                </p>
-                <p class="pt-4">
-                  <span class="block h-40 xl:h-56 max-w-full overflow-y-auto" v-html="place.buildingDescription"></span>
-                </p>
+              <p class="text-xl leading-tight">
+                <span class="block font-medium pb-2">555-555-555</span>
+                <span class="block font-bold">{{ place.placeAddress }}</span>
+                <span class="block font-bold">
+                  {{ place.placeCity }}, {{ place.placeState }}
+                  {{ place.placeZipcode }}
+                </span>
+              </p>
+              <p class="pt-4">
+                <span
+                  class="block h-40 xl:h-56 max-w-full overflow-y-auto"
+                  v-html="place.buildingDescription"
+                ></span>
+              </p>
             </div>
           </div>
         </div>
@@ -50,8 +53,7 @@
                 class="cursor-pointer"
                 :style="styles.defaultColor"
                 @click="() => ($store.state.app.searchIsOpen = true)"
-                >Switch to SEARCH</a
-              >
+              >Switch to SEARCH</a>
             </div>
           </div>
         </div>
@@ -93,7 +95,7 @@ export default {
   },
   computed: {
     kiosk() {
-      return this.$store.state.app.kiosk || { id: null }
+      return this.$store.state.app.kiosk || { id: null };
     },
     theme() {
       return this.$store.state.app.theme;

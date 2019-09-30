@@ -20,9 +20,11 @@
             :key="i"
             :ref="`map-${i}`"
             :v-show="selectedMapIndex === i"
+            :class="{hidden: selectedMapIndex === i}"
             :style="`transform: scale(${zoom}) translate(${translateX}px, ${translateY}px); transition: all .25s ease-in-out;`"
             :src="map.image"
             @load="centerMap(map, i)"
+            @click="() => selectedMapIndex = 0"
             draggable="false"
           />
         </template>
@@ -33,6 +35,7 @@
           <button
             class="py-2 px-4 uppercase border"
             :style="styles.buttons.campus"
+            @click="() => selectedMapIndex = 1"
           >Campus Map</button>
           <button
             class="py-2 px-4 uppercase border"
