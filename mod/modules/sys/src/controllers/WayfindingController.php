@@ -50,7 +50,7 @@ class WayfindingController extends Controller
         return sys()->web->asSvg($this->generateImage($map, $markers ?? []));
     }
 
-    public function actionGenerateFloorMap(int $floorId, string $roomIds)
+    public function actionGenerateFloorMap(int $floorId, string $roomIds = null)
     {
         $floor = Floor::query()
             ->with(['floorMap'])
@@ -62,11 +62,21 @@ class WayfindingController extends Controller
             throw new HttpException(404, 'Floor map not found');
         }
 
-        $rooms = Room::query()
-            ->id($roomIds)
-            ->all();
+        if (!empty($roomIds))
+        {
+            $roomIds = explode(',', $roomIds);
+            $rooms   = Building::query()
+                ->id($roomIds)
+                ->all();
+
+        }
+        else
+        {
+            $rooms = Room::query()->limit(1)->all();
+        }
 
         $markers = $this->generateMarkers($map, $rooms);
+
 
         return sys()->web->asSvg($this->generateImage($map, $markers));
     }

@@ -137,7 +137,7 @@ class Place extends Element
                     ];
 
                     $maps[] = [
-                        'image'   => $this->createMapUrl('building', $this->parent->id, $markerIds),
+                        'image'   => $this->createMapUrl('floor', $this->descendants[0]->id, $markerIds),
                         'markers' => []
                     ];
                 }
@@ -154,7 +154,14 @@ class Place extends Element
                     }
 
                     $maps[] = [
-                        'image'   => $this->createMapUrl('room', $this->parent->id, $markerIds),
+                        'image'   => $this->createMapUrl('campus', $this->ancestors[0]->id),
+                        'markers' => [$this->placeMarker ?? null]
+                    ];
+
+                    $parents = $this->ancestors;
+
+                    $maps[] = [
+                        'image'   => $this->createMapUrl('room', $this->ancestors[2]->id, $markerIds),
                         'markers' => [$this->placeMarker ?? null]
                     ];
                 }

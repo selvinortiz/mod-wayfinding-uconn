@@ -20,11 +20,10 @@
             :key="i"
             :ref="`map-${i}`"
             :v-show="selectedMapIndex === i"
-            :class="{hidden: selectedMapIndex === i}"
+            :class="{hidden: selectedMapIndex !== i}"
             :style="`transform: scale(${zoom}) translate(${translateX}px, ${translateY}px); transition: all .25s ease-in-out;`"
             :src="map.image"
             @load="centerMap(map, i)"
-            @click="() => selectedMapIndex = 0"
             draggable="false"
           />
         </template>
@@ -33,13 +32,14 @@
       <div v-if="buttons" class="flex items-center justify-between mt-4" style="flex: 2;">
         <div>
           <button
-            class="py-2 px-4 uppercase border"
-            :style="styles.buttons.campus"
-            @click="() => selectedMapIndex = 1"
+            class="py-2 px-4 uppercase border outline-none focus:outline-none"
+            :style="`${selectedMapIndex === 0 ? styles.buttons.active : styles.buttons.normal}`"
+            @click="() => selectedMapIndex = 0"
           >Campus Map</button>
           <button
-            class="ml-4 py-2 px-4 uppercase border"
-            :style="styles.buttons.building"
+            class="ml-4 py-2 px-4 uppercase border outline-none focus:outline-none"
+            :style="`${selectedMapIndex === 1 ? styles.buttons.active : styles.buttons.normal}`"
+            @click="() => selectedMapIndex = 1"
           >Building Map</button>
         </div>
         <div>
@@ -172,8 +172,8 @@ export default {
 
       return {
         buttons: {
-          campus: onCampus ? buttonStylesActive : buttonStyles,
-          building: onCampus ? buttonStyles : buttonStylesActive
+          normal: buttonStyles,
+          active: buttonStylesActive
         }
       }
     }
