@@ -5,36 +5,39 @@
         <mod-map :place="place" class="xl:px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2 pt-4">
-        <div v-if="image" class="pt-8" style="flex: 4;">
-          <img class="m-auto object-contain" style="max-width: 256px;" :src="image.url" />
+        <h2
+          class="w-full font-thin text-4xl leading-none uppercase xl:pt-0 lg:pt-6 md:pt-6"
+          :style="`color: ${theme.colors.primary}`"
+        >
+          {{ person.personFirstName }} {{ person.personLastName }}
+        </h2>
+        <div v-if="image" class="pt-8 pr-6" style="flex: 4;">
+          <img
+            class="m-auto object-contain"
+            style="max-width: 256px;"
+            :src="image.url"
+          />
         </div>
         <div style="flex: 8;">
-          <div class="pt-8 px-4">
-            <h2
-              class="font-thin text-4xl leading-none uppercase"
-              :style="`color: ${theme.colors.primary}`"
-            >
-              {{ person.personFirstName }} {{ person.personLastName }}
-            </h2>
-
-            <div class="pt-2" v-for="role in person.personRoles" :key="role.id">
+          <div class="xl:pt-8 lg:pt-4, md-pt-4">
+            <div class="pt-4" v-for="role in person.personRoles" :key="role.id">
               <p class="font-bold">{{ role.roleTitle }}</p>
               <p>{{ role.roleDepartment[0].title }}</p>
             </div>
 
             <div class="pt-4">
-              <p class="font-bold"> {{ building }} Building </p>
-              <p class="font-normal">Suite: {{ room }} </p>
-              <p class="font-normal">Floor: {{ floor }} </p>
+              <p class="font-bold">{{ building }} Building</p>
+              <p class="font-normal">Suite: {{ room }}</p>
+              <p class="font-normal">Floor: {{ floor }}</p>
             </div>
 
             <div class="pt-4">
-              <p > {{ person.personAddress }} </p>
-              <p > {{ person.personCity }} </p>
-              <p > {{ person.personState }} {{ person.personZipcode }} </p>
+              <p>{{ person.personAddress }}</p>
+              <p>{{ person.personCity }}</p>
+              <p>{{ person.personState }} {{ person.personZipcode }}</p>
             </div>
 
-             <!-- <div class="pt-4">
+            <!-- <div class="pt-4">
               <a
                 class="cursor-pointer"
                 :style="`color: ${theme.colors.primary}`"
@@ -89,9 +92,10 @@ export default {
     },
     image() {
       if (
-        this.person && 
-        this.person.personPhoto && 
-        this.person.personPhoto.length) {
+        this.person &&
+        this.person.personPhoto &&
+        this.person.personPhoto.length
+      ) {
         return this.person.personPhoto[0];
       }
       return null;
@@ -107,26 +111,23 @@ export default {
 
       return place;
     },
-      floor() {
-      if(this.place && this.place.ancestors && this.place.ancestors.length)
-      {
-        return this.place.ancestors[0].floorNumber 
+    floor() {
+      if (this.place && this.place.ancestors && this.place.ancestors.length) {
+        return this.place.ancestors[0].floorNumber;
       }
-      return null
+      return null;
     },
     building() {
-      if(this.place && this.place.ancestors && this.place.ancestors.length)
-      {
-        return this.place.ancestors[1].buildingName 
+      if (this.place && this.place.ancestors && this.place.ancestors.length) {
+        return this.place.ancestors[1].buildingName;
       }
-      return null
+      return null;
     },
-     room() {
-      if(this.place && this.place.ancestors && this.place.ancestors.length)
-      {
-        return this.place.roomNumber 
+    room() {
+      if (this.place && this.place.ancestors && this.place.ancestors.length) {
+        return this.place.roomNumber;
       }
-      return null
+      return null;
     }
   },
   methods: {
