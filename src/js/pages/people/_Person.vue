@@ -101,7 +101,7 @@ export default {
       return null;
     },
     place() {
-      let place = this.person.loaded ? this.person.personRelatedPlace[0] : null;
+      let place = this.person.loaded ? this.person.place : null;
 
       if (!place) {
         place = { id: null };

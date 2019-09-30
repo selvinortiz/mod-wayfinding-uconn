@@ -149,6 +149,8 @@ class WayfindingController extends Controller
 
         $place = $place->values();
 
+        $place = $place->values();
+
         return sys()->web->asJson(
             'Place',
             ['place' => $place]
@@ -194,9 +196,29 @@ class WayfindingController extends Controller
             return sys()->web->asJsonWithError('Did not find a person');
         }
 
+        $place = null;
+
+        if (!empty($person->personRelatedPlace))
+        {
+            $place = Place::query()
+                ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
+                ->id($person->personRelatedPlace[0]->id)
+                ->one();
+
+            if ($place)
+            {
+                $place->prepareMaps();
+
+                $place = $place->values();
+            }
+        }
+
+        $person          = $person->getFieldValues();
+        $person['place'] = $place;
+
         return sys()->web->asJson(
             'Found person',
-            ['person' => $person->getFieldValues()]
+            compact('person')
         );
     }
 
