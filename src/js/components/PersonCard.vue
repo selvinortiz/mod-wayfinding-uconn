@@ -45,7 +45,7 @@ export default {
   },
   data: function() {
     return {
-      directoryPhoto: true
+      directoryPhoto: false
     };
   },
   computed: {

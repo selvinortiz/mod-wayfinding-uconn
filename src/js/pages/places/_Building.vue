@@ -21,7 +21,7 @@
               </page-header>
             </p>
             <p class="pt-4">
-              <span class="block font-bold pb-2">555-555-555</span>
+              <span class="block font-bold pb-2">555-555-5555</span>
             </p>
             <p class="pt-4">
             <span class="block font-bold">{{ place.placeAddress }}</span>
@@ -33,7 +33,7 @@
 
             <p class="pt-4">
               <span
-                class="block h-40 xl:h-56 max-w-full overflow-y-auto"
+                class="block h-40 xl:h-56 max-w-full overflow-y-scroll"
                 v-html="place.buildingDescription"
               ></span>
             </p>
