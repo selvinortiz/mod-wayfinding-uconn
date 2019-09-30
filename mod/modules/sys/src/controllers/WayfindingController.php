@@ -65,7 +65,7 @@ class WayfindingController extends Controller
         if (!empty($roomIds))
         {
             $roomIds = explode(',', $roomIds);
-            $rooms   = Building::query()
+            $rooms   = Room::query()
                 ->id($roomIds)
                 ->all();
 
