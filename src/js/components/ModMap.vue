@@ -21,7 +21,7 @@
             :ref="`map-${i}`"
             :v-show="selectedMapIndex === i"
             :class="{hidden: selectedMapIndex !== i}"
-            :style="`transform: scale(${zoom}) translate(${translateX}px, ${translateY}px); transition: all .25s ease-in-out;`"
+            :style="`transform: scale(${zoom}) translate(${translateX}px, ${translateY}px); transition: ${drag ? 'none' : 'all'} .25s ease-in-out;`"
             :src="map.image"
             @load="centerMap(map, i)"
             draggable="false"
