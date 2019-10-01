@@ -153,15 +153,15 @@ class Place extends Element
                         $markerIds[] = $this->location->id;
                     }
 
-                    $maps[] = [
-                        'image'   => $this->createMapUrl('campus', $this->ancestors[0]->id),
-                        'markers' => [$this->placeMarker ?? null]
-                    ];
-
                     $parents = $this->ancestors;
 
                     $maps[] = [
-                        'image'   => $this->createMapUrl('room', $this->ancestors[2]->id, $markerIds),
+                        'image'   => $this->createMapUrl('campus', $parents[0]->id),
+                        'markers' => [$parents[1]->placeMarker ?? null]
+                    ];
+
+                    $maps[] = [
+                        'image'   => $this->createMapUrl('room', $parents[2]->id, $markerIds),
                         'markers' => [$this->placeMarker ?? null]
                     ];
                 }
