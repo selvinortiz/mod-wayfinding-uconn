@@ -38,7 +38,7 @@
             <multi-select
               track-by="id"
               label="buildingName"
-              placeholder="Chose Building"
+              placeholder="Choose Building"
               value
               :options="place.descendants"
               :show-labels="false"

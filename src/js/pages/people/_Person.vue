@@ -18,6 +18,13 @@
             :src="image.url"
           />
         </div>
+        <div v-else class="pt-8 pr-6" style="flex: 4;">
+          <img
+            class="m-auto object-contain"
+            style="max-width: 256px;"
+            src="/uploads/people/photos/Oak Leaf avatar.jpg"
+          />
+        </div>
         <div style="flex: 8;">
           <div class="xl:pt-8 lg:pt-4, md-pt-4">
             <div class="pt-4" v-for="role in person.personRoles" :key="role.id">

@@ -44,7 +44,7 @@
             <multi-select
               track-by="id"
               label="title"
-              placeholder="Chose Destination"
+              placeholder="Choose Destination"
               value
               :options="place.descendants"
               :show-labels="false"
