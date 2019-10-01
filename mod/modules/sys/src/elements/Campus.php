@@ -51,13 +51,6 @@ class Campus extends Place
                 );
             }
 
-            $place->values['maps'] = [
-                [
-                    'image' => $place->campusMap[0]['url'] ?? null,
-                    'markers' => ['x' => 10, 'y' => 10]
-                ]
-            ];
-
             unset($place->values['buildingPhoto']);
             unset($place->values['floorMap']);
         }

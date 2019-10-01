@@ -1,20 +1,29 @@
 <template>
   <div class="p-8">
-    <div class="mx-auto" style="display: grid; grid-template-rows: 1fr 1fr; max-width: 65%; height: 100vh">
-      <section class="@search__results">
-        <div v-if="results.length" class="animated slideInDown overflow-y-scroll overflow-x-hidden" style="max-height: 50vh">
+    <div
+      class="mx-auto"
+      style="display: grid; grid-template-rows: 1fr 1fr; max-width: 65%; height: 100vh"
+    >
+      <section class="relative @search__results">
+        <div
+          v-if="results.length"
+          class="animated slideInDown absolute inset-x-0 bottom-0 px-4 overflow-y-scroll overflow-x-hidden"
+          style="max-height: 50vh"
+        >
           <h2 class="font-thin text-2xl uppercase text-white">Results</h2>
-          <div class="flex flex-wrap -mx-2 lg:-mx-4">
-            <a
+          <!-- creates search box -->
+          <div class="flex flex-wrap -mx-2 lg:-mx-2">
+            <router-link
               class="block w-full lg:w-1/2 xl:w-1/3 flex my-2 px-2 lg:my-4 lg:px-4"
               v-for="result in results"
               :key="result.id"
-              @click.prevent="navigate(result, $event)"
+              :to="{name: result.type, params: { id: result.id}}"
+              @click.native="handleCardClick"
             >
-              <div class="flex-1 p-4 border border-gray-300 bg-white">
+              <div class="flex-1 px-4 py-2 border border-gray-300 bg-white">
                 <p class="font-thin text-xl">{{ result.title }}</p>
               </div>
-            </a>
+            </router-link>
           </div>
         </div>
       </section>
@@ -86,20 +95,20 @@ export default {
   },
   computed: {
     theme() {
-      return this.$store.state.app.theme
+      return this.$store.state.app.theme;
     },
     styles() {
       return {
-        search: [
-          `color: #fff`
-        ].concat(this.theme.search.styles || []).join(";"),
-        searchControls: [
-          `background-color: ${this.theme.colors.primary}`
-        ].join(";"),
+        search: [`color: #fff`]
+          .concat(this.theme.search.styles || [])
+          .join(";"),
+        searchControls: [`background-color: ${this.theme.colors.primary}`].join(
+          ";"
+        ),
         keyboard: `color: #111`,
-        keyboardContainer: '',
-      }
-    },
+        keyboardContainer: ""
+      };
+    }
   },
   methods: {
     search() {
@@ -119,6 +128,9 @@ export default {
           this.searching = false;
         })
         .catch(error => console.error(error));
+    },
+    handleCardClick() {
+      this.$store.commit("setSearchIsOpen", false)
     },
     handleKeyboardChange(input) {
       this.input = input;
@@ -141,13 +153,6 @@ export default {
           console.log(button);
           break;
       }
-    },
-    navigate(place, event) {
-      console.log(place, event)
-      this.$store.commit('setSearchIsOpen', false)
-      this.$nextTick(() => {
-        this.$router.push({name: 'person', params: {id: place.id} })
-      })
     }
   }
 };

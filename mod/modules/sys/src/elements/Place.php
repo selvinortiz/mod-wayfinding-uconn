@@ -18,6 +18,13 @@ class Place extends Element
     public $sectionId = 2;
 
     /**
+     * When a user is at a Kiosk
+     *
+     * @var Place
+     */
+    public $location = null;
+
+    /**
      * When converting a place to array, its values will be stored here
      *
      * @var array
@@ -92,28 +99,107 @@ class Place extends Element
             }
         }
 
-        if (($map = $this->mapUrl()))
-        {
-            $values['maps'] = [
-                [
-                    'markers' => [$this->placeMarker ?? null],
-                    'image'   => $this->mapUrl()
-                ]
-            ];
-        }
+        $values['maps'] = $this->values['maps'] ?? [];
 
         return $values;
     }
 
-    public function mapUrl()
+    public function prepareMaps()
     {
-        if (!$this->parent) {
-            return null;
+        $maps = [];
+
+        switch($this->type->handle)
+        {
+            case 'campus':
+            {
+                if ($this->campusMap)
+                {
+                    $maps[] = [
+                        'image'   => $this->createMapUrl('campus', $this->id),
+                        'markers' => []
+                    ];
+                }
+            }
+            case 'building':
+            {
+                if ($this->parent && $this->parent->campusMap)
+                {
+                    $markerIds = [$this->id];
+
+                    if ($this->location && $this->location->id !== $this->id)
+                    {
+                        $markerIds[] = $this->location->id;
+                    }
+
+                    $maps[] = [
+                        'image'   => $this->createMapUrl('campus', $this->parent->id),
+                        'markers' => [$this->placeMarker ?? null]
+                    ];
+
+                    $maps[] = [
+                        'image'   => $this->createMapUrl('floor', $this->descendants[0]->id, $markerIds),
+                        'markers' => []
+                    ];
+                }
+            }
+            case 'room':
+            {
+                if ($this->parent && $this->parent->floorMap)
+                {
+                    $markerIds = [$this->id];
+
+                    if ($this->location)
+                    {
+                        $markerIds[] = $this->location->id;
+                    }
+
+                    $parents = $this->ancestors;
+
+                    $maps[] = [
+                        'image'   => $this->createMapUrl('campus', $parents[0]->id),
+                        'markers' => [$parents[1]->placeMarker ?? null]
+                    ];
+
+                    $maps[] = [
+                        'image'   => $this->createMapUrl('room', $parents[2]->id, $markerIds),
+                        'markers' => [$this->placeMarker ?? null]
+                    ];
+                }
+            }
         }
 
-        $type = $this->type->handle;
+        // if (($mapUrl = $this->mapUrl()))
+        // {
+        //     $values['maps'] = [
+        //         [
+        //             'image'   => $mapUrl,
+        //             'markers' => [$this->placeMarker ?? null],
+        //         ]
+        //     ];
+        // }
 
-        $url = sprintf('maps/%s/%s/%s.svg', $type, $this->parent->id, $this->id);
+        $this->values['maps'] = $maps;
+
+        return $this;
+    }
+
+    /**
+     * @param string $mapType (campus|floor|room)
+     * @param int    $mapId ID of the place with the map (Campus or Floor)
+     * @param array  $markerIds IDs of places marked on the map
+     *
+     * @return void
+     */
+    private function createMapUrl($mapType, $mapId, $markerIds = [])
+    {
+        if (empty($markerIds))
+        {
+            $url = sprintf('maps/%s/%s.svg', $mapType, $mapId);
+        }
+        else
+        {
+            $url = sprintf('maps/%s/%s/%s.svg', $mapType, $mapId, implode(',', array_filter($markerIds)));
+        }
 
         return UrlHelper::url($url);
     }

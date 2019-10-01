@@ -21,16 +21,16 @@ class AppController extends Controller
 
         if ($kioskId)
         {
-            $kiosk = Building::query()
-                ->id($kioskId)
+            $kiosk = Building::find()
                 ->with(['buildingPhoto'])
+                ->id($kioskId)
                 ->one() ?? new Building();
 
             $kiosk = $kiosk->values();
         }
         else
         {
-            $campus = Campus::query()
+            $campus = Campus::find()
             ->with(['campusMap', 'campusPhoto'])
             ->one() ?? new Campus();
 

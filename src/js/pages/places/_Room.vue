@@ -94,6 +94,9 @@ export default {
         defaultColor: [`color: ${this.theme.colors.primary}`].join(";")
       };
     },
+    kiosk() {
+      return this.$store.state.app.kiosk || { id: null };
+    },
     floor() {
       return this.place.ancestors[0] || {};
     },
@@ -106,10 +109,11 @@ export default {
   },
   methods: {
     fetch() {
+      const id         = this.$route.params.id;
+      const locationId = this.kiosk.id;
+
       axios
-        .post("/actions/sys/wayfinding/place", {
-          id: this.$route.params.id
-        })
+        .post("/actions/sys/wayfinding/place", { id, locationId })
         .then(response => {
           this.place = {
             ...response.data.place,

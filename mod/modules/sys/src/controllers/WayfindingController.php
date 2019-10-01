@@ -25,7 +25,7 @@ class WayfindingController extends Controller
 {
     protected $allowAnonymous = true;
 
-    public function actionGenerateCampusMap(int $campusId, string $buildingIds)
+    public function actionGenerateCampusMap(int $campusId, string $buildingIds = null)
     {
         $campus = Campus::query()
             ->with(['campusMap'])
@@ -37,16 +37,20 @@ class WayfindingController extends Controller
             throw new HttpException(404, 'Campus map not found');
         }
 
-        $buildings = Building::query()
-            ->id($buildingIds)
-            ->all();
+        if (!empty($buildingIds))
+        {
+            $buildingIds = explode(',', $buildingIds);
+            $buildings   = Building::query()
+                ->id($buildingIds)
+                ->all();
 
-        $markers = $this->generateMarkers($map, $buildings);
+            $markers = $this->generateMarkers($map, $buildings);
+        }
 
-        return sys()->web->asSvg($this->generateImage($map, $markers));
+        return sys()->web->asSvg($this->generateImage($map, $markers ?? []));
     }
 
-    public function actionGenerateFloorMap(int $floorId, string $roomIds)
+    public function actionGenerateFloorMap(int $floorId, string $roomIds = null)
     {
         $floor = Floor::query()
             ->with(['floorMap'])
@@ -58,11 +62,21 @@ class WayfindingController extends Controller
             throw new HttpException(404, 'Floor map not found');
         }
 
-        $rooms = Room::query()
-            ->id($roomIds)
-            ->all();
+        if (!empty($roomIds))
+        {
+            $roomIds = explode(',', $roomIds);
+            $rooms   = Room::query()
+                ->id($roomIds)
+                ->all();
+
+        }
+        else
+        {
+            $rooms = Room::query()->limit(1)->all();
+        }
 
         $markers = $this->generateMarkers($map, $rooms);
+
 
         return sys()->web->asSvg($this->generateImage($map, $markers));
     }
@@ -73,16 +87,42 @@ class WayfindingController extends Controller
      */
     public function actionPlace()
     {
-        $id    = sys()->web->param('id');
+        $id = sys()->web->param('id');
+
+        // Set when the user is at a Kiosk
+        $locationId = sys()->web->param('locationId');
+
         $place = Place::query()
-        ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
-        ->id($id)
-        ->one();
+            ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
+            ->id($id)
+            ->one();
 
         if (!$place)
         {
             return sys()->web->asJsonWithError('Did not find a place');
         }
+
+        /*
+            + User @Kiosk?
+                + @Kiosk in same building as target building
+                    + @Kiosk in same floor as target floor
+                        + Show single floor map with two markers
+                        - Show double floor map with 1 marker for source and 1 for target
+                    - Show campus map, then single floor map
+                - Show campus map, then single floor map
+        */
+
+        if ($locationId)
+        {
+            $location = Place::query()
+                ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
+                ->id($locationId)
+                ->one();
+
+            $place->location = $location;
+        }
+
+        $place->prepareMaps();
 
         $place = $place->values();
 
@@ -99,13 +139,15 @@ class WayfindingController extends Controller
     public function actionPlaceFirst()
     {
         $place = Place::query()
-        ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
-        ->one();
+            ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
+            ->one();
 
         if (!$place)
         {
             return sys()->web->asJsonWithError('Did not find a place');
         }
+
+        $place = $place->values();
 
         $place = $place->values();
 
@@ -154,9 +196,29 @@ class WayfindingController extends Controller
             return sys()->web->asJsonWithError('Did not find a person');
         }
 
+        $place = null;
+
+        if (!empty($person->personRelatedPlace))
+        {
+            $place = Place::query()
+                ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
+                ->id($person->personRelatedPlace[0]->id)
+                ->one();
+
+            if ($place)
+            {
+                $place->prepareMaps();
+
+                $place = $place->values();
+            }
+        }
+
+        $person          = $person->getFieldValues();
+        $person['place'] = $place;
+
         return sys()->web->asJson(
             'Found person',
-            ['person' => $person->getFieldValues()]
+            compact('person')
         );
     }
 
@@ -232,7 +294,7 @@ class WayfindingController extends Controller
         }, $places);
     }
 
-    private function generateImage(Asset $image, array $markers)
+    private function generateImage(Asset $image, array $markers = [])
     {
         // Is it an SVG?
         if (mb_stripos($image->getUrl(), '.svg') !== false)

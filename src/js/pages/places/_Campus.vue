@@ -2,13 +2,19 @@
   <content-loader :loaded="place.loaded" class="p-8">
     <section class="xl:flex flex-wrap">
       <div class="xl:w-1/2 xl:order-1 xl:pt-6">
-        <mod-map :place="place" class="xl:px-4"></mod-map>
+        <mod-map :place="place" :buttons="false" class="xl:px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
         <!-- Portrait pageheader above image and text for long titles -->
-        <div class="w-full mb-4">
+        <div v-if="photo" class="w-full mb-4">
           <page-header class="block xl:hidden lg:block md:block sm:block">
-            {{ place.campusName }} {{ place.type.name }}
+            {{ place.buildingName }} {{ place.type.name }}
+          </page-header>
+        </div>
+        <!-- landscape and Protrait header for no photo -->
+        <div v-else class="w-full mb-4">
+          <page-header class="block">
+            {{ place.buildingName }} {{ place.type.name }}
           </page-header>
         </div>
         <div class="w-1/2 pr-10">
@@ -16,8 +22,8 @@
             <ui-photo :photo="photo"></ui-photo>
             <p class="pt-4 text-xl xl:text-4xl">
               <!-- landscape pageheader -->
-              <page-header class="hidden xl:block md:hidden sm:hidden">
-                {{ place.campusName }} {{ place.type.name }}
+              <page-header v-if="photo" class="hidden xl:block md:hidden sm:hidden">
+                {{ place.buildingName }} {{ place.type.name }}
               </page-header>
             </p>
             <p class="pt-4">
@@ -32,7 +38,7 @@
             <multi-select
               track-by="id"
               label="buildingName"
-              placeholder="Chose Building"
+              placeholder="Choose Building"
               value
               :options="place.descendants"
               :show-labels="false"
@@ -85,22 +91,12 @@ export default {
     };
   },
   created() {
-    const id = this.$route.params.id;
-    const action = id
-      ? "/actions/sys/wayfinding/place"
-      : "/actions/sys/wayfinding/place-first";
-
-    axios
-      .post(action, { id })
-      .then(response => {
-        this.place = {
-          ...response.data.place,
-          loaded: true
-        };
-      })
-      .catch(error => console.error(error));
+    this.fetch();
   },
   computed: {
+    kiosk() {
+      return this.$store.state.app.kiosk || { id: null };
+    },
     theme() {
       return this.$store.state.app.theme;
     },
@@ -123,6 +119,22 @@ export default {
     }
   },
   methods: {
+    fetch() {
+      const id = this.$route.params.id;
+      const action = id
+        ? "/actions/sys/wayfinding/place"
+        : "/actions/sys/wayfinding/place-first";
+
+      axios
+        .post(action, { id, locationId: this.kiosk.id })
+        .then(response => {
+          this.place = {
+            ...response.data.place,
+            loaded: true
+          };
+        })
+        .catch(error => console.error(error));
+    },
     containerStyles() {
       return [`background-color: white`, `color: black`].join(";");
     },

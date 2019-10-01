@@ -21,10 +21,11 @@
               </page-header>
             </p>
             <p class="pt-4">
-              <span class="block font-bold pb-2">555-555-555</span>
+
+              <span class="block font-bold pb-2">555-555-5555</span>
             </p>
             <p class="pt-4">
-            <span class="block font-bold">{{ place.placeAddress }}</span> 
+            <span class="block font-bold">{{ place.placeAddress }}</span>
             <span class="block font-bold">
               {{ place.placeCity }}, {{ place.placeState }}
               {{ place.placeZipcode }}
@@ -33,7 +34,7 @@
 
             <p class="pt-4">
               <span
-                class="block h-40 xl:h-56 max-w-full overflow-y-auto"
+                class="block h-40 xl:h-56 max-w-full overflow-y-scroll"
                 v-html="place.buildingDescription"
               ></span>
             </p>
@@ -44,7 +45,7 @@
             <multi-select
               track-by="id"
               label="title"
-              placeholder="Chose Destination"
+              placeholder="Choose Destination"
               value
               :options="place.descendants"
               :show-labels="false"
@@ -58,8 +59,7 @@
                 class="cursor-pointer"
                 :style="styles.defaultColor"
                 @click="() => ($store.state.app.searchIsOpen = true)"
-                >Switch to SEARCH</a
-              >
+              >Switch to SEARCH</a>
             </div>
           </div>
         </div>
@@ -100,6 +100,9 @@ export default {
     this.fetch();
   },
   computed: {
+    kiosk() {
+      return this.$store.state.app.kiosk || { id: null };
+    },
     theme() {
       return this.$store.state.app.theme;
     },
@@ -124,7 +127,8 @@ export default {
     fetch() {
       axios
         .post("/actions/sys/wayfinding/place", {
-          id: this.$route.params.id
+          id: this.$route.params.id,
+          locationId: this.kiosk.id
         })
         .then(response => {
           this.place = {
