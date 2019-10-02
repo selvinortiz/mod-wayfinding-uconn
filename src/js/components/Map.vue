@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="flex flex-col">
     <div ref="container" class="@MAP__CONTAINER">
       <img
         ref="image"
@@ -13,16 +13,22 @@
         @pointerup="handleDragStop()"
       />
     </div>
+    <map-nav></map-nav>
   </section>
 </template>
 
 <script>
+import MapNav from './MapNav.vue';
+
 export default {
   props: {
     map: {
       type: Object,
       required: true,
     }
+  },
+  components: {
+    MapNav
   },
   data: () => ({
     zoomLevel: 1,
