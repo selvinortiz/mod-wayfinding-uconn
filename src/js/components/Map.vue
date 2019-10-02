@@ -1,19 +1,23 @@
 <template>
   <section class="flex flex-col">
-    <div ref="container" class="@MAP__CONTAINER">
+    <map-nav
+      @zoom-in="zoomIn"
+      @zoom-out="zoomOut"
+    />
+    <div ref="container" class="@MAP__CONTAINER overflow-hidden flex items-center justify-center" style="height: 600px;">
       <img
         ref="image"
         alt="Map Image"
         class="@MAP__IMAGE"
-        :src="image.src"
-        :style="`transform: scale(${zoomLevel}) translate(${translate.x}px, ${translate.y}px)`"
         draggable="false"
+        :src="map.image.src"
+        :style="`transform: scale(${zoom}) translate(${translate.x}px, ${translate.y}px); transition: ${drag.active ? 'none' : 'all'} .25s ease-in-out;`"
         @pointerdown="handleDragStart($event)"
         @pointermove="handleDrag($event)"
         @pointerup="handleDragStop()"
+        @pointerleave="handleDragStop()"
       />
     </div>
-    <map-nav></map-nav>
   </section>
 </template>
 
@@ -22,8 +26,8 @@ import MapNav from './MapNav.vue';
 
 export default {
   props: {
-    map: {
-      type: Object,
+    maps: {
+      type: Array,
       required: true,
     }
   },
@@ -31,8 +35,8 @@ export default {
     MapNav
   },
   data: () => ({
-    zoomLevel: 1,
-    zoomFactor: 0.5,
+    zoom: 1,
+    zoomBy: .5,
     translate: {
       x: 0,
       y: 0,
@@ -42,14 +46,32 @@ export default {
       x: 0,
       y: 0,
       active: false,
-    }
+    },
+    selectedMap: null,
   }),
   computed: {
-    image() {
-      return this.map.images[0]
+    map() {
+      if (!this.selectedMap) {
+        this.selectedMap = this.maps[0]
+      }
+
+      return this.selectedMap;
     }
   },
   methods: {
+    reset() {
+      this.zoom = this.map.zoom;
+      this.translate.x = 0;
+      this.translate.y = 0;
+      this.$refs.container.style.top = "0";
+      this.$refs.container.style.left = "0";
+    },
+    zoomIn() {
+      this.zoom < 16 ? (this.zoom += this.zoomBy) : null;
+    },
+    zoomOut() {
+      this.zoom > .5 ? (this.zoom -= this.zoomBy) : null;
+    },
     handleDrag() {
       if (this.drag.active) {
         var diffX = event.x - this.drag.x;
