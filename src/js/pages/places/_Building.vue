@@ -1,30 +1,35 @@
 <template>
   <content-loader :loaded="place.loaded" classes="p-8">
     <section class="xl:flex flex-wrap">
-      <div class="xl:w-1/2 xl:order-1 xl:pt-6">
+      <div class="xl:w-1/2 xl:order-1 xl:pt-6 lg:pb-6 md:pb-6">
         <mod-map :place="place" class="xl:px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
       <!-- Portrait pageheader above image and text for long titles -->
-        <div class="w-full mb-4">
+        <div v-if="photo" class="w-full xl:pb-0 lg:pb-4 md:pb-4">
           <page-header class="block xl:hidden lg:block md:block sm:block">
+            {{ place.buildingName }} {{ place.type.name }}
+          </page-header>
+        </div>
+         <!-- landscape and Protrait header for no photo -->
+        <div v-else class="w-full mb-6">
+          <page-header class="block">
             {{ place.buildingName }} {{ place.type.name }}
           </page-header>
         </div>
         <div class="w-1/2 pr-10">
           <div>
-            <ui-photo :photo="photo"></ui-photo>
-            <p class="pt-4 text-xl xl:text-4xl">
+            <ui-photo :photo="photo" class="xl:pb-4 lg:pb-6 md:pb-6"></ui-photo>
+            <p v-if="photo" class="xl:pb-4">
               <!-- landscape pageheader -->
               <page-header class="hidden xl:block md:hidden sm:hidden">
                 {{ place.buildingName }} {{ place.type.name }}
               </page-header>
             </p>
-            <p class="pt-4">
-
-              <span class="block font-bold pb-2">555-555-5555</span>
+            <p class="pb-4">
+              <span class="block font-bold">555-555-5555</span>
             </p>
-            <p class="pt-4">
+            <p class="pb-4">
             <span class="block font-bold">{{ place.placeAddress }}</span>
             <span class="block font-bold">
               {{ place.placeCity }}, {{ place.placeState }}
@@ -32,7 +37,7 @@
             </span>
             </p>
 
-            <p class="pt-4">
+            <p class="pb-4">
               <span
                 class="block h-40 xl:h-56 max-w-full overflow-y-scroll"
                 v-html="place.buildingDescription"
