@@ -1,12 +1,5 @@
 <template>
   <section class="flex flex-col">
-    <map-nav
-      @zoom-in="zoomIn"
-      @zoom-out="zoomOut"
-      @reset-map="reset"
-      @select-campus-map="selectCampusMap"
-      @select-building-map="selectBuildingMap"
-    />
     <div
       class="@CONTAINER relative flex items-center justify-center overflow-hidden"
       style="height: 40vh;"
@@ -15,7 +8,7 @@
         alt
         class="@IMAGE"
         draggable="false"
-        :src="map.image.src"
+        :src="map.activeImage.src"
         :style="styles.image"
         @pointerdown="handleDragStart($event)"
         @pointermove="handleDrag($event)"
@@ -24,23 +17,29 @@
       />
 
       <div class="absolute top-0 right-0 py-4 px-8 m-4 text-right bg-white opacity-50">
-        <h1 class="font-bold">Rowe Building</h1>
-        <h2>Floor 1</h2>
+        <h1 class="font-bold">{{ map.activeImage.title || map.title }}</h1>
+        <h2>{{ map.activeImage.subtitle || map.subtitle }}</h2>
       </div>
 
-      <div
-        v-if="selectableBuildingMap"
-        class="absolute bottom-0 right-0 py-4 px-8 m-4 bg-white opacity-50"
-      >
+      <div v-if="map.thumbnailImage" class="absolute bottom-0 right-0 p-2 m-4 bg-white opacity-75">
         <img
           alt
-          class="@THUMB w-full max-w-sm"
+          class="@THUMB w-full shadow"
+          style="max-width: 125px;"
           draggable="false"
-          :src="selectableBuildingMap.image.src"
-          @click="selectMap(selectableBuildingMap)"
+          :src="map.thumbnailImage.src"
+          @click="toggleMapImage()"
         />
       </div>
     </div>
+    <map-nav
+      @zoom-in="zoomIn"
+      @zoom-out="zoomOut"
+      @reset-map="reset"
+      @select-campus-map="selectCampusMap"
+      @select-building-map="selectBuildingMap"
+      :selected-map-type="map.type || 'campus'"
+    />
   </section>
 </template>
 
@@ -60,17 +59,15 @@ export default {
   data: () => ({
     zoomBy: 0.5,
     selectedMap: null,
+    selectedMapImage: null
   }),
   computed: {
     map() {
       if (!this.selectedMap) {
-        this.selectMap(this.maps[0]);
+        this.setSelectedMap(this.maps[0]);
       }
 
       return this.selectedMap;
-    },
-    selectableBuildingMap() {
-      return this.maps[2]
     },
     styles() {
       return {
@@ -98,12 +95,12 @@ export default {
       this.map.zoom > 0.5 ? (this.map.zoom -= this.zoomBy) : null;
     },
     selectCampusMap() {
-      this.selectMap(this.maps[0]);
+      this.setSelectedMap(this.maps[0]);
     },
     selectBuildingMap() {
-      this.selectMap(this.maps[1]);
+      this.setSelectedMap(this.maps[1]);
     },
-    selectMap(map) {
+    setSelectedMap(map) {
       this.selectedMap = map;
 
       if (!this.selectedMap.hasOwnProperty("defaultZoom")) {
@@ -117,6 +114,32 @@ export default {
       if (!this.selectedMap.hasOwnProperty("drag")) {
         this.$set(this.selectedMap, "drag", { x: 0, y: 0, active: false });
       }
+
+      if (!this.selectedMap.hasOwnProperty("activeImage")) {
+        this.$set(this.selectedMap, "activeImage", this.selectedMap.images[0]);
+      }
+      if (
+        !this.selectedMap.hasOwnProperty("thumbnailImage") &&
+        this.selectedMap.images.length > 1
+      ) {
+        this.$set(
+          this.selectedMap,
+          "thumbnailImage",
+          this.selectedMap.images[1]
+        );
+      }
+    },
+    toggleMapImage() {
+      const activeImage = {
+        ...this.map.thumbnailImage
+      };
+
+      const thumbnailImage = {
+        ...this.map.activeImage
+      };
+
+      this.$set(this.map, "activeImage", activeImage);
+      this.$set(this.map, "thumbnailImage", thumbnailImage);
     },
     handleDrag() {
       if (this.map.drag.active) {

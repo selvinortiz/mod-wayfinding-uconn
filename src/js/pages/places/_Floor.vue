@@ -19,21 +19,30 @@ export default {
       maps: [
         {
           zoom: 2,
-          image: {
-            src: "http://uconn.madebymod.com/maps/campus/90828.svg"
-          }
+          type: 'campus',
+          title: 'Row Building',
+          subtitle: '',
+          images: [
+            {
+              src: "http://uconn.madebymod.com/maps/campus/90828.svg"
+            }
+          ]
         },
         {
           zoom: 1,
-          image: {
-            src: "http://uconn.madebymod.com/maps/room/91042/91044.svg"
-          }
-        },
-        {
-          zoom: 1,
-          image: {
-            src: "http://uconn.madebymod.com/maps/floor/91042/91040.svg"
-          }
+          type: 'building',
+          title: 'Information Technology Building',
+          subtitle: 'Floor 1',
+          images: [
+            {
+              src: "http://uconn.madebymod.com/maps/room/91042/91044.svg"
+            },
+            {
+              src: "http://uconn.madebymod.com/maps/floor/91042/91040.svg",
+              title: 'Rowe Building',
+              subtitle: 'Floor 3'
+            }
+          ]
         }
       ]
     };
