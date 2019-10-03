@@ -2,7 +2,7 @@
   <div :style="styles.container">
     <app-slides v-if="isWelcomeScreen"></app-slides>
     <div class="@page absolute z-10 w-full h-full" :class="{ 'bg-gray-100': !isWelcomeScreen }">
-      <header class="@page__header flex items-center justify-between px-8 opacity-95" :style="styles.header">
+      <header class="@page__header flex items-center justify-between px-16 opacity-95" :style="styles.header">
         <app-logo></app-logo>
         <div>
           <mod-clock>

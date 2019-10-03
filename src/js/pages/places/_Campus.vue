@@ -1,5 +1,5 @@
 <template>
-  <content-loader :loaded="place.loaded" class="p-8">
+  <content-loader :loaded="place.loaded" class="p-16">
     <section class="xl:flex flex-wrap">
       <div class="xl:w-1/2 xl:order-1 xl:pt-6">
         <mod-map :place="place" :buttons="false" class="xl:px-4"></mod-map>
@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="w-1/2">
-          <div class="px-4">
+          <div class="pr-6">
             <multi-select
               track-by="id"
               label="buildingName"
