@@ -29,20 +29,22 @@
         </template>
       </div>
 
-      <div v-if="buttons" class="flex items-center justify-between mt-4" style="flex: 2;">
+      <div class="flex items-center justify-between mt-4" style="flex: 2;">
         <div>
           <button
+            v-if="buttons"
             class="py-2 px-4 uppercase border outline-none focus:outline-none"
             :style="`${selectedMapIndex === 0 ? styles.buttons.active : styles.buttons.normal}`"
             @click="() => selectedMapIndex = 0"
           >Campus Map</button>
           <button
+            v-if="buttons"
             class="ml-4 py-2 px-4 uppercase border outline-none focus:outline-none"
             :style="`${selectedMapIndex === 1 ? styles.buttons.active : styles.buttons.normal}`"
             @click="() => selectedMapIndex = 1"
           >Building Map</button>
         </div>
-        <div>
+        <div class="self-end">
           <button
             class="ml-4 text-gray-600 outline-none focus:outline-none"
             style="width: 28px;"
