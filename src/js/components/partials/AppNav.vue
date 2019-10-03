@@ -10,8 +10,8 @@
           :style="applyStyles(link)"
         >
           <p class="flex cursor-pointer">
-            <img class="icon" :src="`/static/icons/${link.icon}`" alt />
-            <span v-html="link.title"></span>
+            <img :class="classes.icon" :src="`/static/icons/${link.icon}`" alt />
+            <span class="pt-2" v-html="link.title"></span>
           </p>
         </router-link>
 
@@ -22,9 +22,9 @@
           :style="applyStyles(link)"
           @click="action(link.id)"
         >
-          <p class="flex cursor-pointer">
-            <img class="icon" :src="`/static/icons/${link.icon}`" alt />
-            <span v-html="link.title"></span>
+          <p class="flex cursor-pointer text-2x1">
+            <img :class="classes.icon" :src="`/static/icons/${link.icon}`" alt />
+            <span class="pt-2" v-html="link.title"></span>
           </p>
         </a>
 
@@ -36,8 +36,8 @@
           @click="service(link.url)"
         >
           <p class="flex cursor-pointer">
-            <img class="icon" :src="`/static/icons/${link.icon}`" alt />
-            <span v-html="link.title"></span>
+            <img :class="classes.icon" :src="`/static/icons/${link.icon}`" alt />
+            <span class="pt-2" v-html="link.title"></span>
           </p>
         </a>
       </div>
@@ -79,9 +79,8 @@ export default {
     classes() {
       return {
         container: [].concat(this.theme.nav.classes).join(" "),
-        link: ["p-6", "justify-around"]
-          .concat(this.theme.nav.link.classes)
-          .join(" ")
+        link: [].concat(this.theme.nav.link.classes).join(" "),
+        icon: [].concat(this.theme.nav.link.icon.classes).join(" ")
       };
     }
   },

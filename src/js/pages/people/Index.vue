@@ -1,7 +1,7 @@
 <template>
   <content-loader
     :loaded="loaded.people && loaded.departments"
-    classes="flex flex-wrap"
+    classes="flex flex-wrap p-16"
   >
     <div
       v-if="!this.people.length"
@@ -14,12 +14,13 @@
     </div>
     <div
       v-else
-      class="w-full p-4 overflow-y-scroll overflow-x-hidden"
+      class="w-full overflow-y-scroll overflow-x-hidden"
       style="height: 60vh"
     >
-      <page-header>Directory</page-header>
-
-      <div class="flex flex-wrap -mx-2 xl:-mx-4">
+      <div class="pb-4">
+      <page-header class="uppercase">Directory</page-header>
+      </div>
+      <div class="flex flex-wrap">
         <div
           class="w-1/2 max-h-screen sm:w-1/4 md:w-1/4 xl:w-1/6 lg:w-1/4 flex my-2 px-0 xl:px-0 lg:px-0"
           v-for="person in people"

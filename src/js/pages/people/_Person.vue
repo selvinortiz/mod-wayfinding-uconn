@@ -1,24 +1,25 @@
 <template>
-  <content-loader :loaded="person.loaded" class="p-8">
+  <content-loader :loaded="person.loaded" class="p-16">
     <section class="xl:flex flex-wrap">
       <div class="xl:w-1/2 xl:order-1">
         <mod-map :place="place" class="xl:px-4"></mod-map>
       </div>
-      <div class="w-full flex flex-wrap xl:w-1/2 pt-4">
+      <div class="w-full flex flex-wrap xl:w-1/2">
         <h2
-          class="w-full font-thin text-4xl leading-none uppercase xl:pt-0 lg:pt-6 md:pt-6"
+          class="w-full font-thin text-4xl leading-none uppercase xl:pb-6 xl:pt-0 lg:py-8 md:py-8"
           :style="`color: ${theme.colors.primary}`"
         >
           {{ person.personFirstName }} {{ person.personLastName }}
         </h2>
-        <div v-if="image" class="pt-8 pr-6" style="flex: 4;">
+        <div v-if="image" class="pr-6" style="flex: 4;">
           <img
             class="m-auto object-contain"
             style="max-width: 256px;"
             :src="image.url"
           />
+
         </div>
-        <div v-else class="pt-8 pr-6" style="flex: 4;">
+        <div v-else class="pr-6" style="flex: 4;">
           <img
             class="m-auto object-contain"
             style="max-width: 256px;"
@@ -26,19 +27,19 @@
           />
         </div>
         <div style="flex: 8;">
-          <div class="xl:pt-8 lg:pt-4, md-pt-4">
-            <div class="pt-4" v-for="role in person.personRoles" :key="role.id">
+          <div>
+            <div class="pb-4" v-for="role in person.personRoles" :key="role.id">
               <p class="font-bold">{{ role.roleTitle }}</p>
               <p>{{ role.roleDepartment[0].title }}</p>
             </div>
 
-            <div class="pt-4">
+            <div class="pb-4">
               <p class="font-bold">{{ building }} Building</p>
               <p class="font-normal">Suite: {{ room }}</p>
               <p class="font-normal">Floor: {{ floor }}</p>
             </div>
 
-            <div class="pt-4">
+            <div class="pb-4">
               <p>{{ person.personAddress }}</p>
               <p>{{ person.personCity }}</p>
               <p>{{ person.personState }} {{ person.personZipcode }}</p>
@@ -54,15 +55,15 @@
               >
             </div> -->
 
-            <div class="pt-4">
+            <div class="pb-4">
               <p class="font-bold">{{ person.personPhone }}</p>
-              <p class="font-bold mb-4">{{ person.personEmail }}</p>
+              <p class="font-bold">{{ person.personEmail }}</p>
             </div>
 
             <!-- <div class="font-bold">Building Name</div>
               <div>Suite #</div>
             <div class="mb-4">Floor #</div>-->
-            <div class="pt-4" v-html="person.personDescription"></div>
+            <div class="h-40 xl:h-56 w-4/5 overflow-y-auto" v-html="person.personDescription"></div>
           </div>
         </div>
       </div>

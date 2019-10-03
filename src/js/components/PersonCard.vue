@@ -1,11 +1,11 @@
 <template>
   <router-link
-    class="flex-1 flex p-4 cursor-pointer bg-white border border-gray-200 hover:bg-gray-200"
+    class="flex-1 flex cursor-pointer bg-white border border-gray-200 hover:bg-gray-200"
     :to="{ name: 'person', params: { id: person.id } }"
   >
     <!-- <img class="block p-2" src="/static/img/avatar.svg" style="max-height: 80px;" /> -->
 
-    <div class="w-full shadow-md" :style="styles.background">
+    <div class="w-full shadow-md mr-4" :style="styles.background">
       <div v-if="directoryPhoto">
         <img v-if="role.imageurl" :src="role.imageurl" />
         <img v-else src="/uploads/people/photos/GenericAvatar.jpg" />

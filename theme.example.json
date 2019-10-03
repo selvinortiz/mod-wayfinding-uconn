@@ -15,7 +15,7 @@
     "hot": "#d81835"
   },
   "font": {
-    "family": "Raleway, sans-serif"
+    "family": "Work Sans, sans-serif"
   },
   "header": {
     "bg": {
@@ -71,11 +71,20 @@
       "fg": "#333",
       "styles": [],
       "classes": [
-        "uppercase"
+        "text-xl",
+        "justify-around",
+        "uppercase",
+        "p-6"
       ],
       "active": {
         "bg": "#b6e",
         "fg": "#000"
+      },
+      "icon": {
+        "classes": [
+          "w-10",
+          "mr-2"
+        ]
       }
     }
   },
