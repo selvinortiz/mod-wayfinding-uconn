@@ -1,19 +1,19 @@
 <template>
   <section class="h-screen">
-    <div class="p-4 overflow-hidden bg-red-200" style="height: 40vh;">
+    <div class="overflow-hidden">
       <mod-map :maps="maps" />
     </div>
-    <div class="p-4 overflow-hidden bg-blue-200" style="height: 40vh;">
-      <h1>Place info goes here</h1>
+    <div class="verflow-hidden">
+      <h1>Place Information</h1>
     </div>
   </section>
 </template>
 
 <script>
-import Map from "../../components/Map.vue";
+import ModMap from "../../components/Map.vue";
 
 export default {
-  components: { "mod-map": Map },
+  components: { ModMap },
   data() {
     return {
       maps: [

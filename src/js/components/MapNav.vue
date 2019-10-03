@@ -13,6 +13,12 @@
         :style="styles.buttons.active"
         @click="$emit('select-building-map')"
       >Building Map</button>
+      <button
+        v-if="buttons"
+        class="ml-4 py-2 px-4 uppercase border outline-none focus:outline-none"
+        :style="styles.buttons.normal"
+        @click="$emit('reset-map')"
+      >Reset Map</button>
     </div>
     <div class="self-end">
       <button

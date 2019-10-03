@@ -3,15 +3,17 @@
     <map-nav
       @zoom-in="zoomIn"
       @zoom-out="zoomOut"
+      @reset-map="reset"
+      @select-campus-map="selectCampusMap"
+      @select-building-map="selectBuildingMap"
     />
-    <div ref="container" class="@MAP__CONTAINER overflow-hidden flex items-center justify-center" style="height: 600px;">
+    <div class="@CONTAINER flex items-center justify-center overflow-hidden" style="height: 40vh;">
       <img
-        ref="image"
-        alt="Map Image"
-        class="@MAP__IMAGE"
+        alt
+        class="@IMAGE"
         draggable="false"
         :src="map.image.src"
-        :style="`transform: scale(${zoom}) translate(${translate.x}px, ${translate.y}px); transition: ${drag.active ? 'none' : 'all'} .25s ease-in-out;`"
+        :style="styles.image"
         @pointerdown="handleDragStart($event)"
         @pointermove="handleDrag($event)"
         @pointerup="handleDragStop()"
@@ -22,77 +24,100 @@
 </template>
 
 <script>
-import MapNav from './MapNav.vue';
+import MapNav from "./MapNav.vue";
 
 export default {
   props: {
     maps: {
       type: Array,
-      required: true,
+      required: true
     }
   },
   components: {
     MapNav
   },
   data: () => ({
-    zoom: 1,
-    zoomBy: .5,
+    zoomBy: 0.5,
     translate: {
       x: 0,
       y: 0,
-      active: false,
+      active: false
     },
     drag: {
       x: 0,
       y: 0,
-      active: false,
+      active: false
     },
-    selectedMap: null,
+    selectedMap: null
   }),
   computed: {
     map() {
       if (!this.selectedMap) {
-        this.selectedMap = this.maps[0]
+        this.selectMap(this.maps[0]);
       }
 
       return this.selectedMap;
+    },
+    styles() {
+      return {
+        image: [
+          `transform: scale(${this.map.zoom}) translate(${this.map.translate.x}px, ${this.map.translate.y}px)`,
+          `transition: ${this.map.drag.active ? "none" : "all"} .25s ease-in-out`,
+          `height: 100%`,
+          `margin: auto`
+        ].join(";")
+      };
     }
   },
   methods: {
     reset() {
-      this.zoom = this.map.zoom;
-      this.translate.x = 0;
-      this.translate.y = 0;
-      this.$refs.container.style.top = "0";
-      this.$refs.container.style.left = "0";
+      this.map.zoom = this.map.defaultZoom;
+      this.map.translate.x = 0;
+      this.map.translate.y = 0;
     },
     zoomIn() {
-      this.zoom < 16 ? (this.zoom += this.zoomBy) : null;
+      this.map.zoom < 16 ? (this.map.zoom += this.zoomBy) : null;
     },
     zoomOut() {
-      this.zoom > .5 ? (this.zoom -= this.zoomBy) : null;
+      this.map.zoom > 0.5 ? (this.map.zoom -= this.zoomBy) : null;
+    },
+    selectCampusMap() {
+      this.selectMap(this.maps[0]);
+    },
+    selectBuildingMap() {
+      this.selectMap(this.maps[1]);
+    },
+    selectMap(map) {
+      this.selectedMap = {
+        zoom: 1,
+        translate: { x: 0, y: 0 },
+        drag: { x: 0, y: 0, active: false },
+        ...map
+      };
+
+      this.selectedMap.defaultZoom = this.selectedMap.zoom;
     },
     handleDrag() {
-      if (this.drag.active) {
-        var diffX = event.x - this.drag.x;
-        var diffY = event.y - this.drag.y;
+      if (this.map.drag.active) {
+        var diffX = event.x - this.map.drag.x;
+        var diffY = event.y - this.map.drag.y;
 
-        this.translate.x += diffX;
-        this.translate.y += diffY;
+        this.map.translate.x += diffX;
+        this.map.translate.y += diffY;
 
-        this.drag.x = event.x;
-        this.drag.y = event.y;
+        this.map.drag.x = event.x;
+        this.map.drag.y = event.y;
       }
     },
     handleDragStart() {
-      this.drag = {
+      this.map.drag = {
         x: event.x,
         y: event.y,
         active: true
-      }
+      };
     },
     handleDragStop() {
-      this.drag.active = false;
+      this.map.drag.active = false;
     }
   }
 };
