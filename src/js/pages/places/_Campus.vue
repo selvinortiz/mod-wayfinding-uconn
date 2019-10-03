@@ -63,9 +63,15 @@
 </template>
 
 <style>
+.multiselect__select:before {
+  top: 80%;
+  color: #000e2f;
+  border-color: #000e2f transparent transparent transparent;
+  border-width: 12px 12px 0;
+}
 .multiselect__option--highlight {
-  color: #333;
-  background-color: #ddd;
+  color: #fff;
+  background-color: #000e2f;
 }
 .multiselect__tags {
   border: 2px solid #000e2f;

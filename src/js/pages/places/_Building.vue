@@ -5,30 +5,30 @@
         <mod-map :place="place" class="xl:px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
-      <!-- Portrait pageheader above image and text for long titles -->
+        <!-- Portrait pageheader above image and text for long titles -->
         <div class="w-full mb-4">
-          <page-header class="block xl:hidden lg:block md:block sm:block">
-            {{ place.buildingName }} {{ place.type.name }}
-          </page-header>
+          <page-header
+            class="block xl:hidden lg:block md:block sm:block"
+          >{{ place.buildingName }} {{ place.type.name }}</page-header>
         </div>
         <div class="w-1/2 pr-10">
           <div>
             <ui-photo :photo="photo"></ui-photo>
             <p class="pt-4 text-xl xl:text-4xl">
               <!-- landscape pageheader -->
-              <page-header class="hidden xl:block md:hidden sm:hidden">
-                {{ place.buildingName }} {{ place.type.name }}
-              </page-header>
+              <page-header
+                class="hidden xl:block md:hidden sm:hidden"
+              >{{ place.buildingName }} {{ place.type.name }}</page-header>
             </p>
             <p class="pt-4">
               <span class="block font-bold pb-2">555-555-5555</span>
             </p>
             <p class="pt-4">
-            <span class="block font-bold">{{ place.placeAddress }}</span>
-            <span class="block font-bold">
-              {{ place.placeCity }}, {{ place.placeState }}
-              {{ place.placeZipcode }}
-            </span>
+              <span class="block font-bold">{{ place.placeAddress }}</span>
+              <span class="block font-bold">
+                {{ place.placeCity }}, {{ place.placeState }}
+                {{ place.placeZipcode }}
+              </span>
             </p>
 
             <p class="pt-4">
@@ -46,11 +46,15 @@
               label="title"
               placeholder="Choose Destination"
               value
-              :options="place.descendants"
+              :options="options"
               :show-labels="false"
               :allow-empty="true"
               @input="handleSelectedPlace"
-            ></multi-select>
+            >
+              <template slot="option" slot-scope="{ option }">
+                <p class="cursor-pointer">{{ option.title }}</p>
+              </template>
+            </multi-select>
 
             <div class="pt-4">
               Don&rsquo;t see what you&rsquo;re looking for?
@@ -68,9 +72,15 @@
 </template>
 
 <style>
+.multiselect__select:before {
+  top: 80%;
+  color: #000e2f;
+  border-color: #000e2f transparent transparent transparent;
+  border-width: 12px 12px 0;
+}
 .multiselect__option--highlight {
-  color: #333;
-  background-color: #ddd;
+  color: #fff;
+  background-color: #000e2f;
 }
 .multiselect__tags {
   border: 2px solid #000e2f;
@@ -115,6 +125,15 @@ export default {
         width: 0,
         height: 0
       };
+    },
+    options() {
+      return this.place.descendants.map(item => {
+        if (item.type.handle === "floor") {
+          item["$isDisabled"] = true;
+        }
+
+        return item;
+      });
     },
     styles() {
       return {
