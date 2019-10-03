@@ -4,39 +4,33 @@
       <div class="xl:w-2/3 xl:order-1 xl:pt-6 lg:w-full lg:order-1">
         <mod-map :place="place" class="xl:px-4"></mod-map>
       </div>
-      <div class="flex flex-wrap w-full pr-6 xl:w-1/3 lg:full lg:pr-0">
+      <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
         <div class="w-full mb-4">
-          <page-header class="block">{{ place.title }}</page-header>
+          <page-header class="block xl:hidden lg:block md:block sm:block">{{ place.title }}</page-header>
         </div>
-        <div class="w-full xl:w-full lg:w-1/2 lg:pr-10">
+        <div class="w-1/2 pr-10">
           <div>
             <ui-photo :photo="photo"></ui-photo>
-          </div>
-        </div>
-        <div class="w-full xl:w-full xl:pt-4 lg:w-1/2">
-          <div>
-            <p>
-              <span class="block font-bold" :style="styles.defaultColor"
-                >{{ building.buildingName }} Building</span
-              >
+            <p class="pt-4 text-xl xl:text-4xl">
+              <!-- landscape pageheader -->
+              <page-header class="hidden xl:block md:hidden sm:hidden">{{ place.title }}</page-header>
             </p>
             <p class="pt-4">
-              <span class="block font-bold"
-                >Floor #: {{ floor.floorNumber }}</span
-              >
-              <span class="block font-bold"
-                >Suite #: {{ place.roomNumber }}</span
-              >
+              <span class="block font-bold">{{ building.buildingName }} Building</span>
+            </p>
+            <p class="pt-4">
+              <span class="block font-bold">Floor #: {{ floor.floorNumber }}</span>
+              <span class="block font-bold">Suite #: {{ place.roomNumber }}</span>
             </p>
             <p class="pt-4">
               <span class="block font-bold">555-555-5555</span>
             </p>
             <p class="pt-4">
               <span class="block font-bold">{{ building.placeAddress }}</span>
-              <span class="block font-bold"
-                >{{ building.placeCity }}, {{ building.placeState }}
-                {{ building.placeZipcode }}</span
-              >
+              <span class="block font-bold">
+                {{ building.placeCity }}, {{ building.placeState }}
+                {{ building.placeZipcode }}
+              </span>
             </p>
             <p class="pt-4">
               <span
@@ -46,10 +40,54 @@
             </p>
           </div>
         </div>
+        <div class="w-1/2">
+          <div class="px-4">
+            <multi-select
+              track-by="id"
+              label="title"
+              placeholder="Choose Destination"
+              value
+              :options="options"
+              :show-labels="false"
+              :allow-empty="true"
+              @input="handleSelectedPlace"
+            >
+              <template slot="option" slot-scope="{ option }">
+                <p class="cursor-pointer">{{ option.title }}</p>
+              </template>
+            </multi-select>
+
+            <div class="pt-4">
+              Don&rsquo;t see what you&rsquo;re looking for?
+              <a
+                class="cursor-pointer"
+                :style="styles.defaultColor"
+                @click="() => ($store.state.app.searchIsOpen = true)"
+              >Switch to SEARCH</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </content-loader>
 </template>
+
+<style>
+.multiselect__select:before {
+  top: 80%;
+  color: #000e2f;
+  border-color: #000e2f transparent transparent transparent;
+  border-width: 12px 12px 0;
+}
+.multiselect__option--highlight {
+  color: #fff;
+  background-color: #000e2f;
+}
+.multiselect__tags {
+  border: 2px solid #000e2f;
+  border-radius: 0;
+}
+</style>
 
 <script>
 import axios from "../../utils/Axios";
@@ -89,11 +127,6 @@ export default {
         height: 0
       };
     },
-    styles() {
-      return {
-        defaultColor: [`color: ${this.theme.colors.primary}`].join(";")
-      };
-    },
     kiosk() {
       return this.$store.state.app.kiosk || { id: null };
     },
@@ -105,11 +138,29 @@ export default {
     },
     campus() {
       return this.place.ancestors[2] || {};
+    },
+    options() {
+      if (!this.building || !this.building.descendants) {
+        return []
+      }
+
+      return this.building.descendants.map(item => {
+        if (item.type.handle === "floor") {
+          item["$isDisabled"] = true;
+        }
+
+        return item;
+      });
+    },
+    styles() {
+      return {
+        defaultColor: [`color: ${this.theme.colors.primary}`].join(";")
+      };
     }
   },
   methods: {
     fetch() {
-      const id         = this.$route.params.id;
+      const id = this.$route.params.id;
       const locationId = this.kiosk.id;
 
       axios
@@ -121,6 +172,16 @@ export default {
           };
         })
         .catch(error => console.error(error));
+    },
+    handleSelectedPlace(place) {
+      if (place && place.id) {
+        this.$router.push({
+          name: "room",
+          params: {
+            id: place.id
+          }
+        });
+      }
     }
   },
   watch: {
