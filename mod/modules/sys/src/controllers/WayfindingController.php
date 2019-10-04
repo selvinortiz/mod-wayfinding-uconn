@@ -11,7 +11,6 @@ use modules\sys\elements\Floor;
 use modules\sys\elements\Place;
 use modules\sys\elements\Person;
 use modules\sys\elements\Room;
-use yii\db\Query;
 use yii\web\HttpException;
 use yii\web\Response;
 use function modules\sys\sys;
@@ -25,6 +24,14 @@ class WayfindingController extends Controller
 {
     protected $allowAnonymous = true;
 
+    /**
+     * @param int         $campusId
+     * @param string|null $buildingIds
+     *
+     * @return Response
+     * @throws HttpException
+     * @throws \yii\base\Exception
+     */
     public function actionGenerateCampusMap(int $campusId, string $buildingIds = null)
     {
         $campus = Campus::query()
@@ -50,6 +57,14 @@ class WayfindingController extends Controller
         return sys()->web->asSvg($this->generateImage($map, $markers ?? []));
     }
 
+    /**
+     * @param int         $floorId
+     * @param string|null $roomIds
+     *
+     * @return Response
+     * @throws HttpException
+     * @throws \yii\base\Exception
+     */
     public function actionGenerateFloorMap(int $floorId, string $roomIds = null)
     {
         $floor = Floor::query()
@@ -83,7 +98,6 @@ class WayfindingController extends Controller
 
     /**
      * @return Response
-     * @throws HttpException
      */
     public function actionPlace()
     {
@@ -134,10 +148,12 @@ class WayfindingController extends Controller
 
     /**
      * @return Response
-     * @throws HttpException
      */
     public function actionPlaceFirst()
     {
+        // Set when the user is at a Kiosk
+        $locationId = sys()->web->param('locationId');
+
         $place = Place::query()
             ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
             ->one();
@@ -147,7 +163,27 @@ class WayfindingController extends Controller
             return sys()->web->asJsonWithError('Did not find a place');
         }
 
-        $place = $place->values();
+        /*
+            + User @Kiosk?
+                + @Kiosk in same building as target building
+                    + @Kiosk in same floor as target floor
+                        + Show single floor map with two markers
+                        - Show double floor map with 1 marker for source and 1 for target
+                    - Show campus map, then single floor map
+                - Show campus map, then single floor map
+        */
+
+        if ($locationId)
+        {
+            $location = Place::query()
+                ->with(['campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
+                ->id($locationId)
+                ->one();
+
+            $place->location = $location;
+        }
+
+        $place->prepareMaps();
 
         $place = $place->values();
 
@@ -159,7 +195,6 @@ class WayfindingController extends Controller
 
     /**
      * @return Response
-     * @throws HttpException
      */
     public function actionPlaces()
     {
@@ -175,7 +210,6 @@ class WayfindingController extends Controller
 
     /**
      * @return Response
-     * @throws HttpException
      */
     public function actionPerson()
     {
@@ -224,7 +258,6 @@ class WayfindingController extends Controller
 
     /**
      * @return Response
-     * @throws HttpException
      */
     public function actionPeople()
     {
@@ -255,7 +288,10 @@ class WayfindingController extends Controller
             }
         }
 
-        $people = $query->limit(50)->all();
+        $people = $query
+            ->orderBy('personLastName desc')
+            ->limit(100)
+            ->all();
 
         if (!$people)
         {
@@ -265,10 +301,8 @@ class WayfindingController extends Controller
         return sys()->web->asJson('Found people', compact('people'));
     }
 
-
     /**
      * @return Response
-     * @throws HttpException
      */
     public function actionDepartments()
     {
@@ -294,6 +328,13 @@ class WayfindingController extends Controller
         }, $places);
     }
 
+    /**
+     * @param Asset $image
+     * @param array $markers
+     *
+     * @return string
+     * @throws \yii\base\Exception
+     */
     private function generateImage(Asset $image, array $markers = [])
     {
         // Is it an SVG?
@@ -301,9 +342,7 @@ class WayfindingController extends Controller
         {
             return sys()->svg->fromSvg(
                 $image->getUrl(),
-                $markers,
-                $image->getWidth(),
-                $image->getHeight()
+                $markers
             );
         }
 

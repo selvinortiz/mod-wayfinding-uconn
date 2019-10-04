@@ -115,8 +115,14 @@ class Place extends Element
                 if ($this->campusMap)
                 {
                     $maps[] = [
-                        'image'   => $this->createMapUrl('campus', $this->id),
-                        'markers' => []
+                        'zoom'   => 2,
+                        'title'  => $this->campusName,
+                        'type'   => 'campus',
+                        'images' => [
+                            [
+                                'src' => $this->createMapUrl('campus', $this->id)
+                            ]
+                        ],
                     ];
                 }
             }
@@ -124,21 +130,26 @@ class Place extends Element
             {
                 if ($this->parent && $this->parent->campusMap)
                 {
-                    $markerIds = [$this->id];
-
-                    if ($this->location && $this->location->id !== $this->id)
-                    {
-                        $markerIds[] = $this->location->id;
-                    }
-
                     $maps[] = [
-                        'image'   => $this->createMapUrl('campus', $this->parent->id),
-                        'markers' => [$this->placeMarker ?? null]
+                        'zoom'     => 2,
+                        'type'     => 'campus',
+                        'title'    => $this->buildingName,
+                        'images'   => [
+                            [
+                                'src' => $this->createMapUrl('campus', $this->parent->id, [$this->id])
+                            ]
+                        ]
                     ];
 
                     $maps[] = [
-                        'image'   => $this->createMapUrl('floor', $this->descendants[0]->id, $markerIds),
-                        'markers' => []
+                        'type'     => 'building',
+                        'title'    => $this->buildingName,
+                        'subtitle' => $this->descendants[0]->title,
+                        'images'   => [
+                            [
+                                'src' => $this->createMapUrl('floor', $this->descendants[0]->id)
+                            ]
+                        ],
                     ];
                 }
             }
@@ -146,37 +157,47 @@ class Place extends Element
             {
                 if ($this->parent && $this->parent->floorMap)
                 {
-                    $markerIds = [$this->id];
-
+                    // When user is at a Kiosk
                     if ($this->location)
                     {
-                        $markerIds[] = $this->location->id;
+                        $floor = $this->location->descendants->one();
+                        $room  = $floor->descendants->one();
+
+                        if ($floor->id != $this->ancestors[2]->id)
+                        {
+                            $image = [
+                                'title'    => $this->location->buildingName,
+                                'subtitle' => $floor->title,
+                                'src'      => $this->createMapUrl('room', $floor->id, [$room->id])
+                            ];
+                        }
                     }
 
-                    $parents = $this->ancestors;
-
                     $maps[] = [
-                        'image'   => $this->createMapUrl('campus', $parents[0]->id),
-                        'markers' => [$parents[1]->placeMarker ?? null]
+                        'zoom'   => 2,
+                        'type'   => 'campus',
+                        'title'  => $this->ancestors[1]->buildingName,
+                        'images' => [
+                            [
+                                'src' => $this->createMapUrl('campus', $this->ancestors[0]->id, [$this->ancestors[1]->id])
+                            ]
+                        ],
                     ];
 
                     $maps[] = [
-                        'image'   => $this->createMapUrl('room', $parents[2]->id, $markerIds),
-                        'markers' => [$this->placeMarker ?? null]
+                        'type'     => 'building',
+                        'title'    => $this->ancestors[1]->buildingName,
+                        'subtitle' => $this->ancestors[2]->title,
+                        'images'   => [
+                            [
+                                'src' => $this->createMapUrl('room', $this->ancestors[2]->id, [$this->id])
+                            ],
+                            $image ?? null
+                        ],
                     ];
                 }
             }
         }
-
-        // if (($mapUrl = $this->mapUrl()))
-        // {
-        //     $values['maps'] = [
-        //         [
-        //             'image'   => $mapUrl,
-        //             'markers' => [$this->placeMarker ?? null],
-        //         ]
-        //     ];
-        // }
 
         $this->values['maps'] = $maps;
 
@@ -188,7 +209,7 @@ class Place extends Element
      * @param int    $mapId ID of the place with the map (Campus or Floor)
      * @param array  $markerIds IDs of places marked on the map
      *
-     * @return void
+     * @return string
      */
     private function createMapUrl($mapType, $mapId, $markerIds = [])
     {

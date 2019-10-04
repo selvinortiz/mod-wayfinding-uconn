@@ -29,7 +29,7 @@ class SearchController extends Controller
             ->type(SearchContext::type($context))
             ->section(SearchContext::section($context))
             ->search($this->prepareSearchQueryString($query))
-            ->limit(12)
+            ->limit(48)
             ->with(['relatedDepartments'])
             ->all();
 
@@ -74,16 +74,5 @@ class SearchController extends Controller
     private function getInfoByType(Element $element)
     {
         return '';
-        switch ($element->type)
-        {
-            case 'person':
-                return array_map(function($department) {
-                    return $department->title;
-                },
-                    $element->relatedDepartments->all());
-                break;
-            default:
-                return '';
-        }
     }
 }
