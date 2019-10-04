@@ -4,30 +4,34 @@
     :to="{ name: 'person', params: { id: person.id } }"
   >
     <!-- <img class="block p-2" src="/static/img/avatar.svg" style="max-height: 80px;" /> -->
-
-    <div class="w-full shadow-md mr-4" :style="styles.background">
-      <div v-if="directoryPhoto">
+    <div class="flex w-full shadow-md mr-4" :style="styles.background">
+      <div v-if="directoryphoto">
         <img v-if="role.imageurl" :src="role.imageurl" />
         <img v-else src="/uploads/people/photos/GenericAvatar.jpg" />
       </div>
-      <div class="p-4">
+      <div class="flex p-4">
+        <div class="flex-1 w-1/4 mr-2">
+          <img class="w-full" src="/static/icons/People_Icon.svg" alt="People Icon" />
+        </div>
+        <div class="flex-2 w-3/4">
         <h2
-          class="font-bold text-lg cursor-pointer uppercase"
+          class="font-bold text-base cursor-pointer uppercase"
           :style="styles.title"
         >
           {{ person.personFirstName }}
           {{ person.personLastName }}
         </h2>
-        <p v-if="role.title" class="text-md cursor-pointer">{{ role.title }}</p>
-        <p v-if="role.department" class="text-md cursor-pointer">
+        <p v-if="role.title" class="text-base cursor-pointer">{{ role.title }}</p>
+        <p v-if="role.department" class="text-base cursor-pointer">
           {{ role.department }}
         </p>
-        <p v-if="role.building" class="text-md cursor-pointer">
+        <p v-if="role.building" class="text-base cursor-pointer">
           {{ role.building }}
         </p>
-        <p v-if="role.building" class="text-md cursor-pointer">
+        <p v-if="role.building" class="text-base cursor-pointer">
           {{ role.suite }}
         </p>
+        </div>
       </div>
     </div>
   </router-link>
@@ -43,20 +47,23 @@ export default {
       }
     }
   },
-  data: function() {
-    return {
-      directoryPhoto: false
-    };
-  },
   computed: {
     theme() {
       return this.$store.state.app.theme;
     },
     styles() {
       return {
-        background: [`background-color: ${this.theme.cards.bg}`].join(";"),
-        title: [`color: ${this.theme.colors.primary}`].join(";")
+        background: [`background-color: ${this.theme.directory.cards.bg}`].join(
+          ";"
+        ),
+        title: [`color: ${this.theme.directory.cards.color}`].join(";")
       };
+    },
+    directoryphoto() {
+      if (this.theme.directory.cards.cardphoto) {
+        return true;
+      }
+      return false;
     },
     role() {
       const role = {
