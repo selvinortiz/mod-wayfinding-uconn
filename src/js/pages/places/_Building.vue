@@ -13,7 +13,7 @@
         </div>
         <!-- landscape and Protrait header for no photo -->
         <div v-else class="w-full mb-6">
-          <page-header class="block"
+          <page-header
             >{{ place.buildingName }} {{ place.type.name }}</page-header
           >
         </div>

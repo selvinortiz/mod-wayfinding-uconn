@@ -22,7 +22,7 @@
           :style="applyStyles(link)"
           @click="action(link.id)"
         >
-          <p class="flex cursor-pointer text-2x1">
+          <p class="flex cursor-pointer text-2xl">
             <img :class="classes.icon" :src="`/static/icons/${link.icon}`" alt />
             <span class="pt-2" v-html="link.title"></span>
           </p>

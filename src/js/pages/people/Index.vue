@@ -22,7 +22,7 @@
       </div>
       <div class="flex flex-wrap">
         <div
-          class="w-1/2 max-h-screen sm:w-1/4 md:w-1/4 xl:w-1/6 lg:w-1/4 flex my-2 px-0 xl:px-0 lg:px-0"
+          class="w-1/2 max-h-screen sm:w-1/4 md:w-1/4 xl:w-1/5 lg:w-1/4 flex my-2 px-0 xl:px-0 lg:px-0"
           v-for="person in people"
           :key="person.id"
         >
@@ -80,6 +80,7 @@
 <script>
 import axios from "../../utils/Axios";
 import PersonCard from "../../components/PersonCard.vue";
+
 
 export default {
   metaInfo: {

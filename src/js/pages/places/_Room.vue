@@ -24,8 +24,8 @@
                 class="hidden xl:block md:hidden sm:hidden"
               >{{ place.title }}</page-header>
             </p>
-            <p class="pb-4 text-lg">
-              <span class="block font-bold">{{ building.buildingName }} Building</span>
+            <p class="pb-4">
+              <span class="block font-extrabold text-2xl">{{ building.buildingName }} Building</span>
             </p>
             <p class="pb-4">
               <span class="block font-bold">Floor #: {{ floor.floorNumber }}</span>
