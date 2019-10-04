@@ -7,12 +7,21 @@
       <section class="relative @search__results">
         <div
           v-if="results.length"
-          class="animated slideInDown absolute inset-x-0 bottom-0 px-4 overflow-y-scroll overflow-x-hidden"
+          class="animated slideInDown absolute inset-x-0 bottom-0 px-4 overflow-y-auto"
           style="max-height: 50vh"
         >
           <h2 class="font-thin text-2xl uppercase text-white">Results</h2>
           <!-- creates search box -->
-          <div class="flex flex-wrap -mx-2 lg:-mx-2">
+          <div class="flex flex-wrap w-full">
+            <div
+              class="flex-grow w-1/4 max-h-screen my-2 mx-2 sm:w-1/3 md:w-1/3 xl:w-1/4 lg:w-1/3"
+              v-for="result in results"
+              :key="result.id"
+            >
+              <search-card :results="result"></search-card>
+            </div>
+          </div>
+          <!-- <div class="flex flex-wrap -mx-2 lg:-mx-2">
             <router-link
               class="block w-full lg:w-1/2 xl:w-1/3 flex my-2 px-2 lg:my-4 lg:px-4"
               v-for="result in results"
@@ -24,14 +33,17 @@
                 <p class="font-thin text-xl">{{ result.title }}</p>
               </div>
             </router-link>
-          </div>
+          </div> -->
         </div>
       </section>
 
       <section class="animated fadeIn @search" :style="styles.search">
         <h2 class="font-thin text-2xl uppercase text-white">Search</h2>
         <div class="flex items-center my-4" :style="styles.searchControls">
-          <select v-model="context" class="bg-transparent outline-none focus:outline-none">
+          <select
+            v-model="context"
+            class="bg-transparent outline-none focus:outline-none text-gray-800 content-center"
+          >
             <option value>All</option>
             <option value="people">People</option>
             <option value="places">Places</option>
@@ -45,7 +57,9 @@
             v-model="input"
             @keydown.enter="search"
           />
-          <ui-button :loading="searching" style="flex: 2;" @click="search">Search</ui-button>
+          <ui-button :loading="searching" style="flex: 2;" @click="search"
+            >Search</ui-button
+          >
         </div>
 
         <mod-keyboard
@@ -67,6 +81,7 @@
 <script>
 import axios from "../../utils/Axios";
 import ModKeyboard from "../ModKeyboard.vue";
+import SearchCard from "../SearchCard.vue";
 
 export default {
   metaInfo: {
@@ -91,7 +106,8 @@ export default {
     };
   },
   components: {
-    ModKeyboard
+    ModKeyboard,
+    SearchCard
   },
   computed: {
     theme() {
@@ -105,6 +121,7 @@ export default {
         searchControls: [`background-color: ${this.theme.colors.primary}`].join(
           ";"
         ),
+        defaultColor: [`color: ${this.theme.colors.primary}`].join(";"),
         keyboard: `color: #111`,
         keyboardContainer: ""
       };
@@ -128,9 +145,6 @@ export default {
           this.searching = false;
         })
         .catch(error => console.error(error));
-    },
-    handleCardClick() {
-      this.$store.commit("setSearchIsOpen", false)
     },
     handleKeyboardChange(input) {
       this.input = input;
