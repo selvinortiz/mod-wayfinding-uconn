@@ -2,7 +2,7 @@
   <content-loader :loaded="place.loaded" class="p-16">
     <section class="xl:flex flex-wrap">
       <div class="xl:w-1/2 xl:order-1 xl:pt-6">
-        <mod-map :place="place" :buttons="false" class="xl:px-4"></mod-map>
+        <mod-map :maps="maps" :buttons="false" class="xl:px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
         <!-- Portrait pageheader above image and text for long titles -->
@@ -100,6 +100,9 @@ export default {
     this.fetch();
   },
   computed: {
+    maps() {
+      return this.place.maps || []
+    },
     kiosk() {
       return this.$store.state.app.kiosk || { id: null };
     },

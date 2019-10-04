@@ -3,19 +3,18 @@
     <div>
       <button
         v-if="buttons"
-        class="py-2 px-4 uppercase border outline-none focus:outline-none"
-        :style="styles.buttons.normal"
+        class="mr-4 py-2 px-4 uppercase border-2 outline-none focus:outline-none"
+        :style="selectedMapType === 'campus' ? styles.buttons.active : styles.buttons.normal"
         @click="$emit('select-campus-map')"
       >Campus Map</button>
       <button
         v-if="buttons"
-        class="ml-4 py-2 px-4 uppercase border outline-none focus:outline-none"
-        :style="styles.buttons.active"
+        class="mr-4 py-2 px-4 uppercase border-2 outline-none focus:outline-none"
+        :style="selectedMapType === 'building' ? styles.buttons.active : styles.buttons.normal"
         @click="$emit('select-building-map')"
       >Building Map</button>
       <button
-        v-if="buttons"
-        class="ml-4 py-2 px-4 uppercase border outline-none focus:outline-none"
+        class="mr-4 py-2 px-4 uppercase border-2 outline-none focus:outline-none"
         :style="styles.buttons.normal"
         @click="$emit('reset-map')"
       >Reset Map</button>
@@ -73,6 +72,10 @@ export default {
     buttons: {
       type: Boolean,
       default: true
+    },
+    selectedMapType: {
+      type: String,
+      required: true
     }
   },
   computed: {

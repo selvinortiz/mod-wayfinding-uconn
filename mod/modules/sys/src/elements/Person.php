@@ -51,12 +51,10 @@ class Person extends Element
                     }
                 }
 
-                if ($handle == 'personRelatedPlace' && $item->id)
+                if ($handle == 'personRelatedPlace' && ($value[0]->id ?? null))
                 {
-                    $place = Place::query()->id($item->id)->one();
-
-
-                    $item = $place ? $place->values() : [];
+                    $place = Place::query()->id($value[0]->id)->one();
+                    $value = $place ? $place->values() : [];
                 }
             }
         }
