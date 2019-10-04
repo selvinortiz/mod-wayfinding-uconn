@@ -1,6 +1,7 @@
 <template>
   <section class="flex flex-col">
     <div
+      v-if="map"
       class="@CONTAINER relative flex items-center justify-center overflow-hidden"
       style="height: 40vh;"
     >
@@ -16,12 +17,12 @@
         @pointerleave="handleDragStop()"
       />
 
-      <div class="absolute top-0 right-0 py-4 px-8 m-4 text-right bg-white opacity-50">
+      <div class="absolute top-0 right-0 p-4 m-4 text-right bg-white opacity-75">
         <h1 class="font-bold">{{ map.activeImage.title || map.title }}</h1>
         <h2>{{ map.activeImage.subtitle || map.subtitle }}</h2>
       </div>
 
-      <div v-if="map.thumbnailImage" class="absolute bottom-0 right-0 p-2 m-4 bg-white opacity-75">
+      <div v-if="map.thumbnailImage" class="absolute bottom-0 right-0 m-4 bg-white border border-gray-400 opacity-75">
         <img
           alt
           class="@THUMB w-full shadow"
@@ -33,12 +34,14 @@
       </div>
     </div>
     <map-nav
+      class="pt-4"
+      :buttons="buttons"
+      :selected-map-type="map.type || 'campus'"
       @zoom-in="zoomIn"
       @zoom-out="zoomOut"
       @reset-map="reset"
       @select-campus-map="selectCampusMap"
       @select-building-map="selectBuildingMap"
-      :selected-map-type="map.type || 'campus'"
     />
   </section>
 </template>
@@ -51,6 +54,10 @@ export default {
     maps: {
       type: Array,
       required: true
+    },
+    buttons: {
+      type: Boolean,
+      default: true,
     }
   },
   components: {
@@ -64,7 +71,7 @@ export default {
   computed: {
     map() {
       if (!this.selectedMap) {
-        this.setSelectedMap(this.maps[0]);
+        this.setSelectedMap(this.maps[0] || {});
       }
 
       return this.selectedMap;
@@ -102,6 +109,10 @@ export default {
     },
     setSelectedMap(map) {
       this.selectedMap = map;
+
+      if (!this.selectedMap.hasOwnProperty("zoom")) {
+        this.$set(this.selectedMap, "zoom", 1);
+      }
 
       if (!this.selectedMap.hasOwnProperty("defaultZoom")) {
         this.$set(this.selectedMap, "defaultZoom", this.selectedMap.zoom);

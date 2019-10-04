@@ -2,7 +2,7 @@
   <content-loader :loaded="place.loaded" classes="p-8">
     <section class="xl:flex flex-wrap">
       <div class="xl:w-2/3 xl:order-1 xl:pt-6 lg:w-full lg:order-1">
-        <mod-map :place="place" class="xl:px-4"></mod-map>
+        <mod-map :maps="maps" class="xl:px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
         <div class="w-full mb-4">
@@ -110,6 +110,9 @@ export default {
     this.fetch();
   },
   computed: {
+    maps() {
+      return this.place.maps || [];
+    },
     theme() {
       return this.$store.state.app.theme;
     },

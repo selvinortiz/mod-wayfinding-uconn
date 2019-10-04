@@ -18,9 +18,9 @@ import AppSearch from './components/partials/AppSearch.vue';
 import ContentLoader from './components/shared/ContentLoader.vue';
 import PageHeader from './components/shared/PageHeader.vue';
 import BuildingName from './components/shared/BuildingName.vue';
-import ModMap from './components/ModMap.vue';
 import UIButton from './components/shared/UIButton.vue';
 import UIPhoto from './components/shared/UIPhoto.vue';
+import Map from './components/Map.vue';
 
 import store from './store';
 import router from './router';
@@ -34,10 +34,10 @@ Vue.component('content-iframe', ContentIframe);
 Vue.component('content-loader', ContentLoader);
 Vue.component('page-header', PageHeader);
 Vue.component('building-name', BuildingName);
-Vue.component('mod-map', ModMap);
 Vue.component('multi-select', MultiSelect);
 Vue.component('ui-button', UIButton);
 Vue.component('ui-photo', UIPhoto);
+Vue.component('mod-map', Map);
 
 new Vue({
   el: '#app',
