@@ -2,7 +2,7 @@
   <content-loader :loaded="person.loaded" class="p-16">
     <section class="xl:flex flex-wrap">
       <div class="xl:w-1/2 xl:order-1">
-        <mod-map :place="place" class="xl:px-4"></mod-map>
+        <mod-map :maps="place.maps" primary-map="building" class="xl:px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2">
         <h2

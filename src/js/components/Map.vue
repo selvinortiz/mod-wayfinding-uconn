@@ -2,7 +2,7 @@
   <section class="flex flex-col">
     <div
       v-if="map"
-      class="@CONTAINER relative flex items-center justify-center overflow-hidden"
+      class="@CONTAINER relative flex items-center justify-center overflow-hidden bg-white shadow-lg"
       style="height: 40vh;"
     >
       <img
@@ -17,15 +17,15 @@
         @pointerleave="handleDragStop()"
       />
 
-      <div class="absolute top-0 right-0 p-4 m-4 text-right bg-white opacity-75">
+      <div class="absolute top-0 right-0 m-4 p-4 text-right bg-white shadow opacity-95">
         <h1 class="font-bold">{{ map.activeImage.title || map.title }}</h1>
         <h2>{{ map.activeImage.subtitle || map.subtitle }}</h2>
       </div>
 
-      <div v-if="map.thumbnailImage" class="absolute bottom-0 right-0 m-4 bg-white border border-gray-400 opacity-75">
+      <div v-if="map.thumbnailImage" class="absolute bottom-0 right-0 m-4 p-2 bg-gray-100 shadow-md opacity-95">
         <img
           alt
-          class="@THUMB w-full shadow"
+          class="@THUMB w-full"
           style="max-width: 125px;"
           draggable="false"
           :src="map.thumbnailImage.src"
@@ -36,7 +36,7 @@
     <map-nav
       class="pt-4"
       :buttons="buttons"
-      :selected-map-type="map.type || 'campus'"
+      :selected-map-type="map.type"
       @zoom-in="zoomIn"
       @zoom-out="zoomOut"
       @reset-map="reset"
@@ -58,6 +58,10 @@ export default {
     buttons: {
       type: Boolean,
       default: true,
+    },
+    primaryMap: {
+      type: String,
+      default: 'campus'
     }
   },
   components: {
@@ -71,7 +75,13 @@ export default {
   computed: {
     map() {
       if (!this.selectedMap) {
-        this.setSelectedMap(this.maps[0] || {});
+        let index = this.maps.findIndex((map) => map.type === this.primaryMap);
+
+        if (index === -1) {
+          index = 0;
+        }
+
+        this.setSelectedMap(this.maps[index] || {});
       }
 
       return this.selectedMap;

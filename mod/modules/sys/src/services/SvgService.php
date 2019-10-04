@@ -4,8 +4,8 @@ namespace modules\sys\services;
 
 use craft\base\Component;
 use craft\helpers\Template;
-use function modules\sys\sys;
 use yii\base\Exception;
+use function modules\sys\sys;
 
 /**
  * Class SvgService
@@ -15,8 +15,10 @@ use yii\base\Exception;
 class SvgService extends Component
 {
     /**
-     * @param string $image   Image path (file or URL)
-     * @param array  $markers List of individual xy coordinates
+     * @param string   $image   Image path (file or URL)
+     * @param array    $markers List of individual xy coordinates
+     * @param int|null $width
+     * @param int|null $height
      *
      * @return string
      * @throws Exception
@@ -72,8 +74,12 @@ class SvgService extends Component
             if (!empty($markers))
             {
                 $markers = array_map(
-                    function($marker) {
-                        return sys()->renderTemplate('_marker', $marker);
+                    function($marker)
+                    {
+                        if ($marker['x'] > 0 && $marker['y'] > 0)
+                        {
+                            return sys()->renderTemplate('_marker', $marker);
+                        }
                     },
                     $markers
                 );
