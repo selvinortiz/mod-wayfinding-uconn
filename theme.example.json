@@ -2,9 +2,13 @@
   "app": {
     "title": "ModCore"
   },
-  "cards": {
-    "bg": "#cacbcc",
-    "primary": "#c0d"
+  "directory": {
+    "cards": {
+      "bg": "#cacbcc",
+      "color": "#c0d",
+      "cardphoto": true
+    },
+    "photo": true
   },
   "colors": {
     "background": "#fff",
@@ -93,6 +97,11 @@
     "fg": "white"
   },
   "search": {
-    "bg": "rgba(23, 2, 97, 0.5)"
+    "bg": "rgba(23, 2, 97, 0.5)",
+    "cards": {
+      "bg": "#cacbcc",
+      "color": "#c0d",
+      "cardphoto": false
+    }
   }
 }
