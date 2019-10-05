@@ -11493,6 +11493,11 @@ a {
   opacity: 0;
 }
 
+.mobile .\@clock,
+.mobile .\@page__footer {
+  display: none;
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;

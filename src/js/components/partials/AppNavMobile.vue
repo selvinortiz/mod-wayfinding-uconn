@@ -1,7 +1,6 @@
 <template>
-  <div class="@nav flex justify-center" :class="classes.container" :style="styles.container">
-    <nav class="flex flex-1 max-w-6xl items-center justify-center">
-      <div class="flex-grow @link" v-for="(link, i) in theme.nav.links" :key="i">
+    <nav class="@nav--mobile flex flex-wrap">
+      <div class="w-full @link" v-for="(link, i) in theme.nav.links" :key="i">
         <router-link
           v-if="link.type === 'route'"
           class="flex"
@@ -42,7 +41,6 @@
         </a>
       </div>
     </nav>
-  </div>
 </template>
 
 <script>

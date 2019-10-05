@@ -1,5 +1,5 @@
 <template>
-  <section class="flex flex-1 items-center justify-between text-center text-white">
+  <section class="@end flex flex-1 items-center justify-between text-center text-white">
     <div class="py-2 px-16 flex items-end">
       <p class="flex flex-no-wrap items-end text-base leading-none">
         <img class="px-2" style="max-height: 32px;" src="/static/icons/qr.png" alt="">

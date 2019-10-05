@@ -8,6 +8,7 @@ const defaultState = {
   },
   isMobile: false,
   searchIsOpen: false,
+  mobileNavIsOpen: false,
   initialized: false
 };
 
@@ -24,6 +25,9 @@ export default {
     },
     setSearchIsOpen: (state, isOpen) => {
       state.searchIsOpen = isOpen
+    },
+    setToggleMobileNav: (state) => {
+      state.mobileNavIsOpen = !state.mobileNavIsOpen
     }
   }
 };
