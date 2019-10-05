@@ -1,46 +1,54 @@
 <template>
-    <nav class="@nav--mobile flex flex-wrap">
-      <div class="w-full @link" v-for="(link, i) in theme.nav.links" :key="i">
-        <router-link
-          v-if="link.type === 'route'"
-          class="flex"
-          :to="route(link)"
-          :class="classes.link"
-          :style="applyStyles(link)"
-        >
-          <p class="flex cursor-pointer">
-            <img :class="classes.icon" :src="`/static/icons/${link.icon}`" alt />
-            <span class="pt-2" v-html="link.title"></span>
-          </p>
-        </router-link>
+  <transition name="fade" mode="out-in">
+    <div
+      v-show="$store.state.app.mobileNavIsOpen"
+      class="absolute top-0 left-0 h-screen w-screen"
+      style="top: 10vh; background-color: rgba(0, 0, 0, .75)"
+    >
+      <nav class="@nav--mobile flex flex-wrap" @click="$store.commit('setToggleMobileNav')">
+        <div class="w-full @link" v-for="(link, i) in theme.nav.links" :key="i">
+          <router-link
+            v-if="link.type === 'route'"
+            class="flex"
+            :to="route(link)"
+            :class="classes.link"
+            :style="applyStyles(link)"
+          >
+            <p class="flex cursor-pointer">
+              <img :class="classes.icon" :src="`/static/icons/${link.icon}`" alt />
+              <span class="pt-2" v-html="link.title"></span>
+            </p>
+          </router-link>
 
-        <a
-          v-if="link.type === 'action'"
-          class="flex"
-          :class="classes.link"
-          :style="applyStyles(link)"
-          @click="action(link.id)"
-        >
-          <p class="flex cursor-pointer text-2xl">
-            <img :class="classes.icon" :src="`/static/icons/${link.icon}`" alt />
-            <span class="pt-2" v-html="link.title"></span>
-          </p>
-        </a>
+          <a
+            v-if="link.type === 'action'"
+            class="flex"
+            :class="classes.link"
+            :style="applyStyles(link)"
+            @click="action(link.id)"
+          >
+            <p class="flex cursor-pointer text-2xl">
+              <img :class="classes.icon" :src="`/static/icons/${link.icon}`" alt />
+              <span class="pt-2" v-html="link.title"></span>
+            </p>
+          </a>
 
-        <a
-          v-if="link.type === 'url'"
-          class="flex"
-          :class="classes.link"
-          :style="applyStyles(link)"
-          @click="service(link.url)"
-        >
-          <p class="flex cursor-pointer">
-            <img :class="classes.icon" :src="`/static/icons/${link.icon}`" alt />
-            <span class="pt-2" v-html="link.title"></span>
-          </p>
-        </a>
-      </div>
-    </nav>
+          <a
+            v-if="link.type === 'url'"
+            class="flex"
+            :class="classes.link"
+            :style="applyStyles(link)"
+            @click="service(link.url)"
+          >
+            <p class="flex cursor-pointer">
+              <img :class="classes.icon" :src="`/static/icons/${link.icon}`" alt />
+              <span class="pt-2" v-html="link.title"></span>
+            </p>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -113,7 +121,12 @@ export default {
         return this.styles.linkActive;
       }
 
-      if (link.url && this.$route && this.$route.query.url && this.$route.query.url === link.url) {
+      if (
+        link.url &&
+        this.$route &&
+        this.$route.query.url &&
+        this.$route.query.url === link.url
+      ) {
         return this.styles.linkActive;
       }
 
