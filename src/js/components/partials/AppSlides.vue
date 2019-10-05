@@ -1,8 +1,8 @@
 <template>
   <div
-    class="absolute w-screen h-screen overflow-hidden bg-cover bg-center animated fadeIn"
-    :style="`animation-duration: 3s;transition: background ${animationDuration} linear; background-image: url(${activeSlide.url});`"
-  ></div>
+    class="@SLIDES absolute w-screen h-screen overflow-hidden bg-cover bg-center animated fadeIn"
+    :style="styles"
+  />
 </template>
 
 <script>
@@ -29,21 +29,29 @@ export default {
       return this.$store.state.app.settings.images;
     },
     activeSlide() {
-      return this.images[this.activeSlideIndex];
+      return this.images[this.activeSlideIndex]
+    },
+    styles() {
+      return [
+        `animation-duration: 3s`,
+        `transition: background ${this.animationDuration} linear`,
+        `background-image: url(${this.activeSlide.url})`
+      ].join(";");
     }
   },
   mounted() {
-    interval = setInterval(this.slide, this.slideDuration);
+    if (!this.$store.state.app.isMobile) {
+      interval = setInterval(this.slide, this.slideDuration);
+    }
   },
   beforeDestroy() {
     if (interval) {
       clearInterval(interval);
     }
   },
-
   methods: {
     slide() {
-      if (this.images.length > 1) {
+      if (this.images && this.images.length > 1) {
         let nextSlideIndex = this.activeSlideIndex + 1;
 
         if (nextSlideIndex >= this.images.length) {
@@ -54,5 +62,5 @@ export default {
       }
     }
   }
-};
+}
 </script>

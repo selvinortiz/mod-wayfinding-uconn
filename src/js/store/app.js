@@ -19,7 +19,7 @@ export default {
       state.kiosk = kiosk;
       state.campus = campus;
       state.settings = settings;
-      state.isMobile = kiosk ? true : false;
+      state.isMobile = (kiosk && kiosk.id) ? false : true;
       state.initialized = true;
     },
     setSearchIsOpen: (state, isOpen) => {
