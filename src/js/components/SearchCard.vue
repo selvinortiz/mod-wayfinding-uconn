@@ -6,15 +6,15 @@
   >
     <!-- <img class="block p-2" src="/static/img/avatar.svg" style="max-height: 80px;" /> -->
       <div class="flex p-4 w-full" :style="styles.background">
-        <div v-if="results.type === 'person'" class="flex-1 w-1/4 mr-2">
-          <img class="w-full" src="/static/icons/People_Icon.svg" alt="People Icon" />
+        <div v-if="results.type === 'person'" class="flex w-1/4 mr-2">
+          <img src="/static/icons/People_Icon.svg" alt="People Icon" />
         </div>
-        <div v-else class="flex-1 w-1/4 mr-2">
-          <img class="w-full" src="/static/icons/Places_Icon.svg" alt="People Icon" />
+        <div v-else class="flex w-1/4 mr-2">
+          <img src="/static/icons/Places_Icon.svg" alt="People Icon" />
         </div>
-        <div class="flex-wrap w-3/4">
+        <div class="flex w-3/4">
         <h2
-          class="font-bold text-sm cursor-pointer uppercase"
+          class="font-bold text-sm cursor-pointer uppercase "
           :style="styles.title"
         >
         {{ results.title }}
