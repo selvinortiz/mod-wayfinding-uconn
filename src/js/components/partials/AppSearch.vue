@@ -12,9 +12,9 @@
         >
           <h2 class="font-thin text-2xl uppercase text-white">Results</h2>
           <!-- creates search box -->
-          <div class="flex flex-wrap w-full">
+          <div class="flex flex-wrap ">
             <div
-              class="flex-grow w-1/4 max-h-screen my-2 mx-2 sm:w-1/3 md:w-1/3 xl:w-1/4 lg:w-1/3"
+              class="flex my-2 mx-2 sm:w-1/3 md:w-1/3 xl:w-1/4 lg:w-1/3"
               v-for="result in results"
               :key="result.id"
             >

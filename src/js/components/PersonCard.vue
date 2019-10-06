@@ -4,16 +4,16 @@
     :to="{ name: 'person', params: { id: person.id } }"
   >
     <!-- <img class="block p-2" src="/static/img/avatar.svg" style="max-height: 80px;" /> -->
-    <div class="flex w-full shadow-md mr-4" :style="styles.background">
-      <div v-if="directoryphoto">
+    <div class="block shadow-md mr-4" :style="styles.background">
+      <div class="block" v-if="directoryphoto">
         <img v-if="role.imageurl" :src="role.imageurl" />
         <img v-else src="/uploads/people/photos/GenericAvatar.jpg" />
       </div>
       <div class="flex p-4">
-        <div class="flex-1 w-1/4 mr-2">
+        <div class="w-1/4 mr-2">
           <img class="w-full" src="/static/icons/People_Icon.svg" alt="People Icon" />
         </div>
-        <div class="flex-2 w-3/4">
+        <div class="flex-1 w-3/4">
         <h2
           class="font-bold text-base cursor-pointer uppercase"
           :style="styles.title"
