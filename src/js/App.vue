@@ -20,7 +20,7 @@
             </template>
           </mod-clock>
         </div>
-        <div class="@menu__burger">
+        <div v-show="$store.state.app.isMobile" class="@menu__burger">
           <button @click="$store.commit('setToggleMobileNav')" class="outline-none focus:outline-none">
             <svg width="28" viewBox="0 0 448 392" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

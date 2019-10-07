@@ -3,7 +3,7 @@
     <div
       v-show="$store.state.app.mobileNavIsOpen"
       class="absolute top-0 left-0 h-screen w-screen"
-      style="top: 10vh; background-color: rgba(0, 0, 0, .75)"
+      :style="`top: 10vh; background-color: ${theme.nav.bg}`"
     >
       <nav class="@nav--mobile flex flex-wrap" @click="$store.commit('setToggleMobileNav')">
         <div class="w-full @link" v-for="(link, i) in theme.nav.links" :key="i">
