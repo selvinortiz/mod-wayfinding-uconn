@@ -11469,10 +11469,6 @@ footer {
   overflow: hidden;
 }
 
-footer .\@end {
-  display: none;
-}
-
 .\@page {
   display: grid;
   height: 100vh;
@@ -11491,6 +11487,11 @@ a {
 
 .fade-enter, .fade-leave-to {
   opacity: 0;
+}
+
+.mobile .\@clock,
+.mobile .\@page__footer {
+  display: none;
 }
 
 @media (min-width: 640px) {

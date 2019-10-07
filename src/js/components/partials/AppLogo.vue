@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="@logo">
     <router-link :to="{ name: 'index' }">
       <img :src="logo.url" alt />
     </router-link>
