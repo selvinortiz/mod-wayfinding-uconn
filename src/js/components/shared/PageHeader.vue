@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="font-black text-3xl leading-tight max-w-lg" :style="`color: ${$store.state.app.theme.colors.primary}`">
+    <h1 class="font-bold text-2xl leading-tight max-w-lg" :style="`color: ${$store.state.app.theme.colors.primary}`">
       <slot></slot>
     </h1>
   </div>

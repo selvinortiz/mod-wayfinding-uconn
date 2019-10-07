@@ -1,5 +1,5 @@
 <template>
-  <content-loader :loaded="place.loaded" class="p-16">
+  <content-loader :loaded="place.loaded" class="pt-8 px-16">
     <section class="xl:flex flex-wrap">
       <div class="xl:w-1/2 xl:order-1 xl:pt-6">
         <mod-map :maps="maps" :buttons="false" class="xl:px-4"></mod-map>
@@ -27,7 +27,7 @@
               </page-header>
             </div>
             <p class="pb-4">
-              <span class="block h-40 xl:h-56 max-w-full overflow-y-auto "
+              <span class="block h-40 xl:h-56 max-w-full pr-2 overflow-y-auto "
                 v-html="place.campusDescription">
               </span>
             </p>
@@ -38,7 +38,7 @@
             <multi-select
               track-by="id"
               label="buildingName"
-              placeholder="Choose Building"
+              placeholder="CHOOSE DESTINATION"
               value
               :options="place.descendants"
               :show-labels="false"
@@ -76,6 +76,9 @@
 .multiselect__tags {
   border: 2px solid #000e2f;
   border-radius: 0;
+}
+.multiselect__placeholder {
+  color: #000e2f;
 }
 </style>
 

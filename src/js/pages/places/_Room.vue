@@ -1,51 +1,60 @@
 <template>
-  <content-loader :loaded="place.loaded" classes="p-16">
+  <content-loader :loaded="place.loaded" classes="pt-8 px-16">
     <section class="xl:flex flex-wrap">
       <div class="xl:w-1/2 xl:order-1 xl:pt-6 lg:pb-6 md:pb-6">
         <mod-map :maps="maps" primary-map="building" class="xl:px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
-        <div class="w-full mb-4">
-          <page-header class="block xl:hidden lg:block md:block sm:block">{{ place.title }}</page-header>
+      <!-- Portrait pageheader above image and text for long titles -->
+        <div v-if="photo" class="w-full xl:pb-0 lg:pb-4 md:pb-4" >
+          <page-header class="block xl:hidden lg:block md:block sm:block">
+            {{ place.title }}
+          </page-header>
+        </div>
+        <!-- landscape and Protrait header for no photo -->
+        <div v-else class="w-full mb-6">
+          <page-header class="block">{{ place.title }}</page-header>
         </div>
         <div class="w-1/2 pr-10">
           <div>
-            <ui-photo :photo="photo"></ui-photo>
-            <p class="pt-4 text-xl xl:text-4xl">
+            <ui-photo :photo="photo" class="xl:pb-4 lg:pb-6 md:pb-6"></ui-photo>
+            <p v-if="photo" class="xl:pb-4">
               <!-- landscape pageheader -->
-              <page-header class="hidden xl:block md:hidden sm:hidden">{{ place.title }}</page-header>
+              <page-header
+                class="hidden xl:block md:hidden sm:hidden"
+              >{{ place.title }}</page-header>
             </p>
-            <p class="pt-4">
-              <span class="block font-bold">{{ building.buildingName }} Building</span>
+            <p class="pb-4">
+              <span class="block font-extrabold text-2xl">{{ building.buildingName }} Building</span>
             </p>
-            <p class="pt-4">
+            <p class="pb-4">
               <span class="block font-bold">Floor #: {{ floor.floorNumber }}</span>
               <span class="block font-bold">Suite #: {{ place.roomNumber }}</span>
             </p>
-            <p class="pt-4">
+            <p class="pb-4">
               <span class="block font-bold">555-555-5555</span>
             </p>
-            <p class="pt-4">
-              <span class="block font-bold">{{ building.placeAddress }}</span>
-              <span class="block font-bold">
+            <p class="pb-4">
+              <span class="block">{{ building.placeAddress }}</span>
+              <span class="block">
                 {{ building.placeCity }}, {{ building.placeState }}
                 {{ building.placeZipcode }}
               </span>
             </p>
-            <p class="pt-4">
+            <p class="pb-4">
               <span
-                class="block font-medium h-40 xl:h-56 max-w-full overflow-y-auto"
+                class="block h-40 xl:h-56 max-w-full pr-2 overflow-y-auto"
                 v-html="place.roomDescription"
               ></span>
             </p>
           </div>
         </div>
         <div class="w-1/2">
-          <div class="px-4">
+          <div class="pr-6" >
             <multi-select
               track-by="id"
               label="title"
-              placeholder="Choose Destination"
+              placeholder="CHOOSE NEW ROOM / DEPT."
               value
               :options="options"
               :show-labels="false"
@@ -57,13 +66,30 @@
               </template>
             </multi-select>
 
-            <div class="pt-4">
-              Don&rsquo;t see what you&rsquo;re looking for?
-              <a
-                class="cursor-pointer"
-                :style="styles.defaultColor"
-                @click="() => ($store.state.app.searchIsOpen = true)"
-              >Switch to SEARCH</a>
+             <div class="pt-4">
+              <div class="pb-4">
+                <router-link
+                  :to="{ name: 'campus', params: { id: campus.id } }"
+                >
+                  <p>
+                    <span>Wish to choose a different building?</span>
+                    <span
+                      class="cursor-pointer underline"
+                      :style="styles.defaultColor"
+                      >Return to the CAMPUS
+                    </span>
+                  </p>
+                </router-link>
+              </div>
+              <div class="pb-4">
+                Don&rsquo;t see what you&rsquo;re looking for?
+                <a
+                  class="cursor-pointer"
+                  :style="styles.defaultColor"
+                  @click="() => ($store.state.app.searchIsOpen = true)"
+                  >Switch to SEARCH</a
+                >
+              </div>
             </div>
           </div>
         </div>
@@ -86,6 +112,9 @@
 .multiselect__tags {
   border: 2px solid #000e2f;
   border-radius: 0;
+}
+.multiselect__placeholder {
+  color: #000e2f;
 }
 </style>
 

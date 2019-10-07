@@ -1,28 +1,19 @@
 <template>
-  <content-loader
-    :loaded="loaded.people && loaded.departments"
-    classes="flex flex-wrap p-16"
-  >
+  <content-loader :loaded="loaded.people && loaded.departments" classes="flex flex-wrap p-16">
+    <div class="pb-4">
+      <page-header class="uppercase">Directory</page-header>
+    </div>
     <div
       v-if="!this.people.length"
       class="flex-1 flex items-center justify-center"
       style="height: 65vh;"
     >
-      <h1 class="font-thin text-4xl text-center">
-        We did not find anyone matching your criteria.
-      </h1>
+      <h1 class="font-thin text-4xl text-center">We did not find anyone matching your criteria.</h1>
     </div>
-    <div
-      v-else
-      class="w-full overflow-y-scroll overflow-x-hidden"
-      style="height: 60vh"
-    >
-      <div class="pb-4">
-      <page-header class="uppercase">Directory</page-header>
-      </div>
+    <div v-else class="w-full overflow-y-scroll overflow-x-hidden" style="height: 60vh">
       <div class="flex flex-wrap">
         <div
-          class="w-1/2 max-h-screen sm:w-1/4 md:w-1/4 xl:w-1/6 lg:w-1/4 flex my-2 px-0 xl:px-0 lg:px-0"
+          class="w-1/2 max-h-screen sm:w-1/3 md:w-1/4 xl:w-1/6 lg:w-1/4 flex my-2 px-0"
           v-for="person in people"
           :key="person.id"
         >
@@ -41,12 +32,10 @@
         class="flex w-1/2 h-12 mt-1 mr-2 px-8 border-2"
         :style="styles.border"
       >
-        <option class="hidden" value disabled selected
-          >Filter by Last Initial</option
-        >
-        <option v-for="option in alphabet()" :key="option" :value="option">{{
-          option
-        }}</option>
+        <option value="">{{ defaultLetterFilterLabel }}</option>
+        <option v-for="option in alphabet()" :key="option" :value="option">
+          {{ option }}
+        </option>
       </select>
 
       <select
@@ -55,24 +44,21 @@
         class="flex w-1/2 h-12 mt-1 ml-2 px-8 border-2"
         :style="styles.border"
       >
-        <option class="hidden" value disabled selected
-          >Filter by Department</option
-        >
+        <option value="">{{ defaultDepartmentFilterLabel }}</option>
         <option
           v-for="department in departments"
           :key="department.id"
           :value="department.id"
-          >{{ department.title }}</option
-        >
+        >{{ department.title }}</option>
       </select>
     </div>
     <div class="m-auto">
-              Don&rsquo;t see what you&rsquo;re looking for?
-              <a
-                class="cursor-pointer"
-                :style="styles.defaultColor"
-                @click="() => ($store.state.app.searchIsOpen = true)"
-              >Switch to SEARCH</a>
+      Don&rsquo;t see what you&rsquo;re looking for?
+      <a
+        class="cursor-pointer"
+        :style="styles.defaultColor"
+        @click="() => ($store.state.app.searchIsOpen = true)"
+      >Switch to SEARCH</a>
     </div>
   </content-loader>
 </template>
@@ -82,6 +68,7 @@ import axios from "../../utils/Axios";
 import PersonCard from "../../components/PersonCard.vue";
 
 export default {
+  name: "people",
   metaInfo: {
     title: "People"
   },
@@ -115,6 +102,20 @@ export default {
         border: [`border-color: ${this.theme.colors.primary}`].join(";"),
         defaultColor: [`color: ${this.theme.colors.primary}`].join(";")
       };
+    },
+    defaultLetterFilterLabel() {
+      if (this.filters.letter === "") {
+        return 'Filter by Last Initial'
+      }
+
+      return 'Clear Last Initial Filter'
+    },
+    defaultDepartmentFilterLabel() {
+      if (this.filters.department === "") {
+        return 'Filter by Department'
+      }
+
+      return 'Clear Department Filter'
     }
   },
   methods: {

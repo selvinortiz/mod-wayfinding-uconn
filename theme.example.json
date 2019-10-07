@@ -2,9 +2,13 @@
   "app": {
     "title": "UCONN"
   },
-  "cards": {
-    "bg": "#fff",
-    "primary": "#7c878e"
+  "directory": {
+    "cards": {
+      "bg": "#fff",
+      "color": "#7c878e",
+      "cardphoto": true
+    },
+    "photo": true
   },
   "colors": {
     "background": "#fff",
@@ -97,12 +101,11 @@
     "button": {
       "bg": "000e2f",
       "fg": "#fff"
-    }
-  },
-  "keyboard": {
-    "bg": "transparent",
-    "button": {
-      "fg": "#000e2f"
+    },
+    "cards": {
+      "bg": "#fff",
+      "color": "#7c878e",
+      "cardphoto": true
     }
   }
 }

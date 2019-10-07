@@ -1,5 +1,5 @@
 <template>
-  <content-loader :loaded="place.loaded" classes="p-16">
+  <content-loader :loaded="place.loaded" classes="pt-8 px-16">
     <section class="xl:flex flex-wrap">
       <div class="xl:w-1/2 xl:order-1 xl:pt-6 lg:pb-6 md:pb-6">
         <mod-map :maps="maps" class="xl:px-4"></mod-map>
@@ -7,29 +7,31 @@
       <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
         <!-- Portrait pageheader above image and text for long titles -->
         <div v-if="photo" class="w-full xl:pb-0 lg:pb-4 md:pb-4">
-          <page-header
-            class="block xl:hidden lg:block md:block sm:block"
-          >{{ place.buildingName }} {{ place.type.name }}</page-header>
+          <page-header class="block xl:hidden lg:block md:block sm:block"
+            >{{ place.buildingName }} {{ place.type.name }}</page-header
+          >
         </div>
         <!-- landscape and Protrait header for no photo -->
         <div v-else class="w-full mb-6">
-          <page-header class="block">{{ place.buildingName }} {{ place.type.name }}</page-header>
+          <page-header
+            >{{ place.buildingName }} {{ place.type.name }}</page-header
+          >
         </div>
         <div class="w-1/2 pr-10">
           <div>
             <ui-photo :photo="photo" class="xl:pb-4 lg:pb-6 md:pb-6"></ui-photo>
             <p v-if="photo" class="xl:pb-4">
               <!-- landscape pageheader -->
-              <page-header
-                class="hidden xl:block md:hidden sm:hidden"
-              >{{ place.buildingName }} {{ place.type.name }}</page-header>
+              <page-header class="hidden xl:block md:hidden sm:hidden"
+                >{{ place.buildingName }} {{ place.type.name }}</page-header
+              >
             </p>
             <p class="pb-4">
               <span class="block font-bold">555-555-5555</span>
             </p>
             <p class="pb-4">
-              <span class="block font-bold">{{ place.placeAddress }}</span>
-              <span class="block font-bold">
+              <span class="block">{{ place.placeAddress }}</span>
+              <span class="block">
                 {{ place.placeCity }}, {{ place.placeState }}
                 {{ place.placeZipcode }}
               </span>
@@ -37,7 +39,7 @@
 
             <p class="pb-4">
               <span
-                class="block h-40 xl:h-56 max-w-full overflow-y-scroll"
+                class="block h-40 xl:h-56 max-w-full pr-2 overflow-y-auto"
                 v-html="place.buildingDescription"
               ></span>
             </p>
@@ -48,7 +50,7 @@
             <multi-select
               track-by="id"
               label="title"
-              placeholder="Choose Destination"
+              placeholder="CHOOSE A ROOM / DEPT."
               value
               :options="options"
               :show-labels="false"
@@ -59,14 +61,30 @@
                 <p class="cursor-pointer">{{ option.title }}</p>
               </template>
             </multi-select>
-
             <div class="pt-4">
-              Don&rsquo;t see what you&rsquo;re looking for?
-              <a
-                class="cursor-pointer"
-                :style="styles.defaultColor"
-                @click="() => ($store.state.app.searchIsOpen = true)"
-              >Switch to SEARCH</a>
+              <div class="pb-4">
+                <router-link
+                  :to="{ name: 'campus', params: { id: campus.id } }"
+                >
+                  <p>
+                    <span>Wish to choose a different building?</span>
+                    <span
+                      class="cursor-pointer underline"
+                      :style="styles.defaultColor"
+                      >Return to the CAMPUS
+                    </span>
+                  </p>
+                </router-link>
+              </div>
+              <div class="pb-4">
+                Don&rsquo;t see what you&rsquo;re looking for?
+                <a
+                  class="cursor-pointer"
+                  :style="styles.defaultColor"
+                  @click="() => ($store.state.app.searchIsOpen = true)"
+                  >Switch to SEARCH</a
+                >
+              </div>
             </div>
           </div>
         </div>
@@ -89,6 +107,9 @@
 .multiselect__tags {
   border: 2px solid #000e2f;
   border-radius: 0;
+}
+.multiselect__placeholder {
+  color: #000e2f;
 }
 </style>
 
@@ -118,6 +139,9 @@ export default {
     },
     kiosk() {
       return this.$store.state.app.kiosk || { id: null };
+    },
+    campus() {
+      return this.$store.state.app.campus;
     },
     theme() {
       return this.$store.state.app.theme;
@@ -173,6 +197,9 @@ export default {
         });
       }
     }
+  },
+  route() {
+    return { name: "campus", params: { id: this.campus.id } };
   },
   watch: {
     $route(to) {

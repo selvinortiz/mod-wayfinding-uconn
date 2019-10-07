@@ -11,7 +11,7 @@
         >
           {{ person.personFirstName }} {{ person.personLastName }}
         </h2>
-        <div v-if="image" class="pr-6" style="flex: 4;">
+        <div v-if="image && directoryPhoto" class="pr-6" style="flex: 4;">
           <img
             class="m-auto object-contain"
             style="max-width: 256px;"
@@ -19,7 +19,7 @@
           />
 
         </div>
-        <div v-else class="pr-6" style="flex: 4;">
+        <div v-else-if="!image && directoryPhoto" class="pr-6" style="flex: 4;">
           <img
             class="m-auto object-contain"
             style="max-width: 256px;"
@@ -107,6 +107,14 @@ export default {
         return this.person.personPhoto[0];
       }
       return null;
+    },
+    directoryPhoto()
+    {
+      if (this.theme.directory.photo)
+      {
+        return true
+      }
+        return false
     },
     place() {
       let place = this.person.loaded ? this.person.place : null;
