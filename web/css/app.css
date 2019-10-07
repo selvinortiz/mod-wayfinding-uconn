@@ -11469,10 +11469,6 @@ footer {
   overflow: hidden;
 }
 
-footer .\@end {
-  display: none;
-}
-
 .\@page {
   display: grid;
   height: 100vh;
