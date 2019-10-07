@@ -50,7 +50,7 @@
             <multi-select
               track-by="id"
               label="title"
-              placeholder="CHOOSE A ROOM / DEPT."
+              placeholder="CHOOSE YOUR DESTINATION"
               value
               :options="options"
               :show-labels="false"

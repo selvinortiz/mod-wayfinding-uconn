@@ -4,16 +4,12 @@
     :to="{ name: 'person', params: { id: person.id } }"
   >
     <!-- <img class="block p-2" src="/static/img/avatar.svg" style="max-height: 80px;" /> -->
-    <div class="block shadow-md mr-4" :style="styles.background">
+    <div class="block w-full shadow-md mr-4" :style="styles.background">
       <div class="block" v-if="directoryphoto">
         <img v-if="role.imageurl" :src="role.imageurl" />
         <img v-else src="/uploads/people/photos/GenericAvatar.jpg" />
       </div>
-      <div class="flex p-4">
-        <div class="w-1/4 mr-2">
-          <img class="w-full" src="/static/icons/People_Icon.svg" alt="People Icon" />
-        </div>
-        <div class="flex-1 w-3/4">
+      <div class="block px-4 pt-4 pb-2">
         <h2
           class="font-bold text-base cursor-pointer uppercase"
           :style="styles.title"
@@ -21,6 +17,8 @@
           {{ person.personFirstName }}
           {{ person.personLastName }}
         </h2>
+      </div>
+      <div class=" block w-full px-4 pb-4">
         <p v-if="role.title" class="text-base cursor-pointer">{{ role.title }}</p>
         <p v-if="role.department" class="text-base cursor-pointer">
           {{ role.department }}
@@ -32,7 +30,6 @@
           {{ role.suite }}
         </p>
         </div>
-      </div>
     </div>
   </router-link>
 </template>
