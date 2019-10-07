@@ -9,9 +9,10 @@
           :class="classes.link"
           :style="applyStyles(link)"
         >
+
           <p class="flex cursor-pointer">
-            <img :class="classes.icon" :src="`/static/icons/${link.icon}`" alt />
-            <span class="pt-2" v-html="link.title"></span>
+            <img :class="classes.icon" style="height: 32px; width: auto;" :src="`/static/icons/${link.icon}`" alt />
+            <span v-html="link.title"></span>
           </p>
         </router-link>
 
@@ -23,8 +24,8 @@
           @click="action(link.id)"
         >
           <p class="flex cursor-pointer text-2xl">
-            <img :class="classes.icon" :src="`/static/icons/${link.icon}`" alt />
-            <span class="pt-2" v-html="link.title"></span>
+            <img :class="classes.icon" style="height: 32px; width: auto;" :src="`/static/icons/${link.icon}`" alt />
+            <span v-html="link.title"></span>
           </p>
         </a>
 
@@ -36,8 +37,8 @@
           @click="service(link.url)"
         >
           <p class="flex cursor-pointer">
-            <img :class="classes.icon" :src="`/static/icons/${link.icon}`" alt />
-            <span class="pt-2" v-html="link.title"></span>
+            <img :class="classes.icon" style="height: 32px; width: auto;" :src="`/static/icons/${link.icon}`" alt />
+            <span v-html="link.title"></span>
           </p>
         </a>
       </div>
