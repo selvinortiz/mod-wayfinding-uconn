@@ -1,7 +1,7 @@
 <template>
   <content-loader :loaded="place.loaded" class="pt-8 px-16">
     <section class="xl:flex flex-wrap">
-      <div class="xl:w-1/2 xl:order-1 xl:pt-6">
+      <div class="xl:w-1/2 xl:order-1 xl:pt-6 lg:pb-6 md:pb-6">
         <mod-map :maps="maps" :buttons="false" class="xl:px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
@@ -38,7 +38,7 @@
             <multi-select
               track-by="id"
               label="buildingName"
-              placeholder="CHOOSE DESTINATION"
+              placeholder="CHOOSE A BUILDING"
               value
               :options="place.descendants"
               :show-labels="false"
