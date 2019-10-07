@@ -68,6 +68,7 @@ import axios from "../../utils/Axios";
 import PersonCard from "../../components/PersonCard.vue";
 
 export default {
+  name: "people",
   metaInfo: {
     title: "People"
   },
