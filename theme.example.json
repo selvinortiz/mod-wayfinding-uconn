@@ -5,7 +5,7 @@
   "directory": {
     "cards": {
       "bg": "#cacbcc",
-      "color": "#c0d",
+      "color": "#111",
       "cardphoto": true
     },
     "photo": true
@@ -13,8 +13,8 @@
   "colors": {
     "background": "#fff",
     "foreground": "#333",
-    "primary": "#c0d",
-    "gray": "#999",
+    "primary": "#111",
+    "gray": "#222",
     "warm": "#fcd94e",
     "hot": "#d81835"
   },
@@ -24,20 +24,20 @@
   "header": {
     "bg": {
       "colors": [
-        "#c0d",
-        "#f0d"
+        "#111",
+        "#222"
       ],
       "direction": "to bottom"
     },
     "logo": {
-      "url": "/static/img/logo.svg"
+      "url": "/static/img/mod.png"
     },
     "clock": {
       "fg": "#fff"
     }
   },
   "nav": {
-    "bg": "#e9e",
+    "bg": "#eee",
     "fg": [],
     "styles": [],
     "classes": [],
@@ -71,8 +71,8 @@
       }
     ],
     "link": {
-      "bg": "#e9e",
-      "fg": "#333",
+      "bg": "#ddd",
+      "fg": "#111",
       "styles": [],
       "classes": [
         "text-xl",
@@ -81,7 +81,7 @@
         "p-6"
       ],
       "active": {
-        "bg": "#b6e",
+        "bg": "#ccc",
         "fg": "#000"
       },
       "icon": {
@@ -93,14 +93,14 @@
     }
   },
   "footer": {
-    "bg": "#c0d",
-    "fg": "white"
+    "bg": "#111",
+    "fg": "#fff"
   },
   "search": {
-    "bg": "rgba(23, 2, 97, 0.5)",
+    "bg": "rgba(0,0,0, .75)",
     "cards": {
       "bg": "#cacbcc",
-      "color": "#c0d",
+      "color": "#222",
       "cardphoto": false
     }
   }
