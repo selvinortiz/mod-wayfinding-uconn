@@ -32,21 +32,22 @@
     </div>
 
     <div
-      class="w-full flex justify-center items-center self-end px-4 border-t border-dotted border-gray-500"
+      class="w-full flex justify-right items-center self-end border-t border-dotted border-gray-500"
       style="height: 10vh;"
     >
-      <!-- <select
-        :value="filters.letter"
-        @input="handleSelectedFilter('letter', $event)"
-        class="flex w-1/2 h-12 mt-1 mr-2 px-8 border-2"
-        :style="styles.border"
-      >
-        <option value="">{{ defaultLetterFilterLabel }}</option>
-        <option v-for="option in alphabet()" :key="option" :value="option">
-          {{ option }}
-        </option>
-      </select> -->
-      <div class="flex w-1/2 h-12 mt-1 mr-2 px-8">
+      <div class="flex w-1/3 h-12 mt-1 mr-2 pr-8">
+        <multi-select
+          track-by="title"
+          label="title"
+          placeholder="Filter by Department"
+          value
+          :options="departments"
+          :show-labels="false"
+          :allow-empty="true"
+          @input="handleSelectedFilter('department', $event)"
+        ></multi-select>
+      </div>
+      <div v-if="filters.department" class="flex w-1/3 h-12 mt-1 mr-2 px-8">
         <multi-select
           v-model="filters.letter"
           placeholder="Filter by Last Initial"
@@ -54,36 +55,9 @@
           :options="alphabet()"
           :show-labels="false"
           :allow-empty="true"
-          @input="handleSelectedFilter('Letter', $event)"
+          @input="handleSelectedFilter('letter', $event)"
         ></multi-select>
       </div>
-      <div class="flex w-1/2 h-12 mt-1 mr-2 px-8">
-        <multi-select
-          v-model="filters.department"
-          track-by="id"
-          label="title"
-          placeholder="Filter by Department"
-          value
-          :options="departments"
-          :show-labels="false"
-          :allow-empty="true"
-          @input="handleSelectedFilter('Department', $event)"
-        ></multi-select>
-      </div>
-      <!-- <select
-        :value="filters.department"
-        @input="handleSelectedFilter('department', $event)"
-        class="flex w-1/2 h-12 mt-1 ml-2 px-8 border-2"
-        :style="styles.border"
-      >
-        <option value="">{{ defaultDepartmentFilterLabel }}</option>
-        <option
-          v-for="department in departments"
-          :key="department.id"
-          :value="department.id"
-          >{{ department.title }}</option
-        >
-      </select> -->
     </div>
     <div class="m-auto">
       Don&rsquo;t see what you&rsquo;re looking for?
@@ -202,7 +176,7 @@ export default {
         .catch(error => console.error(error));
     },
     handleSelectedFilter(name, event) { 
-      if (name === 'Letter') {
+      if (name === 'letter') {
         console.log(name + " " + event);
       this.filters = {
         ...this.filters,
@@ -212,7 +186,7 @@ export default {
       } else {
         this.filters = {
         ...this.filters,
-        [name]: event.title
+        [name]: event.id
         };
       }
 
