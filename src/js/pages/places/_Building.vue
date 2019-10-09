@@ -70,7 +70,7 @@
                     <span
                       class="cursor-pointer underline"
                       :style="styles.defaultColor"
-                      >CAMPUS
+                      >BUILDING
                     </span>
                   </p>
                 </router-link>
