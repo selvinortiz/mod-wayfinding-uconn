@@ -32,8 +32,7 @@
     </div>
 
     <div
-      class="w-full flex justify-right items-center self-end border-t border-dotted border-gray-500"
-      style="height: 10vh;"
+      class="w-full flex pt-6"
     >
       <div class="flex w-1/3 h-12 mt-1 mr-2 pr-8">
         <multi-select
@@ -58,10 +57,10 @@
         ></multi-select>
       </div>
     </div>
-    <div class="m-auto">
+    <div class="pt-2">
       Don&rsquo;t see what you&rsquo;re looking for?
       <a
-        class="cursor-pointer"
+        class="cursor-pointer underline"
         :style="styles.defaultColor"
         @click="() => ($store.state.app.searchIsOpen = true)"
         >Switch to SEARCH</a
