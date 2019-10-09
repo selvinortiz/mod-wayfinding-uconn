@@ -37,25 +37,24 @@
     >
       <div class="flex w-1/3 h-12 mt-1 mr-2 pr-8">
         <multi-select
+          v-model="filters.department"
           track-by="title"
           label="title"
           placeholder="Filter by Department"
-          value
           :options="departments"
           :show-labels="false"
           :allow-empty="true"
-          @input="handleSelectedFilter('department', $event)"
+          @input="fetchPeople"
         ></multi-select>
       </div>
       <div v-if="filters.department" class="flex w-1/3 h-12 mt-1 mr-2 px-8">
         <multi-select
           v-model="filters.letter"
           placeholder="Filter by Last Initial"
-          value
           :options="alphabet()"
           :show-labels="false"
           :allow-empty="true"
-          @input="handleSelectedFilter('letter', $event)"
+          @input="fetchPeople"
         ></multi-select>
       </div>
     </div>
@@ -147,10 +146,15 @@ export default {
     }
   },
   methods: {
-    fetchPeople(params = {}) {
+    fetchPeople() {
       this.loaded.people = false;
+
+      const filters = {
+        letter: this.filters.letter,
+        department: this.filters.department ? this.filters.department.id : ''
+      }
       axios
-        .post("/actions/sys/wayfinding/people", params)
+        .post("/actions/sys/wayfinding/people", { filters })
         .then(response => {
           if (response.data.success) {
             this.people = response.data.people;
@@ -174,23 +178,6 @@ export default {
           }
         })
         .catch(error => console.error(error));
-    },
-    handleSelectedFilter(name, event) { 
-      if (name === 'letter') {
-        console.log(name + " " + event);
-      this.filters = {
-        ...this.filters,
-        [name]: event
-      };
-      console.log({filters: this.filters});
-      } else {
-        this.filters = {
-        ...this.filters,
-        [name]: event.id
-        };
-      }
-
-      this.$nextTick(() => this.fetchPeople({ filters: this.filters}));
     },
     alphabet() {
       var alphabet = [];
