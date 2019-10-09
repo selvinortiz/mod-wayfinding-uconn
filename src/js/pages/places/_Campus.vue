@@ -46,13 +46,13 @@
               @input="handleSelectedPlace"
             ></multi-select>
 
-            <div class="pt-4">
+            <div class="pt-6 text-lg">
               Don&rsquo;t see what you&rsquo;re looking for?
               <a
-                class="cursor-pointer"
+                class="cursor-pointer text-lg underline"
                 :style="styles.defaultColor"
                 @click="() => ($store.state.app.searchIsOpen = true)"
-                >Switch to SEARCH</a
+                >SEARCH</a
               >
             </div>
           </div>
