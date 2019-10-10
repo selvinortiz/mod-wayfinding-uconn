@@ -18,18 +18,18 @@ const days = [
   "Saturday"
 ];
 const months = [
-  "January",
-  "February",
-  "March",
+  "Jan",
+  "Feb",
+  "Mar",
   "April",
   "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec"
 ];
 
 export default {
