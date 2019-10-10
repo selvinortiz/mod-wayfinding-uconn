@@ -11,7 +11,7 @@
         >
 
           <p class="flex cursor-pointer">
-            <img :class="classes.icon" style="height: 32px; width: auto;" :src="`/static/icons/${link.icon}`" alt />
+            <inline-svg :class="classes.icon" :fill="theme.nav.link.bg" height="32px" :src="`/static/icons/${link.icon}`" alt />
             <span v-html="link.title"></span>
           </p>
         </router-link>
@@ -24,7 +24,7 @@
           @click="action(link.id)"
         >
           <p class="flex cursor-pointer text-2xl">
-            <img :class="classes.icon" style="height: 32px; width: auto;" :src="`/static/icons/${link.icon}`" alt />
+            <inline-svg :class="classes.icon" :fill="theme.nav.link.bg" height="32px" :src="`/static/icons/${link.icon}`" alt />
             <span v-html="link.title"></span>
           </p>
         </a>
@@ -37,7 +37,7 @@
           @click="service(link.url)"
         >
           <p class="flex cursor-pointer">
-            <img :class="classes.icon" style="height: 32px; width: auto;" :src="`/static/icons/${link.icon}`" alt />
+            <inline-svg :class="classes.icon" :fill="theme.nav.link.bg" height="32px" :src="`/static/icons/${link.icon}`" alt />
             <span v-html="link.title"></span>
           </p>
         </a>
