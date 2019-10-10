@@ -30,7 +30,7 @@
       "direction": "to bottom"
     },
     "logo": {
-      "url": "/static/img/mod.png"
+      "url": "/static/img/logo.svg"
     },
     "clock": {
       "fg": "#fff"
@@ -48,13 +48,6 @@
         "title": "Wayfinding",
         "route": "places",
         "icon": "places.svg"
-      },
-      {
-        "id": "people",
-        "type": "route",
-        "title": "Directory",
-        "route": "people",
-        "icon": "people.svg"
       },
       {
         "id": "service1",
