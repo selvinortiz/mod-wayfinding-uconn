@@ -66,30 +66,42 @@
               </template>
             </multi-select>
 
-             <div class="pt-4">
-              <div class="pb-4">
+             <div class="flex pt-6">
+            <div class="pr-4 text-lg">
                 <router-link
                   :to="{ name: 'campus', params: { id: campus.id } }"
                 >
                   <p>
-                    <span>Wish to choose a different building?</span>
                     <span
                       class="cursor-pointer underline"
                       :style="styles.defaultColor"
-                      >Return to the CAMPUS
+                      >BUILDING
                     </span>
                   </p>
                 </router-link>
-              </div>
-              <div class="pb-4">
-                Don&rsquo;t see what you&rsquo;re looking for?
-                <a
-                  class="cursor-pointer"
-                  :style="styles.defaultColor"
-                  @click="() => ($store.state.app.searchIsOpen = true)"
-                  >Switch to SEARCH</a
+                </div>
+                <!-- This is commented out because right now there is only one campus -->
+                <!-- <div class="pr-4 text-lg">
+                <router-link
+                  :to="{ name: 'building', params: { id: building.id } }"
                 >
-              </div>
+                  <p>
+                    <span
+                      class="cursor-pointer underline"
+                      :style="styles.defaultColor"
+                      >BUILDING
+                    </span>
+                  </p>
+                </router-link>
+                </div> -->
+                <div class="">
+                  <a
+                    class="cursor-pointer underline text-lg"
+                    :style="styles.defaultColor"
+                    @click="() => ($store.state.app.searchIsOpen = true)"
+                    >SEARCH</a
+                  >
+                </div>
             </div>
           </div>
         </div>

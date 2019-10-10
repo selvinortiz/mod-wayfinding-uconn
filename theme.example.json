@@ -30,7 +30,7 @@
       "direction": "to bottom"
     },
     "logo": {
-      "url": "/static/img/logo.svg"
+      "url": "/static/img/mod.png"
     },
     "clock": {
       "fg": "#fff"

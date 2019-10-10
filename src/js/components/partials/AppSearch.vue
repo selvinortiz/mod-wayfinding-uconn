@@ -5,16 +5,19 @@
       style="display: grid; grid-template-rows: 1fr 1fr; max-width: 65%; height: 100vh"
     >
       <section class="relative @search__results">
+        <div v-if="this.noReturn && !this.results.length > 0">
+          <h1 class="font-thin text-4xl m-auto text-center text-white">We did not find anything matching your criteria.</h1>
+        </div>
         <div
           v-if="results.length"
-          class="animated slideInDown absolute inset-x-0 bottom-0 px-4 overflow-y-auto"
+          class="animated slideInDown absolute inset-x-0 bottom-0 pr-4 pb-6 overflow-y-auto"
           style="max-height: 50vh"
         >
           <h2 class="font-thin text-2xl uppercase text-white">Results</h2>
           <!-- creates search box -->
           <div class="flex flex-wrap ">
             <div
-              class="flex my-2 mx-2 sm:w-1/3 md:w-1/3 xl:w-1/4 lg:w-1/3"
+              class="flex w-auto sm:w-1/2 md:w-1/2 xl:w-1/4 lg:w-1/2"
               v-for="result in results"
               :key="result.id"
             >
@@ -42,12 +45,11 @@
         <div class="flex items-center my-4" :style="styles.searchControls">
           <select
             v-model="context"
-            class="bg-transparent outline-none focus:outline-none text-gray-800 content-center"
+            class="bg-transparent outline-none focus:outline-none text-white content-center"
           >
-            <option value>All</option>
-            <option value="people">People</option>
-            <option value="places">Places</option>
-            <option value="building">Buildings</option>
+            <option :style="styles.searchControls" value>All</option>
+            <option :style="styles.searchControls" value="people">People</option>
+            <option :style="styles.searchControls" value="places">Places</option>
           </select>
           <input
             type="text"
@@ -92,6 +94,7 @@ export default {
       input: "",
       context: "",
       searching: false,
+      noReturn: false,
       results: [],
       searchErrorMessage: "",
       keyboardButtonLabels: {
@@ -142,9 +145,20 @@ export default {
           } else {
             this.searchErrorMessage = response.data.message;
           }
+          if (this.results.length < 1)
+          {
+            console.log("If statement running")
+            this.noReturn = true;
+          } else {
+            this.noReturn = false;
+          }
+          console.log(this.results.length)
           this.searching = false;
         })
         .catch(error => console.error(error));
+    },
+    failedSearch() {
+      this.noReturn = true
     },
     handleKeyboardChange(input) {
       this.input = input;

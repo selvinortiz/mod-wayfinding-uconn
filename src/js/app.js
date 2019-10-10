@@ -6,6 +6,7 @@ import 'regenerator-runtime/runtime';
 
 import Fullscreen from 'vue-fullscreen';
 import ContentIframe from 'vue-friendly-iframe';
+import InlineSvg from 'vue-inline-svg';
 import MultiSelect from 'vue-multiselect';
 import 'vue-multiselect/dist/vue-multiselect.min.css';
 
@@ -32,6 +33,7 @@ Vue.use(Fullscreen);
 
 Vue.component('content-iframe', ContentIframe);
 Vue.component('content-loader', ContentLoader);
+Vue.component('inline-svg', InlineSvg);
 Vue.component('page-header', PageHeader);
 Vue.component('building-name', BuildingName);
 Vue.component('multi-select', MultiSelect);
