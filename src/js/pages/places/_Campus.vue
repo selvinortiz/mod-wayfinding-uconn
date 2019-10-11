@@ -86,6 +86,7 @@
 import axios from "../../utils/Axios";
 
 export default {
+  name: 'campus',
   metaInfo: {
     title: "Place"
   },

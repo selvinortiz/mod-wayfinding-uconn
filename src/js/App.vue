@@ -35,7 +35,7 @@
 
       <main class="@page__content">
         <transition name="fade" mode="out-in">
-          <keep-alive exclude="service,people">
+          <keep-alive exclude="service,people,campus,building,room">
             <router-view></router-view>
           </keep-alive>
         </transition>

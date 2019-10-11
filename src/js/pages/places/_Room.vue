@@ -134,6 +134,7 @@
 import axios from "../../utils/Axios";
 
 export default {
+  name: 'room',
   metaInfo: {
     title: "Place"
   },
