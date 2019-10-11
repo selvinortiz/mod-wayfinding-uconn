@@ -107,7 +107,7 @@ class WayfindingController extends Controller
         $locationId = sys()->web->param('locationId');
 
         $place = Place::query()
-            ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
+            ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'roomPhoto', 'floorMap'])
             ->id($id)
             ->one();
 
@@ -129,7 +129,7 @@ class WayfindingController extends Controller
         if ($locationId)
         {
             $location = Place::query()
-                ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
+                ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'roomPhoto', 'floorMap'])
                 ->id($locationId)
                 ->one();
 
@@ -155,7 +155,7 @@ class WayfindingController extends Controller
         $locationId = sys()->web->param('locationId');
 
         $place = Place::query()
-            ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
+            ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'roomPhoto', 'floorMap'])
             ->one();
 
         if (!$place)
@@ -176,7 +176,7 @@ class WayfindingController extends Controller
         if ($locationId)
         {
             $location = Place::query()
-                ->with(['campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
+                ->with(['campusMap', 'campusPhoto', 'buildingPhoto', 'roomPhoto', 'floorMap'])
                 ->id($locationId)
                 ->one();
 
@@ -235,7 +235,7 @@ class WayfindingController extends Controller
         if (!empty($person->personRelatedPlace))
         {
             $place = Place::query()
-                ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'floorMap'])
+                ->with(['children', 'campusMap', 'campusPhoto', 'buildingPhoto', 'roomPhoto', 'floorMap'])
                 ->id($person->personRelatedPlace[0]->id)
                 ->one();
 

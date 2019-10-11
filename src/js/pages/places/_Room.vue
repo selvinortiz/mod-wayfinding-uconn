@@ -161,10 +161,10 @@ export default {
     photo() {
       if (
         this.building &&
-        this.building.buildingPhoto &&
-        this.building.buildingPhoto.length
+        this.building.roomPhoto &&
+        this.building.roomPhoto.length
       ) {
-        return this.building.buildingPhoto[0];
+        return this.building.roomPhoto[0];
       }
       return {
         url: "",

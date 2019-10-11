@@ -46,6 +46,7 @@ class Room extends Place
                         'campusMap',
                         'campusPhoto',
                         'buildingPhoto',
+                        'roomPhoto',
                         'floorMap'
                     ])
                     ->orderBy('typeId desc')

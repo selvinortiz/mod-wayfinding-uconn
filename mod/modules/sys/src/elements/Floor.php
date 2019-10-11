@@ -37,6 +37,7 @@ class Floor extends Place
                         'campusMap',
                         'campusPhoto',
                         'buildingPhoto',
+                        'roomPhoto',
                     ])
                     ->orderBy('typeId desc')
                     ->limit(2)
@@ -57,6 +58,7 @@ class Floor extends Place
             unset($place->values['campusMap']);
             unset($place->values['campusPhoto']);
             unset($place->values['buildingPhoto']);
+            unset($place->values['roomPhoto']);
         }
 
         return $place;
