@@ -4,6 +4,7 @@
       v-if="map"
       class="@CONTAINER relative flex items-center justify-center overflow-hidden bg-white shadow-lg"
       style="height: 40vh;"
+      draggable="false"
     >
       <img
         alt
