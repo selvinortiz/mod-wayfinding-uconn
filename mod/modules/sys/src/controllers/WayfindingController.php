@@ -266,7 +266,8 @@ class WayfindingController extends Controller
         $query = Person::query();
 
         $query->with([
-            'personRoles.role:roleDepartment'
+            'personPhoto',
+            'personRoles.role:roleDepartment',
         ]);
 
         if (!empty($filters))
