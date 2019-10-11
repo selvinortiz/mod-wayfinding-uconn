@@ -70,12 +70,12 @@
                     <span
                       class="cursor-pointer underline"
                       :style="styles.defaultColor"
-                      >BUILDING
+                      >CAMPUS
                     </span>
                   </p>
                 </router-link>
                 </div>
-                <div class="">
+                <div>
                   <a
                     class="cursor-pointer underline text-lg"
                     :style="styles.defaultColor"
@@ -115,6 +115,7 @@
 import axios from "../../utils/Axios";
 
 export default {
+  name: 'building',
   metaInfo: {
     title: "Place"
   },

@@ -4,6 +4,7 @@
       v-if="map"
       class="@CONTAINER relative flex items-center justify-center overflow-hidden bg-white shadow-lg"
       style="height: 40vh;"
+      draggable="false"
     >
       <img
         alt
@@ -11,10 +12,7 @@
         draggable="false"
         :src="map.activeImage.src"
         :style="styles.image"
-        @pointerdown="handleDragStart($event)"
-        @pointermove="handleDrag($event)"
-        @pointerup="handleDragStop()"
-        @pointerleave="handleDragStop()"
+        v-dragged="handleDrag"
       />
 
       <div class="absolute top-0 right-0 m-4 p-4 text-right bg-white shadow opacity-95">
@@ -22,7 +20,10 @@
         <h2>{{ map.activeImage.subtitle || map.subtitle }}</h2>
       </div>
 
-      <div v-if="map.thumbnailImage" class="absolute bottom-0 right-0 m-4 p-2 bg-gray-100 shadow-md opacity-95">
+      <div
+        v-if="map.thumbnailImage"
+        class="absolute bottom-0 right-0 m-4 p-2 bg-gray-100 shadow-md opacity-95"
+      >
         <img
           alt
           class="@THUMB w-full"
@@ -57,11 +58,11 @@ export default {
     },
     buttons: {
       type: Boolean,
-      default: true,
+      default: true
     },
     primaryMap: {
       type: String,
-      default: 'campus'
+      default: "campus"
     }
   },
   components: {
@@ -69,13 +70,15 @@ export default {
   },
   data: () => ({
     zoomBy: 0.5,
+    selectedMapX: 0,
+    selectedMapY: 0,
     selectedMap: null,
     selectedMapImage: null
   }),
   computed: {
     map() {
       if (!this.selectedMap) {
-        let index = this.maps.findIndex((map) => map.type === this.primaryMap);
+        let index = this.maps.findIndex(map => map.type === this.primaryMap);
 
         if (index === -1) {
           index = 0;
@@ -162,27 +165,20 @@ export default {
       this.$set(this.map, "activeImage", activeImage);
       this.$set(this.map, "thumbnailImage", thumbnailImage);
     },
-    handleDrag() {
-      if (this.map.drag.active) {
-        var diffX = event.x - this.map.drag.x;
-        var diffY = event.y - this.map.drag.y;
-
-        this.map.translate.x += diffX;
-        this.map.translate.y += diffY;
-
-        this.map.drag.x = event.x;
-        this.map.drag.y = event.y;
+    handleDrag({ offsetX, offsetY, first, last }) {
+      if (first) {
+        this.selectedMapX = this.map.translate.x;
+        this.selectedMapY = this.map.translate.y;
+        this.map.drag.active = true;
+        return;
       }
-    },
-    handleDragStart() {
-      this.map.drag = {
-        x: event.x,
-        y: event.y,
-        active: true
-      };
-    },
-    handleDragStop() {
-      this.map.drag.active = false;
+      if (last) {
+        this.map.drag.active = false;
+        return;
+      }
+
+      this.map.translate.x = this.selectedMapX + offsetX;
+      this.map.translate.y = this.selectedMapY + offsetY;
     }
   }
 };

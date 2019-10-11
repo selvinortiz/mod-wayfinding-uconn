@@ -67,9 +67,22 @@
             </multi-select>
 
              <div class="flex pt-6">
-            <div class="pr-4 text-lg">
+               <div class="pr-4 text-lg">
                 <router-link
                   :to="{ name: 'campus', params: { id: campus.id } }"
+                >
+                  <p>
+                    <span
+                      class="cursor-pointer underline"
+                      :style="styles.defaultColor"
+                      >CAMPUS
+                    </span>
+                  </p>
+                </router-link>
+                </div>
+            <div class="pr-4 text-lg">
+                <router-link
+                  :to="{ name: 'building', params: { id: building.id } }"
                 >
                   <p>
                     <span
@@ -134,6 +147,7 @@
 import axios from "../../utils/Axios";
 
 export default {
+  name: 'room',
   metaInfo: {
     title: "Place"
   },
@@ -160,10 +174,10 @@ export default {
     photo() {
       if (
         this.building &&
-        this.building.buildingPhoto &&
-        this.building.buildingPhoto.length
+        this.building.roomPhoto &&
+        this.building.roomPhoto.length
       ) {
-        return this.building.buildingPhoto[0];
+        return this.building.roomPhoto[0];
       }
       return {
         url: "",

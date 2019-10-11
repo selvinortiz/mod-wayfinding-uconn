@@ -52,6 +52,7 @@ class Campus extends Place
             }
 
             unset($place->values['buildingPhoto']);
+            unset($place->values['roomPhoto']);
             unset($place->values['floorMap']);
         }
 
