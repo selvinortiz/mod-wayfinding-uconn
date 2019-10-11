@@ -289,7 +289,7 @@ class WayfindingController extends Controller
         }
 
         $people = $query
-            ->orderBy('personLastName desc')
+            ->orderBy('personLastName asc')
             ->limit(100)
             ->all();
 
