@@ -18,7 +18,7 @@
           {{ person.personLastName }}
         </h2>
       </div>
-      <div class=" block w-full px-4 pb-4">
+      <div class=" block w-full px-4 pb-4 overflow-x-hidden">
         <p v-if="role.title" class="text-base cursor-pointer">{{ role.title }}</p>
         <p v-if="role.department" class="text-base cursor-pointer">
           {{ role.department }}
