@@ -13,8 +13,8 @@
             alt=""
         >
 
-        <span id="{{ name ~ '-marker' }}" style="position: absolute; top: 0; left: 0; display: none; width: 4%;">
-            <img src="{{ craft.app.assetManager.publishedUrl('@selvinortiz/smartfields/resources', true, 'marker.png') }}" alt=""
+        <span id="{{ name ~ '-marker' }}" style="position: absolute; top: 0; left: 0; display: none;">
+            <img src="{{ craft.app.assetManager.publishedUrl('@selvinortiz/smartfields/resources', true, 'marker.svg') }}" alt=""
             style="width: 100%" class="noselect" draggable="false">
         </span>
     </div>
@@ -45,9 +45,13 @@
     */
 
     if ($input.val()) {
+        debugger;
         var value = JSON.parse($input.val());
 
-        setMarkerCoordinates(value.x, value.y);
+        var mx = (($marker.width() / 2) / $map.width()) * 100;
+        var my = ($marker.height() / $map.height()) * 100;
+
+        setMarkerCoordinates(value.x - mx, value.y - my);
     }
 
     /*
