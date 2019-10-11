@@ -5,8 +5,8 @@
         <mod-map :maps="maps" primary-map="building" class="xl:px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
-      <!-- Portrait pageheader above image and text for long titles -->
-        <div v-if="photo" class="w-full xl:pb-0 lg:pb-4 md:pb-4" >
+        <!-- Portrait pageheader above image and text for long titles -->
+        <div v-if="photo" class="w-full xl:pb-0 lg:pb-4 md:pb-4">
           <page-header class="block xl:hidden lg:block md:block sm:block">
             {{ place.title }}
           </page-header>
@@ -20,19 +20,25 @@
             <ui-photo :photo="photo" class="xl:pb-4 lg:pb-6 md:pb-6"></ui-photo>
             <p v-if="photo" class="xl:pb-4">
               <!-- landscape pageheader -->
-              <page-header
-                class="hidden xl:block md:hidden sm:hidden"
-              >{{ place.title }}</page-header>
+              <page-header class="hidden xl:block md:hidden sm:hidden">{{
+                place.title
+              }}</page-header>
             </p>
             <p class="pb-4">
-              <span class="block font-extrabold text-2xl">{{ building.buildingName }} Building</span>
+              <span class="block font-extrabold text-2xl"
+                >{{ building.buildingName }} Building</span
+              >
             </p>
             <p class="pb-4">
-              <span class="block font-bold">Floor #: {{ floor.floorNumber }}</span>
-              <span class="block font-bold">Suite #: {{ place.roomNumber }}</span>
+              <span class="block font-bold"
+                >Floor #: {{ floor.floorNumber }}</span
+              >
+              <span class="block font-bold"
+                >Suite #: {{ place.roomNumber }}</span
+              >
             </p>
-            <p class="pb-4">
-              <span class="block font-bold">555-555-5555</span>
+            <p v-if="place.placePhone" class="pb-4">
+              <span class="block font-bold">{{place.placePhone}}</span>
             </p>
             <p class="pb-4">
               <span class="block">{{ building.placeAddress }}</span>
@@ -50,7 +56,7 @@
           </div>
         </div>
         <div class="w-1/2">
-          <div class="pr-6" >
+          <div class="pr-6">
             <multi-select
               track-by="id"
               label="title"
@@ -65,9 +71,8 @@
                 <p class="cursor-pointer">{{ option.title }}</p>
               </template>
             </multi-select>
-
-             <div class="flex pt-6">
-                <div class="pr-4 text-lg">
+            <div class="flex pt-6">
+              <div class="pr-4 text-lg">
                 <router-link
                   :to="{ name: 'campus', params: { id: campus.id } }"
                 >
@@ -79,9 +84,8 @@
                     </span>
                   </p>
                 </router-link>
-                </div>
-                <div>
-               <div class="pr-4 text-lg">
+              </div>
+              <div class="pr-4 text-lg">
                 <router-link
                   :to="{ name: 'building', params: { id: building.id } }"
                 >
@@ -93,8 +97,8 @@
                     </span>
                   </p>
                 </router-link>
-                </div>
-            <div class="pr-4 text-lg">
+              </div>
+              <div class="pr-4 text-lg">
                 <router-link
                   :to="{ name: 'building', params: { id: building.id } }"
                 >
@@ -106,29 +110,15 @@
                     </span>
                   </p>
                 </router-link>
-                </div>
-                <!-- This is commented out because right now there is only one campus -->
-                <!-- <div class="pr-4 text-lg">
-                <router-link
-                  :to="{ name: 'building', params: { id: building.id } }"
+              </div>
+              <div class="">
+                <a
+                  class="cursor-pointer underline text-lg"
+                  :style="styles.defaultColor"
+                  @click="() => ($store.state.app.searchIsOpen = true)"
+                  >SEARCH</a
                 >
-                  <p>
-                    <span
-                      class="cursor-pointer underline"
-                      :style="styles.defaultColor"
-                      >BUILDING
-                    </span>
-                  </p>
-                </router-link>
-                </div> -->
-                <div class="">
-                  <a
-                    class="cursor-pointer underline text-lg"
-                    :style="styles.defaultColor"
-                    @click="() => ($store.state.app.searchIsOpen = true)"
-                    >SEARCH</a
-                  >
-                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -161,7 +151,7 @@
 import axios from "../../utils/Axios";
 
 export default {
-  name: 'room',
+  name: "room",
   metaInfo: {
     title: "Place"
   },
@@ -187,17 +177,13 @@ export default {
     },
     photo() {
       if (
-        this.building &&
-        this.building.roomPhoto &&
-        this.building.roomPhoto.length
+        this.place &&
+        this.place.roomPhoto &&
+        this.place.roomPhoto.length
       ) {
-        return this.building.roomPhoto[0];
+        return this.place.roomPhoto[0];
       }
-      return {
-        url: "",
-        width: 0,
-        height: 0
-      };
+      return null;
     },
     kiosk() {
       return this.$store.state.app.kiosk || { id: null };
@@ -213,7 +199,7 @@ export default {
     },
     options() {
       if (!this.building || !this.building.descendants) {
-        return []
+        return [];
       }
 
       return this.building.descendants.map(item => {
@@ -261,7 +247,7 @@ export default {
       if (to.name === "room" && this.$route.params.id != this.place.id) {
         this.place = {
           id: 0,
-          loaded:false,
+          loaded: false,
           ancestors: []
         };
         this.fetch();
