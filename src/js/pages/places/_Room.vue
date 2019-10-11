@@ -67,9 +67,22 @@
             </multi-select>
 
              <div class="flex pt-6">
-            <div class="pr-4 text-lg">
+               <div class="pr-4 text-lg">
                 <router-link
                   :to="{ name: 'campus', params: { id: campus.id } }"
+                >
+                  <p>
+                    <span
+                      class="cursor-pointer underline"
+                      :style="styles.defaultColor"
+                      >CAMPUS
+                    </span>
+                  </p>
+                </router-link>
+                </div>
+            <div class="pr-4 text-lg">
+                <router-link
+                  :to="{ name: 'building', params: { id: building.id } }"
                 >
                   <p>
                     <span
