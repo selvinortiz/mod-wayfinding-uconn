@@ -45,6 +45,7 @@
     "sass-loader": "^7.2.0",
     "style-loader": "^1.0.0",
     "tailwindcss": "^1.1.1",
+    "v-dragged": "0.0.5",
     "vue": "^2.6.10",
     "vue-friendly-iframe": "^0.13.0",
     "vue-fullscreen": "^2.1.5",

@@ -4,6 +4,7 @@ import Meta from 'vue-meta';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
+import Dragged from 'v-dragged';
 import Fullscreen from 'vue-fullscreen';
 import ContentIframe from 'vue-friendly-iframe';
 import InlineSvg from 'vue-inline-svg';
@@ -30,6 +31,7 @@ Vue.use(Meta);
 Vue.use(Theme);
 Vue.use(Events);
 Vue.use(Fullscreen);
+Vue.use(Dragged);
 
 Vue.component('content-iframe', ContentIframe);
 Vue.component('content-loader', ContentLoader);
