@@ -13,11 +13,11 @@
         :style="selectedMapType === 'building' ? styles.buttons.active : styles.buttons.normal"
         @click="$emit('select-building-map')"
       >Building Map</button>
-      <button
+      <!-- <button
         class="mr-4 py-2 px-4 uppercase border-2 outline-none focus:outline-none"
         :style="styles.buttons.normal"
         @click="$emit('reset-map')"
-      >Reset Map</button>
+      >Reset Map</button> -->
     </div>
     <div class="self-end">
       <button
@@ -25,7 +25,12 @@
         style="width: 32px;"
         @click="$emit('zoom-in')"
       >
-        <svg
+      <inline-svg 
+        class="" 
+        :fill="styles.buttons.normal" 
+        height="32px" 
+        src="/static/icons/zoom-in.svg" alt />
+        <!-- <svg
           aria-hidden="true"
           focusable="false"
           data-prefix="fas"
@@ -39,14 +44,30 @@
             fill="currentColor"
             d="M304 192v32c0 6.6-5.4 12-12 12h-56v56c0 6.6-5.4 12-12 12h-32c-6.6 0-12-5.4-12-12v-56h-56c-6.6 0-12-5.4-12-12v-32c0-6.6 5.4-12 12-12h56v-56c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v56h56c6.6 0 12 5.4 12 12zm201 284.7L476.7 505c-9.4 9.4-24.6 9.4-33.9 0L343 405.3c-4.5-4.5-7-10.6-7-17V372c-35.3 27.6-79.7 44-128 44C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208c0 48.3-16.4 92.7-44 128h16.3c6.4 0 12.5 2.5 17 7l99.7 99.7c9.3 9.4 9.3 24.6 0 34zM344 208c0-75.2-60.8-136-136-136S72 132.8 72 208s60.8 136 136 136 136-60.8 136-136z"
           />
-        </svg>
+        </svg> -->
+      </button>
+      <button
+        class="ml-4 text-gray-600 outline-none focus:outline-none"
+        style="width: 32px;"
+        @click="$emit('reset-map')"
+      >
+      <inline-svg 
+        class="" 
+        :fill="styles.buttons.normal" 
+        height="32px" 
+        src="/static/icons/reset-map.svg" alt />
       </button>
       <button
         class="ml-4 text-gray-600 outline-none focus:outline-none"
         style="width: 32px;"
         @click="$emit('zoom-out')"
       >
-        <svg
+      <inline-svg 
+        class="" 
+        :fill="styles.buttons.normal" 
+        height="32px" 
+        src="/static/icons/zoom-out.svg" alt />
+        <!-- <svg
           aria-hidden="true"
           focusable="false"
           data-prefix="fas"
@@ -60,7 +81,7 @@
             fill="currentColor"
             d="M304 192v32c0 6.6-5.4 12-12 12H124c-6.6 0-12-5.4-12-12v-32c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm201 284.7L476.7 505c-9.4 9.4-24.6 9.4-33.9 0L343 405.3c-4.5-4.5-7-10.6-7-17V372c-35.3 27.6-79.7 44-128 44C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208c0 48.3-16.4 92.7-44 128h16.3c6.4 0 12.5 2.5 17 7l99.7 99.7c9.3 9.4 9.3 24.6 0 34zM344 208c0-75.2-60.8-136-136-136S72 132.8 72 208s60.8 136 136 136 136-60.8 136-136z"
           />
-        </svg>
+        </svg> -->
       </button>
     </div>
   </section>
