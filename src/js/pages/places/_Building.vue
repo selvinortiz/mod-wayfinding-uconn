@@ -13,9 +13,7 @@
         </div>
         <!-- landscape and Protrait header for no photo -->
         <div v-else class="w-full mb-6">
-          <page-header
-            >{{ place.buildingName }} {{ place.type.name }}</page-header
-          >
+          <page-header class="block">{{ place.buildingName }} {{ place.type.name }}</page-header>
         </div>
         <div class="w-1/2 pr-10">
           <div>
@@ -26,8 +24,8 @@
                 >{{ place.buildingName }} {{ place.type.name }}</page-header
               >
             </p>
-            <p class="pb-4">
-              <span class="block font-bold">555-555-5555</span>
+            <p v-if="place.placePhone" class="pb-4">
+              <span class="block font-bold">{{place.placePhone}}</span>
             </p>
             <p class="pb-4">
               <span class="block">{{ place.placeAddress }}</span>

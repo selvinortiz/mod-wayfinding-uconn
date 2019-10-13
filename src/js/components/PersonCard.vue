@@ -5,8 +5,8 @@
   >
     <!-- <img class="block p-2" src="/static/img/avatar.svg" style="max-height: 80px;" /> -->
     <div class="block w-full shadow-md mr-4" :style="styles.background">
-      <div class="block" v-if="directoryphoto">
-        <img v-if="role.imageurl" :src="role.imageurl" />
+      <div v-if="directoryphoto" class="block">
+        <img v-if="image" class="w-full object-contain" :src="image.url" />
         <img v-else src="/uploads/people/photos/GenericAvatar.jpg" />
       </div>
       <div class="block px-4 pt-4 pb-2">
@@ -62,11 +62,20 @@ export default {
       }
       return false;
     },
+    image() {
+      if (
+        this.person &&
+        this.person.personPhoto &&
+        this.person.personPhoto.length
+      ) {
+        return this.person.personPhoto[0];
+      }
+      return null;
+    },
     role() {
       const role = {
         title: "",
         department: "",
-        imageurl: "",
         building: "",
         suite: ""
       };
@@ -75,7 +84,6 @@ export default {
         return {
           title: this.person.personRoles[0].roleTitle,
           department: this.person.personRoles[0].roleDepartment[0].title,
-          imageurl: "",
           building: "",
           suite: ""
         };
