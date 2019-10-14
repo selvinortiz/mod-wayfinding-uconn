@@ -3,13 +3,13 @@
 namespace modules\sys\controllers;
 
 use craft\elements\Asset;
-use craft\web\Controller;
 use craft\elements\Category;
+use craft\web\Controller;
 use modules\sys\elements\Building;
 use modules\sys\elements\Campus;
 use modules\sys\elements\Floor;
-use modules\sys\elements\Place;
 use modules\sys\elements\Person;
+use modules\sys\elements\Place;
 use modules\sys\elements\Room;
 use yii\web\HttpException;
 use yii\web\Response;
@@ -44,14 +44,26 @@ class WayfindingController extends Controller
             throw new HttpException(404, 'Campus map not found');
         }
 
+        // Set this if if any of the building IDs are prefixed with an @ sign
+        $locationId = null;
+
         if (!empty($buildingIds))
         {
             $buildingIds = explode(',', $buildingIds);
-            $buildings   = Building::query()
+
+            foreach ($buildingIds as $key => $buildingId)
+            {
+                if (stripos($buildingId, '@') !== false)
+                {
+                    $buildingIds[$key] = $locationId = ltrim($buildingId, '@');
+                }
+            }
+
+            $buildings = Building::query()
                 ->id($buildingIds)
                 ->all();
 
-            $markers = $this->generateMarkers($map, $buildings);
+            $markers = $this->generateMarkers($map, $buildings, $locationId);
         }
 
         return sys()->web->asSvg($this->generateImage($map, $markers ?? []));
@@ -77,21 +89,51 @@ class WayfindingController extends Controller
             throw new HttpException(404, 'Floor map not found');
         }
 
+
+        if (!empty($buildingIds))
+        {
+            $buildingIds = explode(',', $buildingIds);
+
+            foreach ($buildingIds as $key => $buildingId)
+            {
+                if (stripos($buildingId, '@') !== false)
+                {
+                    $buildingIds[$key] = $locationId = ltrim($buildingId, '@');
+                }
+            }
+
+            $buildings = Building::query()
+                ->id($buildingIds)
+                ->all();
+
+            $markers = $this->generateMarkers($map, $buildings, $locationId);
+        }
+
+        $locationId = null;
+
         if (!empty($roomIds))
         {
             $roomIds = explode(',', $roomIds);
+
+
+            foreach ($roomIds as $key => $roomId)
+            {
+                if (stripos($roomId, '@') !== false)
+                {
+                    $roomIds[$key] = $locationId = ltrim($roomId, '@');
+                }
+            }
+
             $rooms   = Room::query()
                 ->id($roomIds)
                 ->all();
-
         }
         else
         {
             $rooms = Room::query()->limit(1)->all();
         }
 
-        $markers = $this->generateMarkers($map, $rooms);
-
+        $markers = $this->generateMarkers($map, $rooms, $locationId);
 
         return sys()->web->asSvg($this->generateImage($map, $markers));
     }
@@ -317,15 +359,19 @@ class WayfindingController extends Controller
         return sys()->web->asJson('Found departments', compact('departments'));
     }
 
-    private function generateMarkers(Asset $image, array $places)
+    private function generateMarkers(Asset $image, array $places, $locationId = null)
     {
-        return array_map(function($place) use ($image)
+        return array_map(function($place) use ($image, $locationId)
         {
             // 8 half of the circle marker width/height
-            $x = round(($place->placeMarker['x']/100) * $image->getWidth());
-            $y = round(($place->placeMarker['y']/100) * $image->getHeight());
+            $x = round(($place->placeMarker['x'] / 100) * $image->getWidth());
+            $y = round(($place->placeMarker['y'] / 100) * $image->getHeight());
 
-            return compact('x', 'y');
+            $id   = $place->id;
+            $type = $place->type->handle;
+            $here = $locationId && $locationId == $place->id;
+
+            return compact('x', 'y', 'id', 'type', 'here');
         }, $places);
     }
 

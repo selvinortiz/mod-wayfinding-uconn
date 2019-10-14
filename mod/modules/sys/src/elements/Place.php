@@ -130,13 +130,25 @@ class Place extends Element
             {
                 if ($this->parent && $this->parent->campusMap)
                 {
+                    $buildingIds = [$this->id];
+
+                    // When user is at a Kiosk
+                    if ($this->location)
+                    {
+                        if ($this->location->id != $this->id)
+                        {
+                            // Prefix with @ to indicate the kiosk location
+                            $buildingIds[] = '@'.$this->location->id;
+                        }
+                    }
+
                     $maps[] = [
                         'zoom'     => 2,
                         'type'     => 'campus',
                         'title'    => $this->buildingName,
                         'images'   => [
                             [
-                                'src' => $this->createMapUrl('campus', $this->parent->id, [$this->id])
+                                'src' => $this->createMapUrl('campus', $this->parent->id, $buildingIds)
                             ]
                         ]
                     ];
@@ -158,23 +170,20 @@ class Place extends Element
                 if ($this->parent && $this->parent->floorMap)
                 {
                     // When user is at a Kiosk
-                    if ($this->location)
+                    if (!in_array($this->ancestors[2]->floorNumber, [1, '1', 'gf']))
                     {
-                        $floor = $this->location->descendants->one();
-                        $room  = $floor->descendants->one();
+                        $building = $this->ancestors[1];
+                        $floor = $building->descendants->one();
 
-                        if ($floor->id != $this->ancestors[2]->id)
-                        {
-                            $image = [
-                                'title'    => $this->location->buildingName,
-                                'subtitle' => $floor->title,
-                                'src'      => $this->createMapUrl('room', $floor->id, [$room->id])
-                            ];
-                        }
+                        $image = [
+                            'title'    => $building->buildingName,
+                            'subtitle' => $floor->title,
+                            'src'      => $this->createMapUrl('room', $floor->id, ['@'.$floor->descendants->one()->id])
+                        ];
                     }
 
                     $maps[] = [
-                        'zoom'   => 2,
+                        'zoom'   => 1.5,
                         'type'   => 'campus',
                         'title'  => $this->ancestors[1]->buildingName,
                         'images' => [
@@ -190,6 +199,8 @@ class Place extends Element
                         'subtitle' => $this->ancestors[2]->title,
                         'images'   => [
                             [
+                                'title'    => $this->ancestors[1]->buildingName,
+                                'subtitle' => $this->ancestors[2]->title,
                                 'src' => $this->createMapUrl('room', $this->ancestors[2]->id, [$this->id])
                             ],
                             $image ?? null
