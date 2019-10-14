@@ -98,19 +98,6 @@
                   </p>
                 </router-link>
               </div>
-              <div class="pr-4 text-lg">
-                <router-link
-                  :to="{ name: 'building', params: { id: building.id } }"
-                >
-                  <p>
-                    <span
-                      class="cursor-pointer underline"
-                      :style="styles.defaultColor"
-                      >BUILDING
-                    </span>
-                  </p>
-                </router-link>
-              </div>
               <div class="">
                 <a
                   class="cursor-pointer underline text-lg"
