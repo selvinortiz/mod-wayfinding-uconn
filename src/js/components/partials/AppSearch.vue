@@ -14,34 +14,21 @@
           style="max-height: 50vh"
         >
           <h2 class="font-thin text-2xl uppercase text-white">Results</h2>
-          <!-- creates search box -->
+          <!-- pulls in search cards -->
           <div class="flex flex-wrap ">
             <div
-              class="flex w-auto sm:w-1/2 md:w-1/2 xl:w-1/4 lg:w-1/2"
+              class="flex w-auto sm:w-1/2 md:w-1/3 xl:w-1/4 lg:w-1/3"
               v-for="result in results"
               :key="result.id"
             >
               <search-card :results="result"></search-card>
             </div>
           </div>
-          <!-- <div class="flex flex-wrap -mx-2 lg:-mx-2">
-            <router-link
-              class="block w-full lg:w-1/2 xl:w-1/3 flex my-2 px-2 lg:my-4 lg:px-4"
-              v-for="result in results"
-              :key="result.id"
-              :to="{name: result.type, params: { id: result.id}}"
-              @click.native="handleCardClick"
-            >
-              <div class="flex-1 px-4 py-2 border border-gray-300 bg-white">
-                <p class="font-thin text-xl">{{ result.title }}</p>
-              </div>
-            </router-link>
-          </div> -->
         </div>
       </section>
 
-      <section class="animated fadeIn @search" :style="styles.search">
-        <h2 class="font-thin text-2xl uppercase text-white">Search</h2>
+      <section class="animated fadeIn @search mt-4" :style="styles.search">
+        <h2 class="font-thin text-2xl uppercase text-white opacity-75">Search People and Places</h2>
         <div class="flex items-center my-4" :style="styles.searchControls">
           <select
             v-model="context"
