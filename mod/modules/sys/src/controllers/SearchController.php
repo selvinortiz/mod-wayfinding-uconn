@@ -6,7 +6,6 @@ use Craft;
 use craft\web\Controller;
 use modules\sys\elements\Element;
 use modules\sys\enums\SearchContext;
-
 use function modules\sys\sys;
 
 class SearchController extends Controller
@@ -29,8 +28,8 @@ class SearchController extends Controller
             ->type(SearchContext::type($context))
             ->section(SearchContext::section($context))
             ->search($this->prepareSearchQueryString($query))
-            ->limit(48)
-            ->with(['relatedDepartments'])
+            ->limit(100)
+            ->with(['personRoles.role:roleDepartment'])
             ->all();
 
         $results = $this->elementsToArrays($elements);
@@ -61,7 +60,7 @@ class SearchController extends Controller
             function($element) {
                 return [
                     'id'    => $element->id,
-                    'title' => $element->title,
+                    'title' => $this->getTitleByType($element),
                     'info'  => $this->getInfoByType($element),
                     'type'  => $element->type->handle,
                     'url'   => $element->url
@@ -71,8 +70,39 @@ class SearchController extends Controller
         );
     }
 
+    private function getTitleByType(Element $element)
+    {
+        switch ($element->type->handle)
+        {
+            case 'campus':
+                return $element->campusName.' Campus';
+            case 'building':
+                return $element->buildingName.' Building';
+            default:
+                return $element->title;
+        }
+    }
+
     private function getInfoByType(Element $element)
     {
-        return '';
+        switch ($element->type->handle)
+        {
+            case 'building':
+                return [$element->parent->campusName.' Campus'];
+            case 'room':
+                return [
+                    $element->parent->parent->buildingName.' Building',
+                ];
+            case 'person':
+                $roleTitle      = $element->personRoles[0]['roleTitle'] ?? null;
+                $roleDepartment = $element->personRoles[0]['roleDepartment'][0]->title ?? null;
+
+                return array_filter([
+                    $roleTitle,
+                    $roleDepartment
+                ]);
+            default:
+                return [];
+        }
     }
 }
