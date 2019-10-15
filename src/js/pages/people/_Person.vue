@@ -1,10 +1,10 @@
 <template>
   <content-loader :loaded="person.loaded" class="p-16">
     <section class="xl:flex flex-wrap">
-      <div class="xl:w-1/2 xl:order-1">
+      <div class="xl:w-2/3 xl:order-1">
         <mod-map :maps="place.maps" primary-map="building" class="xl:px-4"></mod-map>
       </div>
-      <div class="w-full flex flex-wrap xl:w-1/2">
+      <div class="w-full flex flex-wrap xl:w-1/3">
         <h2
           class="w-full font-thin text-4xl leading-none uppercase xl:pb-6 xl:pt-0 lg:py-8 md:py-8"
           :style="`color: ${theme.colors.primary}`"
