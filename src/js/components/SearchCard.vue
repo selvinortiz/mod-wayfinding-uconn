@@ -12,13 +12,14 @@
       <div v-else class="flex w-1/4 mr-2">
         <img src="/static/icons/Places_Icon.svg" alt="People Icon" />
       </div>
-      <div class="flex  m-auto align-middle w-3/4">
+      <div>
         <h2
-          class="font-bold text-sm cursor-pointer uppercase"
+          class="font-bold text-md cursor-pointer uppercase"
           :style="styles.title"
         >
           {{ results.title }}
         </h2>
+        <p v-for="(line, index) in results.info" :key="index" class="text-sm opacity-75">{{ line }}</p>
       </div>
     </div>
     </div>
@@ -30,9 +31,7 @@ export default {
   props: {
     results: {
       type: Object,
-      default: () => {
-        null;
-      }
+      default: () => {}
     }
   },
   computed: {
