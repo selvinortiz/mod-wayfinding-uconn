@@ -11,22 +11,22 @@
         >
           {{ person.personFirstName }} {{ person.personLastName }}
         </h2>
-        <div v-if="image && directoryPhoto" class="pr-6" style="flex: 4;">
+        <div v-if="image && directoryPhoto" class="pr-6">
           <img
-            class="m-auto object-contain"
+            class="object-contain"
             style="max-width: 256px;"
             :src="image.url"
           />
 
         </div>
-        <div v-else-if="!image && directoryPhoto" class="pr-6" style="flex: 4;">
+        <div v-else-if="!image && directoryPhoto" class="pr-6">
           <img
-            class="m-auto object-contain"
+            class="object-contain"
             style="max-width: 256px;"
             src="/uploads/people/photos/Oak Leaf avatar.jpg"
           />
         </div>
-        <div style="flex: 8;">
+        <div>
           <div>
             <div class="pb-4" v-for="role in person.personRoles" :key="role.id">
               <p class="font-bold">{{ role.roleTitle }}</p>
@@ -38,31 +38,15 @@
               <p class="font-normal">Suite: {{ room }}</p>
               <p class="font-normal">Floor: {{ floor }}</p>
             </div>
-
             <div class="pb-4">
               <p>{{ person.personAddress }}</p>
               <p>{{ person.personCity }}</p>
               <p>{{ person.personState }} {{ person.personZipcode }}</p>
             </div>
-
-            <!-- <div class="pt-4">
-              <a
-                class="cursor-pointer"
-                :style="`color: ${theme.colors.primary}`"
-                @click="openInMaps"
-                >{{ person.personCity }}, {{ person.personState }}
-                {{ person.personZipcode }} &rarr;</a
-              >
-            </div> -->
-
             <div class="pb-4">
               <p class="font-bold">{{ person.personPhone }}</p>
               <p class="font-bold">{{ person.personEmail }}</p>
             </div>
-
-            <!-- <div class="font-bold">Building Name</div>
-              <div>Suite #</div>
-            <div class="mb-4">Floor #</div>-->
             <div class="h-40 xl:h-56 w-4/5 overflow-y-auto" v-html="person.personDescription"></div>
           </div>
         </div>
