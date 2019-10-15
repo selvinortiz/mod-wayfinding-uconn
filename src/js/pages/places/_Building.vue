@@ -59,27 +59,29 @@
                 <p class="cursor-pointer">{{ option.title }}</p>
               </template>
             </multi-select>
-            <div class="flex pt-6">
-              <div class="pr-4 text-lg">
+            <div class="flex w-full pt-6">
+              <div class="pr-4 text-lg w-1/2">
                 <router-link
                   :to="{ name: 'campus', params: { id: campus.id } }"
                 >
                   <p>
                     <span
-                      class="cursor-pointer underline"
+                      class="flex cursor-pointer underline"
                       :style="styles.defaultColor"
                       >CAMPUS
                     </span>
                   </p>
                 </router-link>
                 </div>
-                <div>
+                <div class="w-1/2 ">
+                <span class="flex flex-row-reverse">
                   <a
                     class="cursor-pointer underline text-lg"
                     :style="styles.defaultColor"
                     @click="() => ($store.state.app.searchIsOpen = true)"
                     >SEARCH</a
                   >
+                  </span>
                 </div>
             </div>
           </div>

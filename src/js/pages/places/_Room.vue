@@ -38,7 +38,7 @@
               >
             </p>
             <p v-if="place.placePhone" class="pb-4">
-              <span class="block font-bold">{{place.placePhone}}</span>
+              <span class="block font-bold">{{ place.placePhone }}</span>
             </p>
             <p class="pb-4">
               <span class="block">{{ building.placeAddress }}</span>
@@ -72,39 +72,46 @@
               </template>
             </multi-select>
             <div class="flex pt-6">
-              <div class="pr-4 text-lg">
-                <router-link
-                  :to="{ name: 'campus', params: { id: campus.id } }"
-                >
-                  <p>
-                    <span
-                      class="cursor-pointer underline"
-                      :style="styles.defaultColor"
-                      >CAMPUS
-                    </span>
-                  </p>
-                </router-link>
+              <div class="flex pr-4 text-lg w-2/3">
+                <div>
+                  <router-link
+                    :to="{ name: 'campus', params: { id: campus.id } }"
+                  >
+                    <p>
+                      <span
+                        class="cursor-pointer underline"
+                        :style="styles.defaultColor"
+                        >CAMPUS 
+                      </span>
+                    </p>
+                  </router-link>
+                </div>
+                <div>
+                  <p>&nbsp;/&nbsp; </p>
+                </div>
+                <div>
+                  <router-link
+                    :to="{ name: 'building', params: { id: building.id } }"
+                  >
+                    <p>
+                      <span
+                        class="cursor-pointer underline"
+                        :style="styles.defaultColor"
+                        > BUILDING
+                      </span>
+                    </p>
+                  </router-link>
+                </div>
               </div>
-              <div class="pr-4 text-lg">
-                <router-link
-                  :to="{ name: 'building', params: { id: building.id } }"
-                >
-                  <p>
-                    <span
-                      class="cursor-pointer underline"
-                      :style="styles.defaultColor"
-                      >BUILDING
-                    </span>
-                  </p>
-                </router-link>
-              </div>
-              <div class="">
-                <a
-                  class="cursor-pointer underline text-lg"
-                  :style="styles.defaultColor"
-                  @click="() => ($store.state.app.searchIsOpen = true)"
-                  >SEARCH</a
-                >
+              <div class="w-1/3">
+                <span class="flex flex-row-reverse">
+                  <a
+                    class="cursor-pointer underline text-lg"
+                    :style="styles.defaultColor"
+                    @click="() => ($store.state.app.searchIsOpen = true)"
+                    >SEARCH</a
+                  >
+                </span>
               </div>
             </div>
           </div>
@@ -163,11 +170,7 @@ export default {
       return this.$store.state.app.theme;
     },
     photo() {
-      if (
-        this.place &&
-        this.place.roomPhoto &&
-        this.place.roomPhoto.length
-      ) {
+      if (this.place && this.place.roomPhoto && this.place.roomPhoto.length) {
         return this.place.roomPhoto[0];
       }
       return null;
