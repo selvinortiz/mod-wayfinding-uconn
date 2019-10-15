@@ -32,6 +32,7 @@
         >
           {{ results.title }}
         </h2>
+        <span v-if="results.info.length">
         <p
           v-for="(line, index) in results.info"
           :key="index"
@@ -39,6 +40,7 @@
         >
           {{ line }}
         </p>
+        </span>
       </div>
     </div>
   </router-link>
