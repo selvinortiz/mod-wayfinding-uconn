@@ -24,7 +24,7 @@ class FeedsController extends Controller
         ));
 
         // Run the garbage collector
-        Craft::$app->gc->run(true);
+        // Craft::$app->gc->run(true);
 
         return $this->asJson('Feed queued up👍');
     }
