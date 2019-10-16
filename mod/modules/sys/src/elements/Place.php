@@ -100,6 +100,7 @@ class Place extends Element
         }
 
         $values['maps'] = $this->values['maps'] ?? [];
+        $values['primaryMapType'] = $this->values['primaryMapType'] ?? null;
 
         return $values;
     }
@@ -108,10 +109,14 @@ class Place extends Element
     {
         $maps = [];
 
+        $this->values['primaryMapType'] = 'building';
+
         switch($this->type->handle)
         {
             case 'campus':
             {
+                $this->values['primaryMapType'] = 'campus';
+
                 if ($this->campusMap)
                 {
                     $maps[] = [
@@ -128,6 +133,8 @@ class Place extends Element
             }
             case 'building':
             {
+                $this->values['primaryMapType'] = 'campus';
+
                 if ($this->parent && $this->parent->campusMap)
                 {
                     $buildingIds = [$this->id];
@@ -167,6 +174,11 @@ class Place extends Element
             }
             case 'room':
             {
+                if ($this->location && $this->location->id != $this->ancestors[1]->id)
+                {
+                    $this->values['primaryMapType'] = 'campus';
+                }
+
                 if ($this->parent && $this->parent->floorMap)
                 {
                     // When user is at a Kiosk
