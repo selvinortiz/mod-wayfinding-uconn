@@ -11474,7 +11474,7 @@ footer {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  grid-template-rows: 10vh auto 15vh;
+  grid-template-rows: 10vh auto 12vh;
 }
 
 a {
