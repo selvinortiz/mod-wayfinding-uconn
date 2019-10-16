@@ -2,7 +2,7 @@
   <div class="p-8">
     <div
       class="mx-auto"
-      style="display: grid; grid-template-rows: 1fr 1fr; max-width: 65%; height: 100vh"
+      style="display: grid; grid-template-rows: 1fr 1fr; row-gap:8px; max-width: 75%; height: 100vh"
     >
       <section class="relative @search__results">
         <div v-if="this.noReturn && !this.results.length > 0">
