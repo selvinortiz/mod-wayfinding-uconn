@@ -1,8 +1,8 @@
 <template>
-  <div class="p-8">
+  <div class="px-8 xl:py-8 lg:pt-64 md:pt-64 sm:pt-64 ">
     <div
       class="mx-auto"
-      style="display: grid; grid-template-rows: 1fr 1fr; row-gap:8px; max-width: 75%; height: 100vh"
+      style="display: grid; grid-template-rows: 1fr 1fr; row-gap:1.5em; max-width: 75%; height: 100vh"
     >
       <section class="relative @search__results">
         <div v-if="this.noReturn && !this.results.length > 0">
@@ -27,7 +27,7 @@
         </div>
       </section>
 
-      <section class="animated fadeIn @search mt-4" :style="styles.search">
+      <section class="animated fadeIn @search" :style="styles.search">
         <h2 class="font-thin text-2xl uppercase text-white opacity-75">Search People and Places</h2>
         <div class="flex items-center my-4" :style="styles.searchControls">
           <select
