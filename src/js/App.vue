@@ -56,7 +56,7 @@
         </transition>
       </main>
 
-      <footer class="@page__footer flex flex-col justify-between opacity-95" :style="styles.footer">
+      <footer class="@page__footer mt-0 lg:mt-12 md:mt-12 justify-between opacity-95" :style="styles.footer">
         <app-nav></app-nav>
         <app-footer></app-footer>
       </footer>

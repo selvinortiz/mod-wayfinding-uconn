@@ -1,6 +1,6 @@
 <template>
-  <section class="@end flex flex-1 items-center justify-between text-center text-white">
-    <div class="py-2 px-16 flex items-end">
+  <section class="@end block justify-between text-center text-white">
+    <div class=" flex py-2 lg:py-10 md:py-10 px-16 ">
       <p class="flex flex-no-wrap items-end text-base leading-none">
         <img class="px-2" style="max-height: 64px;" src="/static/icons/qr.png" alt="">
         <span class="text-left">
