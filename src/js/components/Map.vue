@@ -20,19 +20,21 @@
         <h2>{{ map.activeImage.subtitle || map.subtitle }}</h2>
       </div>
 
-      <div
-        v-if="map.thumbnailImage"
-        class="absolute bottom-0 right-0 m-4 p-2 bg-gray-100 shadow-md opacity-95"
+      <button
+        v-if="map.thumbnailImage && map.thumbnailImage.src"
+        class="block absolute bottom-0 right-0 m-6 p-4 bg-gray-100 border-2 shadow-lg"
+        :style="styles.thumb"
+          @click="toggleMapImage()"
       >
         <img
           alt
-          class="@THUMB w-full"
-          style="max-width: 125px;"
+          class="@THUMB w-full opacity-95"
+          style="max-width: 120px;"
           draggable="false"
-          :src="map.thumbnailImage.src"
-          @click="toggleMapImage()"
+          src="/static/icons/switch-map.svg"
         />
-      </div>
+        <p class="mt-2 text-white text-xs text-center">Switch Map</p>
+      </button>
     </div>
     <map-nav
       class="pt-4"
@@ -89,6 +91,9 @@ export default {
 
       return this.selectedMap;
     },
+    theme() {
+      return this.$store.state.app.theme
+    },
     styles() {
       return {
         image: [
@@ -98,6 +103,10 @@ export default {
           } .25s ease-in-out`,
           `height: 100%`,
           `margin: auto`
+        ].join(";"),
+        thumb: [
+          `border-color: ${this.theme.colors.primary}`,
+          `background-color: ${this.theme.colors.primary}`,
         ].join(";")
       };
     }

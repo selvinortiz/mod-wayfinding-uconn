@@ -1,69 +1,54 @@
 <template>
   <content-loader :loaded="person.loaded" class="p-16">
     <section class="xl:flex flex-wrap">
-      <div class="xl:w-1/2 xl:order-1">
+      <div class="xl:w-3/5 xl:order-1">
         <mod-map :maps="place.maps" primary-map="building" class="xl:px-4"></mod-map>
       </div>
-      <div class="w-full flex flex-wrap xl:w-1/2">
+      <div class="w-full flex flex-wrap xl:w-2/5">
         <h2
           class="w-full font-thin text-4xl leading-none uppercase xl:pb-6 xl:pt-0 lg:py-8 md:py-8"
           :style="`color: ${theme.colors.primary}`"
         >
           {{ person.personFirstName }} {{ person.personLastName }}
         </h2>
-        <div v-if="image && directoryPhoto" class="pr-6" style="flex: 4;">
+        <div v-if="image && directoryPhoto" class="xl:pb-6 pr-6">
           <img
-            class="m-auto object-contain"
+            class="object-contain"
             style="max-width: 256px;"
             :src="image.url"
           />
 
         </div>
-        <div v-else-if="!image && directoryPhoto" class="pr-6" style="flex: 4;">
+        <div v-else-if="!image && directoryPhoto" class="xl:pb-6 pr-6">
           <img
-            class="m-auto object-contain"
+            class="object-contain"
             style="max-width: 256px;"
             src="/uploads/people/photos/Oak Leaf avatar.jpg"
           />
         </div>
-        <div style="flex: 8;">
+        <div>
           <div>
-            <div class="pb-4" v-for="role in person.personRoles" :key="role.id">
+            <div v-for="role in person.personRoles" :key="role.id">
               <p class="font-bold">{{ role.roleTitle }}</p>
               <p>{{ role.roleDepartment[0].title }}</p>
             </div>
 
-            <div class="pb-4">
+            <div class="pt-4">
               <p class="font-bold">{{ building }} Building</p>
               <p class="font-normal">Suite: {{ room }}</p>
               <p class="font-normal">Floor: {{ floor }}</p>
+              <p class="font-normal">{{ campus }} Campus</p>
             </div>
-
-            <div class="pb-4">
+            <div class="pt-4">
               <p>{{ person.personAddress }}</p>
               <p>{{ person.personCity }}</p>
               <p>{{ person.personState }} {{ person.personZipcode }}</p>
             </div>
-
-            <!-- <div class="pt-4">
-              <a
-                class="cursor-pointer"
-                :style="`color: ${theme.colors.primary}`"
-                @click="openInMaps"
-                >{{ person.personCity }}, {{ person.personState }}
-                {{ person.personZipcode }} &rarr;</a
-              >
-            </div> -->
-
-            <div class="pb-4">
+            <div class="pt-4">
               <p class="font-bold">{{ person.personPhone }}</p>
               <p class="font-bold">{{ person.personEmail }}</p>
             </div>
-
-            <!-- <div class="font-bold">Building Name</div>
-              <div>Suite #</div>
-            <div class="mb-4">Floor #</div>-->
-            <div class="h-40 xl:h-56 w-4/5 overflow-y-auto" v-html="person.personDescription"></div>
+            <div class="pt-4 h-40 xl:h-56 w-4/5 overflow-y-auto" v-html="person.personDescription"></div>
           </div>
         </div>
       </div>
@@ -130,6 +115,12 @@ export default {
     floor() {
       if (this.place && this.place.ancestors && this.place.ancestors.length) {
         return this.place.ancestors[0].floorNumber;
+      }
+      return null;
+    },
+    campus() {
+       if (this.place && this.place.ancestors && this.place.ancestors.length) {
+        return this.place.ancestors[2].campusName;
       }
       return null;
     },

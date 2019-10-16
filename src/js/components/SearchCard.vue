@@ -4,23 +4,44 @@
     :to="{ name: results.type, params: { id: results.id } }"
     @click.native="handleCardClick"
   >
-   <div class="flex w-full mx-1 my-1">
-    <div class="flex p-4 w-full" :style="styles.background">
-      <div v-if="results.type === 'person'" class="flex w-1/4 mr-2">
-        <img src="/static/icons/People_Icon.svg" alt="People Icon" />
+    <div class="block w-full mx-1 my-1" :style="styles.background">
+      <!-- Icon Parent Container -->
+      <div class="block p-2 w-full">
+        <!-- Icon Conditional Child Container One -->
+        <div v-if="results.type === 'person'" class=" h-6">
+          <img
+            style="height: 100%;"
+            src="/static/icons/People_Icon.svg"
+            alt="People Icon"
+          />
+        </div>
+        <!-- Icon Conditional Child Container Two -->
+        <div v-else class="h-6">
+          <img
+            style="height: 100%;"
+            src="/static/icons/Places_Icon.svg"
+            alt="People Icon"
+          />
+        </div>
       </div>
-      <div v-else class="flex w-1/4 mr-2">
-        <img src="/static/icons/Places_Icon.svg" alt="People Icon" />
-      </div>
-      <div class="flex  m-auto align-middle w-3/4">
+      <!-- Card Text Container -->
+      <div class="block px-4 pb-2 w-full ">
         <h2
-          class="font-bold text-sm cursor-pointer uppercase"
+          class="font-bold text-md cursor-pointer uppercase"
           :style="styles.title"
         >
           {{ results.title }}
         </h2>
+        <span v-if="results.info.length">
+        <p
+          v-for="(line, index) in results.info"
+          :key="index"
+          class="text-sm opacity-75"
+        >
+          {{ line }}
+        </p>
+        </span>
       </div>
-    </div>
     </div>
   </router-link>
 </template>
@@ -30,9 +51,7 @@ export default {
   props: {
     results: {
       type: Object,
-      default: () => {
-        null;
-      }
+      default: () => {}
     }
   },
   computed: {
