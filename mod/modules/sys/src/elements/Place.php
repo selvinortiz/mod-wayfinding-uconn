@@ -174,13 +174,13 @@ class Place extends Element
             }
             case 'room':
             {
-                if ($this->location && $this->location->id != $this->ancestors[1]->id)
-                {
-                    $this->values['primaryMapType'] = 'campus';
-                }
-
                 if ($this->parent && $this->parent->floorMap)
                 {
+                    if ($this->location && ($this->location->id != ($this->ancestors[1]->id ?? null)))
+                    {
+                        $this->values['primaryMapType'] = 'campus';
+                    }
+
                     // When user is at a Kiosk
                     if (!in_array($this->ancestors[2]->floorNumber, [1, '1', 'gf']))
                     {
