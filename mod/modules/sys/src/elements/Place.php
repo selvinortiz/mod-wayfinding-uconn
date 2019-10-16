@@ -100,6 +100,7 @@ class Place extends Element
         }
 
         $values['maps'] = $this->values['maps'] ?? [];
+        $values['primaryMapType'] = $this->values['primaryMapType'] ?? null;
 
         return $values;
     }
@@ -108,10 +109,14 @@ class Place extends Element
     {
         $maps = [];
 
+        $this->values['primaryMapType'] = 'building';
+
         switch($this->type->handle)
         {
             case 'campus':
             {
+                $this->values['primaryMapType'] = 'campus';
+
                 if ($this->campusMap)
                 {
                     $maps[] = [
@@ -128,6 +133,8 @@ class Place extends Element
             }
             case 'building':
             {
+                $this->values['primaryMapType'] = 'campus';
+
                 if ($this->parent && $this->parent->campusMap)
                 {
                     $buildingIds = [$this->id];
@@ -169,6 +176,15 @@ class Place extends Element
             {
                 if ($this->parent && $this->parent->floorMap)
                 {
+                    $buildingIds = [$this->ancestors[1]->id];
+
+                    if ($this->location && ($this->location->id != ($this->ancestors[1]->id ?? null)))
+                    {
+                        $this->values['primaryMapType'] = 'campus';
+
+                        $buildingIds = array_merge(['@'.$this->location->id], $buildingIds);
+                    }
+
                     // When user is at a Kiosk
                     if (!in_array($this->ancestors[2]->floorNumber, [1, '1', 'gf']))
                     {
@@ -188,7 +204,7 @@ class Place extends Element
                         'title'  => $this->ancestors[1]->buildingName,
                         'images' => [
                             [
-                                'src' => $this->createMapUrl('campus', $this->ancestors[0]->id, [$this->ancestors[1]->id])
+                                'src' => $this->createMapUrl('campus', $this->ancestors[0]->id, $buildingIds)
                             ]
                         ],
                     ];

@@ -2,7 +2,7 @@
   <content-loader :loaded="place.loaded" classes="pt-8 px-16">
     <section class="xl:flex flex-wrap">
       <div class="xl:w-1/2 xl:order-1 xl:pt-6 lg:pb-6 md:pb-6">
-        <mod-map :maps="maps" primary-map="building" class="xl:px-4"></mod-map>
+        <mod-map :maps="maps" :primary-map="primaryMapType" class="xl:px-4"></mod-map>
       </div>
       <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
         <!-- Portrait pageheader above image and text for long titles -->
@@ -81,7 +81,7 @@
                       <span
                         class="cursor-pointer underline"
                         :style="styles.defaultColor"
-                        >CAMPUS 
+                        >CAMPUS
                       </span>
                     </p>
                   </router-link>
@@ -186,6 +186,9 @@ export default {
     },
     campus() {
       return this.place.ancestors[2] || {};
+    },
+    primaryMapType() {
+      return this.place.primaryMapType || 'building'
     },
     options() {
       if (!this.building || !this.building.descendants) {

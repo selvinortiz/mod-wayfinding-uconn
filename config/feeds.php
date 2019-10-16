@@ -2,11 +2,11 @@
 
 return [
     'places' => [
-        'file' => dirname(__DIR__, 1).'/db/places.xml',
+        'file' => dirname(__DIR__, 1).'/db/places-latest.xml',
         // 'node' => 'destinations'
     ],
     'people' => [
-        'file' => dirname(__DIR__, 1).'/db/people.xml',
+        'file' => dirname(__DIR__, 1).'/db/people-latest.xml',
         // 'node' => 'people',
     ]
 ];
