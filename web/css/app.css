@@ -11476,6 +11476,7 @@ footer {
   overflow: hidden;
   grid-template-rows: 10vh auto 10vh;
 }
+
 a {
   cursor: pointer;
 }

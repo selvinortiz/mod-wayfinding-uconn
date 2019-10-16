@@ -33,7 +33,7 @@
           draggable="false"
           src="/static/icons/switch-map.svg"
         />
-        <p class="mt-2 text-white text-xs text-center">Switch Map</p>
+        <p class="mt-2 text-white text-xs text-center">Switch <br /> Floor Map</p>
       </button>
     </div>
     <map-nav
