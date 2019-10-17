@@ -17,7 +17,7 @@ const days = [
   "Friday",
   "Saturday"
 ];
-const months = [
+const monthsAbrv = [
   "Jan",
   "Feb",
   "Mar",
@@ -32,10 +32,25 @@ const months = [
   "Dec"
 ];
 
+const months = [
+  "Janauary",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
+
 export default {
   data() {
     return {
-      params: {},
+      params: {}
     };
   },
   created() {
@@ -46,6 +61,14 @@ export default {
   beforeDestroy: function() {
     clearInterval(interval);
   },
+  computed: {
+    theme() {
+      return this.$store.state.app.theme;
+    },
+    monthFormat() {
+      return this.theme.header.clock.monthFullName;
+    }
+  },
   methods: {
     time() {
       currentDate = new Date(Date.now());
@@ -55,22 +78,21 @@ export default {
       const month = currentDate.getMonth() + 1;
 
       const dayName = days[day];
-      const monthName = months[currentDate.getMonth()];
-
+      const monthName = this.monthFormat ? months[currentDate.getMonth()] : monthsAbrv[currentDate.getMonth()];
       const hour = this.pad(currentDate.getHours() % 12 || 12);
       const minute = this.pad(currentDate.getMinutes());
       const suffix = currentDate.getHours() > 12 ? "PM" : "AM";
 
       this.params = {
-        day,
-        dayName,
         month,
         monthName,
+        day,
+        dayName,
         year,
         hour,
         minute,
         suffix
-      };
+      }
     },
     pad(num) {
       return parseInt(num) < 10 ? `0${num}` : num;

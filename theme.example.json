@@ -33,7 +33,9 @@
       "url": "/static/img/mod.png"
     },
     "clock": {
-      "fg": "#fff"
+      "fg": "#fff",
+      "monthFullName": false,
+      "dateFormatMDY": true
     }
   },
   "nav": {
