@@ -27,7 +27,7 @@
               </page-header>
             </div>
             <p class="pb-4">
-              <span class="block h-40 xl:h-56 max-w-full pr-2 overflow-y-auto "
+              <span class="block h-40 xl:h-56 max-w-full pr-2 _scroll "
                 v-html="place.campusDescription">
               </span>
             </p>
@@ -63,6 +63,9 @@
 </template>
 
 <style>
+::-webkit-scrollbar {
+width: 15px;
+}
 .multiselect__select:before {
   top: 80%;
   color: #000e2f;
@@ -79,6 +82,18 @@
 }
 .multiselect__placeholder {
   color: #000e2f;
+}
+._scroll {
+ overflow-y:auto ;
+}
+/* Handle */
+._scroll::-webkit-scrollbar-thumb {
+background: #111;
+border-radius: 10px;
+}
+/* Handle on hover */
+._scroll::-webkit-scrollbar-thumb:hover {
+background: #111;
 }
 </style>
 
