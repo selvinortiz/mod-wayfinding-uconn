@@ -11,7 +11,6 @@
           <mod-clock>
             <template v-slot:display="{ params }">
               <h1 v-if="dateFormat" class="text-right text-xl" :style="styles.clock">
-                <div v-if=""
                 <span class="uppercase" v-text="params.monthName"></span>
                 <span v-text="params.day"></span>,
                 <span v-text="params.year"></span>
