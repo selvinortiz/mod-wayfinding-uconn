@@ -14,3 +14,4 @@ config/license.key
 web/uploads/people/photos/default-avatar.svg
 src/js/pages/places/Temp.html
 src/js/pages/places/Temp.vue
+web/uploads/room/photos/tutoring.jpg
