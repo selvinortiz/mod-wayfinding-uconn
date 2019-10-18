@@ -49,7 +49,7 @@
             </p>
             <p class="pb-4">
               <span
-                class="block h-40 xl:h-56 max-w-full pr-2 _scroll"
+                class="block h-64 max-w-full pr-2 _scroll"
                 v-html="place.roomDescription"
               ></span>
             </p>

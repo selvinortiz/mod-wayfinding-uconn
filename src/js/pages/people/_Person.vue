@@ -28,27 +28,27 @@
         </div>
         <div>
           <div>
-            <div v-for="role in person.personRoles" :key="role.id">
+            <div v-for="role in person.personRoles" :key="role.id" class="pb-4">
               <p class="font-bold">{{ role.roleTitle }}</p>
               <p>{{ role.roleDepartment[0].title }}</p>
             </div>
 
-            <div class="pt-4">
-              <p class="font-bold">{{ building }} Building</p>
-              <p class="font-normal">Suite: {{ room }}</p>
-              <p class="font-normal">Floor: {{ floor }}</p>
-              <p class="font-normal">{{ campus }} Campus</p>
+            <div v-if="place.ancestors" class="pb-4">
+              <p v-if="building" class="font-bold">{{ building }} Building</p>
+              <p v-if="room" class="font-normal">Suite: {{ room }}</p>
+              <p v-if="floor" class="font-normal">Floor: {{ floor }}</p>
+              <p v-if="campus" class="font-normal">{{ campus }} Campus</p>
             </div>
-            <div class="pt-4">
-              <p>{{ person.personAddress }}</p>
-              <p>{{ person.personCity }}</p>
-              <p>{{ person.personState }} {{ person.personZipcode }}</p>
+            <div v-if="person.Address || person.personCity || person.personstate" class="pb-4">
+              <p v-if="person.Address">{{ person.personAddress }}</p>
+              <p v-if="person.personCity">{{ person.personCity }}</p>
+              <p v-if="person.personstate" >{{ person.personState }} {{ person.personZipcode }}</p>
             </div>
-            <div class="pt-4">
-              <p class="font-bold">{{ person.personPhone }}</p>
-              <p class="font-bold">{{ person.personEmail }}</p>
+            <div v-if="person.personPhone || person.personEmail" class="pb-4">
+              <p v-if="person.personPhone" class="font-bold">{{ person.personPhone }}</p>
+              <p v-if="person.personEmail" class="font-bold">{{ person.personEmail }}</p>
             </div>
-            <div class="pt-4 h-40 xl:h-56 w-4/5 overflow-y-auto" v-html="person.personDescription"></div>
+            <div class="pb-4 h-40 xl:h-56 w-4/5 overflow-y-auto" v-html="person.personDescription"></div>
           </div>
         </div>
       </div>

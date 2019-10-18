@@ -10,11 +10,21 @@
         <div class="@clock">
           <mod-clock>
             <template v-slot:display="{ params }">
-              <h1 class="text-right text-xl" :style="styles.clock">
+              <h1 v-if="dateFormat" class="text-right text-xl" :style="styles.clock">
                 <span class="uppercase" v-text="params.monthName"></span>
                 <span v-text="params.day"></span>,
                 <span v-text="params.year"></span>
-                <br />
+                <span>&nbsp;|&nbsp;</span>
+                <span v-text="params.hour"></span>
+                <span class="inline-block font-bold animated infinite fadeOut">:</span>
+                <span v-text="params.minute"></span>
+                <span v-text="params.suffix"></span>
+              </h1>
+              <h1 v-else class="text-right text-xl" :style="styles.clock">
+                <span v-text="params.day"></span>,
+                <span class="uppercase" v-text="params.monthName"></span>
+                <span v-text="params.year"></span>
+                <span>&nbsp;|&nbsp;</span>
                 <span v-text="params.hour"></span>
                 <span class="inline-block font-bold animated infinite fadeOut">:</span>
                 <span v-text="params.minute"></span>
@@ -129,6 +139,9 @@ export default {
         },
         container: `font-family: ${this.theme.font.family};`
       };
+    },
+   dateFormat() {
+      return this.theme.header.clock.dateFormatMDY;
     },
     isWelcomeScreen() {
       return this.$route.name === "index";
