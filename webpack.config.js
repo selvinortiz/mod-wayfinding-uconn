@@ -20,7 +20,8 @@ if (process.env.CRAFT_HOST_URL) {
 
 module.exports = {
   entry: {
-    app: ['./src/js/app.js', './src/scss/app.scss']
+    app: ['./src/js/app.js', './src/scss/app.scss'],
+    mobile: ['./src/js/mobile.js', './src/scss/app.scss'],
   },
   output: {
     filename: '[name].js',

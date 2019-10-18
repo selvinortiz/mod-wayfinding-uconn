@@ -2,7 +2,7 @@
   <transition name="fade" mode="out-in">
     <div
       v-show="$store.state.app.mobileNavIsOpen"
-      class="absolute top-0 left-0 h-screen w-screen"
+      class="absolute top-0 left-0 bottom-0 right-0 h-screen w-screen"
       :style="`top: 10vh; background-color: ${theme.nav.bg}`"
     >
       <nav class="@nav--mobile flex flex-wrap" @click="$store.commit('setToggleMobileNav')">
@@ -27,7 +27,7 @@
             :style="applyStyles(link)"
             @click="action(link.id)"
           >
-            <p class="flex cursor-pointer text-2xl">
+            <p class="flex cursor-pointer">
               <img :class="classes.icon" :src="`/static/icons/${link.icon}`" alt />
               <span class="pt-2" v-html="link.title"></span>
             </p>

@@ -7,7 +7,14 @@ import people from './people';
 
 Vue.use(VueRouter);
 
-const base   = window.kiosk.id ? `/@${window.kiosk.id}` : ``;
+let base = ``;
+
+if (window.kiosk.id) {
+  base = `/@${window.kiosk.id}`;
+} else if (window.mobile) {
+  base = `/@mobile`;
+}
+
 const routes = app.concat(places, people);
 
 const router = new VueRouter({

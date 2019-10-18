@@ -14,7 +14,7 @@ import 'vue-multiselect/dist/vue-multiselect.min.css';
 import Theme from './plugins/Theme';
 import Events from './plugins/Events';
 
-import App from './App.vue';
+import Mobile from './Mobile.vue';
 
 import ContentLoader from './components/shared/ContentLoader.vue';
 import PageHeader from './components/shared/PageHeader.vue';
@@ -43,10 +43,10 @@ Vue.component('ui-photo', UIPhoto);
 Vue.component('mod-map', Map);
 
 new Vue({
-  el: '#app',
+  el: '#mobile',
   store,
   router,
-  components: {App},
+  components: {Mobile},
   metaInfo: {
     title: `${window.pageTitle || 'App'}`,
     titleTemplate: `%s | ${window.theme.app.title || 'ModCore'}`
