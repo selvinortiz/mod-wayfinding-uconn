@@ -1,7 +1,7 @@
 <template>
   <div @click="reset" :class="{mobile: $store.state.app.isMobile}" :style="styles.container">
     <app-slides v-if="isWelcomeScreen"></app-slides>
-    <div class="@page absolute z-10 w-full h-full" :class="{ 'bg-gray-100': !isWelcomeScreen }">
+    <div class="@page absolute z-10 w-full h-full" :class="{ 'bg-gray-100': !isWelcomeScreen }" style="grid-template-rows: 10vh auto;">
       <header
         class="@page__header flex items-center justify-between px-4 md:px-8 xl:px-16 opacity-95"
         :style="styles.header"
