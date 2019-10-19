@@ -21,7 +21,7 @@ import PageHeader from './components/shared/PageHeader.vue';
 import BuildingName from './components/shared/BuildingName.vue';
 import UIButton from './components/shared/UIButton.vue';
 import UIPhoto from './components/shared/UIPhoto.vue';
-import Map from './components/Map.vue';
+import Map from './components/MobileMap.vue';
 
 import store from './store';
 import router from './router/mobile-index';

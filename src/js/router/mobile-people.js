@@ -10,6 +10,6 @@ export default [
     name: 'person',
     path: '/people/:id',
     component: () =>
-      import(/* webpackChunkName: 'person' */ '../pages/people/_Person.vue')
+      import(/* webpackChunkName: 'person' */ '../pages/people/_MobilePerson.vue')
   }
 ];
