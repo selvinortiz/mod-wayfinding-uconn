@@ -24,7 +24,7 @@ import UIPhoto from './components/shared/UIPhoto.vue';
 import Map from './components/Map.vue';
 
 import store from './store';
-import router from './router';
+import router from './router/mobile-index';
 
 Vue.use(Meta);
 Vue.use(Theme);
