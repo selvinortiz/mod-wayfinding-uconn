@@ -1,25 +1,24 @@
 <template>
-  <content-loader :loaded="person.loaded" class="p-16">
-    <section class="xl:flex flex-wrap">
-      <div class="xl:w-3/5 xl:order-1">
-        <mod-map v-if="place && place.maps" :maps="place.maps" primary-map="building" class="xl:px-4"></mod-map>
+  <content-loader :loaded="person.loaded">
+    <section>
+      <div class>
+        <mod-map
+          v-if="place && place.maps"
+          :maps="place.maps"
+          primary-map="building"
+          class="xl:px-4"
+        ></mod-map>
       </div>
-      <div class="w-full flex flex-wrap xl:w-2/5">
+
+      <div class="w-full flex flex-wrap p-4">
         <h2
           class="w-full font-thin text-4xl leading-none uppercase xl:pb-6 xl:pt-0 lg:py-8 md:py-8"
           :style="`color: ${theme.colors.primary}`"
-        >
-          {{ person.personFirstName }} {{ person.personLastName }}
-        </h2>
-        <div v-if="image && directoryPhoto" class="xl:pb-6 pr-6">
-          <img
-            class="object-contain"
-            style="max-width: 256px;"
-            :src="image.url"
-          />
-
+        >{{ person.personFirstName }} {{ person.personLastName }}</h2>
+        <div v-if="image && directoryPhoto" class>
+          <img class="object-contain" style="max-width: 256px;" :src="image.url" />
         </div>
-        <div v-else-if="!image && directoryPhoto" class="xl:pb-6 pr-6">
+        <div v-else-if="!image && directoryPhoto" class>
           <img
             class="object-contain"
             style="max-width: 256px;"
@@ -42,7 +41,7 @@
             <div v-if="person.Address || person.personCity || person.personstate" class="pb-4">
               <p v-if="person.Address">{{ person.personAddress }}</p>
               <p v-if="person.personCity">{{ person.personCity }}</p>
-              <p v-if="person.personstate" >{{ person.personState }} {{ person.personZipcode }}</p>
+              <p v-if="person.personstate">{{ person.personState }} {{ person.personZipcode }}</p>
             </div>
             <div v-if="person.personPhone || person.personEmail" class="pb-4">
               <p v-if="person.personPhone" class="font-bold">{{ person.personPhone }}</p>
@@ -93,13 +92,11 @@ export default {
       }
       return null;
     },
-    directoryPhoto()
-    {
-      if (this.theme.directory.photo)
-      {
-        return true
+    directoryPhoto() {
+      if (this.theme.directory.photo) {
+        return true;
       }
-        return false
+      return false;
     },
     place() {
       let place = this.person.loaded ? this.person.place : null;
@@ -119,7 +116,7 @@ export default {
       return null;
     },
     campus() {
-       if (this.place && this.place.ancestors && this.place.ancestors.length) {
+      if (this.place && this.place.ancestors && this.place.ancestors.length) {
         return this.place.ancestors[2].campusName;
       }
       return null;

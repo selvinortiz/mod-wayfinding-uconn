@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 
 import app from './app';
 import places from './places';
-import people from './people';
+import people from './mobile-people';
 
 Vue.use(VueRouter);
 

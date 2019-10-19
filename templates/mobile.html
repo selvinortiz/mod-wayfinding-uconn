@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+        <title></title>
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans|Raleway|PT+Sans+Narrow&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/css/app.css?v={{ 'now'|date('YmdHis') }}">
+
+        <script>
+            window.theme = JSON.parse('{{ theme|e('js') }}');
+            window.kiosk = JSON.parse('{{ kiosk|e('js') }}');
+            window.campus = JSON.parse('{{ campus|e('js') }}');
+            window.settings = JSON.parse('{{ settings|e('js') }}');
+            window.siteName = '{{ siteName }}';
+            window.pageTitle = 'Welcome';
+            window.mobile = {{ craft.app.request.segment(1) == '@mobile' ? 'true' : 'false' }};
+            window.csrfTokenName = "{{ craft.app.config.general.csrfTokenName|e('js') }}";
+            window.csrfTokenValue = "{{ craft.app.request.csrfToken|e('js') }}";
+        </script>
+    </head>
+
+    <body>
+        <div id="mobile">
+            <mobile/>
+        </div>
+
+        <script src="/js/mobile.js?v={{ 'now'|date('YmdHis') }}"></script>
+    </body>
+</html>
