@@ -6,50 +6,56 @@
       :style="`top: 10vh; background-color: ${theme.nav.bg}`"
     >
       <nav class="@nav--mobile flex flex-wrap" @click="$store.commit('setToggleMobileNav')">
+        <div class="w-full @link">
+          <p class="px-4 py-4 font-bold text-xl uppercase">(x) Close Menu</p>
+        </div>
         <div class="w-full @link" v-for="(link, i) in theme.nav.links" :key="i">
           <router-link
             v-if="link.type === 'route'"
-            class="flex"
+            class="flex items-center px-4 py-4 cursor-pointer"
             :to="route(link)"
             :class="classes.link"
             :style="applyStyles(link)"
           >
-            <p class="flex cursor-pointer">
-              <img :class="classes.icon" :src="`/static/icons/${link.icon}`" alt />
-              <span class="pt-2" v-html="link.title"></span>
-            </p>
+            <img class="@link__icon px-2" :src="`/static/icons/${link.icon}`" alt />
+            <span class="text-lg" v-html="link.title"></span>
           </router-link>
 
           <a
             v-if="link.type === 'action'"
-            class="flex"
+            class="flex items-center px-4 py-4 cursor-pointer"
             :class="classes.link"
             :style="applyStyles(link)"
             @click="action(link.id)"
           >
-            <p class="flex cursor-pointer">
-              <img :class="classes.icon" :src="`/static/icons/${link.icon}`" alt />
-              <span class="pt-2" v-html="link.title"></span>
-            </p>
+            <img class="@link__icon px-2" :src="`/static/icons/${link.icon}`" alt />
+            <span class="text-lg" v-html="link.title"></span>
           </a>
 
           <a
             v-if="link.type === 'url'"
-            class="flex"
+            class="flex items-center px-4 py-4 cursor-pointer"
             :class="classes.link"
             :style="applyStyles(link)"
             @click="service(link.url)"
           >
-            <p class="flex cursor-pointer">
-              <img :class="classes.icon" :src="`/static/icons/${link.icon}`" alt />
-              <span class="pt-2" v-html="link.title"></span>
-            </p>
+            <img class="@link__icon px-2" :src="`/static/icons/${link.icon}`" alt />
+            <span class="text-lg" v-html="link.title"></span>
           </a>
         </div>
       </nav>
     </div>
   </transition>
 </template>
+
+<style>
+.\@link {
+  border-bottom: 1px dotted;
+}
+.\@link__icon {
+  max-height: 32px;
+}
+</style>
 
 <script>
 export default {
@@ -65,28 +71,18 @@ export default {
     },
     styles() {
       return {
-        container: [this.$bg(this.theme.nav.bg), `color: ${this.theme.nav.fg}`]
-          .concat(this.theme.nav.styles)
-          .join(";"),
-        link: [
-          this.$bg(this.theme.nav.link.bg),
-          `color: ${this.theme.nav.link.fg}`
-        ]
+        link: []
           .concat(this.theme.nav.link.styles)
           .join(";"),
-        linkActive: [
-          this.$bg(this.theme.nav.link.active.bg),
-          `color: ${this.theme.nav.link.active.fg}`
-        ]
+        linkActive: []
           .concat(this.theme.nav.link.active.styles || [])
           .join(";")
       };
     },
     classes() {
       return {
-        container: [].concat(this.theme.nav.classes).join(" "),
-        link: [].concat(this.theme.nav.link.classes).join(" "),
-        icon: [].concat(this.theme.nav.link.icon.classes).join(" ")
+        link: [].concat([]).join(" "),
+        icon: [].concat([]).join(" ")
       };
     }
   },
