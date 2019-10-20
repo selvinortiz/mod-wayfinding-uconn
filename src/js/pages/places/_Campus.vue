@@ -1,40 +1,50 @@
 <template>
-  <content-loader :loaded="place.loaded" class="pt-8 px-16">
+  <content-loader :loaded="place.loaded" classes="pt-8 px-16">
+    <!-- Main Content Section -->
     <section class="xl:flex flex-wrap">
-      <div class="xl:w-1/2 xl:order-1 xl:pt-6 lg:pb-6 md:pb-6">
+      <!-- Map -->
+      <div class="flex-1 xl:w-1/2 xl:order-1 xl:pt-6 lg:pb-6 md:pb-6">
         <mod-map :maps="maps" :buttons="false" class="xl:px-4"></mod-map>
       </div>
-      <div class="w-full flex flex-wrap xl:w-1/2 xl:pt-6">
-        <!-- Portrait pageheader above image and text for long titles -->
-        <div v-if="photo" class="w-full xl:pb-0 lg:pb-6 md:pb-6">
-          <page-header class="block xl:hidden lg:block md:block sm:block">
-            {{ place.campusName }} {{ place.type.name }}
-          </page-header>
+      <!-- Portrait Header Above Fully Stretching Half the Page -->
+      <div class="flex w-full">
+        <div class="lg:flex md:flex xl:hidden  pb-4">
+          <page-header
+            >{{ place.campusName }} {{ place.type.name }}</page-header
+          >
         </div>
-        <!-- landscape and Protrait header for no photo -->
-        <div v-else class="w-full pb-4">
-          <page-header class="block">
-            {{ place.campusName }} {{ place.type.name }}
-          </page-header>
+      </div>
+      <div v-if="!photo" class="flex w-full">
+        <div class="xl:flex lg:hidden md:hidden">
+          <page-header
+            >{{ place.campusName }} {{ place.type.name }}</page-header
+          >
         </div>
-        <div class="w-1/2 pr-10">
-          <div>
+      </div>
+      <!-- Place info Section -->
+      <section class="flex xl:w-1/2 xl:pt-6">
+        <div class="flex-col w-1/2">
+          <div v-if="photo" class="flex">
             <ui-photo :photo="photo" class="xl:pb-4 lg:pb-6 md:pb-6"></ui-photo>
-            <div class="xl:pb-4">
-              <!-- landscape pageheader -->
-              <page-header v-if="photo" class="hidden xl:block md:hidden sm:hidden">
-                {{ place.campusName }} {{ place.type.name }}
-              </page-header>
-            </div>
+          </div>
+          <!-- LandScape Header Below -->
+          <div v-if="photo" class="xl:flex lg:hidden md:hidden pb-4">
+            <page-header
+              >{{ place.campusName }} {{ place.type.name }}</page-header
+            >
+          </div>
+          <div class="flex flex-col">
             <p class="pb-4">
-              <span class="block h-64 max-w-full pr-2 _scroll "
-                v-html="place.campusDescription">
-              </span>
+              <span
+                class="block h-64 max-w-full pr-2 _scroll"
+                v-html="place.campusDescription"
+              ></span>
             </p>
           </div>
         </div>
-        <div class="w-1/2">
-          <div class="pr-6">
+
+        <div class="flex-col w-1/2">
+          <div class="xl:px-6 lg:pl-6 md:pl-6">
             <multi-select
               track-by="id"
               label="buildingName"
@@ -45,19 +55,20 @@
               :allow-empty="true"
               @input="handleSelectedPlace"
             ></multi-select>
-
-            <div class="pt-6 text-lg">
-              Don&rsquo;t see what you&rsquo;re looking for?
-              <a
-                class="cursor-pointer text-lg underline"
-                :style="styles.defaultColor"
-                @click="() => ($store.state.app.searchIsOpen = true)"
-                >SEARCH</a
-              >
+            <div class="flex w-full pt-6">
+              <div class="text-lg">
+                Don&rsquo;t see what you&rsquo;re looking for?
+                <a
+                  class="cursor-pointer text-lg underline"
+                  :style="styles.defaultColor"
+                  @click="() => ($store.state.app.searchIsOpen = true)"
+                  >SEARCH</a
+                >
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </section>
   </content-loader>
 </template>
