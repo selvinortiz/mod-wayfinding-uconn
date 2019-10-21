@@ -29,7 +29,7 @@
           <div v-if="photo" class="flex">
             <ui-photo :photo="photo" class="xl:pb-4 lg:pb-6 md:pb-6"></ui-photo>
           </div>
-          <!-- LandScape Header Below -->
+          <!-- LandScape Header Below Photo-->
           <div v-if="photo" class="xl:flex lg:hidden md:hidden pb-4">
             <page-header>{{ place.title }}</page-header>
           </div>

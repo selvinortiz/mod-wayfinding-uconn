@@ -4836,7 +4836,7 @@ eval("exports = module.exports = __webpack_require__(/*! ../../../css-loader/dis
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n.simple-keyboard.hg-theme-default {\\n  border-radius: 0;\\n  background-color: transparent;\\n}\\n.hg-theme-default .keyboard-button-space {\\n  flex: 2;\\n}\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/ModKeyboard.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
+eval("exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n.simple-keyboard.hg-theme-default {\\r\\n  border-radius: 0;\\r\\n  background-color: transparent;\\n}\\n.hg-theme-default .keyboard-button-space {\\r\\n  flex: 2;\\n}\\r\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/ModKeyboard.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
@@ -4847,7 +4847,7 @@ eval("exports = module.exports = __webpack_require__(/*! ../../../node_modules/c
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\nimg[data-v-34a9847b] {\\n  width: auto;\\n  max-height: 64px;\\n}\\n@media screen and (min-width: 720px) {\\nimg[data-v-34a9847b] {\\n    max-height: 90px;\\n}\\n}\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/partials/AppLogo.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
+eval("exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\nimg[data-v-34a9847b] {\\r\\n  width: auto;\\r\\n  max-height: 64px;\\n}\\n@media screen and (min-width: 720px) {\\nimg[data-v-34a9847b] {\\r\\n    max-height: 90px;\\n}\\n}\\r\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/partials/AppLogo.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
@@ -4858,7 +4858,7 @@ eval("exports = module.exports = __webpack_require__(/*! ../../../../node_module
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n.\\\\@link {\\n  border-bottom: 1px dotted;\\n}\\n.\\\\@link__icon {\\n  max-height: 32px;\\n}\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/partials/MobileNav.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
+eval("exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n.\\\\@link {\\r\\n  border-bottom: 1px dotted;\\n}\\n.\\\\@link__icon {\\r\\n  max-height: 32px;\\n}\\r\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/components/partials/MobileNav.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
@@ -4869,7 +4869,7 @@ eval("exports = module.exports = __webpack_require__(/*! ../../../../node_module
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n.wrapper,\\niframe {\\n  width: 100%;\\n  height: 100%;\\n  overflow: hidden;\\n}\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/pages/Service.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
+eval("exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"\\n.wrapper,\\r\\niframe {\\r\\n  width: 100%;\\r\\n  height: 100%;\\r\\n  overflow: hidden;\\n}\\r\\n\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/js/pages/Service.vue?./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
@@ -6614,7 +6614,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"render\", function() { return render; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"staticRenderFns\", function() { return staticRenderFns; });\nvar render = function() {\n  var _vm = this\n  var _h = _vm.$createElement\n  var _c = _vm._self._c || _h\n  return _c(\"div\", [\n    _c(\n      \"h1\",\n      {\n        staticClass: \"font-bold text-2xl leading-tight max-w-lg\",\n        style: \"color: \" + _vm.$store.state.app.theme.colors.primary\n      },\n      [_vm._t(\"default\")],\n      2\n    )\n  ])\n}\nvar staticRenderFns = []\nrender._withStripped = true\n\n\n\n//# sourceURL=webpack:///./src/js/components/shared/PageHeader.vue?./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"render\", function() { return render; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"staticRenderFns\", function() { return staticRenderFns; });\nvar render = function() {\n  var _vm = this\n  var _h = _vm.$createElement\n  var _c = _vm._self._c || _h\n  return _c(\"div\", [\n    _c(\n      \"h1\",\n      {\n        staticClass: \"font-bold text-2xl leading-tight w-full\",\n        style: \"color: \" + _vm.$store.state.app.theme.colors.primary\n      },\n      [_vm._t(\"default\")],\n      2\n    )\n  ])\n}\nvar staticRenderFns = []\nrender._withStripped = true\n\n\n\n//# sourceURL=webpack:///./src/js/components/shared/PageHeader.vue?./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
