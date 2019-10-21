@@ -56,13 +56,13 @@
 <script>
 import moment from "moment";
 
-import ModClock from "./components/ModClock.vue";
-import ModKeyboard from "./components/ModKeyboard.vue";
+// import ModClock from "./components/ModClock.vue";
+// import ModKeyboard from "./components/ModKeyboard.vue";
 
-import AppNav from "./components/partials/AppNav.vue";
+// import AppNav from "./components/partials/AppNav.vue";
 import AppLogo from "./components/partials/AppLogo.vue";
 import AppSearch from "./components/partials/MobileSearch.vue";
-import AppFooter from "./components/partials/AppFooter.vue";
+// import AppFooter from "./components/partials/AppFooter.vue";
 import AppSlides from "./components/partials/MobileSlides.vue";
 
 import MobileNav from "./components/partials/MobileNav.vue";
@@ -85,14 +85,14 @@ export default {
     };
   },
   components: {
-    AppNav,
+    // AppNav,
     AppLogo,
     AppSearch,
-    AppFooter,
+    // AppFooter,
     AppSlides,
-    MobileNav,
-    ModClock,
-    ModKeyboard
+    MobileNav
+    // ModClock,
+    // ModKeyboard
   },
   computed: {
     theme() {
