@@ -1,16 +1,17 @@
 <template>
-  <content-loader :loaded="place.loaded" classes="pt-8 px-16">
+  <content-loader :loaded="place.loaded" classes="pt-2 px-2">
     <!-- Main Content Section -->
     <section class="xl:flex flex-wrap">
       <!-- Map -->
       <!-- Note: Trying Flex-1 here for a second -->
-      <div class="flex-1 xl:w-1/2 xl:order-1 xl:pt-6 lg:pb-6 md:pb-6">
+      <div class="flex-1 w-full pb-6">
         <mod-map :maps="maps" class="xl:px-4"></mod-map>
       </div>
       <!-- Portrait Header Above Fully Stretching Half the Page -->
       <div class="flex w-full">
           <div class="lg:flex md:flex xl:hidden  pb-4">
-            <page-header>{{ place.buildingName }} {{ place.type.name }}</page-header>
+            <!-- <page-header>{{ place.buildingName }} {{ place.type.name }}</page-header> -->
+            <page-header>Mobile Test</page-header>
           </div>
       </div>
       <!-- Landscape Header Without Photo -->

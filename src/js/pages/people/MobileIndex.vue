@@ -11,7 +11,7 @@
         :allow-empty="true"
         @input="fetchPeople"
       ></multi-select>
-      <div class="flex flex-wrap pt-2">
+      <div class="flex flex-wrap pt-2 scrolling-touch">
         <div class="w-1/2 flex" v-for="person in people" :key="person.id">
           <person-card :person="person"></person-card>
         </div>

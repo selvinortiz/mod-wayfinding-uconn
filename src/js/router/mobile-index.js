@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import app from './app';
-import places from './places';
+import places from './mobile-places';
 import people from './mobile-people';
 
 Vue.use(VueRouter);
