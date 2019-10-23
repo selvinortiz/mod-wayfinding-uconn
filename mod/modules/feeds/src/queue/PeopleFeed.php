@@ -69,7 +69,7 @@ class PeopleFeed extends Feed
             $titleFromXml      = $this->str($element, 'title');
             $departmentFromXml = $this->str($element, 'department');
 
-            if (empty($emailFromXml))
+            if ($this->isEmpty($emailFromXml))
             {
                 // Skip
                 continue;
@@ -77,7 +77,7 @@ class PeopleFeed extends Feed
 
             $roles = null;
 
-            if (!empty($departmentFromXml))
+            if (!$this->isEmpty($departmentFromXml))
             {
                 $department = Category::find()
                     ->title($departmentFromXml)

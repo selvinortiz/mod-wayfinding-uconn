@@ -58,4 +58,9 @@ abstract class Feed extends BaseJob
 
         return in_array(mb_strtolower($val), ['1', 'true', 'yes']) ? true : false;
     }
+
+    public function isEmpty($str = '')
+    {
+        return mb_strlen(trim($str)) === 0;
+    }
 }
