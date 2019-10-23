@@ -61,6 +61,6 @@ abstract class Feed extends BaseJob
 
     public function isEmpty($str = '')
     {
-        return mb_strlen(trim($str)) > 0;
+        return mb_strlen(trim($str)) === 0;
     }
 }
