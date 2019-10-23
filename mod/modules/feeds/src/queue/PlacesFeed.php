@@ -76,7 +76,7 @@ class PlacesFeed extends Feed
                 // Give the feed a chance to define the building key
                 $buildingKeyFromXml = $this->str($element, 'building-uid');
 
-                if (!empty($buildingKeyFromXml))
+                if (!$this->isEmpty($buildingKeyFromXml))
                 {
                     $buildingKey = $buildingKeyFromXml;
                 }
@@ -97,7 +97,7 @@ class PlacesFeed extends Feed
             // FLOOR
             $floorFromXml = $this->str($element, 'floor');
 
-            if (empty($floorFromXml))
+            if ($this->isEmpty($floorFromXml))
             {
                 // Skip this floor
                 continue;
@@ -126,7 +126,7 @@ class PlacesFeed extends Feed
             // ROOM
             $roomFromXml = $this->str($element, 'room-number');
 
-            if (empty($roomFromXml))
+            if ($this->isEmpty($roomFromXml))
             {
                 // Skip this puppy
                 continue;
