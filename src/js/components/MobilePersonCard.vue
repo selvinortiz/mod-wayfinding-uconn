@@ -10,14 +10,14 @@
       </div>
 
       <div class="p-2">
-        <h2 class="font-bold leading-none text-lg cursor-pointer uppercase" :style="styles.title">
+        <h2 class="text-base font-bold leading-none cursor-pointer uppercase" :style="styles.title">
           {{ person.personFirstName }}
           {{ person.personLastName }}
         </h2>
+        <p v-if="role.title" class=" text-sm leading-none cursor-pointer">{{ role.title }}</p>
       </div>
 
       <div class="p-2">
-        <p v-if="role.title" class="text-md leading-none cursor-pointer">{{ role.title }}</p>
         <p v-if="role.department" class="text-sm leading-tight cursor-pointer">{{ role.department }}</p>
       </div>
     </div>

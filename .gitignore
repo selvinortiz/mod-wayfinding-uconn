@@ -12,3 +12,7 @@ node_modules
 config/license.key
 .eslintrc.json
 web/uploads/people/photos/default-avatar.svg
+web/uploads/room/photos/tutoring.jpg
+src/js/pages/places/old_Room.vue
+src/js/pages/places/old_Building.vue
+src/js/pages/places/old_Campus.vue
